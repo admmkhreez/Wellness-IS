@@ -16,7 +16,7 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $display = "SELECT a.mrn, name, ic_passport, address, email, lastUpdateMH, lastUpdate, registeredOn  FROM patient a, record b WHERE a.mrn = b.mrn";
+            $display = "SELECT a.mrn, name, ic_passport, address, email, lastUpdateMH, lastUpdate, registeredOn, package  FROM patient a, record b WHERE a.mrn = b.mrn";
             $data = $conn->query($display);
         ?>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -53,6 +53,7 @@
                     <th rowspan="2">Email</th>
                     <th colspan="4">Last Updated On</th>
                     <th rowspan="2">Registered On</th>
+                    <th rowspan="2">Package</th>
                 </tr>
                 <tr>
                     <th colspan="2">Medical History</th>
@@ -75,6 +76,7 @@
                     <td colspan="2"><?php echo $row['lastUpdateMH'];?></td>
                     <td colspan="2"><?php echo $row['lastUpdate'];?></td>
                     <td><?php echo $row['registeredOn'];?></td>
+                    <td><?php echo $row['package'];?></td>
                 </tr>
             </tbody>
         <?php
