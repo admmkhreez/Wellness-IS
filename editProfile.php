@@ -84,7 +84,7 @@
                     <option value = "Premium" <?php if ($row['package'] == "Premium") echo "selected"?>>Premium</option>
                     <option value = "Custom" <?php if ($row['package'] == "Custom") echo "selected"?>>Custom</option>
                 </select><br><br>
-                <input type="submit" value="Register"><br>
+                <input type="submit" value="Submit"><br>
                 <input type="reset" value="Reset">
             </div>
         </form>
