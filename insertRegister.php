@@ -69,6 +69,7 @@
                         echo "<div class='button'><a href='homepage.html'><img src='home.png' height='40px' width='40px'></a></div>";
                         echo "<h1>KPJ Klang Wellness Information System</h1>";
                         echo "<div class='container'><p>Record already exist, click <a href='viewRecord.php'>here</a> to view</p>";
+                        die;
                     }
                 }       
             }
