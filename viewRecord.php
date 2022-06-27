@@ -23,7 +23,7 @@
 
     <body>
         <div class="button">
-            <a href="homepage.html"><img src="home.png" height="40px" width="40px"></a>
+            <a href="homepage.php"><img src="home.png" height="40px" width="40px"></a>
         </div>
         <h1>Patient's Record</h1>
         <table style="width: 100%;" id="example" class="display">

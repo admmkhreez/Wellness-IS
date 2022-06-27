@@ -93,7 +93,7 @@
         $bmi = number_format((float)$temp, 2, '.', '');
         ?>
         <div class="button">
-            <a href="homepage.html"><img src="home.png" height="40px" width="40px"></a>
+            <a href="homepage.php"><img src="home.png" height="40px" width="40px"></a>
         </div>
         
         <h1>Patient Medical History</h1>
@@ -220,7 +220,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <h3>Central Nervous System</h3>
+                <h3>For Female</h3>
                 <div class="reference">
                     <p>Breast: <?php echo $breast;?></p>
                     <p>Last Menstrual Period: <?php echo $lmp;?></p>
