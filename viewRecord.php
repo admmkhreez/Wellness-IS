@@ -16,7 +16,7 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $display = "SELECT a.mrn, name, ic_passport, address, email, lastUpdateMH, lastUpdate, registeredOn, package  FROM patient a, record b WHERE a.mrn = b.mrn";
+            $display = "SELECT a.mrn, name, ic_passport, address, email, lastUpdateMH, lastUpdate, registeredOn, package  FROM patient a, record b WHERE a.mrn = b.mrn ";
             $data = $conn->query($display);
         ?>
     </head>
@@ -26,51 +26,73 @@
             <a href="homepage.php"><img src="home.png" height="40px" width="40px"></a>
         </div>
         <h1>Patient's Record</h1>
-        <table style="width: 100%;" id="example" class="display">
-            <thead>
-                <tr>
-                    <th rowspan="2">MRN</th>
-                    <th rowspan="2">Name</th>
-                    <th rowspan="2">I/C No/Passport</th>
-                    <th rowspan="2">Address</th>
-                    <th rowspan="2">Email</th>
-                    <th colspan="4">Last Updated On</th>
-                    <th rowspan="2">Registered On</th>
-                    <th rowspan="2">Package</th>
-                </tr>
-                <tr>
-                    <th colspan="2">Medical History</th>
-                    <th colspan="2">Report Form</th>
-                </tr>
-            </thead>
-        <?php
-        if ($data->num_rows > 0)
-        {
-            while($row = $data->fetch_assoc())
+        <form>
+            <table style="width: 100%;" id="example" class="display">
+                <thead>
+                    <tr>
+                        <th rowspan="2">
+                            
+                        </th>
+                        <th rowspan="2">
+                            MRN
+                        </th>
+                        <th rowspan="2">
+                            Name
+                        </th>
+                        <th rowspan="2">
+                            I/C No/Passport
+                        </th>
+                        <th rowspan="2">
+                            Address
+                        </th>
+                        <th rowspan="2">
+                            Email
+                        </th>
+                        <th colspan="4">
+                            Last Updated On
+                        </th>
+                        <th rowspan="2">
+                            Registered On
+                        </th>
+                        <th rowspan="2">
+                            Package
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Medical History</th>
+                        <th colspan="2">Report Form</th>
+                    </tr>
+                </thead>
+            <?php
+            if ($data->num_rows > 0)
             {
-        ?> 
-            <tbody class="whitebody">
-                <tr>
-                    <td><?php echo $row['mrn'];?></td>
-                    <td><?php echo $row['name'];?></td>
-                    <td><?php echo $row['ic_passport'];?></td>
-                    <td><?php echo $row['address'];?></td>
-                    <td><?php echo $row['email'];?></td>
-                    <td colspan="2"><?php echo $row['lastUpdateMH'];?></td>
-                    <td colspan="2"><?php echo $row['lastUpdate'];?></td>
-                    <td><?php echo $row['registeredOn'];?></td>
-                    <td><?php echo $row['package'];?></td>
-                </tr>
-            </tbody>
-        <?php
+                while($row = $data->fetch_assoc())
+                {
+            ?> 
+                <tbody class="whitebody">
+                    <tr>
+                        <td><input type="radio" name="mrn" value="<?php echo $row['mrn'];?>"></td>
+                        <td><?php echo $row['mrn'];?></td>
+                        <td><?php echo $row['name'];?></td>
+                        <td><?php echo $row['ic_passport'];?></td>
+                        <td><?php echo $row['address'];?></td>
+                        <td><?php echo $row['email'];?></td>
+                        <td colspan="2"><?php echo $row['lastUpdateMH'];?></td>
+                        <td colspan="2"><?php echo $row['lastUpdate'];?></td>
+                        <td><?php echo $row['registeredOn'];?></td>
+                        <td><?php echo $row['package'];?></td>
+                    </tr>
+                </tbody>
+            <?php
+                }
             }
-        }
-        else
-        {
-            echo "<tr><td colspan = '8'>No Patient Found</td></tr>";
-        }
-        ?>
-        </table>
+            else
+            {
+                echo "<tr><td colspan = '8'>No Patient Found</td></tr>";
+            }
+            ?>
+            </table>
+        </form>
         <?php
         $conn->close();
         ?>

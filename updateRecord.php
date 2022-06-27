@@ -264,7 +264,7 @@
             }
             $conn->close();
         ?>
-        <br><br><a href="homepage.html">Back to Home Page</a>
+        <br><br><a href="homepage.php">Back to Home Page</a>
         </div>
     </body>
 </html>

@@ -4,18 +4,27 @@
         <meta charset="UTF-8">
         <title>Wellness Information System</title>
         <link rel="stylesheet" href="test.css">
+        <style>
+            div {text-align: center;}
+        </style>
     </head>
     <body>
         <h1>KPJ Klang Wellness Information System</h1>
         <div class="container">
-            <h3>Login Page</h3>
+            <h1 style="color: black;">Login Page</h1>
             <form action="loginVerification.php" method="post">
-                <label for="username">Username</label>
-                <input type="text" id="username" maxlength="15" name="username" required>
-                <label for="password">Password</label>
-                <input type="password" id="password" maxlength="30" name="password">
-                <input type="submit" value="Login">
-                <input type="reset" value="Reset">
+                <div>
+                    <label for="username" >Username</label><br>
+                    <input type="text" class="inputbox" id="username" maxlength="15" placeholder="Username" name="username" required>
+                </div>
+                <div>
+                    <label for="password">Password</label><br>
+                    <input type="password" class="inputbox" id="password" maxlength="30" placeholder="Password" name="password">            
+                </div><br><br>
+                <div style="text-align: center;">
+                    <input type="reset" value="Reset">
+                    <input type="submit" value="Login">
+                </div>
             </form>
         </div>
     </body>

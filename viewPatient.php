@@ -22,7 +22,9 @@
         ?>
     </head>
     <body>
-        <a href="homepage.php"><img src="home.png" height="40px" width="40px"></a>
+        <div class="button">
+            <a href="homepage.php"><img src="home.png" height="40px" width="40px"></a>
+        </div>
         <h1>KPJ Klang Wellness Information System</h1>
         <div class="container">
         <?php
@@ -220,7 +222,7 @@
                 }
             }
             else{
-                echo "Error : " . $conn->error;
+                echo "Patient does not exist in system.";
             }
         ?>
         </div>

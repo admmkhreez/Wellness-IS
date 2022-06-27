@@ -71,5 +71,5 @@
         }
         $conn->close();
     ?>
-    <br><a href="homepage.html">Back to Home Page</a>
+    <br><a href="homepage.php">Back to Home Page</a>
 </html>
