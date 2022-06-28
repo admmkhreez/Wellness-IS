@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Patient Registration</title>
         <link rel="stylesheet" href="test.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
     <body>
         <?php
@@ -24,9 +25,31 @@
             $display = "SELECT * FROM patient WHERE mrn = '".$mrn."'";
             $data = $conn->query($display);
         ?>
-            <div class="button">
-                <a href="homepage.php"><img src="home.png" height="40px" width="40px"></a>
-            </div>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <div class="container-fluid">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="homepage.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="selectRecord.php">Fill form</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="selectPatient.php">Search Patient</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="selectHistory.php">Medical History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <br>
             <h1>Health Screening Services</h1>
             <div class="container">
         <?php
@@ -119,8 +142,8 @@
                     </select><br><br>
                 </div>
                 <div style="text-align: center;">
-                    <input type="submit" value="Submit">
-                    <input type="reset" value="Reset">
+                    <input type="reset" class="btn btn-danger" value="Reset">
+                    <input type="submit" class="btn btn-primary" value="Submit">
                 </div>
             
         </form>

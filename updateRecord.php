@@ -3,6 +3,7 @@
     <head>
         <title>Welness Information System</title>
         <link rel="stylesheet" href="test.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <?php
         $servername = "localhost";
         $username = "root";
@@ -21,6 +22,7 @@
     
     <body>
     <?php
+        $sex = $_POST["sex"];
         $mrn = $_POST["mrn"];
         $appearance = $_POST["appearance"];
         $weight = $_POST["weight"];
@@ -92,9 +94,30 @@
         $temp = $weight/($heightm*$heightm);
         $bmi = number_format((float)$temp, 2, '.', '');
         ?>
-        <div class="button">
-            <a href="homepage.php"><img src="home.png" height="40px" width="40px"></a>
-        </div>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="homepage.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="selectRecord.php">Fill form</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="selectPatient.php">Search Patient</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="selectHistory.php">Medical History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         
         <h1>Patient Medical History</h1>
         <div class="container">
@@ -244,6 +267,7 @@
                 <p>Recommendation: <?php echo $recommendation;?></p>
         
         <?php
+        if($sex == "Female"){
             $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
             pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
             fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
@@ -254,6 +278,19 @@
             breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = '".$us_breast."', 
             us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', lastUpdate = '".$date."' 
             WHERE mrn = '".$mrn."'";
+        }
+        else{
+            $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
+            pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
+            fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+            excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
+            airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
+            coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
+            lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
+            cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = '".$us_breast."', us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', 
+            urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', lastUpdate = '".$date."' 
+            WHERE mrn = '".$mrn."'";
+        }
             if ($conn->query($insert) === TRUE)
             {
                 echo "<p class='success'>Successfully updated medical report";
@@ -264,7 +301,7 @@
             }
             $conn->close();
         ?>
-        <br><br><a href="homepage.php">Back to Home Page</a>
+        <br><br><button class="btn btn-primary" onclick="window.location.href='homepage.php'">Back to Home Page</button>
         </div>
     </body>
 </html>

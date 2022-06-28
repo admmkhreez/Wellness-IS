@@ -3,6 +3,7 @@
     <head>
         <title>Welness Information System</title>
         <link rel="stylesheet" href="test.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <?php
             $servername = "localhost";
             $username = "root";
@@ -21,6 +22,7 @@
     
     <body>
         <?php
+            $sex = $_POST["sex"];  
             $mrn = $_POST["mrn"];
             $appearance = $_POST["appearance"];
             $weight = $_POST["weight"];
@@ -71,10 +73,12 @@
             $uref_r = $_POST["uref_r"];
             $usen_l = $_POST["usen_l"];
             $usen_r = $_POST["usen_r"];
+            if($sex == "Female"){
             $breast = $_POST["breast"];
             $lmp = $_POST["lmp"];
             $gynaecology = $_POST["gynaecology"];
             $lastps = $_POST["lastps"];
+            }
             $cxr = $_POST["cxr"];
             $ecg = $_POST["ecg"];
             $mammogram = $_POST["mammogram"];
@@ -92,9 +96,30 @@
             $temp = $weight/($heightm*$heightm);
             $bmi = number_format((float)$temp, 2, '.', '');
             ?>
-            <div class="button">
-                <a href="homepage.php"><img src="home.png" height="40px" width="40px"></a>
-            </div>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <div class="container-fluid">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="homepage.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="selectRecord.php">Fill form</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="selectPatient.php">Search Patient</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="selectHistory.php">Medical History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
             
             <h1>Patient Medical History</h1>
             <div class="container">
@@ -108,8 +133,8 @@
                     <p>Blood Pressure: <?php echo $systolic;?>/<?php echo $diastolic;?></p>
                 </div>
                 <h3>Eyes</h3>
-                    <table style="table-layout: fixed; width:100%;">
-                        <thead>
+                    <table style="table-layout: fixed; width:100%;" class="table table-bordered">
+                        <thead class="table-dark" style="text-align:center;">
                             <tr>
                                 <th></th>
                                 <th>Left</th>
@@ -118,22 +143,22 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <th class="darkhead">Visual Acuity(Aided)</th>
+                            <th>Visual Acuity(Aided)</th>
                             <td><?php echo $va_aidedl;?></td>
                             <td><?php echo $va_aidedr;?></td>
                         </tr>
                         <tr>
-                            <th class="darkhead">Visual Acuity(Unaided)</th>
+                            <th>Visual Acuity(Unaided)</th>
                             <td><?php echo $va_unaidedl;?></td>
                             <td><?php echo $va_unaidedr;?></td>
                         </tr>
                         <tr>
-                            <th class="darkhead">Colour</th>
+                            <th>Colour</th>
                             <td><?php echo $colour_l;?></td>
                             <td><?php echo $colour_r;?></td>
                         </tr>
                         <tr>
-                            <th class="darkhead">Fundoscopy</th>
+                            <th>Fundoscopy</th>
                             <td><?php echo $fundoscopy_l;?></td>
                             <td><?php echo $fundoscopy_r;?></td>
                         </tr>
@@ -168,8 +193,8 @@
                     <p>Rectal Examination: <?php echo $rectal;?></p>
                 </div>
                 <h3>Musculoskeletal System</h3>
-                <table style="table-layout: fixed; width:100%;">
-                    <thead>
+                <table style="table-layout: fixed; width:100%;" class="table table-bordered">
+                    <thead class="table-dark" style="text-align:center;">
                         <tr>
                             <th>Lower Limb</th>
                             <th>Left</th>
@@ -178,24 +203,24 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th class="darkhead">Power</th>
+                            <th>Power</th>
                             <td><?php echo $lpow_l;?></td>
                             <td><?php echo $lpow_r;?></td>
                         </tr>
                         <tr>
-                            <th class="darkhead">Reflex</th>
+                            <th>Reflex</th>
                             <td><?php echo $lref_l;?></td>
                             <td><?php echo $lref_r;?></td>
                         </tr>
                         <tr>
-                            <th class="darkhead">Sensation</th>
+                            <th>Sensation</th>
                             <td><?php echo $lsen_l;?></td>
                             <td><?php echo $lsen_r;?></td>
                         </tr>
                     </tbody>
                     </table><br>
-                    <table style="table-layout: fixed; width:100%;">
-                        <thead>
+                    <table style="table-layout: fixed; width:100%;" class="table table-bordered">
+                    <thead class="table-dark" style="text-align:center;">
                             <tr>
                                 <th>Upper Limb</th>
                                 <th>Left</th>
@@ -204,29 +229,35 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th class="darkhead">Power</th>
+                                <th>Power</th>
                                 <td><?php echo $upow_l;?></td>
                                 <td><?php echo $upow_r;?></td>
                             </tr>
                             <tr>
-                                <th class="darkhead">Reflex</th>
+                                <th>Reflex</th>
                                 <td><?php echo $uref_l;?></td>
                                 <td><?php echo $uref_r;?></td>
                             </tr>
                             <tr>
-                                <th class="darkhead">Sensation</th>
+                                <th>Sensation</th>
                                 <td><?php echo $usen_l;?></td>
                                 <td><?php echo $usen_r;?></td>
                             </tr>
                         </tbody>
                     </table>
-                    <h3>Central Nervous System</h3>
+                    <?php
+                        if($sex == "Female"){
+                    ?>
+                    <h3>For Female Patient</h3>
                     <div class="reference">
                         <p>Breast: <?php echo $breast;?></p>
                         <p>Last Menstrual Period: <?php echo $lmp;?></p>
                         <p>Gynaecology History: <?php echo $gynaecology;?></p>
                         <p>Last Pap Smear: <?php echo $lastps;?></p>
                     </div>
+                    <?php
+                        }
+                    ?>
                     <h3>Investigation</h3>
                     <div class="reference">
                         <p>Chest X-Ray: <?php echo $cxr;?></p>
@@ -244,15 +275,28 @@
                     <p>Recommendation: <?php echo $recommendation;?></p>
             
             <?php
-                $insert = "INSERT INTO record (mrn) VALUES ('".$mrn."') ON DUPLICATE KEY UPDATE appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
-                excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
-                airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
-                coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
-                lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
-                breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = '".$us_breast."', 
-                us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', lastUpdate = '".$date."', status='1'";
+                if($sex == "Female"){
+                    $insert = "INSERT INTO record (mrn) VALUES ('".$mrn."') ON DUPLICATE KEY UPDATE appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
+                    pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
+                    fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                    excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
+                    airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
+                    coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
+                    lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
+                    breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = '".$us_breast."', 
+                    us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', lastUpdate = '".$date."', status='1'";
+                }
+                else{
+                    $insert = "INSERT INTO record (mrn) VALUES ('".$mrn."') ON DUPLICATE KEY UPDATE appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
+                    pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
+                    fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                    excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
+                    airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
+                    coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
+                    lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
+                    cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = '".$us_breast."', us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', 
+                    blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', lastUpdate = '".$date."', status='1'";
+                }
                 if ($conn->query($insert) === TRUE)
                 {
                     echo "<p class='success'>Successfully Inserted medical report";
@@ -263,7 +307,7 @@
                 }
                 $conn->close();
             ?>
-            <br><br><a href="homepage.php">Back to Home Page</a>
+            <br><br><button class="btn btn-primary" onclick="window.location.href='homepage.php'">Back to Home Page</button>
             </div>
     </body>
 </html>

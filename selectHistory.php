@@ -21,14 +21,14 @@
                         <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link active" href="selectRecord.php">Fill form</a>
+                        <a class="nav-link" href="selectRecord.php">Fill form</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
                     <li class="nav-item">
-                            <a class="nav-link" href="selectHistory.php">Medical History</a>
-                    </li>
+                            <a class="nav-link active" href="selectHistory.php">Medical History</a>
+                        </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">Logout</a>
                     </li>
@@ -37,10 +37,12 @@
         </nav>
         <h1>Medical Report</h1>
         <div class="container">
-            <form action="recordForm.php" method="post">
+            <form action="historyForm.php" method="post">
             <label for="mrn">Enter Patient's MRN</label><br>
             <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br>
-            <input class="btn btn-primary" type="submit" value="Fill form">
+            <div class="btn-group">
+                <input class="btn btn-primary" type="submit" value="Fill Medical History">
+            </div>
             </form>
         </div>
     </body>

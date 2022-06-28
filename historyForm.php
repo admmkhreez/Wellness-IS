@@ -18,22 +18,52 @@
         $select = "SELECT * from patient WHERE mrn = '".$mrn."'";
         $data = $conn->query($select);
     }
-    if ($data->num_rows>0)
-    {
-        while($row=$data->fetch_assoc()){
     ?>
     <head>
         <meta charset="UTF-8">
         <title>Patient Medical History</title>
         <link rel="stylesheet" href="test.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script>
+            function confirm_reset() {
+                return confirm("Are you sure you want to reset all input?");
+            }
+        </script>
     </head>
     <body>
-        <div class="button">
-            <a href="homepage.php"><img src="home.png" height="40px" width="40px"></a>
-        </div>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="homepage.php">Home</a>                        
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="viewRecord.php">View Latest Patients</a>                        
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="selectRecord.php">Fill form</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="selectPatient.php">Search Patient</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="selectHistory.php">Medical History</a>
+                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <h1>Past Medical History</h1>
-        <form action="updateHistory.php" method="post">
         <div class="container">
+    <?php
+    if ($data->num_rows>0)
+    {
+        while($row=$data->fetch_assoc()){
+    ?>
+    
+        <form action="updateHistory.php" method="post">
         <p>Patient's Name: <?php echo $row["name"];?></p>
         <p>Patient's MRN: <?php echo $mrn;?></p>
             <p>Medical History</p>
@@ -186,10 +216,11 @@
                 <input type="text" id="medication" name="medication" maxlength="50" value="<?php echo $row['medication'];?>" required>
             </div>
             <div style="text-align: center;">
-                <input type="submit" value="Update Info">
+                <input type="reset" class="btn btn-danger" value="Reset" onclick="return confirm_reset();">
+                <input type="submit" class="btn btn-primary" value="Update Info">
                 <input type="hidden" name="mrn" value="<?php echo $mrn; ?>">
             </div>
-        </div>
+        
         </form>
         <?php
             }
@@ -198,6 +229,7 @@
             echo "Patient does not exist in system.";
         }
         ?>
+        </div>
     </body>
     <?php
     $conn->close()

@@ -3,6 +3,8 @@
     <head>
         <title>Patient's Record</title>
         <link rel="stylesheet" href="test.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
         <?php
             $servername = "localhost";
             $username = "root";
@@ -15,24 +17,44 @@
             {
                 die("Connection failed: " . $conn->connect_error);
             }
-
-            $display = "SELECT a.mrn, name, ic_passport, address, email, lastUpdateMH, lastUpdate, registeredOn, package  FROM patient a, record b WHERE a.mrn = b.mrn ";
+        ?>
+        <body>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <div class="container-fluid">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="homepage.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="viewRecord.php">View Latest Patients</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="selectRecord.php">Fill form</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="selectPatient.php">Search Patient</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="selectHistory.php">Medical History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <h1>Patient's Record</h1>
+            <div style="text-align: center;">
+                <p style="color:white;">SHOWING LAST 10 PATIENT REGISTERED</p>    
+            </div>
+        <?php    
+            $display = "SELECT a.mrn, name, ic_passport, address, email, lastUpdateMH, lastUpdate, registeredOn, package  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY registeredOn DESC LIMIT 10";
             $data = $conn->query($display);
         ?>
-    </head>
-
-    <body>
-        <div class="button">
-            <a href="homepage.php"><img src="home.png" height="40px" width="40px"></a>
-        </div>
-        <h1>Patient's Record</h1>
-        <form>
-            <table style="width: 100%;" id="example" class="display">
-                <thead>
+        <form method="post">
+            <table style="width: 100%;" height="700" class="table table-bordered">
+                <thead class="table-dark" style="text-align:center;">
                     <tr>
-                        <th rowspan="2">
-                            
-                        </th>
                         <th rowspan="2">
                             MRN
                         </th>
@@ -69,9 +91,8 @@
                 while($row = $data->fetch_assoc())
                 {
             ?> 
-                <tbody class="whitebody">
+                <tbody style="background-color:white;">
                     <tr>
-                        <td><input type="radio" name="mrn" value="<?php echo $row['mrn'];?>"></td>
                         <td><?php echo $row['mrn'];?></td>
                         <td><?php echo $row['name'];?></td>
                         <td><?php echo $row['ic_passport'];?></td>
@@ -88,7 +109,7 @@
             }
             else
             {
-                echo "<tr><td colspan = '8'>No Patient Found</td></tr>";
+                echo "<tr><td colspan = '12'>No Patient Found</td></tr>";
             }
             ?>
             </table>

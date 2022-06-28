@@ -2,10 +2,12 @@
     <head>
         <title>User Registration</title>
         <link rel="stylesheet" href="test.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
     
     <body>
     <?php
+        $sex = $_POST['sex'];
         $mrn = $_POST["mrn"];
         $servername = "localhost";
         $username = "root";
@@ -23,9 +25,30 @@
             $data = $conn->query($select);
         }
     ?>
-        <div class="button">
-            <a href="homepage.php"><img src="home.png" height="40px" width="40px"></a>
-        </div>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="homepage.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="selectRecord.php">Fill form</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="selectPatient.php">Search Patient</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="selectHistory.php">Medical History</a>
+                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <h1>Patient Medical Report</h1>
     <?php
         if ($data->num_rows>0)
@@ -194,6 +217,9 @@
             <input type="text" id="usen_l" name="usen_l" value="<?php echo $row["usen_l"];?>">
             <label for="usen_r">Right: </label>
             <input type="text" id="usen_r" name="usen_r" value="<?php echo $row["usen_r"];?>">
+            <?php
+                if ($sex == 'Female' ){
+            ?>
             <h3>For Female Patient</h3>
             <label for="breast">Breast: </label>
             <input type="text" id="breast" name="breast" value="<?php echo $row["breast"];?>"><br>
@@ -203,6 +229,9 @@
             <input type="text" id="gynaecology" name="gynaecology" value="<?php echo $row["gynaecology"];?>"><br>
             <label for="lastps">Last Pap Smear: </label>
             <input type="text" id="lastps" name="lastps" value="<?php echo $row["lastps"];?>"><br>
+            <?php
+                }
+            ?>
             <h3>Investigation</h3>
             <label for="cxr">Chest X-Ray: </label>
             <input type="text" id="cxr" name="cxr" value="<?php echo $row["cxr"];?>"><br>
@@ -229,8 +258,9 @@
             <label for="recommendation">Recommendation: </label><br>
             <textarea id="recommendation" name="recommendation" rows="5" cols="100"><?php echo $row["recommendation"];?></textarea><br>
             <br>
-            <input type="submit" value="Submit Record">
+            <input type="submit" class="btn btn-primary" value="Submit Record">
             <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+            <input type="hidden" name="sex" value="<?php echo $sex;?>">
         </form>
         </div>
     <?php

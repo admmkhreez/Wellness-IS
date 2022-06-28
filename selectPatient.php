@@ -8,20 +8,39 @@
         <meta charset="UTF-8">
         <title></title>
         <link rel="stylesheet" href="test.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
     <body style="text-align: center;">
-        <div class="button">
-             <a href="homepage.php"><img src="home.png" height="40px" width="40px"></a>
-        </div>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <div class="container-fluid">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="homepage.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="selectRecord.php">Fill form</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="selectPatient.php">Search Patient</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="selectHistory.php">Medical History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="logout.php">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         <h1>Medical Report</h1>
         <div class="container">    
             <form action="editProfile.php" method="post">
                 <label for="mrn">Enter Patient's MRN</label><br>
                 <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br><br>
-                <input type="submit" value="Update Patient's Details">
-                <button formaction="viewPatient.php">View Details</button><br><br>
-                <button formaction="historyForm.php">Update Medical History</button>
-                <button formaction="recordUpdateForm.php">Update Medical Report</button><br><br>
+                <button formaction="viewPatient.php" class="btn btn-primary">Search</button>
             </form>
         </div>
     </body>

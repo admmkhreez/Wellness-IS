@@ -3,6 +3,7 @@
     <head>
         <title>Patient's Record</title>
         <link rel="stylesheet" href="test.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <?php
             $mrn = $_POST['mrn'];
             $servername = "localhost";
@@ -22,9 +23,30 @@
         ?>
     </head>
     <body>
-        <div class="button">
-            <a href="homepage.php"><img src="home.png" height="40px" width="40px"></a>
-        </div>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="homepage.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="selectRecord.php">Fill form</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="selectPatient.php">Search Patient</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="selectHistory.php">Medical History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <h1>KPJ Klang Wellness Information System</h1>
         <div class="container">
         <?php
@@ -84,8 +106,8 @@
                 <p>Blood Pressure: <?php echo $row['systolic'];?>/<?php echo $row['diastolic'];?></p>
             </div>
             <h3>Eyes</h3>
-                <table style="table-layout: fixed; width:100%;">
-                    <thead>
+                <table style="table-layout: fixed; width:100%;" class="table table-bordered">
+                    <thead class="table-dark" style="text-align:center;">
                         <tr>
                             <th></th>
                             <th>Left</th>
@@ -94,22 +116,22 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <th class="darkhead">Visual Acuity(Aided)</th>
+                        <th>Visual Acuity(Aided)</th>
                         <td><?php echo $row['va_aidedl'];?></td>
                         <td><?php echo $row['va_aidedr'];?></td>
                     </tr>
                     <tr>
-                        <th class="darkhead">Visual Acuity(Unaided)</th>
+                        <th>Visual Acuity(Unaided)</th>
                         <td><?php echo $row['va_unaidedl'];?></td>
                         <td><?php echo $row['va_unaidedr'];?></td>
                     </tr>
                     <tr>
-                        <th class="darkhead">Colour</th>
+                        <th>Colour</th>
                         <td><?php echo $row['colour_l'];?></td>
                         <td><?php echo $row['colour_r'];?></td>
                     </tr>
                     <tr>
-                        <th class="darkhead">Fundoscopy</th>
+                        <th>Fundoscopy</th>
                         <td><?php echo $row['fundoscopy_l'];?></td>
                         <td><?php echo $row['fundoscopy_r'];?></td>
                     </tr>
@@ -144,8 +166,8 @@
                 <p>Rectal Examination: <?php echo $row['rectal'];?></p>
             </div>
             <h3>Musculoskeletal System</h3>
-            <table style="table-layout: fixed; width:100%;">
-                <thead>
+            <table style="table-layout: fixed; width:100%;" class="table table-bordered">
+                    <thead class="table-dark" style="text-align:center;">
                     <tr>
                         <th>Lower Limb</th>
                         <th>Left</th>
@@ -154,24 +176,24 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th class="darkhead">Power</th>
+                        <th>Power</th>
                         <td><?php echo $row['lpow_l'];?></td>
                         <td><?php echo $row['lpow_r'];?></td>
                     </tr>
                     <tr>
-                        <th class="darkhead">Reflex</th>
+                        <th>Reflex</th>
                         <td><?php echo $row['lref_l'];?></td>
                         <td><?php echo $row['lref_r'];?></td>
                     </tr>
                     <tr>
-                        <th class="darkhead">Sensation</th>
+                        <th>Sensation</th>
                         <td><?php echo $row['lsen_l'];?></td>
                         <td><?php echo $row['lsen_r'];?></td>
                     </tr>
                 </tbody>
                 </table><br>
-                <table style="table-layout: fixed; width:100%;">
-                    <thead>
+                <table style="table-layout: fixed; width:100%;" class="table table-bordered">
+                    <thead class="table-dark" style="text-align:center;">
                         <tr>
                             <th>Upper Limb</th>
                             <th>Left</th>
@@ -180,29 +202,35 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th class="darkhead">Power</th>
+                            <th>Power</th>
                             <td><?php echo $row['upow_l'];?></td>
                             <td><?php echo $row['upow_r'];?></td>
                         </tr>
                         <tr>
-                            <th class="darkhead">Reflex</th>
+                            <th>Reflex</th>
                             <td><?php echo $row['uref_l'];?></td>
                             <td><?php echo $row['uref_r'];?></td>
                         </tr>
                         <tr>
-                            <th class="darkhead">Sensation</th>
+                            <th>Sensation</th>
                             <td><?php echo $row['usen_l'];?></td>
                             <td><?php echo $row['usen_r'];?></td>
                         </tr>
                     </tbody>
                 </table>
-                <h3>For Female</h3>
+                <?php
+                    if($row['sex'] == "Female"){
+                ?>
+                <h3>For Female Patient</h3>
                 <div class="reference">
                     <p>Breast: <?php echo $row['breast'];?></p>
                     <p>Last Menstrual Period: <?php echo $row['lmp'];?></p>
                     <p>Gynaecology History: <?php echo $row['gynaecology'];?></p>
                     <p>Last Pap Smear: <?php echo $row['lastps'];?></p>
                 </div>
+                <?php
+                    }
+                ?>
                 <h3>Investigation</h3>
                 <div class="reference">
                     <p>Chest X-Ray: <?php echo $row['cxr'];?></p>
@@ -218,6 +246,18 @@
                 </div>
                 <p>Impression: <?php echo $row['impression'];?></p>
                 <p>Recommendation: <?php echo $row['recommendation'];?></p>
+                <br><br>
+                <form method="post">
+                <div class="btn-group">
+                    <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+                    <input type="hidden" name="sex" value="<?php echo $row['sex'];?>">
+                    <button formaction="editProfile.php" class="btn btn-primary">Edit Patient's Details</button>
+                    <button formaction="recordUpdateForm.php" class="btn btn-primary">Update Patient's Record</button>
+                    <button formaction="historyForm.php" class="btn btn-primary">Update Medical History</button>
+                    
+                </div>    
+                </form>
+                
         <?php
                 }
             }
