@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
     <?php
+    session_start();
+    if(isset($_SESSION["type"])) {
+
     $mrn = $_POST["mrn"];
 
     $servername = "localhost";
@@ -40,9 +43,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="viewRecord.php">View Latest Patients</a>                        
                     </li>
-                    <li class="nav-item ">
+                    <?php
+                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
+                    ?>
+                    <li class="nav-item">
                         <a class="nav-link" href="selectRecord.php">Fill form</a>
                     </li>
+                    <?php
+                        }
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
@@ -232,6 +241,12 @@
         </div>
     </body>
     <?php
-    $conn->close()
+    $conn->close();
+    }
+    else
+    {
+        echo "No session exist or session has expired. Please log in again.<br>";
+        echo "<a href=log-in.html> Login </a>";
+    }
     ?>
 </html>

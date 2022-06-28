@@ -1,4 +1,9 @@
+<!DOCTYPE html>
 <html>
+    <?php
+        session_start();
+        if(isset($_SESSION["type"])) {
+    ?>
     <head>
         <title>User Registration</title>
         <link rel="stylesheet" href="test.css">
@@ -35,9 +40,15 @@
                     <li class="nav-item">
                       <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
                     </li>
-                    <li class="nav-item ">
+                    <?php
+                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
+                    ?>
+                    <li class="nav-item">
                         <a class="nav-link" href="selectRecord.php">Fill form</a>
                     </li>
+                    <?php
+                        }
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
@@ -238,13 +249,17 @@
             <input type="text" id="cxr" name="cxr" value="<?php echo $row["cxr"];?>"><br>
             <label for="ecg">Electrocardiogram: </label>
             <input type="text" id="ecg" name="ecg" value="<?php echo $row["ecg"];?>"><br>
+            <?php
+                if ($package == "Custom"){
+            ?>
             <label for="mmg">Mammogram: </label>
             <input type="text" id="mmg" name="mammogram" value="<?php echo $row["mammogram"];?>"><br>
-            <?php
-                if ($package == "Comprehensive" || $package == "Premium" || $package == "Custom"){
-            ?>
             <label for="us_breast">Ultrasound Breast: </label>
             <input type="text" id="us_breast" name="us_breast" value="<?php echo $row["us_breast"];?>"><br>
+            <?php
+                }
+                if ($package == "Comprehensive" || $package == "Premium" || $package == "Custom"){
+            ?>
             <label for="us_abdopel">Ultrasound Abdomen Pelvis: </label>
             <input type="text" id="us_abdopel" name="us_abdopel" value="<?php echo $row["us_abdopel"];?>"><br>
             <?php
@@ -255,11 +270,15 @@
             <input type="text" id="stress" name="stresstest" value="<?php echo $row["stresstest"];?>"><br>
             <?php
                 }
+                if ($package == "Custom"){
             ?>
             <label for="pta">Pure Tone Audiometry: </label>
             <input type="text" id="pta" name="pta" value="<?php echo $row["pta"];?>"><br>
             <label for="lft">Lung Function Test: </label>
             <input type="text" id="lft" name="lft" value="<?php echo $row["lft"];?>"><br>
+            <?php
+                }
+            ?>
             <label for="urine">Urine: </label>
             <input type="text" id="urine" name="urine" value="<?php echo $row["urine"];?>"><br>
             <label for="blood">Blood: </label>
@@ -284,6 +303,12 @@
     ?>
     </body>
     <?php
-    $conn->close()
+    $conn->close();
+    }
+    else
+    {
+        echo "No session exist or session has expired. Please log in again.<br>";
+        echo "<a href=log-in.html> Login </a>";
+    }
     ?>
 </html>

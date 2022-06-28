@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+    <?php
+        session_start();
+        if(isset($_SESSION["type"])) {
+    ?>
     <head>
         <title>Patient's Record</title>
         <link rel="stylesheet" href="test.css">
@@ -32,9 +36,15 @@
                     <li class="nav-item">
                       <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
                     </li>
-                    <li class="nav-item ">
+                    <?php
+                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
+                    ?>
+                    <li class="nav-item">
                         <a class="nav-link" href="selectRecord.php">Fill form</a>
                     </li>
+                    <?php
+                        }
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
@@ -258,7 +268,13 @@
                     <input type="hidden" name="sex" value="<?php echo $row['sex'];?>">
                     <input type="hidden" name="package" value="<?php echo $row['package'];?>">
                     <button formaction="editProfile.php" class="btn btn-primary">Edit Patient's Details</button>
+                    <?php
+                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
+                    ?>
                     <button formaction="recordUpdateForm.php" class="btn btn-primary">Update Patient's Record</button>
+                    <?php
+                        }
+                    ?>
                     <button formaction="historyForm.php" class="btn btn-primary">Update Medical History</button>
                     
                 </div>    
@@ -269,6 +285,13 @@
             }
             else{
                 echo "Patient does not exist in system.";
+            }
+            $conn->close();
+            }
+            else
+            {
+                echo "No session exist or session has expired. Please log in again.<br>";
+                echo "<a href=log-in.html> Login </a>";
             }
         ?>
         </div>

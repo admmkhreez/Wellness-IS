@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+    <?php
+        session_start();
+        if(isset($_SESSION["type"])) {
+    ?>
     <head>
         <title>Patient's Record</title>
         <link rel="stylesheet" href="test.css">
@@ -28,9 +32,15 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="viewRecord.php">View Latest Patients</a>
                         </li>
+                        <?php
+                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="selectRecord.php">Fill form</a>
                         </li>
+                        <?php
+                            }
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
                         </li>
@@ -116,6 +126,12 @@
         </form>
         <?php
         $conn->close();
+        }
+        else
+        {
+            echo "No session exist or session has expired. Please log in again.<br>";
+            echo "<a href=log-in.html> Login </a>";
+        }
         ?>
     </body>
 </html>

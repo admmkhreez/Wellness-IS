@@ -8,8 +8,9 @@ h1{
     color: white;
 }
 h3{
-    padding: 10px;
-    background-color: peachpuff;
+    padding: 15px;
+    background-image: linear-gradient(to bottom right, rgba(255, 0, 0, .5), rgba(0, 0, 128, .5));
+    border-radius: 10px;
 }
 body{
     background-image: linear-gradient(to bottom right, rgba(255, 0, 0), rgba(0, 0, 128));

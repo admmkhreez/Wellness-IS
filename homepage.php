@@ -2,7 +2,7 @@
 <html>
     <?php
         session_start();
-        if(isset($_SESSION["username"])) {
+        if(isset($_SESSION["type"])) {
     ?>
     <head>
         <meta charset="UTF-8">
@@ -20,9 +20,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
                     </li>
+                    <?php
+                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="selectRecord.php">Fill form</a>
                     </li>
+                    <?php
+                        }
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>

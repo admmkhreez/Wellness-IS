@@ -38,6 +38,7 @@ $resultCheck = $conn->query($queryCheck);
                 session_start();
                 $_SESSION["username"] = $username ;
                 $_SESSION["type"] = $row["type"];
+                $_SESSION["name"] = $row["name"];
                 //redirect to page menu.php
                 header("Location:homepage.php");
 		    }

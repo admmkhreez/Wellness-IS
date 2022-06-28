@@ -8,6 +8,6 @@
 	}
 	else {
 		echo " No session exists or session is expired. Please log in again";
-		echo "<br>Click <a href='log-in.html'> here </a> to LOGIN again.";
+		echo "<br>Click <a href='log-in.html'> here </a> to Login again.";
 	}
 ?>

@@ -1,4 +1,9 @@
+<!DOCTYPE html>
 <html>
+    <?php
+        session_start();
+        if(isset($_SESSION["type"])) {
+    ?>
     <head>
         <title>User Registration</title>
         <link rel="stylesheet" href="test.css">
@@ -38,9 +43,15 @@
                     <li class="nav-item">
                       <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
                     </li>
-                    <li class="nav-item ">
+                    <?php
+                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
+                    ?>
+                    <li class="nav-item">
                         <a class="nav-link" href="selectRecord.php">Fill form</a>
                     </li>
+                    <?php
+                        }
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
@@ -236,13 +247,17 @@
             <input type="text" id="cxr" name="cxr" required><br>
             <label for="ecg">Electrocardiogram: </label>
             <input type="text" id="ecg" name="ecg" required><br>
+            <?php
+                if ($row['package'] == "Custom"){
+            ?>
             <label for="mmg">Mammogram: </label>
             <input type="text" id="mmg" name="mammogram" required><br>
-            <?php
-                if ($row['package'] == "Comprehensive" || $row['package'] == "Premium" || $row['package'] == "Custom"){
-            ?>
             <label for="us_breast">Ultrasound Breast: </label>
             <input type="text" id="us_breast" name="us_breast" required><br>
+            <?php
+                }
+                if ($row['package'] == "Comprehensive" || $row['package'] == "Premium" || $row['package'] == "Custom"){
+            ?>
             <label for="us_abdopel">Ultrasound Abdomen Pelvis: </label>
             <input type="text" id="us_abdopel" name="us_abdopel" required><br>
             <?php
@@ -253,11 +268,15 @@
             <input type="text" id="stress" name="stresstest" required><br>
             <?php
                 }
+                if ($row['package'] == "Custom"){
             ?>
             <label for="pta">Pure Tone Audiometry: </label>
             <input type="text" id="pta" name="pta" required><br>
             <label for="lft">Lung Function Test: </label>
             <input type="text" id="lft" name="lft" required><br>
+            <?php
+                }
+            ?>
             <label for="urine">Urine: </label>
             <input type="text" id="urine" name="urine" required><br>
             <label for="blood">Blood: </label>
@@ -303,6 +322,13 @@
                     echo "<div class='container'><p>Record already exist, click <a href='selectPatient.php'>here</a> to update</p>";
                 }
             }
+        }
+        $conn->close();
+        }
+        else
+        {
+            echo "No session exist or session has expired. Please log in again.<br>";
+            echo "<a href=log-in.html> Login </a>";
         }
         ?>
         </div>
