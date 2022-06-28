@@ -11,6 +11,7 @@
         $dob = $_POST["dob"];
         $address = $_POST["address"];
         $email = $_POST["email"];
+        $tel = $_POST["telephone"]
         $sex = $_POST["sex"];
         $occupation = $_POST["occupation"];
         $race = $_POST["race"];
@@ -74,6 +75,7 @@
         <p>Date of Birth: <?php echo $dob;?></p>
         <p>Home Address: <?php echo $address;?></p>
         <p>E-mail Address: <?php echo $email;?></p>
+        <p>Telephone: <?php echo $tel;?></p>
         <p>Sex: <?php echo $sex;?></p>
         <p>Occupation: <?php echo $occupation;?></p>
         <p>Race: <?php echo $race;?></p>
@@ -119,8 +121,8 @@
                 }       
             }
         
-        $insert1 = "INSERT INTO patient (mrn, name, ic_passport, date_of_birth, address, email, sex, occupation, race, religion, marital_status, next_of_kin, relationship, telephone_nok, registeredOn, package) 
-        VALUES ('".$mrn."', '".$name."', '".$icpp."', '".$dob."', '".$address."', '".$email."', '".$sex."', '".$occupation."', '".$race."', '".$religion."', '".$mstatus."', '".$nok."', '".$rs."', '".$tel_nok."', '".$date."', '".$package."')";
+        $insert1 = "INSERT INTO patient (mrn, name, ic_passport, date_of_birth, address, email, telephone, sex, occupation, race, religion, marital_status, next_of_kin, relationship, telephone_nok, registeredOn, package) 
+        VALUES ('".$mrn."', '".$name."', '".$icpp."', '".$dob."', '".$address."', '".$email."', '".$tel."', '".$sex."', '".$occupation."', '".$race."', '".$religion."', '".$mstatus."', '".$nok."', '".$rs."', '".$tel_nok."', '".$date."', '".$package."')";
         $insert2 = "INSERT INTO record (mrn) VALUES ('".$mrn."')";
 
         if ($conn->query($insert1) && $conn->query($insert2 )=== TRUE)

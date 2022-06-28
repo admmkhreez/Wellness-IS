@@ -11,6 +11,7 @@
         $dob = $_POST["dob"];
         $address = $_POST["address"];
         $email = $_POST["email"];
+        $tel = $_POST["tel"];
         $sex = $_POST["sex"];
         $occupation = $_POST["occupation"];
         $race = $_POST["race"];
@@ -59,29 +60,29 @@
             </div>
         </nav>
         <h1>User Registration Details</h1>
-        <div class="reference">
-        <p>MRN: <?php echo $mrn;?></p>
-        <p>Name: <?php echo $name;?></p>
-        <p>I/C No/Passport: <?php echo $icpp;?></p>
-        <p>Date of Birth: <?php echo $dob;?></p>
-        <p>Home Address: <?php echo $address;?></p>
-        <p>E-mail Address: <?php echo $email;?></p>
-        <p>Sex: <?php echo $sex;?></p>
-        <p>Occupation: <?php echo $occupation;?></p>
-        <p>Race: <?php echo $race;?></p>
-        <p>Religion: <?php echo $religion;?></p>
-        <p>Marital Status: <?php echo $mstatus;?></p>
-        <p>Next of Kin: <?php echo $nok;?></p>
-        <p>Relationship: <?php echo $rs;?></p>
-        <p>Telephone No.: <?php echo $tel_nok;?></p>
-        <p>Package Selected: <?php echo $package;?></p>
-        </div>
-    </body>
+        <div class="container">
+            <div class="reference">
+                <p>MRN: <?php echo $mrn;?></p>
+                <p>Name: <?php echo $name;?></p>
+                <p>I/C No/Passport: <?php echo $icpp;?></p>
+                <p>Date of Birth: <?php echo $dob;?></p>
+                <p>Home Address: <?php echo $address;?></p>
+                <p>E-mail Address: <?php echo $email;?></p>
+                <p>Telephone: <?php echo $tel;?></p>
+                <p>Sex: <?php echo $sex;?></p>
+                <p>Occupation: <?php echo $occupation;?></p>
+                <p>Race: <?php echo $race;?></p>
+                <p>Religion: <?php echo $religion;?></p>
+                <p>Marital Status: <?php echo $mstatus;?></p>
+                <p>Next of Kin: <?php echo $nok;?></p>
+                <p>Relationship: <?php echo $rs;?></p>
+                <p>Telephone No.: <?php echo $tel_nok;?></p>
+                <p>Package Selected: <?php echo $package;?></p>
+            </div>
     <?php
-        
-        $insert = "UPDATE patient SET name = '".$name."', ic_passport = '".$icpp."', date_of_birth = '".$dob."', address = '".$address."', email = '".$email."', 
+        $insert = "UPDATE patient SET name = '".$name."', ic_passport = '".$icpp."', date_of_birth = '".$dob."', address = '".$address."', email = '".$email."', telephone = '".$tel."',
         sex = '".$sex."', occupation = '".$occupation."', race = '".$race."', religion = '".$religion."', marital_status = '".$mstatus."', next_of_kin = '".$nok."', relationship = '".$rs."',
-        telephone_nok = '".$tel_nok."', package = '".$package."' WHERE mrn = '".$mrn."'";
+        telephone_nok = '".$tel_nok."', package = '".$package."', lastUpdateOn = '".$date."' WHERE mrn = '".$mrn."'";
 
         if ($conn->query($insert) === TRUE)
         {
@@ -94,4 +95,6 @@
         $conn->close();
     ?>
     <br><button class="btn btn-primary" onclick="window.location.href='homepage.php'">Back to Home Page</button>
+    </div>
+    </body>
 </html>

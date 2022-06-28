@@ -7,7 +7,8 @@
     
     <body>
     <?php
-        $sex = $_POST['sex'];
+        $package = $_POST["package"];
+        $sex = $_POST["sex"];
         $mrn = $_POST["mrn"];
         $servername = "localhost";
         $username = "root";
@@ -239,12 +240,22 @@
             <input type="text" id="ecg" name="ecg" value="<?php echo $row["ecg"];?>"><br>
             <label for="mmg">Mammogram: </label>
             <input type="text" id="mmg" name="mammogram" value="<?php echo $row["mammogram"];?>"><br>
+            <?php
+                if ($package == "Comprehensive" || $package == "Premium" || $package == "Custom"){
+            ?>
             <label for="us_breast">Ultrasound Breast: </label>
             <input type="text" id="us_breast" name="us_breast" value="<?php echo $row["us_breast"];?>"><br>
             <label for="us_abdopel">Ultrasound Abdomen Pelvis: </label>
             <input type="text" id="us_abdopel" name="us_abdopel" value="<?php echo $row["us_abdopel"];?>"><br>
+            <?php
+                }
+                if ($package == "Premium" || $package == "Custom"){
+            ?>
             <label for="stress">Stress Test: </label>
             <input type="text" id="stress" name="stresstest" value="<?php echo $row["stresstest"];?>"><br>
+            <?php
+                }
+            ?>
             <label for="pta">Pure Tone Audiometry: </label>
             <input type="text" id="pta" name="pta" value="<?php echo $row["pta"];?>"><br>
             <label for="lft">Lung Function Test: </label>
@@ -261,6 +272,7 @@
             <input type="submit" class="btn btn-primary" value="Submit Record">
             <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
             <input type="hidden" name="sex" value="<?php echo $sex;?>">
+            <input type="hidden" name="package" value="<?php echo $package;?>">
         </form>
         </div>
     <?php

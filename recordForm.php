@@ -20,7 +20,7 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $check = "SELECT a.sex, b.status FROM patient a, record b WHERE a.mrn = '".$mrn."' AND b.mrn = '".$mrn."'";
+            $check = "SELECT a.sex, a.package, b.status FROM patient a, record b WHERE a.mrn = '".$mrn."' AND b.mrn = '".$mrn."'";
             $data = $conn->query($check);
             if ($data->num_rows>0)
             {
@@ -238,12 +238,22 @@
             <input type="text" id="ecg" name="ecg" required><br>
             <label for="mmg">Mammogram: </label>
             <input type="text" id="mmg" name="mammogram" required><br>
+            <?php
+                if ($row['package'] == "Comprehensive" || $row['package'] == "Premium" || $row['package'] == "Custom"){
+            ?>
             <label for="us_breast">Ultrasound Breast: </label>
             <input type="text" id="us_breast" name="us_breast" required><br>
             <label for="us_abdopel">Ultrasound Abdomen Pelvis: </label>
             <input type="text" id="us_abdopel" name="us_abdopel" required><br>
+            <?php
+                }
+                if ($row['package'] == "Premium" || $row['package'] == "Custom"){
+            ?>
             <label for="stress">Stress Test: </label>
             <input type="text" id="stress" name="stresstest" required><br>
+            <?php
+                }
+            ?>
             <label for="pta">Pure Tone Audiometry: </label>
             <input type="text" id="pta" name="pta" required><br>
             <label for="lft">Lung Function Test: </label>
@@ -260,6 +270,7 @@
             <input type="submit" class="btn btn-primary" value="Submit Record">
             <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
             <input type="hidden" name="sex" value="<?php echo $row['sex'];?>">
+            <input type="hidden" name="package" value="<?php echo $row['package'];?>">
         </form>
         <?php
                     }

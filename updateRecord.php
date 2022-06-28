@@ -22,6 +22,7 @@
     
     <body>
     <?php
+        $package = $_POST["package"];
         $sex = $_POST["sex"];
         $mrn = $_POST["mrn"];
         $appearance = $_POST["appearance"];
@@ -73,16 +74,22 @@
         $uref_r = $_POST["uref_r"];
         $usen_l = $_POST["usen_l"];
         $usen_r = $_POST["usen_r"];
-        $breast = $_POST["breast"];
-        $lmp = $_POST["lmp"];
-        $gynaecology = $_POST["gynaecology"];
-        $lastps = $_POST["lastps"];
+        if($sex == "Female"){
+            $breast = $_POST["breast"];
+            $lmp = $_POST["lmp"];
+            $gynaecology = $_POST["gynaecology"];
+            $lastps = $_POST["lastps"];
+        }
         $cxr = $_POST["cxr"];
         $ecg = $_POST["ecg"];
         $mammogram = $_POST["mammogram"];
-        $us_breast = $_POST["us_breast"];
-        $us_abdopel = $_POST["us_abdopel"];
-        $stresstest = $_POST["stresstest"];
+        if ($package == "Comprehensive" || $package == "Premium" || $package == "Custom"){
+            $us_breast = $_POST["us_breast"];
+            $us_abdopel = $_POST["us_abdopel"];
+        }
+        if ($package == "Premium" || $package == "Custom"){
+            $stresstest = $_POST["stresstest"];
+        }
         $pta = $_POST["pta"];
         $lft = $_POST["lft"];
         $urine = $_POST["urine"];
@@ -243,21 +250,37 @@
                         </tr>
                     </tbody>
                 </table>
-                <h3>For Female</h3>
-                <div class="reference">
-                    <p>Breast: <?php echo $breast;?></p>
-                    <p>Last Menstrual Period: <?php echo $lmp;?></p>
-                    <p>Gynaecology History: <?php echo $gynaecology;?></p>
-                    <p>Last Pap Smear: <?php echo $lastps;?></p>
-                </div>
-                <h3>Investigation</h3>
-                <div class="reference">
-                    <p>Chest X-Ray: <?php echo $cxr;?></p>
-                    <p>Electrocardiogram: <?php echo $ecg;?></p>
-                    <p>Mammogram: <?php echo $mammogram;?></p>
-                    <p>Ultrasound Breast: <?php echo $us_breast;?></p>
-                    <p>Ultrasound Abdomen Pelvis: <?php echo $us_abdopel;?></p>
-                    <p>Stress Test: <?php echo $stresstest;?></p>
+                    <?php
+                        if($sex == "Female"){
+                    ?>
+                    <h3>For Female Patient</h3>
+                    <div class="reference">
+                        <p>Breast: <?php echo $breast;?></p>
+                        <p>Last Menstrual Period: <?php echo $lmp;?></p>
+                        <p>Gynaecology History: <?php echo $gynaecology;?></p>
+                        <p>Last Pap Smear: <?php echo $lastps;?></p>
+                    </div>
+                    <?php
+                        }
+                    ?>
+                    <h3>Investigation</h3>
+                    <div class="reference">
+                        <p>Chest X-Ray: <?php echo $cxr;?></p>
+                        <p>Electrocardiogram: <?php echo $ecg;?></p>
+                        <p>Mammogram: <?php echo $mammogram;?></p>
+                    <?php
+                        if($package == "Premium" || $package == "Comprehensive" || $package == "Custom"){
+                    ?>
+                        <p>Ultrasound Breast: <?php echo $us_breast;?></p>
+                        <p>Ultrasound Abdomen Pelvis: <?php echo $us_abdopel;?></p>
+                    <?php
+                        }
+                        if($package == "Premium" || $package == "Custom"){
+                    ?>
+                        <p>Stress Test: <?php echo $stresstest;?></p>
+                    <?php
+                        }
+                    ?>
                     <p>Pure Tone Audiometry: <?php echo $pta;?></p>
                     <p>Lung Function Test: <?php echo $lft;?></p>
                     <p>Urine: <?php echo $urine;?></p>
@@ -268,28 +291,74 @@
         
         <?php
         if($sex == "Female"){
-            $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-            pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-            fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
-            excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
-            airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
-            coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
-            lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
-            breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = '".$us_breast."', 
-            us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', lastUpdate = '".$date."' 
-            WHERE mrn = '".$mrn."'";
+            if ($package == "Premium" || $package == "Custom"){
+                $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
+                pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
+                fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
+                airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
+                coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
+                lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
+                breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = '".$us_breast."', 
+                us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', lastUpdate = '".$date."', status='1'";
+            }
+            elseif ($package == "Comprehensive"){
+                $insert = "UPDATE record SETUPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
+                pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
+                fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
+                airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
+                coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
+                lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
+                breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = '".$us_breast."', 
+                us_abdopel = '".$us_abdopel."', stresstest = NULL, pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', lastUpdate = '".$date."', status='1'";
+            }
+            else{
+                $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
+                pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
+                fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
+                airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
+                coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
+                lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
+                breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = NULL, 
+                us_abdopel = NULL, stresstest = NULL, pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', lastUpdate = '".$date."', status='1'";
+            }
         }
         else{
-            $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-            pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-            fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
-            excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
-            airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
-            coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
-            lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
-            cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = '".$us_breast."', us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', 
-            urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', lastUpdate = '".$date."' 
-            WHERE mrn = '".$mrn."'";
+            if ($package == "Premium" || $package == "Custom"){
+                $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
+                pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
+                fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
+                airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
+                coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
+                lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
+                breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = '".$us_breast."', 
+                us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', lastUpdate = '".$date."', status='1'";
+            }
+            elseif ($package == "Comprehensive"){
+                $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
+                pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
+                fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
+                airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
+                coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
+                lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
+                breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = '".$us_breast."', 
+                us_abdopel = '".$us_abdopel."', stresstest = NULL, pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', lastUpdate = '".$date."', status='1'";
+            }
+            else{
+                $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
+                pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
+                fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
+                airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
+                coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
+                lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
+                breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = NULL, 
+                us_abdopel = NULL, stresstest = NULL, pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', lastUpdate = '".$date."', status='1'";
+            }
         }
             if ($conn->query($insert) === TRUE)
             {

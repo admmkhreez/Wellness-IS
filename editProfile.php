@@ -85,6 +85,10 @@
                     <input type="email" id="email" maxlength="320" name="email" value="<?php echo $row["email"]?>">
                 </div>
                 <div>
+                    <label for="telephone">Telephone: </label>
+                    <input type="tel" id="telephone" maxlength="15" name="tel" value="<?php echo $row["telephone"]?>">
+                </div>
+                <div>
                     <fieldset>
                         <legend>Sex: </legend>
                             <input type="radio" id="male" name="sex" value="Male" <?php if ($row['sex'] == "Male") echo "checked"?> required>

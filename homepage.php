@@ -53,6 +53,8 @@
                 <textarea type="text" id="address" maxlength="100" name="address" rows="4" cols="50" required></textarea><br>
                 <label for="email">E-mail Address: </label><br>
                 <input type="email" id="email" maxlength="320" placeholder="Email" name="email"><br>
+                <label for="telephone">Telephone: </label><br>
+                <input type="tel" id="telephone" name="telephone" placeholder="Telephone" maxlength="15"><br>
                 <fieldset>
                 <legend>Sex:</legend>
                     <input type="radio" id="male" name="sex" value="Male"required>

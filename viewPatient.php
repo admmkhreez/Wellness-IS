@@ -63,6 +63,7 @@
                 <p>Date of Birth: <?php echo $row['date_of_birth'];?></p>
                 <p>Home Address: <?php echo $row['address'];?></p>
                 <p>E-mail Address: <?php echo $row['email'];?></p>
+                <p>Telephone: <?php echo $row['telephone'];?></p>
                 <p>Sex: <?php echo $row['sex'];?></p>
                 <p>Occupation: <?php echo $row['occupation'];?></p>
                 <p>Race: <?php echo $row['race'];?></p>
@@ -73,6 +74,8 @@
                 <p>Telephone No.: <?php echo $row['telephone_nok'];?></p>
                 <p>Package Selected: <?php echo $row['package'];?></p>
             </div>
+            <p>Registered On: <?php echo $row['registeredOn'];?></p>
+            <p>Last Profile Update On: <?php echo $row['lastUpdateOn'];?></p>
             <h3>Past Medical History</h3>
             <div class="reference">
                 <p>Smoker/Non Smoker: <?php echo $row['smoker'];?></p>
@@ -97,6 +100,7 @@
                 <p>Others: <?php echo $row['others'];?></p>
                 <p>Medication: <?php echo $row['medication'];?></p>
             </div>
+            <p>Last Updated On: <?php echo $row['lastUpdateMH'];?></p>
             <h3>Physical Examination</h3>
             <div class="reference">
                 <p>General Appearance: <?php echo $row['appearance'];?></p>
@@ -246,11 +250,13 @@
                 </div>
                 <p>Impression: <?php echo $row['impression'];?></p>
                 <p>Recommendation: <?php echo $row['recommendation'];?></p>
+                <p>Last Update On: <?php echo $row['lastUpdate'];?></p>
                 <br><br>
                 <form method="post">
                 <div class="btn-group">
                     <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
                     <input type="hidden" name="sex" value="<?php echo $row['sex'];?>">
+                    <input type="hidden" name="package" value="<?php echo $row['package'];?>">
                     <button formaction="editProfile.php" class="btn btn-primary">Edit Patient's Details</button>
                     <button formaction="recordUpdateForm.php" class="btn btn-primary">Update Patient's Record</button>
                     <button formaction="historyForm.php" class="btn btn-primary">Update Medical History</button>
