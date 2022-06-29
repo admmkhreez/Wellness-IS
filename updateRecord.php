@@ -130,17 +130,32 @@
                 </ul>
             </div>
         </nav>
-        
+        <br>
         <h1>Patient Medical History</h1>
+        <br>
         <div class="container">
-            <h3>Physical Examination</h3>
-            <div class="reference">
-                <p>MRN: <?php echo $mrn;?></p>
-                <p>General Appearance: <?php echo $appearance;?></p>
-                <p>Weight: <?php echo $weight;?></p>
-                <p>Height: <?php echo $height;?></p>
-                <p>BMI: <?php echo $bmi;?></p>
-                <p>Blood Pressure: <?php echo $systolic;?>/<?php echo $diastolic;?></p>
+        <h3>Physical Examination</h3>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">General Appearance: </dt>
+                <dd class="col-sm-9"><?php echo $appearance;?></dd>
+                <dt class="col-sm-3">Weight: </dt>
+                <dd class="col-sm-9"><?php echo $weight;?></dd>
+                <dt class="col-sm-3">Height: </dt>
+                <dd class="col-sm-9"><?php echo $height;?></dd>
+                <dt class="col-sm-3">BMI: </dt>
+                <dd class="col-sm-9"><?php echo $bmi;?></dd>
+                <dt class="col-sm-3">Blood Pressure: </dt>
+                <dd class="col-sm-9"><?php echo $systolic;?>/<?php echo $diastolic;?></dd>
+                <dt class="col-sm-3">Nose: </dt>
+                <dd class="col-sm-9"><?php echo $nose;?></dd>
+                <dt class="col-sm-3">Throat: </dt>
+                <dd class="col-sm-9"><?php echo $throat;?></dd>
+                <dt class="col-sm-3">Neck: </dt>
+                <dd class="col-sm-9"><?php echo $neck;?></dd>
+                <dt class="col-sm-3">Skin: </dt>
+                <dd class="col-sm-9"><?php echo $skin;?></dd>
+            </dl>
             </div>
             <h3>Eyes</h3>
                 <table style="table-layout: fixed; width:100%;" class="table table-bordered">
@@ -175,36 +190,59 @@
                     </tbody>
                 </table>
             <h3>Cardiovascular System</h3>
-            <div class="reference">
-                <p>Sound: <?php echo $sound;?></p>
-                <p>Murmur: <?php echo $murmur;?></p>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">Sound: </dt>
+                <dd class="col-sm-9"><?php echo $sound;?></dd>
+                <dt class="col-sm-3">Murmur: </dt>
+                <dd class="col-sm-9"><?php echo $murmur;?></dd>
+            </dl>
             </div>    
             <h3>Respiratory System</h3>
-            <div class="reference">
-                <p>Air Entry: <?php echo $airentry;?></p>
-                <p>Chest Expansion: <?php echo $chestexp;?></p>
-                <p>Breath Sound: <?php echo $breathsound;?></p>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">Air Entry: </dt>
+                <dd class="col-sm-9"><?php echo $airentry;?></dd>
+                <dt class="col-sm-3">Chest Expansion: </dt>
+                <dd class="col-sm-9"><?php echo $chestexp;?></dd>
+                <dt class="col-sm-3">Breath Sound: </dt>
+                <dd class="col-sm-9"><?php echo $breathsound;?></dd>
+            </dl>
             </div>
             <h3>Gastrointestinal System</h3>
-            <div class="reference">
-                <p>Liver: <?php echo $liver;?></p>
-                <p>Spleen: <?php echo $spleen;?></p>
-                <p>Kidney: <?php echo $kidney;?></p>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">Liver: </dt>
+                <dd class="col-sm-9"><?php echo $liver;?></dd>
+                <dt class="col-sm-3">Spleen: </dt>
+                <dd class="col-sm-9"><?php echo $spleen;?></dd>
+                <dt class="col-sm-3">Kidney: </dt>
+                <dd class="col-sm-9"><?php echo $kidney;?></dd>
+            </dl>
             </div>
             <h3>Central Nervous System</h3>
-            <div class="reference">
-                <p>Mental Function: <?php echo $mentalfunct;?></p>
-                <p>Coordination: <?php echo $coordination;?></p>
-                <p>Gait: <?php echo $gait;?></p>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">Mental Function: </dt>
+                <dd class="col-sm-9"><?php echo $mentalfunct;?></dd>
+                <dt class="col-sm-3">Coordination: </dt>
+                <dd class="col-sm-9"><?php echo $coordination;?></dd>
+                <dt class="col-sm-3">Gait: </dt>
+                <dd class="col-sm-9"><?php echo $gait;?></dd>
+            </dl>
             </div>
             <h3>Genitourinary System</h3>
-            <div class="reference">
-                <p>Genitalia: <?php echo $genitalia;?></p>
-                <p>Rectal Examination: <?php echo $rectal;?></p>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">Genitalia: </dt>
+                <dd class="col-sm-9"><?php echo $genitalia;?></dd>
+                <dt class="col-sm-3">Rectal Examination: </dt>
+                <dd class="col-sm-9"><?php echo $rectal;?></dd>
+            </dl>
             </div>
             <h3>Musculoskeletal System</h3>
             <table style="table-layout: fixed; width:100%;" class="table table-bordered">
-                <thead class="table-dark" style="text-align:center;">
+                    <thead class="table-dark" style="text-align:center;">
                     <tr>
                         <th>Lower Limb</th>
                         <th>Left</th>
@@ -255,53 +293,68 @@
                         </tr>
                     </tbody>
                 </table>
+                <?php
+                    if($sex == "Female"){
+                ?>
+                <h3>For Female Patient</h3>
+                <div>
+                <dl class="row">
+                    <dt class="col-sm-3">Breast: </dt>
+                    <dd class="col-sm-9"><?php echo $breast;?></dd>
+                    <dt class="col-sm-3">Last Menstrual Period: </dt>
+                    <dd class="col-sm-9"><?php echo $lmp;?></dd>
+                    <dt class="col-sm-3">Gynaecology History: </dt>
+                    <dd class="col-sm-9"><?php echo $gynaecology;?></dd>
+                    <dt class="col-sm-3">Last Pap Smear: </dt>
+                    <dd class="col-sm-9"><?php echo $lastps;?></dd>
+                </dl>
+                </div>
+                <?php
+                    }
+                ?>
+                <h3>Investigation</h3>
+                <div>
+                <dl class="row">
+                    <dt class="col-sm-3">Chest X-Ray: </dt>
+                    <dd class="col-sm-9"><?php echo $cxr;?></dd>
+                    <dt class="col-sm-3">Electrocardiogram: </dt>
+                    <dd class="col-sm-9"><?php echo $ecg;?></dd>
                     <?php
-                        if($sex == "Female"){
+                        if($package == "Custom"){
                     ?>
-                    <h3>For Female Patient</h3>
-                    <div class="reference">
-                        <p>Breast: <?php echo $breast;?></p>
-                        <p>Last Menstrual Period: <?php echo $lmp;?></p>
-                        <p>Gynaecology History: <?php echo $gynaecology;?></p>
-                        <p>Last Pap Smear: <?php echo $lastps;?></p>
-                    </div>
-                    <?php
-                        }
-                    ?>
-                    <h3>Investigation</h3>
-                    <div class="reference">
-                        <p>Chest X-Ray: <?php echo $cxr;?></p>
-                        <p>Electrocardiogram: <?php echo $ecg;?></p>
-                    <?php
-                        if ($package == "Custom"){
-                    ?>
-                        <p>Mammogram: <?php echo $mammogram;?></p>
-                        <p>Ultrasound Breast: <?php echo $us_breast;?></p>
+                    <dt class="col-sm-3">Mammogram: </dt>
+                    <dd class="col-sm-9"><?php echo $mammogram;?></dd>
+                    <dt class="col-sm-3">Ultrasound Breast: </dt>
+                    <dd class="col-sm-9"><?php echo $us_breast;?></dd>
                     <?php
                         }
                         if($package == "Premium" || $package == "Comprehensive" || $package == "Custom"){
                     ?>
-                        <p>Ultrasound Abdomen Pelvis: <?php echo $us_abdopel;?></p>
+                    <dt class="col-sm-3">Ultrasound Abdomen Pelvis: </dt>
+                    <dd class="col-sm-9"><?php echo $us_abdopel;?></dd>
                     <?php
                         }
-                        if($package == "Premium" || $package == "Custom"){
+                        if($package == "Custom" || $package == "Premium"){
                     ?>
-                        <p>Stress Test: <?php echo $stresstest;?></p>
-                    <?php
-                        }
-                        if ($package == "Custom"){
-                    ?>
-                    <p>Pure Tone Audiometry: <?php echo $pta;?></p>
-                    <p>Lung Function Test: <?php echo $lft;?></p>
+                    <dt class="col-sm-3">Stress Test: </dt>
+                    <dd class="col-sm-9"><?php echo $stresstest;?></dd>
                     <?php
                         }
                     ?>
-                    <p>Urine: <?php echo $urine;?></p>
-                    <p>Blood: <?php echo $blood;?></p>
+                    <dt class="col-sm-3">Pure Tone Audiometry: </dt>
+                    <dd class="col-sm-9"><?php echo $pta;?></dd>
+                    <dt class="col-sm-3">Lung Function Test: </dt>
+                    <dd class="col-sm-9"><?php echo $lft;?></dd>
+                    <dt class="col-sm-3">Urine: </dt>
+                    <dd class="col-sm-9"><?php echo $urine;?></dd>
+                    <dt class="col-sm-3">Blood: </dt>
+                    <dd class="col-sm-9"><?php echo $blood;?></dd>
+                    <dt class="col-sm-3">Impression: </dt>
+                    <dd class="col-sm-9"><?php echo $impression;?></dd>
+                    <dt class="col-sm-3">Recommendation: </dt>
+                    <dd class="col-sm-9"><?php echo $recommendation;?></dd>
+                </dl>
                 </div>
-                <p>Impression: <?php echo $impression;?></p>
-                <p>Recommendation: <?php echo $recommendation;?></p>
-        
         <?php
         if($sex == "Female"){
             if($sex == "Female"){

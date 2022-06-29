@@ -32,7 +32,9 @@
                 </ul>
             </div>
         </nav>
+        <br>
         <h1>Medical Report</h1>
+        <br>
         <div class="container">
             <form action="historyForm.php" method="post">
             <label for="mrn">Enter Patient's MRN</label><br>

@@ -52,6 +52,7 @@
             </nav>
             <br>
             <h1>Health Screening Services</h1>
+            <br>
             <?php
                 if($data->num_rows > 0){
                     while($row = $data->fetch_assoc()){

@@ -51,33 +51,55 @@
                 </ul>
             </div>
         </nav>
-        
-        <h1>Patient Medical History</h1>
+        <br>
+        <h1>Medical History</h1>
+        <br>
         <div class="container">
-            <h3>Past Medical History</h3>
-            <div class="reference">
-                <p>MRN: <?php echo $mrn;?></p>
-                <p>Smoker/Non Smoker: <?php echo $smoker;?></p>
-                <p>Asthma: <?php echo $asthma;?></p>
-                <p>Diabetes: <?php echo $diabetes;?></p>
-                <p>Heart Disease: <?php echo $heart;?></p>
-                <p>Hypertension: <?php echo $hypertension;?></p>
-                <p>Stroke: <?php echo $stroke;?></p>
-                <p>Cacner: <?php echo $cancer;?></p>
-                <p>Tuberculosis: <?php echo $tb;?></p>
-                <p>Skin Disease: <?php echo $skin;?></p>
-                <p>Kidney Problem: <?php echo $kidneyp;?></p>
-                <p>Fits / Psychiatric: <?php echo $fits;?></p>
+        <h3>Past Medical History</h3>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">Smoker/Non Smoker: </dt>
+                <dd class="col-sm-9"><?php echo $smoker;?></dd>
+                <dt class="col-sm-3">Asthma: </dt>
+                <dd class="col-sm-9"><?php echo $asthma;?></dd>
+                <dt class="col-sm-3">Diabetes: </dt>
+                <dd class="col-sm-9"><?php echo $diabetes;?></dd>
+                <dt class="col-sm-3">Heart Disease: </dt>
+                <dd class="col-sm-9"><?php echo $heart;?></dd>
+                <dt class="col-sm-3">Hypertension: </dt>
+                <dd class="col-sm-9"><?php echo $hypertension;?></dd>
+                <dt class="col-sm-3">Stroke: </dt>
+                <dd class="col-sm-9"><?php echo $stroke;?></dd>
+                <dt class="col-sm-3">Cancer: </dt>
+                <dd class="col-sm-9"><?php echo $cancer;?></dd>
+                <dt class="col-sm-3">Tuberculosis: </dt>
+                <dd class="col-sm-9"><?php echo $tb;?></dd>
+                <dt class="col-sm-3">Skin Disease: </dt>
+                <dd class="col-sm-9"><?php echo $skin;?></dd>
+                <dt class="col-sm-3">Kidney Problem: </dt>
+                <dd class="col-sm-9"><?php echo $kidneyp;?></dd>
+                <dt class="col-sm-3">Fits/Psychiatric: </dt>
+                <dd class="col-sm-9"><?php echo $fits;?></dd>
+            </dl>
             </div>
             <h3>Family History</h3>
-            <div class="reference">
-                <p>Father: <?php echo $father;?></p>
-                <p>Mother: <?php echo $mother;?></p>
-                <p>Siblings: <?php echo $siblings;?></p>
-                <p>Habits: <?php echo $habits;?></p>
-                <p>Allergy: <?php echo $allergy;?></p>
-                <p>Others: <?php echo $others;?></p>
-                <p>Medication: <?php echo $medication;?></p>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">Father: </dt>
+                <dd class="col-sm-9"><?php echo $father;?></dd>
+                <dt class="col-sm-3">Mother: </dt>
+                <dd class="col-sm-9"><?php echo $mother;?></dd>
+                <dt class="col-sm-3">Siblings: </dt>
+                <dd class="col-sm-9"><?php echo $siblings;?></dd>
+                <dt class="col-sm-3">Habits: </dt>
+                <dd class="col-sm-9"><?php echo $habits;?></dd>
+                <dt class="col-sm-3">Allergy: </dt>
+                <dd class="col-sm-9"><?php echo $allergy;?></dd>
+                <dt class="col-sm-3">Others: </dt>
+                <dd class="col-sm-9"><?php echo $others;?></dd>
+                <dt class="col-sm-3">Medication: </dt>
+                <dd class="col-sm-9"><?php echo $medication;?></dd>
+            </dl>
             </div>
     <?php
         $servername = "localhost";
@@ -93,7 +115,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
         
-        $insert = "INSERT INTO patient (mrn) VALUES ('".$mrn."') ON DUPLICATE KEY UPDATE smoker = '".$smoker."', asthma = '".$asthma."', diabetes = '".$diabetes."', heart_disease = '".$heart."', hypertension = '".$hypertension."', stroke = '".$stroke."', cancer = '".$cancer."', tuberculosis = '".$tb."', skin_disease = '".$skin."', kidneyp = '".$kidneyp."', fits_psychiatric = '".$fits."',
+        $insert = "UPDATE patient SET smoker = '".$smoker."', asthma = '".$asthma."', diabetes = '".$diabetes."', heart_disease = '".$heart."', hypertension = '".$hypertension."', stroke = '".$stroke."', cancer = '".$cancer."', tuberculosis = '".$tb."', skin_disease = '".$skin."', kidneyp = '".$kidneyp."', fits_psychiatric = '".$fits."',
         father_history = '".$father."', mother_history = '".$mother."', siblings_history = '".$siblings."', habits = '".$habits."', allergy = '".$allergy."', others = '".$others."', medication = '".$medication."', lastUpdateMH = '".$date."' WHERE mrn = '".$mrn."'";
         if ($conn->query($insert) === TRUE)
         {

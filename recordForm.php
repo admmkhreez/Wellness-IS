@@ -55,7 +55,9 @@
                 </ul>
             </div>
         </nav>
+        <br>
         <h1>Patient Medical Report</h1>
+        <br>
         <div class="container">
             <p>MRN: <?php echo $mrn;?></p>
         <form action="insertRecord.php" method="post">
@@ -306,18 +308,43 @@
                                 </ul>
                             </div>
                             </nav>";
-                    echo "<h1>KPJ Klang Wellness Information System</h1>";
+                    echo "<br><h1>KPJ Klang Wellness Information System</h1><br>    ";
                     echo "<div class='container'><p>Record already exist, click <a href='selectPatient.php'>here</a> to update</p>";
                 }
             }
         }
-        $conn->close();
+        else{
+            echo "<nav class='navbar navbar-expand-sm bg-dark navbar-dark'>
+                            <div class='container-fluid'>
+                                <ul class='navbar-nav'>
+                                    <li class='nav-item'>
+                                        <a class='nav-link' href='homepage.php'>Home</a>
+                                    </li>
+                                    <li class='nav-item'>
+                                    <a class='nav-link' href='viewRecord.php'>View Patients</a>
+                                    </li>
+                                    <li class='nav-item'>
+                                        <a class='nav-link' href='selectRecord.php'>Fill form</a>
+                                    </li>
+                                    <li class='nav-item'>
+                                        <a class='nav-link' href='selectPatient.php'>Search Patient</a>
+                                    </li>
+                                    <li class='nav-item'>
+                                        <a class='nav-link' href='logout.php'>Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            </nav>";
+                    echo "<br><h1>KPJ Klang Wellness Information System</h1><br>";
+                    echo "<div class='container'><p>User does not exist, click <a href='homepage.php'>here</a> to Register</p>";
+                }
         }
         else
         {
             echo "No session exist or session has expired. Please log in again.<br>";
             echo "<a href=log-in.html> Login </a>";
         }
+        $conn->close();
         ?>
         </div>
     </body>

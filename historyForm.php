@@ -55,14 +55,15 @@
                 </ul>
             </div>
         </nav>
+        <br>
         <h1>Past Medical History</h1>
+        <br>
         <?php
         if ($data->num_rows>0)
         {
             while($row=$data->fetch_assoc()){
         ?>
         <div class="container">
-        <br>
         <form action="insertHistory.php" method="post">
         <p>Patient's Name: <?php echo $row["name"];?></p>
         <p>Patient's MRN: <?php echo $mrn;?></p>
@@ -81,7 +82,7 @@
             <div>
             <input type="radio" id="yes" name="asthma" value="Yes" required>
             <label for="yes">Yes</label>
-                <input type="radio" id="no" name="asthma" value="No">>
+                <input type="radio" id="no" name="asthma" value="No">
                 <label for="no">No</label>
                 <input type="radio" id="unknown" name="asthma" value="Unknown">
                 <label for="unknown">Unknown</label>
@@ -226,8 +227,8 @@
             }
         }
         else{
-            echo "Patient does not exist in system.";
-        }
+                    echo "<div class='container'><p>User does not exist, click <a href='homepage.php'>here</a> to Register</p>";
+                }
         ?>
         </div>
     </body>

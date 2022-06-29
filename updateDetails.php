@@ -63,26 +63,46 @@
                 </ul>
             </div>
         </nav>
+        <br>
         <h1>User Registration Details</h1>
+        <br>
         <div class="container">
-            <div class="reference">
-                <p>MRN: <?php echo $mrn;?></p>
-                <p>Name: <?php echo $name;?></p>
-                <p>I/C No/Passport: <?php echo $icpp;?></p>
-                <p>Date of Birth: <?php echo $dob;?></p>
-                <p>Home Address: <?php echo $address;?></p>
-                <p>E-mail Address: <?php echo $email;?></p>
-                <p>Telephone: <?php echo $tel;?></p>
-                <p>Sex: <?php echo $sex;?></p>
-                <p>Occupation: <?php echo $occupation;?></p>
-                <p>Race: <?php echo $race;?></p>
-                <p>Religion: <?php echo $religion;?></p>
-                <p>Marital Status: <?php echo $mstatus;?></p>
-                <p>Next of Kin: <?php echo $nok;?></p>
-                <p>Relationship: <?php echo $rs;?></p>
-                <p>Telephone No.: <?php echo $tel_nok;?></p>
-                <p>Package Selected: <?php echo $package;?></p>
-            </div>
+                <dl class="row">
+                    <dt class="col-sm-3">MRN: </dt>
+                    <dd class="col-sm-9"><?php echo $mrn;?></dd>
+                    <dt class="col-sm-3">Name: </dt>
+                    <dd class="col-sm-9"><?php echo $name;?></dd>
+                    <dt class="col-sm-3">IC No/Passport: </dt>
+                    <dd class="col-sm-9"><?php echo $icpp;?></dd>
+                    <dt class="col-sm-3">Date of Birth: </dt>
+                    <dd class="col-sm-9"><?php echo $dob;?></dd>
+                    <dt class="col-sm-3">Home Address: </dt>
+                    <dd class="col-sm-9"><?php echo $address;?></dd>
+                    <dt class="col-sm-3">Email: </dt>
+                    <dd class="col-sm-9"><?php echo $email;?></dd>
+                    <dt class="col-sm-3">Telephone: </dt>
+                    <dd class="col-sm-9"><?php echo $tel;?></dd>
+                    <dt class="col-sm-3">Sex: </dt>
+                    <dd class="col-sm-9"><?php echo $sex;?></dd>
+                    <dt class="col-sm-3">Occupation: </dt>
+                    <dd class="col-sm-9"><?php echo $occupation;?></dd>
+                    <dt class="col-sm-3">Race: </dt>
+                    <dd class="col-sm-9"><?php echo $race;?></dd>
+                    <dt class="col-sm-3">Religion: </dt>
+                    <dd class="col-sm-9"><?php echo $religion;?></dd>
+                    <dt class="col-sm-3">Marital Status: </dt>
+                    <dd class="col-sm-9"><?php echo $mstatus;?></dd>
+                    <dt class="col-sm-3">Next of Kin: </dt>
+                    <dd class="col-sm-9"><?php echo $nok;?></dd>
+                    <dt class="col-sm-3">Relationship: </dt>
+                    <dd class="col-sm-9"><?php echo $rs;?></dd>
+                    <dt class="col-sm-3">Telephone: </dt>
+                    <dd class="col-sm-9"><?php echo $tel_nok;?></dd>
+                    <dt class="col-sm-3">Package: </dt>
+                    <dd class="col-sm-9"><?php echo $package;?></dd>
+                    <dt class="col-sm-3">Additional Test: </dt>
+                    <dd class="col-sm-9"><?php echo $addons;?></dd>
+                </dl>    
     <?php
         if($package == "Custom"){
             $insert = "UPDATE patient SET name = '".$name."', ic_passport = '".$icpp."', date_of_birth = '".$dob."', address = '".$address."', email = '".$email."', telephone = '".$tel."',

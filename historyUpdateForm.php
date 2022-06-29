@@ -55,8 +55,9 @@
                 </ul>
             </div>
         </nav>
+        <br>
         <h1>Past Medical History</h1>
-        
+        <br>
     <?php
     if ($data->num_rows>0)
     {

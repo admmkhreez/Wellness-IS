@@ -32,7 +32,9 @@
                 </ul>
             </div>
         </nav>
+        <br>
         <h1>Fill Form</h1>
+        <br>
         <div class="container">
             <form action="recordForm.php" method="post">
             <label for="mrn">Enter Patient's MRN</label><br>

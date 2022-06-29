@@ -45,7 +45,9 @@
                     </ul>
                 </div>
             </nav>
+            <br>
             <h1>Patient's Record</h1>
+            <br>
             <form method="post" style="text-align: center;">
                 <input type="text" placeholder="Search" name="keyword" value="<?php echo $kw;?>">
                 <button formaction="searchRecord.php" class="btn btn-primary">Search</button>
@@ -89,13 +91,14 @@
                             <th colspan="2">Report Form</th>
                         </tr>
                     </thead>
+                    <tbody style="background-color:white;"
                 <?php
                 if ($data->num_rows > 0)
                 {
                     while($row = $data->fetch_assoc())
                     {
                 ?> 
-                    <tbody style="background-color:white;">
+                    >
                         <tr>
                             <td><?php echo $row['mrn'];?></td>
                             <td><?php echo $row['name'];?></td>
@@ -112,7 +115,7 @@
                         }
                         else
                         {
-                            echo "<tr><td colspan = '12'>No Patient Found</td></tr>";
+                            echo "<tr><td colspan = '12' style='text-align: center;'>No Patient Found</td></tr>";
                         }
                         ?>
                     </tbody>

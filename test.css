@@ -11,10 +11,9 @@ h3{
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: black;
+    border-bottom: black 2px;
     border-radius: 10px;
     margin: auto;
-    color: white;
 }
 body{
     background-image: linear-gradient(to bottom right, rgba(255, 0, 0, .8), rgba(0, 0, 128, .8));
@@ -37,9 +36,6 @@ a{
 }
 a:hover{
     color: yellow;
-}
-.reference{
-    line-height: 40%;
 }
 .success{
     color: rgb(0, 190, 0);

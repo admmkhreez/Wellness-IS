@@ -32,8 +32,9 @@
                 </ul>
             </div>
         </nav>
+        <br>
         <h1>KPJ Klang Wellness Information System</h1>
-        <br><br>
+        <br>
         <h2 style="color:white; text-align:center;">Register Patient</h2>
         <form action="insertRegister.php" method="post">
             <div class="container">

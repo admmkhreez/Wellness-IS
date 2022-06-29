@@ -44,7 +44,9 @@
                     </ul>
                 </div>
             </nav>
+            <br>
             <h1>Patient's Record</h1>
+            <br>
             <form method="post" style="text-align: center;">
                 <input type="text" placeholder="Search" name="keyword">
                 <button formaction="searchRecord.php" class="btn btn-primary">Search</button>

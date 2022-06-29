@@ -72,24 +72,26 @@
                 </ul>
             </div>
         </nav>
+        <br>
         <h1>User Registration Details</h1>
-        <div class="reference">
-        <p>MRN: <?php echo $mrn;?></p>
-        <p>Name: <?php echo $name;?></p>
-        <p>I/C No/Passport: <?php echo $icpp;?></p>
-        <p>Date of Birth: <?php echo $dob;?></p>
-        <p>Home Address: <?php echo $address;?></p>
-        <p>E-mail Address: <?php echo $email;?></p>
-        <p>Telephone: <?php echo $tel;?></p>
-        <p>Sex: <?php echo $sex;?></p>
-        <p>Occupation: <?php echo $occupation;?></p>
-        <p>Race: <?php echo $race;?></p>
-        <p>Religion: <?php echo $religion;?></p>
-        <p>Marital Status: <?php echo $mstatus;?></p>
-        <p>Next of Kin: <?php echo $nok;?></p>
-        <p>Relationship: <?php echo $rs;?></p>
-        <p>Telephone No.: <?php echo $tel_nok;?></p>
-        <p>Package Selected: <?php echo $package;?></p>
+        <br>
+        <div class="container">
+            <p>MRN: <?php echo $mrn;?></p>
+            <p>Name: <?php echo $name;?></p>
+            <p>I/C No/Passport: <?php echo $icpp;?></p>
+            <p>Date of Birth: <?php echo $dob;?></p>
+            <p>Home Address: <?php echo $address;?></p>
+            <p>E-mail Address: <?php echo $email;?></p>
+            <p>Telephone: <?php echo $tel;?></p>
+            <p>Sex: <?php echo $sex;?></p>
+            <p>Occupation: <?php echo $occupation;?></p>
+            <p>Race: <?php echo $race;?></p>
+            <p>Religion: <?php echo $religion;?></p>
+            <p>Marital Status: <?php echo $mstatus;?></p>
+            <p>Next of Kin: <?php echo $nok;?></p>
+            <p>Relationship: <?php echo $rs;?></p>
+            <p>Telephone No.: <?php echo $tel_nok;?></p>
+            <p>Package Selected: <?php echo $package;?></p>
         </div>
     </body>
     <?php
@@ -160,7 +162,8 @@
                             </ul>
                         </div>
                         </nav>";
-            echo "<div class='container'><span class='success'>Successfully registered patient</span></div>";
+            echo "<br><h1>KPJ Klang Wellness Information System</h1><br>";
+            echo "<br><div class='container'><span class='success'>Successfully registered patient</span></div>";
         }
         else
         {

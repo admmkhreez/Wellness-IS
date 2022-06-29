@@ -48,7 +48,9 @@
                 </ul>
             </div>
         </nav>
+        <br>
         <h1>KPJ Klang Wellness Information System</h1>
+        <br>
         <div class="container">
         <?php
             if ($data->num_rows > 0)
@@ -76,59 +78,119 @@
             </form>
             <br>
             <h3>Details </h3>
-            <div class="reference">
-                <p>MRN: <?php echo $row['mrn'];?></p>
-                <p>Name: <?php echo $row['name'];?></p>
-                <p>I/C No/Passport: <?php echo $row['ic_passport'];?></p>
-                <p>Date of Birth: <?php echo $row['date_of_birth'];?></p>
-                <p>Home Address: <?php echo $row['address'];?></p>
-                <p>E-mail Address: <?php echo $row['email'];?></p>
-                <p>Telephone: <?php echo $row['telephone'];?></p>
-                <p>Sex: <?php echo $row['sex'];?></p>
-                <p>Occupation: <?php echo $row['occupation'];?></p>
-                <p>Race: <?php echo $row['race'];?></p>
-                <p>Religion: <?php echo $row['religion'];?></p>
-                <p>Marital Status: <?php echo $row['marital_status'];?></p>
-                <p>Next of Kin: <?php echo $row['next_of_kin'];?></p>
-                <p>Relationship: <?php echo $row['relationship'];?></p>
-                <p>Telephone No.: <?php echo $row['telephone_nok'];?></p>
-                <p>Package Selected: <?php echo $row['package'];?></p>
-                <p>Additional Test: <?php echo $row['addons'];?></p>
+            <div>
+                <dl class="row">
+                    <dt class="col-sm-3">MRN: </dt>
+                    <dd class="col-sm-9"><?php echo $row['mrn'];?></dd>
+                    <dt class="col-sm-3">Name: </dt>
+                    <dd class="col-sm-9"><?php echo $row['name'];?></dd>
+                    <dt class="col-sm-3">IC No/Passport: </dt>
+                    <dd class="col-sm-9"><?php echo $row['ic_passport'];?></dd>
+                    <dt class="col-sm-3">Date of Birth: </dt>
+                    <dd class="col-sm-9"><?php echo $row['date_of_birth'];?></dd>
+                    <dt class="col-sm-3">Home Address: </dt>
+                    <dd class="col-sm-9"><?php echo $row['address'];?></dd>
+                    <dt class="col-sm-3">Email: </dt>
+                    <dd class="col-sm-9"><?php echo $row['email'];?></dd>
+                    <dt class="col-sm-3">Telephone: </dt>
+                    <dd class="col-sm-9"><?php echo $row['telephone'];?></dd>
+                    <dt class="col-sm-3">Sex: </dt>
+                    <dd class="col-sm-9"><?php echo $row['sex'];?></dd>
+                    <dt class="col-sm-3">Occupation: </dt>
+                    <dd class="col-sm-9"><?php echo $row['occupation'];?></dd>
+                    <dt class="col-sm-3">Race: </dt>
+                    <dd class="col-sm-9"><?php echo $row['race'];?></dd>
+                    <dt class="col-sm-3">Religion: </dt>
+                    <dd class="col-sm-9"><?php echo $row['religion'];?></dd>
+                    <dt class="col-sm-3">Marital Status: </dt>
+                    <dd class="col-sm-9"><?php echo $row['marital_status'];?></dd>
+                    <dt class="col-sm-3">Next of Kin: </dt>
+                    <dd class="col-sm-9"><?php echo $row['next_of_kin'];?></dd>
+                    <dt class="col-sm-3">Relationship: </dt>
+                    <dd class="col-sm-9"><?php echo $row['relationship'];?></dd>
+                    <dt class="col-sm-3">Telephone: </dt>
+                    <dd class="col-sm-9"><?php echo $row['telephone_nok'];?></dd>
+                    <dt class="col-sm-3">Package: </dt>
+                    <dd class="col-sm-9"><?php echo $row['package'];?></dd>
+                    <dt class="col-sm-3">Additional Test: </dt>
+                    <dd class="col-sm-9"><?php echo $row['addons'];?></dd>
+                    <dt class="col-sm-3">Registered On: </dt>
+                    <dd class="col-sm-9"><?php echo $row['registeredOn'];?></dd>
+                    <dt class="col-sm-3">Last Edited On: </dt>
+                    <dd class="col-sm-9"><?php echo $row['lastUpdateOn'];?></dd>
+                </dl>    
             </div>
-            <p>Registered On: <?php echo $row['registeredOn'];?></p>
-            <p>Last Profile Update On: <?php echo $row['lastUpdateOn'];?></p>
             <h3>Past Medical History</h3>
-            <div class="reference">
-                <p>Smoker/Non Smoker: <?php echo $row['smoker'];?></p>
-                <p>Asthma: <?php echo $row['asthma'];?></p>
-                <p>Diabetes: <?php echo $row['diabetes'];?></p>
-                <p>Heart Disease: <?php echo $row['heart_disease'];?></p>
-                <p>Hypertension: <?php echo $row['hypertension'];?></p>
-                <p>Stroke: <?php echo $row['stroke'];?></p>
-                <p>Cacner: <?php echo $row['cancer'];?></p>
-                <p>Tuberculosis: <?php echo $row['tuberculosis'];?></p>
-                <p>Skin Disease: <?php echo $row['skin'];?></p>
-                <p>Kidney Problem: <?php echo $row['kidneyp'];?></p>
-                <p>Fits / Psychiatric: <?php echo $row['fits_psychiatric'];?></p>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">Smoker/Non Smoker: </dt>
+                <dd class="col-sm-9"><?php echo $row['smoker'];?></dd>
+                <dt class="col-sm-3">Asthma: </dt>
+                <dd class="col-sm-9"><?php echo $row['asthma'];?></dd>
+                <dt class="col-sm-3">Diabetes: </dt>
+                <dd class="col-sm-9"><?php echo $row['diabetes'];?></dd>
+                <dt class="col-sm-3">Heart Disease: </dt>
+                <dd class="col-sm-9"><?php echo $row['heart_disease'];?></dd>
+                <dt class="col-sm-3">Hypertension: </dt>
+                <dd class="col-sm-9"><?php echo $row['hypertension'];?></dd>
+                <dt class="col-sm-3">Stroke: </dt>
+                <dd class="col-sm-9"><?php echo $row['stroke'];?></dd>
+                <dt class="col-sm-3">Cancer: </dt>
+                <dd class="col-sm-9"><?php echo $row['cancer'];?></dd>
+                <dt class="col-sm-3">Tuberculosis: </dt>
+                <dd class="col-sm-9"><?php echo $row['tuberculosis'];?></dd>
+                <dt class="col-sm-3">Skin Disease: </dt>
+                <dd class="col-sm-9"><?php echo $row['skin_disease'];?></dd>
+                <dt class="col-sm-3">Kidney Problem: </dt>
+                <dd class="col-sm-9"><?php echo $row['kidneyp'];?></dd>
+                <dt class="col-sm-3">Fits/Psychiatric: </dt>
+                <dd class="col-sm-9"><?php echo $row['fits_psychiatric'];?></dd>
+            </dl>
             </div>
             <h3>Family History</h3>
-            <div class="reference">
-                <p>Father: <?php echo $row['father_history'];?></p>
-                <p>Mother: <?php echo $row['mother_history'];?></p>
-                <p>Siblings: <?php echo $row['siblings_history'];?></p>
-                <p>Habits: <?php echo $row['habits'];?></p>
-                <p>Allergy: <?php echo $row['allergy'];?></p>
-                <p>Others: <?php echo $row['others'];?></p>
-                <p>Medication: <?php echo $row['medication'];?></p>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">Father: </dt>
+                <dd class="col-sm-9"><?php echo $row['father_history'];?></dd>
+                <dt class="col-sm-3">Mother: </dt>
+                <dd class="col-sm-9"><?php echo $row['mother_history'];?></dd>
+                <dt class="col-sm-3">Siblings: </dt>
+                <dd class="col-sm-9"><?php echo $row['siblings_history'];?></dd>
+                <dt class="col-sm-3">Habits: </dt>
+                <dd class="col-sm-9"><?php echo $row['habits'];?></dd>
+                <dt class="col-sm-3">Allergy: </dt>
+                <dd class="col-sm-9"><?php echo $row['allergy'];?></dd>
+                <dt class="col-sm-3">Others: </dt>
+                <dd class="col-sm-9"><?php echo $row['others'];?></dd>
+                <dt class="col-sm-3">Medication: </dt>
+                <dd class="col-sm-9"><?php echo $row['medication'];?></dd>
+                <dt class="col-sm-3">Last Updated On: </dt>
+                <dd class="col-sm-9"><?php echo $row['lastUpdateMH'];?></dd>
+            </dl>
             </div>
-            <p>Last Updated On: <?php echo $row['lastUpdateMH'];?></p>
+            
             <h3>Physical Examination</h3>
-            <div class="reference">
-                <p>General Appearance: <?php echo $row['appearance'];?></p>
-                <p>Weight: <?php echo $row['weight'];?></p>
-                <p>Height: <?php echo $row['height'];?></p>
-                <p>BMI: <?php echo $row['bmi'];?></p>
-                <p>Blood Pressure: <?php echo $row['systolic'];?>/<?php echo $row['diastolic'];?></p>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">General Appearance: </dt>
+                <dd class="col-sm-9"><?php echo $row['appearance'];?></dd>
+                <dt class="col-sm-3">Weight: </dt>
+                <dd class="col-sm-9"><?php echo $row['weight'];?></dd>
+                <dt class="col-sm-3">Height: </dt>
+                <dd class="col-sm-9"><?php echo $row['height'];?></dd>
+                <dt class="col-sm-3">BMI: </dt>
+                <dd class="col-sm-9"><?php echo $row['bmi'];?></dd>
+                <dt class="col-sm-3">Blood Pressure: </dt>
+                <dd class="col-sm-9"><?php echo $row['systolic'];?>/<?php echo $row['diastolic'];?></dd>
+                <dt class="col-sm-3">Nose: </dt>
+                <dd class="col-sm-9"><?php echo $row['nose'];?></dd>
+                <dt class="col-sm-3">Throat: </dt>
+                <dd class="col-sm-9"><?php echo $row['throat'];?></dd>
+                <dt class="col-sm-3">Neck: </dt>
+                <dd class="col-sm-9"><?php echo $row['neck'];?></dd>
+                <dt class="col-sm-3">Skin: </dt>
+                <dd class="col-sm-9"><?php echo $row['skin'];?></dd>
+            </dl>
             </div>
             <h3>Eyes</h3>
                 <table style="table-layout: fixed; width:100%;" class="table table-bordered">
@@ -163,32 +225,55 @@
                     </tbody>
                 </table>
             <h3>Cardiovascular System</h3>
-            <div class="reference">
-                <p>Sound: <?php echo $row['sound'];?></p>
-                <p>Murmur: <?php echo $row['murmur'];?></p>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">Sound: </dt>
+                <dd class="col-sm-9"><?php echo $row['sound'];?></dd>
+                <dt class="col-sm-3">Murmur: </dt>
+                <dd class="col-sm-9"><?php echo $row['murmur'];?></dd>
+            </dl>
             </div>    
             <h3>Respiratory System</h3>
-            <div class="reference">
-                <p>Air Entry: <?php echo $row['airentry'];?></p>
-                <p>Chest Expansion: <?php echo $row['chestexp'];?></p>
-                <p>Breath Sound: <?php echo $row['breathsound'];?></p>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">Air Entry: </dt>
+                <dd class="col-sm-9"><?php echo $row['airentry'];?></dd>
+                <dt class="col-sm-3">Chest Expansion: </dt>
+                <dd class="col-sm-9"><?php echo $row['chestexp'];?></dd>
+                <dt class="col-sm-3">Breath Sound: </dt>
+                <dd class="col-sm-9"><?php echo $row['breathsound'];?></dd>
+            </dl>
             </div>
             <h3>Gastrointestinal System</h3>
-            <div class="reference">
-                <p>Liver: <?php echo $row['liver'];?></p>
-                <p>Spleen: <?php echo $row['spleen'];?></p>
-                <p>Kidney: <?php echo $row['kidney'];?></p>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">Liver: </dt>
+                <dd class="col-sm-9"><?php echo $row['liver'];?></dd>
+                <dt class="col-sm-3">Spleen: </dt>
+                <dd class="col-sm-9"><?php echo $row['spleen'];?></dd>
+                <dt class="col-sm-3">Kidney: </dt>
+                <dd class="col-sm-9"><?php echo $row['kidney'];?></dd>
+            </dl>
             </div>
             <h3>Central Nervous System</h3>
-            <div class="reference">
-                <p>Mental Function: <?php echo $row['mentalfunct'];?></p>
-                <p>Coordination: <?php echo $row['coordination'];?></p>
-                <p>Gait: <?php echo $row['gait'];?></p>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">Mental Function: </dt>
+                <dd class="col-sm-9"><?php echo $row['mentalfunct'];?></dd>
+                <dt class="col-sm-3">Coordination: </dt>
+                <dd class="col-sm-9"><?php echo $row['coordination'];?></dd>
+                <dt class="col-sm-3">Gait: </dt>
+                <dd class="col-sm-9"><?php echo $row['gait'];?></dd>
+            </dl>
             </div>
             <h3>Genitourinary System</h3>
-            <div class="reference">
-                <p>Genitalia: <?php echo $row['genitalia'];?></p>
-                <p>Rectal Examination: <?php echo $row['rectal'];?></p>
+            <div>
+            <dl class="row">
+                <dt class="col-sm-3">Genitalia: </dt>
+                <dd class="col-sm-9"><?php echo $row['genitalia'];?></dd>
+                <dt class="col-sm-3">Rectal Examination: </dt>
+                <dd class="col-sm-9"><?php echo $row['rectal'];?></dd>
+            </dl>
             </div>
             <h3>Musculoskeletal System</h3>
             <table style="table-layout: fixed; width:100%;" class="table table-bordered">
@@ -247,31 +332,66 @@
                     if($row['sex'] == "Female"){
                 ?>
                 <h3>For Female Patient</h3>
-                <div class="reference">
-                    <p>Breast: <?php echo $row['breast'];?></p>
-                    <p>Last Menstrual Period: <?php echo $row['lmp'];?></p>
-                    <p>Gynaecology History: <?php echo $row['gynaecology'];?></p>
-                    <p>Last Pap Smear: <?php echo $row['lastps'];?></p>
+                <div>
+                <dl class="row">
+                    <dt class="col-sm-3">Breast: </dt>
+                    <dd class="col-sm-9"><?php echo $row['breast'];?></dd>
+                    <dt class="col-sm-3">Last Menstrual Period: </dt>
+                    <dd class="col-sm-9"><?php echo $row['lmp'];?></dd>
+                    <dt class="col-sm-3">Gynaecology History: </dt>
+                    <dd class="col-sm-9"><?php echo $row['gynaecology'];?></dd>
+                    <dt class="col-sm-3">Last Pap Smear: </dt>
+                    <dd class="col-sm-9"><?php echo $row['lastps'];?></dd>
+                </dl>
                 </div>
                 <?php
                     }
                 ?>
                 <h3>Investigation</h3>
-                <div class="reference">
-                    <p>Chest X-Ray: <?php echo $row['cxr'];?></p>
-                    <p>Electrocardiogram: <?php echo $row['ecg'];?></p>
-                    <p>Mammogram: <?php echo $row['mammogram'];?></p>
-                    <p>Ultrasound Breast: <?php echo $row['us_breast'];?></p>
-                    <p>Ultrasound Abdomen Pelvis: <?php echo $row['us_abdopel'];?></p>
-                    <p>Stress Test: <?php echo $row['stresstest'];?></p>
-                    <p>Pure Tone Audiometry: <?php echo $row['pta'];?></p>
-                    <p>Lung Function Test: <?php echo $row['lft'];?></p>
-                    <p>Urine: <?php echo $row['urine'];?></p>
-                    <p>Blood: <?php echo $row['blood'];?></p>
+                <div>
+                <dl class="row">
+                    <dt class="col-sm-3">Chest X-Ray: </dt>
+                    <dd class="col-sm-9"><?php echo $row['cxr'];?></dd>
+                    <dt class="col-sm-3">Electrocardiogram: </dt>
+                    <dd class="col-sm-9"><?php echo $row['ecg'];?></dd>
+                    <?php
+                        if($row['package'] == "Custom"){
+                    ?>
+                    <dt class="col-sm-3">Mammogram: </dt>
+                    <dd class="col-sm-9"><?php echo $row['mammogram'];?></dd>
+                    <dt class="col-sm-3">Ultrasound Breast: </dt>
+                    <dd class="col-sm-9"><?php echo $row['us_breast'];?></dd>
+                    <?php
+                        }
+                        if($row['package'] == "Premium" || $row['package'] == "Comprehensive" || $row['package'] == "Custom"){
+                    ?>
+                    <dt class="col-sm-3">Ultrasound Abdomen Pelvis: </dt>
+                    <dd class="col-sm-9"><?php echo $row['us_abdopel'];?></dd>
+                    <?php
+                        }
+                        if($row['package'] == "Custom" || $row['package'] == "Premium"){
+                    ?>
+                    <dt class="col-sm-3">Stress Test: </dt>
+                    <dd class="col-sm-9"><?php echo $row['stresstest'];?></dd>
+                    <?php
+                        }
+                    ?>
+                    <dt class="col-sm-3">Pure Tone Audiometry: </dt>
+                    <dd class="col-sm-9"><?php echo $row['pta'];?></dd>
+                    <dt class="col-sm-3">Lung Function Test: </dt>
+                    <dd class="col-sm-9"><?php echo $row['lft'];?></dd>
+                    <dt class="col-sm-3">Urine: </dt>
+                    <dd class="col-sm-9"><?php echo $row['urine'];?></dd>
+                    <dt class="col-sm-3">Blood: </dt>
+                    <dd class="col-sm-9"><?php echo $row['blood'];?></dd>
+                    <dt class="col-sm-3">Impression: </dt>
+                    <dd class="col-sm-9"><?php echo $row['impression'];?></dd>
+                    <dt class="col-sm-3">Recommendation: </dt>
+                    <dd class="col-sm-9"><?php echo $row['recommendation'];?></dd>
+                    <dt class="col-sm-3">Last Updated On: </dt>
+                    <dd class="col-sm-9"><?php echo $row['lastUpdate'];?></dd>
+                </dl>
                 </div>
-                <p>Impression: <?php echo $row['impression'];?></p>
-                <p>Recommendation: <?php echo $row['recommendation'];?></p>
-                <p>Last Update On: <?php echo $row['lastUpdate'];?></p>
                 <br><br>
         <?php
                 }

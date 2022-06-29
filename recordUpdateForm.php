@@ -52,7 +52,9 @@
                 </ul>
             </div>
         </nav>
+        <br>
         <h1>Patient Medical Report</h1>
+        <br>
     <?php
         if ($data->num_rows>0)
         {
