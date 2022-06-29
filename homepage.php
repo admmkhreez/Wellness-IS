@@ -6,6 +6,7 @@
     ?>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Wellness Information System</title>
         <link rel="stylesheet" href="test.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -54,9 +55,9 @@
                 <fieldset>
                 <legend>Sex:</legend>
                     <input type="radio" id="male" name="sex" value="Male"required>
-                    <label class="inline" for="male">Male</label>
+                    <label class="inline-radio" for="male">Male</label>
                     <input type="radio" id="female" name="sex" value="Female"required>
-                    <label class="inline" for="female">Female</label>
+                    <label class="inline-radio" for="female">Female</label>
                 </fieldset><br>
                 <label class="inline" for="occupation">Occupation: </label>
                 <input type="text" id="occupation" name="occupation" placeholder="Occupation" maxlength="30"><br>

@@ -6,6 +6,7 @@
     ?>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Patient Registration</title>
         <link rel="stylesheet" href="test.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -33,7 +34,7 @@
                 <div class="container-fluid">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="homepage.php">Home</a>
+                            <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="viewRecord.php">View Patients</a>
@@ -42,7 +43,7 @@
                             <a class="nav-link" href="selectRecord.php">Fill form</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="selectPatient.php">Search Patient</a>
+                            <a class="nav-link active" href="selectPatient.php">Search Patient</a>
                         </li>
                     </ul>
                     <a class="nav-link" href="logout.php">Logout</a>
