@@ -41,24 +41,16 @@
         {
             die("Connection failed: " . $conn->connect_error);
         }
-            $check = "SELECT mrn FROM patient WHERE mrn = '".$mrn."'";
-            $data = $conn->query($check);
-            if ($data->num_rows>0)
-            {
-                while($row=$data->fetch_assoc())
-                {
-                    if ($data === FALSE)
-                    {
     ?>
     <body>
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="container-fluid">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="homepage.php">Home</a>
+                        <a class="nav-link active" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="viewRecord.php">View Patients</a>
+                        <a class="nav-link" href="viewRecord.php">View Patients</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectRecord.php">Fill form</a>
@@ -66,15 +58,23 @@
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Logout</a>
-                    </li>
                 </ul>
+                <a class="nav-link" href="logout.php">Logout</a>
             </div>
         </nav>
         <br>
         <h1>User Registration Details</h1>
         <br>
+        <?php
+        $check = "SELECT mrn FROM patient WHERE mrn = '".$mrn."'";
+        $data = $conn->query($check);
+        if ($data->num_rows>0)
+        {
+            while($row=$data->fetch_assoc())
+            {
+                if ($data === FALSE)
+                {
+        ?>
         <div class="container">
             <p>MRN: <?php echo $mrn;?></p>
             <p>Name: <?php echo $name;?></p>
@@ -141,28 +141,6 @@
 
         if ($conn->query($insert1) && $conn->query($insert2 )=== TRUE)
         {
-            echo "<nav class='navbar navbar-expand-sm bg-dark navbar-dark'>
-                        <div class='container-fluid'>
-                            <ul class='navbar-nav'>
-                                <li class='nav-item'>
-                                    <a class='nav-link' href='homepage.php'>Home</a>
-                                </li>
-                                <li class='nav-item'>
-                                <a class='nav-link' href='viewRecord.php'>View Patients</a>
-                                </li>
-                                <li class='nav-item'>
-                                    <a class='nav-link' href='selectRecord.php'>Fill form</a>
-                                </li>
-                                <li class='nav-item'>
-                                    <a class='nav-link' href='selectPatient.php'>Search Patient</a>
-                                </li>
-                                <li class='nav-item'>
-                                    <a class='nav-link' href='logout.php'>Logout</a>
-                                </li>
-                            </ul>
-                        </div>
-                        </nav>";
-            echo "<br><h1>KPJ Klang Wellness Information System</h1><br>";
             echo "<br><div class='container'><span class='success'>Successfully registered patient</span></div>";
         }
         else

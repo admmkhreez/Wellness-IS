@@ -72,4 +72,8 @@ select {
     border: 1px solid #eee;
     transition: .3s border-color;
 }
-
+nav{
+        position: sticky;
+        top: 0;
+        z-index: 100;
+}

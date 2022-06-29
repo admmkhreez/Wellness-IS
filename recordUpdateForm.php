@@ -12,8 +12,6 @@
     
     <body>
     <?php
-        $package = $_POST["package"];
-        $sex = $_POST["sex"];
         $mrn = $_POST["mrn"];
         $servername = "localhost";
         $username = "root";
@@ -27,7 +25,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
         else{
-            $select = "SELECT * from record WHERE mrn = '".$mrn."'";
+            $select = "SELECT * from record a, patient b WHERE a.mrn = '".$mrn."' AND b.mrn = '".$mrn."'";
             $data = $conn->query($select);
         }
     ?>
@@ -35,10 +33,10 @@
             <div class="container-fluid">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="homepage.php">Home</a>
+                        <a class="nav-link active" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="viewRecord.php">View Patients</a>
+                        <a class="nav-link" href="viewRecord.php">View Patients</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectRecord.php">Fill form</a>
@@ -46,26 +44,33 @@
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Logout</a>
-                    </li>
                 </ul>
+                <a class="nav-link" href="logout.php">Logout</a>
             </div>
         </nav>
         <br>
         <h1>Patient Medical Report</h1>
         <br>
+        <div class="container">
+        
     <?php
         if ($data->num_rows>0)
         {
             while($row=$data->fetch_assoc()){
     ?>
-        <div class="container">
+        <form method="post" style="text-align: center;">
+                <label for="mrn">Enter Patient's MRN</label><br>
+                <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br>
+                <input type="hidden" name="sex" value="<?php echo $row["sex"];?>">
+                <input type="hidden" name="package" value="<?php echo $row["package"];?>">
+                <button formaction="recordUpdateForm.php" class="btn btn-primary">Search</button>
+        </form>
+        <br>
         <form method="post" style="text-align:center;">
             <div class="btn-group" style="width:100%;">
                 <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
-                <input type="hidden" name="sex" value="<?php echo $sex;?>">
-                <input type="hidden" name="package" value="<?php echo $package;?>">
+                <input type="hidden" name="sex" value="<?php echo $row["sex"];?>">
+                <input type="hidden" name="package" value="<?php echo $row["package"];?>">
                 <button formaction="viewPatient.php" class="btn btn-primary">View Patient's Details</button>
                 <button formaction="editProfile.php" class="btn btn-primary">Edit Patient's Details</button>
                 <?php
@@ -79,6 +84,7 @@
             </div>    
         </form>
         <br>
+        <p>Patient's Name: <?php echo $row["name"];?></p>
         <p>MRN: <?php echo $mrn;?></p>
         <form action="updateRecord.php" method="post">
             <label for="appearance">General Appearance: </label>
@@ -241,7 +247,7 @@
             <label for="usen_r">Right: </label>
             <input type="text" id="usen_r" name="usen_r" value="<?php echo $row["usen_r"];?>">
             <?php
-                if ($sex == 'Female' ){
+                if ($row["sex"] == 'Female' ){
             ?>
             <h3>For Female Patient</h3>
             <label for="breast">Breast: </label>
@@ -261,7 +267,7 @@
             <label for="ecg">Electrocardiogram: </label>
             <input type="text" id="ecg" name="ecg" value="<?php echo $row["ecg"];?>"><br>
             <?php
-                if ($package == "Custom"){
+                if ($row["package"] == "Custom"){
             ?>
             <label for="mmg">Mammogram: </label>
             <input type="text" id="mmg" name="mammogram" value="<?php echo $row["mammogram"];?>"><br>
@@ -269,19 +275,19 @@
             <input type="text" id="us_breast" name="us_breast" value="<?php echo $row["us_breast"];?>"><br>
             <?php
                 }
-                if ($package == "Comprehensive" || $package == "Premium" || $package == "Custom"){
+                if ($row["package"] == "Comprehensive" || $row["package"] == "Premium" || $row["package"] == "Custom"){
             ?>
             <label for="us_abdopel">Ultrasound Abdomen Pelvis: </label>
             <input type="text" id="us_abdopel" name="us_abdopel" value="<?php echo $row["us_abdopel"];?>"><br>
             <?php
                 }
-                if ($package == "Premium" || $package == "Custom"){
+                if ($row["package"] == "Premium" || $row["package"] == "Custom"){
             ?>
             <label for="stress">Stress Test: </label>
             <input type="text" id="stress" name="stresstest" value="<?php echo $row["stresstest"];?>"><br>
             <?php
                 }
-                if ($package == "Custom"){
+                if ($row["package"] == "Custom"){
             ?>
             <label for="pta">Pure Tone Audiometry: </label>
             <input type="text" id="pta" name="pta" value="<?php echo $row["pta"];?>"><br>
@@ -301,8 +307,8 @@
             <br>
             <input type="submit" class="btn btn-primary" value="Submit Record">
             <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
-            <input type="hidden" name="sex" value="<?php echo $sex;?>">
-            <input type="hidden" name="package" value="<?php echo $package;?>">
+            <input type="hidden" name="sex" value="<?php echo $row["sex"];?>">
+            <input type="hidden" name="package" value="<?php echo $row["package"];?>">
         </form>
         <br>
         

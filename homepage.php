@@ -26,10 +26,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Logout</a>
-                    </li>
                 </ul>
+                <a class="nav-link" href="logout.php">Logout</a>
             </div>
         </nav>
         <br>

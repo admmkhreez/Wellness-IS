@@ -33,7 +33,7 @@
                 <div class="container-fluid">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="homepage.php">Home</a>
+                            <a class="nav-link active" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="viewRecord.php">View Patients</a>
@@ -44,20 +44,25 @@
                         <li class="nav-item">
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="logout.php">Logout</a>
-                        </li>
                     </ul>
+                    <a class="nav-link" href="logout.php">Logout</a>
                 </div>
             </nav>
             <br>
             <h1>Health Screening Services</h1>
             <br>
+            <div class="container">
+            <form method="post" style="text-align: center;">
+                <label for="mrn">Enter Patient's MRN</label><br>
+                <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br>
+                <button formaction="editProfile.php" class="btn btn-primary">Search</button>
+            </form>
+            <br>
             <?php
                 if($data->num_rows > 0){
                     while($row = $data->fetch_assoc()){
             ?>
-            <div class="container">
+            
             <form method="post" style="text-align:center;">
                 <div class="btn-group" style="width:100%;">
                     <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
