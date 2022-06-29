@@ -38,23 +38,14 @@
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
+                      <a class="nav-link" href="viewRecord.php">View Patients</a>
                     </li>
-                    <?php
-                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
-                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="selectRecord.php">Fill form</a>
                     </li>
-                    <?php
-                        }
-                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
-                    <li class="nav-item">
-                            <a class="nav-link" href="selectHistory.php">Medical History</a>
-                        </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">Logout</a>
                     </li>
@@ -68,7 +59,25 @@
             while($row=$data->fetch_assoc()){
     ?>
         <div class="container">
-            <p>MRN: <?php echo $mrn;?></p>
+        <form method="post" style="text-align:center;">
+            <div class="btn-group" style="width:100%;">
+                <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+                <input type="hidden" name="sex" value="<?php echo $sex;?>">
+                <input type="hidden" name="package" value="<?php echo $package;?>">
+                <button formaction="viewPatient.php" class="btn btn-primary">View Patient's Details</button>
+                <button formaction="editProfile.php" class="btn btn-primary">Edit Patient's Details</button>
+                <?php
+                    if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
+                ?>
+                <button formaction="recordUpdateForm.php" class="btn btn-primary active">Update Patient's Record</button>
+                <?php
+                    }
+                ?>
+                <button formaction="historyUpdateForm.php" class="btn btn-primary">Update Medical History</button>       
+            </div>    
+        </form>
+        <br>
+        <p>MRN: <?php echo $mrn;?></p>
         <form action="updateRecord.php" method="post">
             <label for="appearance">General Appearance: </label>
             <input type="text" id="appearance" name="appearance" value="<?php echo $row["appearance"];?>"><br>
@@ -293,6 +302,8 @@
             <input type="hidden" name="sex" value="<?php echo $sex;?>">
             <input type="hidden" name="package" value="<?php echo $package;?>">
         </form>
+        <br>
+        
         </div>
     <?php
             }

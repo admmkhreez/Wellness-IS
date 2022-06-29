@@ -36,22 +36,13 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
+                            <a class="nav-link" href="viewRecord.php">View Patients</a>
                         </li>
-                        <?php
-                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
-                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="selectRecord.php">Fill form</a>
                         </li>
-                        <?php
-                            }
-                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="selectHistory.php">Medical History</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php">Logout</a>
@@ -61,12 +52,30 @@
             </nav>
             <br>
             <h1>Health Screening Services</h1>
+            <?php
+                if($data->num_rows > 0){
+                    while($row = $data->fetch_assoc()){
+            ?>
             <div class="container">
-        <?php
-            if($data->num_rows > 0){
-                while($row = $data->fetch_assoc()){
-        ?>
-        
+            <form method="post" style="text-align:center;">
+                <div class="btn-group" style="width:100%;">
+                    <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+                    <input type="hidden" name="sex" value="<?php echo $row['sex'];?>">
+                    <input type="hidden" name="package" value="<?php echo $row['package'];?>">
+                    <button formaction="viewPatient.php" class="btn btn-primary">View Patient's Details</button>
+                    <button formaction="editProfile.php" class="btn btn-primary active">Edit Patient's Details</button>
+                    <?php
+                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
+                    ?>
+                    <button formaction="recordUpdateForm.php" class="btn btn-primary">Update Patient's Record</button>
+                    <?php
+                        }
+                    ?>
+                    <button formaction="historyUpdateForm.php" class="btn btn-primary">Update Medical History</button>
+                    
+                </div>    
+            </form>
+            <br>
             <form action="updateDetails.php" method="post">
             
                 <p>Patient's Information</p>
@@ -107,6 +116,7 @@
                             <label for="female">Female</label>
                     </fieldset>
                 </div>
+                <br>
                 <div>
                     <label for="occupation">Occupation: </label>
                     <input type="text" id="occupation" name="occupation" maxlength="30" value="<?php echo $row["occupation"]?>">
@@ -149,18 +159,25 @@
                 <label for="package">Package</label>
                     <select id="package" name="package" required>
                         <option value = "" selected disabled hidden>--Please Select--</option>
-                        <option value = "Essential" <?php if ($row['package'] == "Essential") echo "selected"?>>Essential</option>
-                        <option value = "Comprehensive" <?php if ($row['package'] == "Comprehensive") echo "selected"?>>Comprehensive</option>
-                        <option value = "Premium" <?php if ($row['package'] == "Premium") echo "selected"?>>Premium</option>
+                        <option value = "Essential" <?php if ($row['package'] == "Essential") echo "selected"?>>Essential(No Add-Ons)</option>
+                        <option value = "Comprehensive" <?php if ($row['package'] == "Comprehensive") echo "selected"?>>Comprehensive(No Add-Ons)</option>
+                        <option value = "Premium" <?php if ($row['package'] == "Premium") echo "selected"?>>Premium(No Add-Ons)</option>
                         <option value = "Custom" <?php if ($row['package'] == "Custom") echo "selected"?>>Custom</option>
-                    </select><br><br>
+                    </select>
                 </div>
+                <br>
+                <div>
+                    <label for="addons">Additional Test: <sup>*MENTION THE PACKAGE CHOSEN IF CUSTOM</sup></label><br>
+                    <textarea type="text" id="addons" maxlength="100" name="addons" rows="4" cols="50"><?php echo $row["addons"]?></textarea>
+                </div>
+                <br><br>
                 <div style="text-align: center;">
                     <input type="reset" class="btn btn-danger" value="Reset">
                     <input type="submit" class="btn btn-primary" value="Submit">
                 </div>
-            
+                <br>
         </form>
+        
         <?php
                 }
             }

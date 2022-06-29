@@ -18,22 +18,13 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
+                            <a class="nav-link" href="viewRecord.php">View Patients</a>
                         </li>
-                        <?php
-                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
-                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="selectRecord.php">Fill form</a>
                         </li>
-                        <?php
-                            }
-                        ?>
                         <li class="nav-item">
                             <a class="nav-link active" href="selectPatient.php">Search Patient</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="selectHistory.php">Medical History</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php">Logout</a>
@@ -45,7 +36,7 @@
         <div class="container">    
             <form action="editProfile.php" method="post">
                 <label for="mrn">Enter Patient's MRN</label><br>
-                <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br><br>
+                <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br>
                 <button formaction="viewPatient.php" class="btn btn-primary">Search</button>
             </form>
         </div>

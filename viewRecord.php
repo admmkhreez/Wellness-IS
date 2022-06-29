@@ -30,22 +30,13 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="viewRecord.php">View Latest Patients</a>
+                            <a class="nav-link active" href="viewRecord.php">View Patients</a>
                         </li>
-                        <?php
-                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
-                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="selectRecord.php">Fill form</a>
                         </li>
-                        <?php
-                            }
-                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="selectHistory.php">Medical History</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php">Logout</a>
@@ -54,6 +45,10 @@
                 </div>
             </nav>
             <h1>Patient's Record</h1>
+            <form method="post" style="text-align: center;">
+                <input type="text" placeholder="Search" name="keyword">
+                <button formaction="searchRecord.php" class="btn btn-primary">Search</button>
+            </form>
             <div style="text-align: center;">
                 <p style="color:white;">SHOWING LAST 10 PATIENT REGISTERED</p>    
             </div>
@@ -61,7 +56,6 @@
             $display = "SELECT a.mrn, name, ic_passport, address, email, lastUpdateMH, lastUpdate, registeredOn, package  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY registeredOn DESC LIMIT 10";
             $data = $conn->query($display);
         ?>
-        <form method="post">
             <table style="width: 100%;" height="700" class="table table-bordered">
                 <thead class="table-dark" style="text-align:center;">
                     <tr>
@@ -123,7 +117,6 @@
             }
             ?>
             </table>
-        </form>
         <?php
         $conn->close();
         }

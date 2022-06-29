@@ -18,23 +18,14 @@
                         <a class="nav-link active" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
+                        <a class="nav-link" href="viewRecord.php">View Patients</a>
                     </li>
-                    <?php
-                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
-                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="selectRecord.php">Fill form</a>
                     </li>
-                    <?php
-                        }
-                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
-                    <li class="nav-item">
-                            <a class="nav-link" href="selectHistory.php">Medical History</a>
-                        </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">Logout</a>
                     </li>
@@ -67,7 +58,7 @@
                     <label for="male">Male</label>
                     <input type="radio" id="female" name="sex" value="Female"required>
                     <label for="female">Female</label><br>
-                </fieldset>
+                </fieldset><br>
                 <label for="occupation">Occupation: </label><br>
                 <input type="text" id="occupation" name="occupation" placeholder="Occupation" maxlength="30"><br>
                 <label for="race">Race: </label><br>
@@ -100,7 +91,11 @@
                     <option value = "Comprehensive">Comprehensive(No Add-Ons)</option>
                     <option value = "Premium">Premium(No Add-Ons)</option>
                     <option value = "Custom">Custom</option>
-                </select><br><br>
+                </select>
+                <br>
+                <label for="addons">Additional Test:<sup>*MENTION THE PACKAGE CHOSEN IF CUSTOM</sup></label><br>
+                <textarea type="text" id="addons" maxlength="100" name="addons" rows="4" cols="50"></textarea><br>
+                <br><br>
                 <div style="text-align: center;">
                     <input type="reset" class="btn btn-danger" value="Reset">
                     <input type="submit" class="btn btn-primary" value="Register">

@@ -26,6 +26,9 @@
         $rs = $_POST["relationship"];
         $tel_nok = $_POST["telephone_nok"];
         $package = $_POST["package"];
+        if($package == "Custom"){
+            $addons = $_POST["addons"];
+        }
 
         $servername = "localhost";
         $username = "root";
@@ -55,22 +58,13 @@
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
+                      <a class="nav-link" href="viewRecord.php">View Patients</a>
                     </li>
-                    <?php
-                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
-                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="selectRecord.php">Fill form</a>
                     </li>
-                    <?php
-                        }
-                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
-                    </li>
-                    <li class="nav-item">
-                            <a class="nav-link" href="selectHistory.php">Medical History</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">Logout</a>
@@ -133,9 +127,14 @@
                     }
                 }       
             }
-        
-        $insert1 = "INSERT INTO patient (mrn, name, ic_passport, date_of_birth, address, email, telephone, sex, occupation, race, religion, marital_status, next_of_kin, relationship, telephone_nok, registeredOn, package) 
-        VALUES ('".$mrn."', '".$name."', '".$icpp."', '".$dob."', '".$address."', '".$email."', '".$tel."', '".$sex."', '".$occupation."', '".$race."', '".$religion."', '".$mstatus."', '".$nok."', '".$rs."', '".$tel_nok."', '".$date."', '".$package."')";
+        if($package == "Custom"){
+            $insert1 = "INSERT INTO patient (mrn, name, ic_passport, date_of_birth, address, email, telephone, sex, occupation, race, religion, marital_status, next_of_kin, relationship, telephone_nok, registeredOn, package, addons) 
+            VALUES ('".$mrn."', '".$name."', '".$icpp."', '".$dob."', '".$address."', '".$email."', '".$tel."', '".$sex."', '".$occupation."', '".$race."', '".$religion."', '".$mstatus."', '".$nok."', '".$rs."', '".$tel_nok."', '".$date."', '".$package."', '".$addons."')";
+        }
+        else{
+            $insert1 = "INSERT INTO patient (mrn, name, ic_passport, date_of_birth, address, email, telephone, sex, occupation, race, religion, marital_status, next_of_kin, relationship, telephone_nok, registeredOn, package, addons) 
+            VALUES ('".$mrn."', '".$name."', '".$icpp."', '".$dob."', '".$address."', '".$email."', '".$tel."', '".$sex."', '".$occupation."', '".$race."', '".$religion."', '".$mstatus."', '".$nok."', '".$rs."', '".$tel_nok."', '".$date."', '".$package."', NULL)";
+        }
         $insert2 = "INSERT INTO record (mrn) VALUES ('".$mrn."')";
 
         if ($conn->query($insert1) && $conn->query($insert2 )=== TRUE)
@@ -147,20 +146,13 @@
                                     <a class='nav-link' href='homepage.php'>Home</a>
                                 </li>
                                 <li class='nav-item'>
-                                <a class='nav-link' href='viewRecord.php'>View Latest Patients</a>
-                                </li>";
-                                if($_SESSION['type'] == 'Doctor' || $_SESSION['type'] == 'admin'){
-                                ?>
+                                <a class='nav-link' href='viewRecord.php'>View Patients</a>
+                                </li>
                                 <li class='nav-item'>
                                     <a class='nav-link' href='selectRecord.php'>Fill form</a>
                                 </li>
-                                <?php
-                                    }
-                                "<li class='nav-item'>
-                                    <a class='nav-link' href='selectPatient.php'>Search Patient</a>
-                                </li>
                                 <li class='nav-item'>
-                                    <a class='nav-link' href='selectHistory.php'>Medical History</a>
+                                    <a class='nav-link' href='selectPatient.php'>Search Patient</a>
                                 </li>
                                 <li class='nav-item'>
                                     <a class='nav-link' href='logout.php'>Logout</a>

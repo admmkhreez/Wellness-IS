@@ -34,22 +34,13 @@
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="viewRecord.php">View Latest Patients</a>
+                      <a class="nav-link" href="viewRecord.php">View Patients</a>
                     </li>
-                    <?php
-                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
-                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="selectRecord.php">Fill form</a>
                     </li>
-                    <?php
-                        }
-                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
-                    </li>
-                    <li class="nav-item">
-                            <a class="nav-link" href="selectHistory.php">Medical History</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">Logout</a>
@@ -65,6 +56,25 @@
                 while ($row = $data->fetch_assoc())
                 {
         ?>
+            <form method="post" style="text-align:center;">
+                <div class="btn-group" style="width:100%;">
+                    <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+                    <input type="hidden" name="sex" value="<?php echo $row['sex'];?>">
+                    <input type="hidden" name="package" value="<?php echo $row['package'];?>">
+                    <button formaction="viewPatient.php" class="btn btn-primary active">View Patient's Details</button>
+                    <button formaction="editProfile.php" class="btn btn-primary">Edit Patient's Details</button>
+                    <?php
+                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
+                    ?>
+                    <button formaction="recordUpdateForm.php" class="btn btn-primary">Update Patient's Record</button>
+                    <?php
+                        }
+                    ?>
+                    <button formaction="historyUpdateForm.php" class="btn btn-primary">Update Medical History</button>
+                    
+                </div>    
+            </form>
+            <br>
             <h3>Details </h3>
             <div class="reference">
                 <p>MRN: <?php echo $row['mrn'];?></p>
@@ -83,6 +93,7 @@
                 <p>Relationship: <?php echo $row['relationship'];?></p>
                 <p>Telephone No.: <?php echo $row['telephone_nok'];?></p>
                 <p>Package Selected: <?php echo $row['package'];?></p>
+                <p>Additional Test: <?php echo $row['addons'];?></p>
             </div>
             <p>Registered On: <?php echo $row['registeredOn'];?></p>
             <p>Last Profile Update On: <?php echo $row['lastUpdateOn'];?></p>
@@ -262,24 +273,6 @@
                 <p>Recommendation: <?php echo $row['recommendation'];?></p>
                 <p>Last Update On: <?php echo $row['lastUpdate'];?></p>
                 <br><br>
-                <form method="post">
-                <div class="btn-group">
-                    <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
-                    <input type="hidden" name="sex" value="<?php echo $row['sex'];?>">
-                    <input type="hidden" name="package" value="<?php echo $row['package'];?>">
-                    <button formaction="editProfile.php" class="btn btn-primary">Edit Patient's Details</button>
-                    <?php
-                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
-                    ?>
-                    <button formaction="recordUpdateForm.php" class="btn btn-primary">Update Patient's Record</button>
-                    <?php
-                        }
-                    ?>
-                    <button formaction="historyForm.php" class="btn btn-primary">Update Medical History</button>
-                    
-                </div>    
-                </form>
-                
         <?php
                 }
             }
