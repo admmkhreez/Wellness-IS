@@ -53,7 +53,7 @@
             <br>
             <div class="container">
             <form method="post" style="text-align: center;">
-                <label for="mrn">Enter Patient's MRN</label><br>
+                <label class="inline" for="mrn">Enter Patient's MRN</label><br>
                 <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br>
                 <button formaction="editProfile.php" class="btn btn-primary">Search</button>
             </form>
@@ -84,59 +84,59 @@
             <br>
             <form action="updateDetails.php" method="post">
             
-                <p>Patient's Information</p>
+                <h5>Patient's Information</h5>
                 <div>
-                    <label for="mrn">MRN: </label>
+                    <label class="inline" for="mrn">MRN: </label>
                     <input type="text" id="mrn" maxlength="10" name="mrn" value="<?php echo $row["mrn"]?>" required>
                 </div>
                 <div>
-                    <label for="name">Name: </label>
+                    <label class="inline" for="name">Name: </label>
                     <input type="text" id="name" maxlength="70" name="name" value="<?php echo $row["name"]?>" required>
                 </div>
                 <div>
-                    <label for="icpp">I/C No / Passport: </label>
+                    <label class="inline" for="icpp">I/C No / Passport: </label>
                     <input type="text" id="icpp"maxlength="12" name="icpp" value="<?php echo $row["ic_passport"]?>" required>
                 </div>
                 <div>
-                    <label for="dob">Date of Birth: </label>
+                    <label class="inline" for="dob">Date of Birth: </label>
                     <input type="date" id="dob" name="dob" value="<?php echo $row["date_of_birth"]?>" required>
                 </div>
                 <div>
-                    <label for="address">Home Address:</label><br>
+                    <label class="inline" for="address">Home Address:</label><br>
                     <textarea type="text" id="address" maxlength="100" name="address" rows="4" cols="50" required><?php echo $row["address"]?></textarea>
                 </div>
                 <div>
-                    <label for="email">E-mail Address: </label>
+                    <label class="inline" for="email">E-mail Address: </label>
                     <input type="email" id="email" maxlength="320" name="email" value="<?php echo $row["email"]?>">
                 </div>
                 <div>
-                    <label for="telephone">Telephone: </label>
+                    <label class="inline" for="telephone">Telephone: </label>
                     <input type="tel" id="telephone" maxlength="15" name="tel" value="<?php echo $row["telephone"]?>">
                 </div>
                 <div>
                     <fieldset>
                         <legend>Sex: </legend>
                             <input type="radio" id="male" name="sex" value="Male" <?php if ($row['sex'] == "Male") echo "checked"?> required>
-                            <label for="male">Male</label>
+                            <label class="inline" for="male">Male</label>
                             <input type="radio" id="female" name="sex" value="Female" <?php if ($row['sex'] == "Female") echo "checked"?> required>
-                            <label for="female">Female</label>
+                            <label class="inline" for="female">Female</label>
                     </fieldset>
                 </div>
                 <br>
                 <div>
-                    <label for="occupation">Occupation: </label>
+                    <label class="inline" for="occupation">Occupation: </label>
                     <input type="text" id="occupation" name="occupation" maxlength="30" value="<?php echo $row["occupation"]?>">
                 </div>
                 <div>
-                    <label for="race">Race: </label>
+                    <label class="inline" for="race">Race: </label>
                     <input type="text" id="race" name="race" maxlength="20" value="<?php echo $row["race"]?>">
                 </div>
                 <div>
-                <label for="religion">Religion: </label>
+                <label class="inline" for="religion">Religion: </label>
                 <input type="text" id="religion" name="religion" maxlength="20" value="<?php echo $row["religion"]?>">
                 </div>
                 <div>
-                    <label for="marital_status">Marital Status: </label>
+                    <label class="inline" for="marital_status">Marital Status: </label>
                     <select id="marital_status" name="marital_status">
                         <option value="" selected disabled hidden>--Please Select--</option>
                         <option value="Married" <?php if ($row['marital_status'] == "Married") echo "selected"?>>Married</option>
@@ -150,19 +150,19 @@
                 
                 <p>Next Of Kin</p>
                 <div>       
-                    <label for="next_of_kin">Name: </label>
+                    <label class="inline" for="next_of_kin">Name: </label>
                     <input type="text" id="next_of_kin" maxlength="70" name="next_of_kin" value="<?php echo $row["next_of_kin"]?>" required>
                 </div>
                 <div>
-                    <label for="relationship">Relationship: </label>
+                    <label class="inline" for="relationship">Relationship: </label>
                     <input type="text" id="relationship" name="relationship" maxlength="20" value="<?php echo $row["relationship"]?>">
                 </div>
                 <div>
-                    <label for="telephone_nok">Telephone: </label>
+                    <label class="inline" for="telephone_nok">Telephone: </label>
                     <input type="tel" id="telephone_nok" name="telephone_nok" maxlength="15" value="<?php echo $row["telephone_nok"]?>">
                 </div>
                 <div>
-                <label for="package">Package</label>
+                <label class="inline" for="package">Package</label>
                     <select id="package" name="package" required>
                         <option value = "" selected disabled hidden>--Please Select--</option>
                         <option value = "Essential" <?php if ($row['package'] == "Essential") echo "selected"?>>Essential(No Add-Ons)</option>
@@ -173,8 +173,8 @@
                 </div>
                 <br>
                 <div>
-                    <label for="addons">Additional Test: <sup>*MENTION THE PACKAGE CHOSEN IF CUSTOM</sup></label><br>
-                    <textarea type="text" id="addons" maxlength="100" name="addons" rows="4" cols="50"><?php echo $row["addons"]?></textarea>
+                    <label class="inline" for="addons">Additional Test: </label>
+                    <textarea type="text" id="addons" maxlength="100" placeholder="*MENTION THE PACKAGE CHOSEN IF CUSTOM" name="addons" rows="4" cols="50"><?php echo $row["addons"]?></textarea>
                 </div>
                 <br><br>
                 <div style="text-align: center;">

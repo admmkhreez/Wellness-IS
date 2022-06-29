@@ -16,7 +16,7 @@ h3{
     margin: auto;
 }
 body{
-    background-image: linear-gradient(to bottom right, rgba(255, 0, 0, .8), rgba(0, 0, 128, .8));
+    background-image: linear-gradient(to bottom right, rgba(255, 0, 0), rgb(172, 172, 172), rgba(0, 0, 128));
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
@@ -76,4 +76,14 @@ nav{
         position: sticky;
         top: 0;
         z-index: 100;
+}
+label.inline {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+}
+label.inline-radio {
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
 }

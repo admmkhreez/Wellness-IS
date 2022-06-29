@@ -36,35 +36,35 @@
         <h2 style="color:white; text-align:center;">Register Patient</h2>
         <form action="insertRegister.php" method="post">
             <div class="container">
-                <p>Patient's Information</p>
-                <label for="mrn">MRN: </label><br>
+                <h5>Patient's Information</h5>
+                <label class="inline" for="mrn">MRN: </label>
                 <input type="text" id="mrn" maxlength="10" placeholder="MRN" name="mrn" required><br>
-                <label for="name">Name: </label><br>
+                <label class="inline" for="name">Name: </label>
                 <input type="text" id="name" maxlength="70" placeholder="Name" name="name" required><br>
-                <label for="icpp">I/C No or Passport: </label><br>
+                <label class="inline" for="icpp">I/C No or Passport: </label>
                 <input type="text" id="icpp"maxlength="12" placeholder="IC / Passport" name="icpp" required><br>
-                <label for="dob">Date of Birth: </label><br>
+                <label class="inline" for="dob">Date of Birth: </label>
                 <input type="date" id="dob" name="dob" required><br>
-                <label for="address">Home Address:</label><br>
+                <label class="inline" for="address">Home Address:</label>
                 <textarea type="text" id="address" maxlength="100" name="address" rows="4" cols="50" required></textarea><br>
-                <label for="email">E-mail Address: </label><br>
+                <label class="inline" for="email">E-mail Address: </label>
                 <input type="email" id="email" maxlength="320" placeholder="Email" name="email"><br>
-                <label for="telephone">Telephone: </label><br>
+                <label class="inline" for="telephone">Telephone: </label>
                 <input type="tel" id="telephone" name="telephone" placeholder="Telephone" maxlength="15"><br>
                 <fieldset>
                 <legend>Sex:</legend>
                     <input type="radio" id="male" name="sex" value="Male"required>
-                    <label for="male">Male</label>
+                    <label class="inline" for="male">Male</label>
                     <input type="radio" id="female" name="sex" value="Female"required>
-                    <label for="female">Female</label><br>
+                    <label class="inline" for="female">Female</label>
                 </fieldset><br>
-                <label for="occupation">Occupation: </label><br>
+                <label class="inline" for="occupation">Occupation: </label>
                 <input type="text" id="occupation" name="occupation" placeholder="Occupation" maxlength="30"><br>
-                <label for="race">Race: </label><br>
+                <label class="inline" for="race">Race: </label>
                 <input type="text" id="race" name="race" placeholder="Race" maxlength="20"><br>
-                <label for="religion">Religion: </label><br>
+                <label class="inline" for="religion">Religion: </label>
                 <input type="text" id="religion" name="religion" placeholder="Religion" maxlength="20"><br>
-                <label for="marital_status">Marital Status: </label>
+                <label class="inline" for="marital_status">Marital Status: </label>
                 <select id="marital_status" name="marital_status">
                     <option value="">--Please Select--</option>
                     <option value="Married">Married</option>
@@ -76,14 +76,14 @@
                 
                 
                 <p>Next Of Kin</p>
-                <label for="next_of_kin">Name: </label><br>
+                <label class="inline" for="next_of_kin">Name: </label>
                 <input type="text" id="next_of_kin" maxlength="70" placeholder="Next of kin Name" name="next_of_kin" required><br>
-                <label for="relationship">Relationship: </label><br>
+                <label class="inline" for="relationship">Relationship: </label>
                 <input type="text" id="relationship" name="relationship" placeholder="Relationship" maxlength="20"><br>
-                <label for="telephone_nok">Telephone: </label><br>
+                <label class="inline" for="telephone_nok">Telephone: </label>
                 <input type="tel" id="telephone_nok" name="telephone_nok" placeholder="Telephone" maxlength="15"><br>
                 
-                <label for="package">Package</label>
+                <label class="inline" for="package">Package</label>
                 <select id="package" name="package" required>
                     <option value = "" selected disabled hidden>--Please Select--</option>
                     <option value = "Essential">Essential(No Add-Ons)</option>
@@ -92,8 +92,8 @@
                     <option value = "Custom">Custom</option>
                 </select>
                 <br>
-                <label for="addons">Additional Test:<sup>*MENTION THE PACKAGE CHOSEN IF CUSTOM</sup></label><br>
-                <textarea type="text" id="addons" maxlength="100" name="addons" rows="4" cols="50"></textarea><br>
+                <label class="inline" for="addons">Additional Test: </label>
+                <textarea type="text" id="addons" placeholder="*MENTION THE PACKAGE CHOSEN IF CUSTOM" maxlength="100" name="addons" rows="4" cols="50"></textarea><br>
                 <br><br>
                 <div style="text-align: center;">
                     <input type="reset" class="btn btn-danger" value="Reset">
