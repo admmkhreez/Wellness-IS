@@ -3,13 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 24, 2022 at 06:56 AM
+-- Generation Time: Jun 29, 2022 at 04:44 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+08:00";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `date_of_birth` date NOT NULL,
   `address` varchar(100) NOT NULL,
   `email` varchar(320) DEFAULT NULL,
+  `telephone` varchar(15) DEFAULT NULL,
   `sex` varchar(6) NOT NULL,
   `occupation` varchar(30) DEFAULT NULL,
   `race` varchar(20) NOT NULL,
@@ -64,6 +65,8 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `package` varchar(20) DEFAULT NULL,
   `lastUpdateMH` datetime DEFAULT NULL,
   `registeredOn` datetime DEFAULT NULL,
+  `lastUpdateOn` datetime DEFAULT NULL,
+  `addons` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`mrn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -71,10 +74,12 @@ CREATE TABLE IF NOT EXISTS `patient` (
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`mrn`, `name`, `ic_passport`, `date_of_birth`, `address`, `email`, `sex`, `occupation`, `race`, `religion`, `marital_status`, `next_of_kin`, `relationship`, `telephone_nok`, `smoker`, `asthma`, `diabetes`, `heart_disease`, `hypertension`, `stroke`, `cancer`, `tuberculosis`, `skin_disease`, `kidneyp`, `fits_psychiatric`, `father_history`, `mother_history`, `siblings_history`, `habits`, `allergy`, `others`, `medication`, `package`, `lastUpdateMH`, `registeredOn`) VALUES
-('5555', 'Adam Mukhreez Jamaludin', '021209100743', '2002-12-09', '3 Jalan Emas 1, Taman Melawis', 'adammukhreez2002@gmail.com', 'Male', 'student', 'malay', 'islam', 'Single', 'Jamaludin', 'father', '0193206165', 'Yes', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', '-', '-', '-', '-', 'cats', 'lactose intolerant', '-', '', '2022-06-24 04:11:21', '2022-06-21 07:17:58'),
-('4565', 'Adam Mukhreez Jamaludin', '021209100743', '1998-06-10', '3 Jalan Emas 1, Taman Melawis', 'adammukhreez2002@gmail.com', 'Male', 'accountant', 'malay', 'islam', 'Seperated', 'Adam Mukhreez Jamaludin', 'friend', '01121002835', 'Yes', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', '-', '-', '-', '-', '-', '-', '-', 'Comprehensive', '2022-06-23 02:07:00', '2022-06-23 01:32:19'),
-('55555', 'Aiman', '030330103303', '2003-03-30', '3 Jalan Emas 1, Taman Melawis', 'man@mail.com', 'Male', '', 'malay', 'islam', 'Married', 'Aina', 'Wife', '0156564842', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Comprehensive', NULL, '2022-06-24 00:57:01');
+INSERT INTO `patient` (`mrn`, `name`, `ic_passport`, `date_of_birth`, `address`, `email`, `telephone`, `sex`, `occupation`, `race`, `religion`, `marital_status`, `next_of_kin`, `relationship`, `telephone_nok`, `smoker`, `asthma`, `diabetes`, `heart_disease`, `hypertension`, `stroke`, `cancer`, `tuberculosis`, `skin_disease`, `kidneyp`, `fits_psychiatric`, `father_history`, `mother_history`, `siblings_history`, `habits`, `allergy`, `others`, `medication`, `package`, `lastUpdateMH`, `registeredOn`, `lastUpdateOn`, `addons`) VALUES
+('1234', 'Imran Tono ', '122435465798', '2022-06-01', '3 Jalan Emas 1, Taman Melawis', 'imran@gmail.com', '01121002835', 'Female', 'student', 'malay', 'islam', 'Married', 'Kila', 'Wife', '911', 'Yes', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', '-', '-', '-', '-', '-', '-', '-', 'Essential', '2022-06-28 04:29:17', '2022-06-24 17:17:16', '2022-06-29 01:06:39', NULL),
+('12345', 'Amir', '52085285208', '2022-06-01', 'test', 'test@email.com', '3222541', 'Male', 'accountant', 'malay', 'islam', 'Married', 'Siti', 'Wife', '4135184', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Essential', NULL, '2022-06-29 02:36:22', NULL, NULL),
+('8552', 'Loga', '020202103325', '2002-02-02', 'Rumah', 'loga@gmail.com', '0147856936', 'Male', 'student', 'Indian', 'Buddha', 'Single', 'Thiva', 'Father', '0158764665', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Essential', NULL, '2022-06-28 08:09:10', NULL, NULL),
+('0220', 'Syafiq', '90123102452', '1990-01-23', 'Rumah', 'syafiq@gmail.com', '', 'Male', 'HR', 'Malay', 'Islam', 'Married', 'Ika', 'Wife', '0154886655', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', 'No', '-', '-', '-', '-', '-', '-', '-', 'Essential', '2022-06-28 08:23:05', '2022-06-28 06:33:48', '2022-06-28 08:22:22', NULL),
+('7894', 'Wong', '030330103303', '2003-03-30', 'Rumah', 'wong@gmail.com', '999', 'Male', 'Student', 'Chinese', 'Buddha', 'Single', 'Lim', 'Father', '1300882525', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Essential', NULL, '2022-06-29 02:31:37', '2022-06-29 02:35:25', '');
 
 -- --------------------------------------------------------
 
@@ -161,9 +166,35 @@ CREATE TABLE IF NOT EXISTS `record` (
 --
 
 INSERT INTO `record` (`mrn`, `appearance`, `weight`, `height`, `bmi`, `systolic`, `diastolic`, `pulse`, `va_aidedr`, `va_aidedl`, `va_unaidedr`, `va_unaidedl`, `colour_r`, `colour_l`, `fundoscopy_r`, `fundoscopy_l`, `nose`, `throat`, `neck`, `skin`, `excanal_r`, `excanal_l`, `eardrum_r`, `eardrum_l`, `discharged_r`, `discharged_l`, `sound`, `murmur`, `airentry`, `chestexp`, `breathsound`, `liver`, `spleen`, `kidney`, `mentalfunct`, `coordination`, `gait`, `genitalia`, `rectal`, `lpow_r`, `lpow_l`, `lref_r`, `lref_l`, `lsen_r`, `lsen_l`, `upow_r`, `upow_l`, `uref_r`, `uref_l`, `usen_r`, `usen_l`, `breast`, `lmp`, `gynaecology`, `lastps`, `cxr`, `ecg`, `mammogram`, `us_breast`, `us_abdopel`, `stresstest`, `pta`, `lft`, `urine`, `blood`, `impression`, `recommendation`, `lastUpdate`, `status`) VALUES
-('5555', 'Normal', 88, 190, 24.38, 120, 82, 85, '6/6', '6/6', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Healthy', 'Healthy', 'Unhealthy', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Palpable', 'Palpable', 'Palpable', 'Normal', 'Normal', 'Normal', 'Unknown', 'Unknown', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'NA', 'NA', 'NA', 'NA', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'abcdefghijklmnopqrstuvwxyz', 'zyxwvutsrqponmlkjihgfedcba', '2022-06-24 03:30:32', 1),
-('4565', 'Underweight', 50, 180, 15.43, 120, 80, 80, 'vaidedr', 'vaidedl', 'vuaidr', 'vuaidl', 'clrr', 'clrl', 'funr', 'funl', 'nose', 'throat', 'neck', 'skin', 'excr', 'excl', 'edr', 'edl', 'dcr', 'dcl', 'sound', 'murmurrrr', 'Normal', 'Normal', 'Normal', 'Palpable', 'Palpable', 'Palpable', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'lpr', 'lpl', 'lrr', 'lrl', 'lsr', 'lsl', 'upr', 'upl', 'urr', 'url', 'usr', 'usl', 'breast', 'lmp', 'gynae', 'lps', 'cxr', 'ecg', 'mammo', 'usb', 'usap', 'st', 'pta', 'lft', 'urine', 'blood', 'impressed', 'recommended', '2022-06-24 01:16:33', 1),
-('55555', 'Underweight', 55, 180, 16.98, 120, 80, 80, '6/6', '6/6', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Healthy', 'Healthy', 'Unhealthy', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Palpable', 'Palpable', 'Palpable', 'Normal', 'Normal', 'Normal', 'Unknown', 'Unknown', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'NA', 'NA', 'NA', 'NA', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', '1324658', '845612498465132', '2022-06-24 03:16:11', 1);
+('1234', 'Underweight', 55, 178, 17.36, 120, 80, 88, '6/6', '6/6', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Healthy', 'Healthy', 'Unhealthy', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Palpable', 'Palpable', 'Palpable', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'NA', 'NA', 'NA', 'NA', 'Normal', 'Normal', 'Normal', NULL, NULL, NULL, 'Normal', 'Normal', 'Normal', 'Normal', 'abcdef', 'defghi', '2022-06-28 06:27:40', 1),
+('8552', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('7894', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('12345', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('0220', 'Normal', 65, 175, 21.22, 120, 80, 88, '6/6', '6/6', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Healthy', 'Healthy', 'Unhealthy', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Palpable', 'Palpable', 'Palpable', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', 'Normal', NULL, NULL, NULL, NULL, 'Normal', 'Normal', NULL, NULL, NULL, NULL, NULL, NULL, 'Normal', 'Normal', 'qwerty', 'uiop', '2022-06-28 07:39:54', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `username` varchar(15) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `type` varchar(10) NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`username`, `password`, `name`, `type`) VALUES
+('admin', 'admin', '', 'admin'),
+('user1', 'abcd.1234', 'Dr. Shobana Supramaniam', 'Doctor'),
+('user2', 'abcd.1234', 'Nurse', 'staff');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
