@@ -26,8 +26,12 @@ $resultCheck = $conn->query($queryCheck);
 
     if ($resultCheck->num_rows == 0) 
     { //if no record match
-        echo "<p style='color:red;'>User does not exist</p>";
-        echo "<br>Click <a href='log-in.html'> here </a> to LOGIN again.";
+?>
+        <script type="text/javascript">
+            alert("Incorrect Username");
+            window.location.href = "log-in.html";
+        </script>
+<?php
 	}
 	else
     {	// record matched, get the data
@@ -39,17 +43,20 @@ $resultCheck = $conn->query($queryCheck);
                 $_SESSION["username"] = $username ;
                 $_SESSION["type"] = $row["type"];
                 $_SESSION["name"] = $row["name"];
-                //redirect to page menu.php
+                //redirect to page homepage.php
                 header("Location:homepage.php");
 		    }
             else
             {
-                echo "<p style='color:red;'>Wrong Password!!!</p>";
-                echo "<br>Click <a href='log-in.html'> here </a> to login again.";
+?>
+                <script type="text/javascript">
+                    alert("Incorrect Password");
+                    window.location.href = "log-in.html";
+                </script>
+<?php
             }
-	
         }
-        $conn->close();
     }
 }
+$conn->close();
 ?>

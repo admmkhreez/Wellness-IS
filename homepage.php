@@ -2,12 +2,12 @@
 <html>
     <?php
         session_start();
-        if(isset($_SESSION["type"])) {
+        if(isset($_SESSION["username"])) {
     ?>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Wellness Information System</title>
+        <title>KPJ Klang Wellness IS</title>
         <link rel="stylesheet" href="test.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
@@ -27,17 +27,28 @@
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
+                    <?php
+                        if($_SESSION["type"] == "admin"){
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="viewUser.php">View User</a>
+                    </li>
+                    <?php
+                        }
+                    ?>
                 </ul>
                 <a class="nav-link" href="logout.php">Logout</a>
             </div>
         </nav>
         <br>
         <h1>KPJ Klang Wellness Information System</h1>
+        <br><br>
+        <h2  style="color: white; text-align:center;">Register Patient</h2>
         <br>
-        <h2 style="color:white; text-align:center;">Register Patient</h2>
         <form action="insertRegister.php" method="post">
             <div class="container">
                 <h5>Patient's Information</h5>
+                <hr>
                 <label class="inline" for="mrn">MRN: </label>
                 <input type="text" id="mrn" maxlength="10" placeholder="MRN" name="mrn" required><br>
                 <label class="inline" for="name">Name: </label>
@@ -101,8 +112,8 @@
                     <input type="submit" class="btn btn-primary" value="Register">
                 </div>
             </div>
-        
         </form>
+        <br><br>
     </body>
     <?php
         }

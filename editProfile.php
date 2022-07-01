@@ -2,12 +2,12 @@
 <html>
     <?php
         session_start();
-        if(isset($_SESSION["type"])) {
+        if(isset($_SESSION["username"])) {
     ?>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Patient Registration</title>
+        <title>KPJ Klang Wellness IS</title>
         <link rel="stylesheet" href="test.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
@@ -45,6 +45,15 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="selectPatient.php">Search Patient</a>
                         </li>
+                        <?php
+                            if($_SESSION["type"] == "admin"){
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="viewUser.php">View User</a>
+                        </li>
+                        <?php
+                            }
+                        ?>
                     </ul>
                     <a class="nav-link" href="logout.php">Logout</a>
                 </div>

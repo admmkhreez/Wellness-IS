@@ -45,7 +45,7 @@ input[type=text], input[type=number], input[type=password], input[type=email], i
     padding:10px;
     border-radius:10px;;
     margin: 5px 0;
-    width: 200px;
+    width: 350px;
     box-shadow:15px 10px 25px 5px rgba(0,0,0,0.1);
     border: 1px solid #eee;
     transition: .3s border-color;
@@ -86,4 +86,7 @@ label.inline-radio {
     display: inline-block;
     width: 100px;
     font-weight: bold;
+}
+.fail{
+    color:red;
 }
