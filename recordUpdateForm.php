@@ -100,6 +100,8 @@
             <dd class="col-sm-9"><?php echo $row["name"];?></dd>
             <dt class="col-sm-3">MRN: </dt>
             <dd class="col-sm-9"><?php echo $mrn;?></dd>
+            <dt class="col-sm-3">Done by: </dt>
+            <dd class="col-sm-9"><?php echo $row["doneBy"];?></dd>
         </dl>  
         <form action="updateRecord.php" method="post">
             <label class="inline" for="appearance">General Appearance: </label>
@@ -114,6 +116,7 @@
             <input type="number" id="diastolic" step="1" name="diastolic" value="<?php echo $row["diastolic"];?>"><br>
             <label class="inline" for="pulse">Pulse: </label>
             <input type="number" id="pulse" step="1" name="pulse" value="<?php echo $row["pulse"];?>"><br>
+        <div class="lrcol">
             <h3>Eyes</h3>
             Visual Acuity (Aided)<br>
             <label class="inline" for="va_aidedl">Left: </label>
@@ -136,6 +139,7 @@
             <label class="inline" for="fundoscopy_r">Right: </label>
             <input type="text" id="fundoscopy_r"name="fundoscopy_r" value="<?php echo $row["fundoscopy_r"];?>">   
             <br><br>
+        </div>
             <label class="inline" for="nose">Nose: </label>
             <input type="text" id="nose" name="nose" value="<?php echo $row["nose"];?>"><br>
             <label class="inline" for="throat">Throat: </label>
@@ -144,6 +148,7 @@
             <input type="text" id="neck" name="neck" value="<?php echo $row["neck"];?>"><br>
             <label class="inline" for="skin">Skin: </label>
             <input type="text" id="skin" name="skin" value="<?php echo $row["skin"];?>"><br>
+        <div class="lrcol">
             <h3>Ears</h3>
             External Canal<br>
             <label class="inline" for="excanal_l">Left: </label>
@@ -160,6 +165,7 @@
             <input type="text" id="discharged_l" name="discharged_l" value="<?php echo $row["discharged_l"];?>">
             <label class="inline" for="discharged_r">Right: </label>
             <input type="text" id="discharged_r" name="discharged_r" value="<?php echo $row["discharged_r"];?>">
+        </div>
             <h3>Cardiovascular System</h3>
             <label class="inline" for="sound">Sound: </label>
             <input type="text" id="sound" name="sound" value="<?php echo $row["sound"];?>"><br>
@@ -167,67 +173,68 @@
             <input type="text" id="murmur" name="murmur" value="<?php echo $row["murmur"];?>"><br>
             <h3>Respiratory System</h3>
             Air Entry<br>
-            <input type="radio" id="normal" name="airentry" value="Normal" <?php if ($row['airentry'] == "Normal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="normal" name="airentry" value="Normal" <?php if ($row['airentry'] == "Normal") echo "checked"; ?>>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="airentry" value="Abnormal"<?php if ($row['airentry']== "Abnormal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="abnormal" name="airentry" value="Abnormal"<?php if ($row['airentry']== "Abnormal") echo "checked"; ?>>
             <label class="inline-radio" for="abnormal">Abnormal</label>
             <br>Chest Expansion<br>
-            <input type="radio" id="normal" name="chestexp" value="Normal" <?php if ($row['chestexp'] == "Normal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="normal" name="chestexp" value="Normal" <?php if ($row['chestexp'] == "Normal") echo "checked"; ?>>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="chestexp" value="Abnormal"<?php if ($row['chestexp']== "Abnormal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="abnormal" name="chestexp" value="Abnormal"<?php if ($row['chestexp']== "Abnormal") echo "checked"; ?>>
             <label class="inline-radio" for="abnormal">Abnormal</label>
             <br>Breath Sound<br>
-            <input type="radio" id="normal" name="breathsound" value="Normal" <?php if ($row['breathsound'] == "Normal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="normal" name="breathsound" value="Normal" <?php if ($row['breathsound'] == "Normal") echo "checked"; ?>>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="breathsound" value="Abnormal"<?php if ($row['breathsound']== "Abnormal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="abnormal" name="breathsound" value="Abnormal"<?php if ($row['breathsound']== "Abnormal") echo "checked"; ?>>
             <label class="inline-radio" for="abnormal">Abnormal</label>
             <h3>Gastrointestinal System</h3>
             Liver<br>
-            <input type="radio" id="palpable" name="liver" value="Palpable" <?php if ($row['liver'] == "Palpable") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="palpable" name="liver" value="Palpable" <?php if ($row['liver'] == "Palpable") echo "checked"; ?>>
             <label class="inline-radio" for="palpable">Palpable</label>
-            <input type="radio" id="notpalpable" name="liver" value="Not Palpable" <?php if ($row['liver'] == "Not Palpable") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="notpalpable" name="liver" value="Not Palpable" <?php if ($row['liver'] == "Not Palpable") echo "checked"; ?>>
             <label class="inline-radio" for="notpalpable">Not Palpable</label>
             <br>Spleen<br>
-            <input type="radio" id="palpable" name="spleen" value="Palpable" <?php if ($row['spleen'] == "Palpable") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="palpable" name="spleen" value="Palpable" <?php if ($row['spleen'] == "Palpable") echo "checked"; ?>>
             <label class="inline-radio" for="palpable">Palpable</label>
-            <input type="radio" id="notpalpable" name="spleen" value="Not Palpable" <?php if ($row['spleen'] == "Not Palpable") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="notpalpable" name="spleen" value="Not Palpable" <?php if ($row['spleen'] == "Not Palpable") echo "checked"; ?>>
             <label class="inline-radio" for="notpalpable">Not Palpable</label>
             <br>Kidney<br>
-            <input type="radio" id="palpable" name="kidney" value="Palpable" <?php if ($row['kidney'] == "Palpable") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="palpable" name="kidney" value="Palpable" <?php if ($row['kidney'] == "Palpable") echo "checked"; ?>>
             <label class="inline-radio" for="palpable">Palpable</label>
-            <input type="radio" id="notpalpable" name="kidney" value="Not Palpable" <?php if ($row['kidney'] == "Not Palpable") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="notpalpable" name="kidney" value="Not Palpable" <?php if ($row['kidney'] == "Not Palpable") echo "checked"; ?>>
             <label class="inline-radio" for="notpalpable">Not Palpable</label>
             <h3>Central Nervous System</h3>
             Mental Function<br>
-            <input type="radio" id="normal" name="mentalfunct" value="Normal" <?php if ($row['mentalfunct'] == "Normal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="normal" name="mentalfunct" value="Normal" <?php if ($row['mentalfunct'] == "Normal") echo "checked"; ?>>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="mentalfunct" value="Abnormal"<?php if ($row['mentalfunct']== "Abnormal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="abnormal" name="mentalfunct" value="Abnormal"<?php if ($row['mentalfunct']== "Abnormal") echo "checked"; ?>>
             <label class="inline-radio" for="abnormal">Abnormal</label>
             <br>Coordination<br>
-            <input type="radio" id="normal" name="coordination" value="Normal" <?php if ($row['coordination'] == "Normal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="normal" name="coordination" value="Normal" <?php if ($row['coordination'] == "Normal") echo "checked"; ?>>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="coordination" value="Abnormal"<?php if ($row['coordination']== "Abnormal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="abnormal" name="coordination" value="Abnormal"<?php if ($row['coordination']== "Abnormal") echo "checked"; ?>>
             <label class="inline-radio" for="abnormal">Abnormal</label>
             <br>Gait<br>
-            <input type="radio" id="normal" name="gait" value="Normal" <?php if ($row['gait'] == "Normal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="normal" name="gait" value="Normal" <?php if ($row['gait'] == "Normal") echo "checked"; ?>>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="gait" value="Abnormal"<?php if ($row['gait']== "Abnormal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="abnormal" name="gait" value="Abnormal"<?php if ($row['gait']== "Abnormal") echo "checked"; ?>>
             <label class="inline-radio" for="abnormal">Abnormal</label>
             <h3>Genitourinary System</h3>
             Genitalia<br>
-            <input type="radio" id="normal" name="genitalia" value="Normal" <?php if ($row['genitalia'] == "Normal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="normal" name="genitalia" value="Normal" <?php if ($row['genitalia'] == "Normal") echo "checked"; ?>>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="genitalia" value="Abnormal"<?php if ($row['genitalia']== "Abnormal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="abnormal" name="genitalia" value="Abnormal"<?php if ($row['genitalia']== "Abnormal") echo "checked"; ?>>
             <label class="inline-radio" for="abnormal">Abnormal</label>
-            <input type="radio" id="unknown" name="genitalia" value="Unknown"<?php if ($row['genitalia']== "Abnormal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="unknown" name="genitalia" value="Unknown"<?php if ($row['genitalia']== "Abnormal") echo "checked"; ?>>
             <label class="inline-radio" for="unknown">Unknown</label>
             <br>Rectal Examination<br>
-            <input type="radio" id="normal" name="rectal" value="Normal" <?php if ($row['rectal'] == "Normal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="normal" name="rectal" value="Normal" <?php if ($row['rectal'] == "Normal") echo "checked"; ?>>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="rectal" value="Abnormal"<?php if ($row['rectal']== "Abnormal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="abnormal" name="rectal" value="Abnormal"<?php if ($row['rectal']== "Abnormal") echo "checked"; ?>>
             <label class="inline-radio" for="abnormal">Abnormal</label>
-            <input type="radio" id="unknown" name="rectal" value="Unknown"<?php if ($row['genitalia']== "Abnormal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="unknown" name="rectal" value="Unknown"<?php if ($row['genitalia']== "Abnormal") echo "checked"; ?>>
             <label class="inline-radio" for="unknown">Unknown</label>
+        <div class="lrcol">
             <h3>Musculoskeletal System</h3>
             <h4>Lower Limb</h4>
             Power<br>
@@ -261,6 +268,7 @@
             <input type="text" id="usen_l" name="usen_l" value="<?php echo $row["usen_l"];?>">
             <label class="inline" for="usen_r">Right: </label>
             <input type="text" id="usen_r" name="usen_r" value="<?php echo $row["usen_r"];?>">
+        </div>
             <?php
                 if ($row["sex"] == 'Female' ){
             ?>

@@ -21,7 +21,6 @@
         $username = "root";
         $password = "";
         $db = "wellness_is";
-        $date = date("Y-m-d H:i:s");
         $conn = new mysqli($servername, $username, $password, $db);
 
         if ($conn->connect_error)

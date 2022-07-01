@@ -86,6 +86,7 @@
             <input type="number" id="diastolic" step="1" name="diastolic" required><br>
             <label class="inline" for="pulse">Pulse: </label>
             <input type="number" id="pulse" step="1" name="pulse" required><br>
+        <div class="lrcol">
             <h3>Eyes</h3>
             Visual Acuity (Aided)<br>
             <label class="inline" for="va_aidedl">Left: </label>
@@ -106,7 +107,8 @@
             <label class="inline" for="fundoscopy_l">Left: </label>
             <input type="text" id="fundoscopy_l" name="fundoscopy_l" required>
             <label class="inline" for="fundoscopy_r">Right: </label>
-            <input type="text" id="fundoscopy_r"name="fundoscopy_r" required>   
+            <input type="text" id="fundoscopy_r"name="fundoscopy_r" required>  
+        </div> 
             <br><br>
             <label class="inline" for="nose">Nose: </label>
             <input type="text" id="nose" name="nose" required><br>
@@ -116,6 +118,7 @@
             <input type="text" id="neck" name="neck" required><br>
             <label class="inline" for="skin">Skin: </label>
             <input type="text" id="skin" name="skin" required><br>
+        <div class="lrcol">
             <h3>Ears</h3>
             External Canal<br>
             <label class="inline" for="excanal_l">Left: </label>
@@ -132,6 +135,7 @@
             <input type="text" id="discharged_l" name="discharged_l" required>
             <label class="inline" for="discharged_r">Right: </label>
             <input type="text" id="discharged_r" name="discharged_r" required>
+        </div>
             <h3>Cardiovascular System</h3>
             <label class="inline" for="sound">Sound: </label>
             <input type="text" id="sound" name="sound" required><br>
@@ -139,67 +143,68 @@
             <input type="text" id="murmur" name="murmur" required><br>
             <h3>Respiratory System</h3>
             Air Entry<br>
-            <input type="radio" id="normal" name="airentry" value="Normal" required>
+            <input type="radio" class="form-check-input" id="normal" name="airentry" value="Normal" required>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="airentry" value="Abnormal">
+            <input type="radio" class="form-check-input" id="abnormal" name="airentry" value="Abnormal">
             <label class="inline-radio" for="abnormal">Abnormal</label>
             <br>Chest Expansion<br>
-            <input type="radio" id="normal" name="chestexp" value="Normal" required>
+            <input type="radio" class="form-check-input" id="normal" name="chestexp" value="Normal" required>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="chestexp" value="Abnormal">
+            <input type="radio" class="form-check-input" id="abnormal" name="chestexp" value="Abnormal">
             <label class="inline-radio" for="abnormal">Abnormal</label>
             <br>Breath Sound<br>
-            <input type="radio" id="normal" name="breathsound" value="Normal" required>
+            <input type="radio" class="form-check-input" id="normal" name="breathsound" value="Normal" required>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="breathsound" value="Abnormal">
+            <input type="radio" class="form-check-input" id="abnormal" name="breathsound" value="Abnormal">
             <label class="inline-radio" for="abnormal">Abnormal</label>
             <h3>Gastrointestinal System</h3>
             Liver<br>
-            <input type="radio" id="palpable" name="liver" value="Palpable" required>
+            <input type="radio" class="form-check-input" id="palpable" name="liver" value="Palpable" required>
             <label class="inline-radio" for="palpable">Palpable</label>
-            <input type="radio" id="notpalpable" name="liver" value="Not Palpable">
+            <input type="radio" class="form-check-input" id="notpalpable" name="liver" value="Not Palpable">
             <label class="inline-radio" for="notpalpable">Not Palpable</label>
             <br>Spleen<br>
-            <input type="radio" id="palpable" name="spleen" value="Palpable" required>
+            <input type="radio" class="form-check-input" id="palpable" name="spleen" value="Palpable" required>
             <label class="inline-radio" for="palpable">Palpable</label>
-            <input type="radio" id="notpalpable" name="spleen" value="Not Palpable">
+            <input type="radio" class="form-check-input" id="notpalpable" name="spleen" value="Not Palpable">
             <label class="inline-radio" for="notpalpable">Not Palpable</label>
             <br>Kidney<br>
-            <input type="radio" id="palpable" name="kidney" value="Palpable" required>
+            <input type="radio" class="form-check-input" id="palpable" name="kidney" value="Palpable" required>
             <label class="inline-radio" for="palpable">Palpable</label>
-            <input type="radio" id="notpalpable" name="kidney" value="Not Palpable">
+            <input type="radio" class="form-check-input" id="notpalpable" name="kidney" value="Not Palpable">
             <label class="inline-radio" for="notpalpable">Not Palpable</label>
             <h3>Central Nervous System</h3>
             Mental Function<br>
-            <input type="radio" id="normal" name="mentalfunct" value="Normal" required>
+            <input type="radio" class="form-check-input" id="normal" name="mentalfunct" value="Normal" required>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="mentalfunct" value="Abnormal">
+            <input type="radio" class="form-check-input" id="abnormal" name="mentalfunct" value="Abnormal">
             <label class="inline-radio" for="abnormal">Abnormal</label>
             <br>Coordination<br>
-            <input type="radio" id="normal" name="coordination" value="Normal" required>
+            <input type="radio" class="form-check-input" id="normal" name="coordination" value="Normal" required>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="coordination" value="Abnormal">
+            <input type="radio" class="form-check-input" id="abnormal" name="coordination" value="Abnormal">
             <label class="inline-radio" for="abnormal">Abnormal</label>
             <br>Gait<br>
-            <input type="radio" id="normal" name="gait" value="Normal" required>
+            <input type="radio" class="form-check-input" id="normal" name="gait" value="Normal" required>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="gait" value="Abnormal">
+            <input type="radio" class="form-check-input" id="abnormal" name="gait" value="Abnormal">
             <label class="inline-radio" for="abnormal">Abnormal</label>
             <h3>Genitourinary System</h3>
             Genitalia<br>
-            <input type="radio" id="normal" name="genitalia" value="Normal" required>
+            <input type="radio" class="form-check-input" id="normal" name="genitalia" value="Normal" required>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="genitalia" value="Abnormal">
+            <input type="radio" class="form-check-input" id="abnormal" name="genitalia" value="Abnormal">
             <label class="inline-radio" for="abnormal">Abnormal</label>
-            <input type="radio" id="unknown" name="genitalia" value="Unknown">
+            <input type="radio" class="form-check-input" id="unknown" name="genitalia" value="Unknown">
             <label class="inline-radio" for="unknown">Unknown</label>
             <br>Rectal Examination<br>
-            <input type="radio" id="normal" name="rectal" value="Normal" required>
+            <input type="radio" class="form-check-input" id="normal" name="rectal" value="Normal" required>
             <label class="inline-radio" for="normal">Normal</label>
-            <input type="radio" id="abnormal" name="rectal" value="Abnormal">
+            <input type="radio" class="form-check-input" id="abnormal" name="rectal" value="Abnormal">
             <label class="inline-radio" for="abnormal">Abnormal</label>
-            <input type="radio" id="unknown" name="rectal" value="Unknown">
+            <input type="radio" class="form-check-input" id="unknown" name="rectal" value="Unknown">
             <label class="inline-radio" for="unknown">Unknown</label>
+        <div class="lrcol">
             <h3>Musculoskeletal System</h3>
             <h4>Lower Limb</h4>
             Power<br>
@@ -233,6 +238,7 @@
             <input type="text" id="usen_l" name="usen_l" required>
             <label class="inline" for="usen_r">Right: </label>
             <input type="text" id="usen_r" name="usen_r" required>
+        </div>
             <?php
                 if ($row['sex'] == 'Female' ){
             ?>
@@ -296,6 +302,7 @@
             <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
             <input type="hidden" name="sex" value="<?php echo $row['sex'];?>">
             <input type="hidden" name="package" value="<?php echo $row['package'];?>">
+            <input type="hidden" name="name" value="<?php echo $row["name"];?>">
         </form>
         <?php
                     }

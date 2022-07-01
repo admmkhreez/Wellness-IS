@@ -90,3 +90,6 @@ label.inline-radio {
 .fail{
     color:red;
 }
+.lrcol input{
+    width: 150px;
+}

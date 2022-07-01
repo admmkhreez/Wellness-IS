@@ -89,8 +89,6 @@
             <input type="submit" class="btn btn-primary" value="Update Info">
             <input type="hidden" name="id" value="<?php echo $id;?>">
         </div>
-            
-        
         </form>
         <?php
             }

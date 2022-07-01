@@ -65,9 +65,9 @@
                 <input type="tel" id="telephone" name="telephone" placeholder="Telephone" maxlength="15"><br>
                 <fieldset>
                 <legend>Sex:</legend>
-                    <input type="radio" id="male" name="sex" value="Male"required>
+                    <input type="radio" class="form-check-input" id="male" name="sex" value="Male"required>
                     <label class="inline-radio" for="male">Male</label>
-                    <input type="radio" id="female" name="sex" value="Female"required>
+                    <input type="radio" class="form-check-input" id="female" name="sex" value="Female"required>
                     <label class="inline-radio" for="female">Female</label>
                 </fieldset><br>
                 <label class="inline" for="occupation">Occupation: </label>

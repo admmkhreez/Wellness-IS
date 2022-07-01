@@ -88,7 +88,7 @@
             ?> 
                 <tbody style="background-color:white;">
                     <tr>
-                        <td class="text-center"><input type="radio" name="id" value="<?php echo $row["ID"];?>" required></td>
+                        <td class="text-center"><input type="radio" class="form-check-input" name="id" value="<?php echo $row["ID"];?>" required></td>
                         <td><?php echo $row['username'];?></td>
                         <td><?php echo $row['name'];?></td>
                         <td><?php echo $row['type'];?></td>
