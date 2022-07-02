@@ -31,7 +31,7 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="viewRecord.php">View Patients</a>
+                            <a class="nav-link" href="viewRecord.php">View Patients</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="selectRecord.php">Fill form</a>
@@ -40,7 +40,7 @@
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewReport.php">View Report</a>
+                            <a class="nav-link active" href="viewReport.php">View Report</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -58,9 +58,10 @@
             <br>
             <h1>Patient's Record</h1>
             <br>
-            <form method="post" style="text-align: center;">
-                <input type="text" placeholder="MRN/Name/IC/Passport/Email" name="keyword">
-                <button formaction="searchRecord.php" class="btn btn-primary">Search</button>
+            <form method="post" style="text-align: center; color: white;">
+                Between <input type="date" name="startDate"> And
+                <input type="date" name="endDate">
+                <button formaction="searchReport.php" class="btn btn-primary">Search</button>
             </form>
             <br><br>
             <table style="width: 100%;" class="table table-bordered">
@@ -108,7 +109,7 @@
         
             $start_from = ($page-1) * $per_page_record;     
         
-            $query = "SELECT a.mrn, name, ic_passport, address, email, lastUpdateMH, lastUpdate, registeredOn, package  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY registeredOn DESC LIMIT ". $start_from. ", " .$per_page_record;
+            $query = "SELECT a.mrn, name, ic_passport, address, email, lastUpdateMH, lastUpdate, registeredOn, package  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
             $rs_result = mysqli_query ($conn, $query);     
 
             while ($row = mysqli_fetch_array($rs_result)) {  
@@ -170,10 +171,8 @@
                 }
                 else
                 {
-                    echo "<script type='text/javascript'>";
-                    echo "alert('Session does not exist. Please login again');";
-                    echo "window.location.href = 'log-in.html';";
-                    echo "</script>";
+                    echo "No session exist or session has expired. Please log in again.<br>";
+                    echo "<a href=log-in.html> Login </a>";
                 }
                 ?> 
         </body>

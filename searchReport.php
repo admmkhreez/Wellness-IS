@@ -11,7 +11,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
         <?php
-            $kw = $_POST["keyword"];
+            $start = $_POST["startDate"];
+            $end = $_POST["endDate"];
             $servername = "localhost";
             $username = "root";
             $password = "";
@@ -32,7 +33,7 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="viewRecord.php">View Patients</a>
+                            <a class="nav-link" href="viewRecord.php">View Patients</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="selectRecord.php">Fill form</a>
@@ -41,7 +42,7 @@
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewReport.php">View Report</a>
+                            <a class="nav-link active" href="viewReport.php">View Report</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -59,14 +60,15 @@
             <br>
             <h1>Patient's Record</h1>
             <br>
-            <form method="post" style="text-align: center;">
-                <input type="text" placeholder="MRN/Name/IC/Passport/Email" name="keyword" value="<?php echo $kw;?>">
-                <button formaction="searchRecord.php" class="btn btn-primary">Search</button>
+            <form method="post" style="text-align: center; color: white;">
+                Between <input type="date" name="startDate" value="<?php echo $start;?>"> And
+                <input type="date" name="endDate" value="<?php echo $end;?>">
+                <button formaction="searchReport.php" class="btn btn-primary">Search</button>
             </form>
             <br>
         <?php    
             $display = "SELECT a.mrn, name, ic_passport, address, email, lastUpdateMH, b.lastUpdate, registeredOn, package FROM patient a INNER JOIN record b
-            ON a.mrn = b.mrn WHERE a.mrn LIKE '%$kw%' OR a.name LIKE '%$kw%' OR a.ic_passport LIKE '%$kw%' OR a.email LIKE '%$kw%'";
+            ON a.mrn = b.mrn WHERE b.lastUpdate BETWEEN '".$start."' AND '".$end."'";
             $data = $conn->query($display);
         ?>
                 <table style="width: 100%;" height="100%" class="table table-bordered">

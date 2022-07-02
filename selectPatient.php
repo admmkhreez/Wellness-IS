@@ -12,8 +12,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
     <body style="text-align: center;">
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-                <div class="container-fluid">
+        <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
+                <div class="container-sm">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="homepage.php">Home</a>
@@ -26,6 +26,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="selectPatient.php">Search Patient</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="viewReport.php">View Report</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -55,8 +58,10 @@
         }
         else
         {
-        echo "No session exists or session has expired. Please log in again.<br>";
-        echo "<a href=log-in.html> Login </a>";
+            echo "<script type='text/javascript'>";
+            echo "alert('Session does not exist. Please login again');";
+            echo "window.location.href = 'log-in.html';";
+            echo "</script>";
         }
     ?>
 </html>
