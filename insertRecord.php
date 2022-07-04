@@ -118,7 +118,7 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewRecord.php">View Patients</a>
+                            <a class="nav-link" href="viewRecord.php">Patient's Record</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="selectRecord.php">Fill form</a>
@@ -127,7 +127,7 @@
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewReport.php">View Report</a>
+                            <a class="nav-link" href="viewReport.php">Chronological Summary</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -370,9 +370,9 @@
                     <dt class="col-sm-3">Blood: </dt>
                     <dd class="col-sm-9"><?php echo $blood;?></dd>
                     <dt class="col-sm-3">Impression: </dt>
-                    <dd class="col-sm-9"><?php echo $impression;?></dd>
+                    <dd class="col-sm-9"><?php echo nl2br($impression);?></dd>
                     <dt class="col-sm-3">Recommendation: </dt>
-                    <dd class="col-sm-9"><?php echo $recommendation;?></dd>
+                    <dd class="col-sm-9"><?php echo nl2br($recommendation);?></dd>
                 </dl>
                 </div>
             

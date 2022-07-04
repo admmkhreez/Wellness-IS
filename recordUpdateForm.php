@@ -37,7 +37,7 @@
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewRecord.php">View Patients</a>
+                        <a class="nav-link" href="viewRecord.php">Patient's Record</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectRecord.php">Fill form</a>
@@ -46,7 +46,7 @@
                         <a class="nav-link active" href="selectPatient.php">Search Patient</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewReport.php">View Report</a>
+                        <a class="nav-link" href="viewReport.php">Chronological Summary</a>
                     </li>
                     <?php
                         if($_SESSION["type"] == "admin"){

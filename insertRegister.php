@@ -30,6 +30,7 @@
         if($package == "Custom"){
             $addons = $_POST["addons"];
         }
+        $pic = $_SESSION["name"];
 
         $servername = "localhost";
         $username = "root";
@@ -51,7 +52,7 @@
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewRecord.php">View Patients</a>
+                        <a class="nav-link" href="viewRecord.php">Patient's Record</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectRecord.php">Fill form</a>
@@ -60,7 +61,7 @@
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewReport.php">View Report</a>
+                        <a class="nav-link" href="viewReport.php">Chronological Summary</a>
                     </li>
                     <?php
                         if($_SESSION["type"] == "admin"){
@@ -85,64 +86,44 @@
         {
             while($row=$data->fetch_assoc())
             {
-                if ($data === FALSE)
+                if ($mrn == $row['mrn'])
                 {
-        ?>
-        <div class="container">
-            <p>MRN: <?php echo $mrn;?></p>
-            <p>Name: <?php echo $name;?></p>
-            <p>I/C No/Passport: <?php echo $icpp;?></p>
-            <p>Date of Birth: <?php echo $dob;?></p>
-            <p>Home Address: <?php echo $address;?></p>
-            <p>E-mail Address: <?php echo $email;?></p>
-            <p>Telephone: <?php echo $tel;?></p>
-            <p>Sex: <?php echo $sex;?></p>
-            <p>Occupation: <?php echo $occupation;?></p>
-            <p>Race: <?php echo $race;?></p>
-            <p>Religion: <?php echo $religion;?></p>
-            <p>Marital Status: <?php echo $mstatus;?></p>
-            <p>Next of Kin: <?php echo $nok;?></p>
-            <p>Relationship: <?php echo $rs;?></p>
-            <p>Telephone No.: <?php echo $tel_nok;?></p>
-            <p>Package Selected: <?php echo $package;?></p>
-        </div>
-    
-    <?php
-                    }
-                    else{
-                        echo "<div class='container'><p>Record already exist, click <a href='viewRecord.php'>here</a> to view</p>";
-                        die;
-                    }
+                    echo "<div class='container'><p>Record already exist, click <a href='viewRecord.php'>here</a> to view</p></div>";
+                    die;
                 }       
+            }       
+        }
+            if($package == "Custom"){
+                $insert1 = "INSERT INTO patient (mrn, name, ic_passport, date_of_birth, address, email, telephone, sex, occupation, race, religion, marital_status, next_of_kin, relationship, telephone_nok, registeredOn, package, addons, pic) 
+                VALUES ('".$mrn."', '".$name."', '".$icpp."', '".$dob."', '".$address."', '".$email."', '".$tel."', '".$sex."', '".$occupation."', '".$race."', '".$religion."', '".$mstatus."', '".$nok."', '".$rs."', '".$tel_nok."', '".$date."', '".$package."', '".$addons."', '".$pic."')";
             }
-        if($package == "Custom"){
-            $insert1 = "INSERT INTO patient (mrn, name, ic_passport, date_of_birth, address, email, telephone, sex, occupation, race, religion, marital_status, next_of_kin, relationship, telephone_nok, registeredOn, package, addons) 
-            VALUES ('".$mrn."', '".$name."', '".$icpp."', '".$dob."', '".$address."', '".$email."', '".$tel."', '".$sex."', '".$occupation."', '".$race."', '".$religion."', '".$mstatus."', '".$nok."', '".$rs."', '".$tel_nok."', '".$date."', '".$package."', '".$addons."')";
-        }
-        else{
-            $insert1 = "INSERT INTO patient (mrn, name, ic_passport, date_of_birth, address, email, telephone, sex, occupation, race, religion, marital_status, next_of_kin, relationship, telephone_nok, registeredOn, package, addons) 
-            VALUES ('".$mrn."', '".$name."', '".$icpp."', '".$dob."', '".$address."', '".$email."', '".$tel."', '".$sex."', '".$occupation."', '".$race."', '".$religion."', '".$mstatus."', '".$nok."', '".$rs."', '".$tel_nok."', '".$date."', '".$package."', NULL)";
-        }
-        $insert2 = "INSERT INTO record (mrn) VALUES ('".$mrn."')";
+            else{
+                $insert1 = "INSERT INTO patient (mrn, name, ic_passport, date_of_birth, address, email, telephone, sex, occupation, race, religion, marital_status, next_of_kin, relationship, telephone_nok, registeredOn, package, addons, pic) 
+                VALUES ('".$mrn."', '".$name."', '".$icpp."', '".$dob."', '".$address."', '".$email."', '".$tel."', '".$sex."', '".$occupation."', '".$race."', '".$religion."', '".$mstatus."', '".$nok."', '".$rs."', '".$tel_nok."', '".$date."', '".$package."', NULL, '".$pic."')";
+            }
+            $insert2 = "INSERT INTO record (mrn) VALUES ('".$mrn."')";
 
-        if ($conn->query($insert1) && $conn->query($insert2 )=== TRUE)
-        {
-            echo "<br><div class='container'><span class='success'>Successfully registered patient</span></div>";
-        }
-        else
-        {
-            echo "Error : " . $conn->error;
-        }
-        $conn->close();
-        }
-        else
-        {
-            echo "<script type='text/javascript'>";
-            echo "alert('Session does not exist. Please login again');";
-            echo "window.location.href = 'log-in.html';";
-            echo "</script>";
-        }
-    ?>
-        <br><button class="btn btn-primary" onclick="window.location.href='homepage.php'">Back to Home Page</button>
+            if ($conn->query($insert1) && $conn->query($insert2 )=== TRUE)
+            {
+            ?>
+                <br><div class='container'><span class='success'>Successfully registered patient</span><br><br>
+                <button class='btn btn-primary' onclick="window.location.href='homepage.php'">Back to Home Page</button></div>
+            <?php
+            }
+            else
+            {
+                echo "Error : " . $conn->error;
+            }
+            $conn->close();
+            }
+            else
+            {
+                echo "<script type='text/javascript'>";
+                echo "alert('Session does not exist. Please login again');";
+                echo "window.location.href = 'log-in.html';";
+                echo "</script>";
+            }
+            ?>
     </body>
+    
 </html>

@@ -29,6 +29,7 @@
         if($package == "Custom"){
             $addons = $_POST["addons"];
         }
+        $pic = $_SESSION["name"];
 
         $servername = "localhost";
         $username = "root";
@@ -50,7 +51,7 @@
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewRecord.php">View Patients</a>
+                        <a class="nav-link" href="viewRecord.php">Patient's Record</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectRecord.php">Fill form</a>
@@ -59,7 +60,7 @@
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewReport.php">View Report</a>
+                        <a class="nav-link" href="viewReport.php">Chronological Summary</a>
                     </li>
                     <?php
                         if($_SESSION["type"] == "admin"){
@@ -111,19 +112,25 @@
                     <dd class="col-sm-9"><?php echo $tel_nok;?></dd>
                     <dt class="col-sm-3">Package: </dt>
                     <dd class="col-sm-9"><?php echo $package;?></dd>
+                    <?php
+                        if($package == "Custom"){
+                    ?>
                     <dt class="col-sm-3">Additional Test: </dt>
                     <dd class="col-sm-9"><?php echo $addons;?></dd>
+                    <?php
+                        }
+                    ?>
                 </dl>    
     <?php
         if($package == "Custom"){
             $insert = "UPDATE patient SET name = '".$name."', ic_passport = '".$icpp."', date_of_birth = '".$dob."', address = '".$address."', email = '".$email."', telephone = '".$tel."',
             sex = '".$sex."', occupation = '".$occupation."', race = '".$race."', religion = '".$religion."', marital_status = '".$mstatus."', next_of_kin = '".$nok."', relationship = '".$rs."',
-            telephone_nok = '".$tel_nok."', package = '".$package."', lastUpdateOn = '".$date."', addons = '".$addons."' WHERE mrn = '".$mrn."'";
+            telephone_nok = '".$tel_nok."', package = '".$package."', lastUpdateOn = '".$date."', addons = '".$addons."', pic = '".$pic."' WHERE mrn = '".$mrn."'";
         }
         else{
             $insert = "UPDATE patient SET name = '".$name."', ic_passport = '".$icpp."', date_of_birth = '".$dob."', address = '".$address."', email = '".$email."', telephone = '".$tel."',
             sex = '".$sex."', occupation = '".$occupation."', race = '".$race."', religion = '".$religion."', marital_status = '".$mstatus."', next_of_kin = '".$nok."', relationship = '".$rs."',
-            telephone_nok = '".$tel_nok."', package = '".$package."', lastUpdateOn = '".$date."' WHERE mrn = '".$mrn."'";
+            telephone_nok = '".$tel_nok."', package = '".$package."', lastUpdateOn = '".$date."', pic = '".$pic."' WHERE mrn = '".$mrn."'";
         }
         
 

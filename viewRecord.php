@@ -31,7 +31,7 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="viewRecord.php">View Patients</a>
+                            <a class="nav-link active" href="viewRecord.php">Patient's Record</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="selectRecord.php">Fill form</a>
@@ -40,7 +40,7 @@
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewReport.php">View Report</a>
+                            <a class="nav-link" href="viewReport.php">Chronological Summary</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -59,9 +59,12 @@
             <h1>Patient's Record</h1>
             <br>
             <form method="post" style="text-align: center;">
-                <input type="text" placeholder="MRN/Name/IC/Passport/Email" name="keyword">
+                <input type="text" placeholder="MRN/Name/IC/Passport/Email/Telephone" name="keyword">
                 <button formaction="searchRecord.php" class="btn btn-primary">Search</button>
-            </form>
+            </form>     
+            <div class="text-center" style="color: white;" >
+                Click <a href="viewReport.php">here</a> if you want to search by date.
+            </div>
             <br><br>
             <table style="width: 100%;" class="table table-bordered">
                 <thead class="table-dark" style="text-align:center;">
@@ -81,6 +84,9 @@
                         <th rowspan="2">
                             Email
                         </th>
+                        <th rowspan="2">
+                            Telephone
+                        </th>
                         <th colspan="4">
                             Last Updated On
                         </th>
@@ -97,7 +103,7 @@
                     </tr>
                 </thead>
             <?php
-            $per_page_record = 5;  // Number of entries to show in a page.   
+            $per_page_record = 10;  // Number of entries to show in a page.   
             // Look for a GET variable page if not found default is 1.        
             if (isset($_GET["page"])) {    
                 $page  = $_GET["page"];    
@@ -108,7 +114,7 @@
         
             $start_from = ($page-1) * $per_page_record;     
         
-            $query = "SELECT a.mrn, name, ic_passport, address, email, lastUpdateMH, lastUpdate, registeredOn, package  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY registeredOn DESC LIMIT ". $start_from. ", " .$per_page_record;
+            $query = "SELECT a.mrn, name, ic_passport, address, email, telephone, lastUpdateMH, lastUpdate, registeredOn, package  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY registeredOn DESC LIMIT ". $start_from. ", " .$per_page_record;
             $rs_result = mysqli_query ($conn, $query);     
 
             while ($row = mysqli_fetch_array($rs_result)) {  
@@ -120,6 +126,7 @@
                         <td><?php echo $row['ic_passport'];?></td>
                         <td><?php echo $row['address'];?></td>
                         <td><?php echo $row['email'];?></td>
+                        <td><?php echo $row['telephone'];?></td>
                         <td colspan="2"><?php echo $row['lastUpdateMH'];?></td>
                         <td colspan="2"><?php echo $row['lastUpdate'];?></td>
                         <td><?php echo $row['registeredOn'];?></td>
@@ -136,10 +143,28 @@
                 $rs_result = mysqli_query($conn, $query);     
                 $row = mysqli_fetch_row($rs_result);     
                 $total_records = $row[0];     
-                
-                echo "</br>";     
-                // Number of pages required.   
-                $total_pages = ceil($total_records / $per_page_record);     
+                $total_pages = ceil($total_records / $per_page_record);
+                $start = "";
+                $end = "";
+                if($total_records == 0){
+                    echo "<span class='text-center' style='color:white;'>No Record Found</span>";
+                }
+                else{
+                    $start = $per_page_record * ($page-1) + 1;
+                    if($total_records%$per_page_record != 0){
+                        if($page == $total_pages){
+                            $end = $total_records;
+                        }
+                        else{
+                            $end = $per_page_record * ($page);
+                        }
+                    }
+                    else{
+                        $end = $per_page_record * ($page);
+                    }
+                    echo "<span style='color:white;'>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
+                    echo "</br>"; 
+                }       
                 $pagLink = "";       
 
                 echo "<nav aria-label='page nav'>";

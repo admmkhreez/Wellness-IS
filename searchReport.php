@@ -33,7 +33,7 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewRecord.php">View Patients</a>
+                            <a class="nav-link" href="viewRecord.php">Patient's Record</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="selectRecord.php">Fill form</a>
@@ -42,7 +42,7 @@
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="viewReport.php">View Report</a>
+                            <a class="nav-link active" href="viewReport.php">Chronological Summary</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -66,11 +66,6 @@
                 <button formaction="searchReport.php" class="btn btn-primary">Search</button>
             </form>
             <br>
-        <?php    
-            $display = "SELECT a.mrn, name, ic_passport, address, email, lastUpdateMH, b.lastUpdate, registeredOn, package FROM patient a INNER JOIN record b
-            ON a.mrn = b.mrn WHERE b.lastUpdate BETWEEN '".$start."' AND '".$end."'";
-            $data = $conn->query($display);
-        ?>
                 <table style="width: 100%;" height="100%" class="table table-bordered">
                     <thead class="table-dark" style="text-align:center;">
                         <tr>
@@ -89,6 +84,9 @@
                             <th rowspan="2">
                                 Email
                             </th>
+                            <th rowspan="2">
+                                Telephone
+                            </th>
                             <th colspan="4">
                                 Last Updated On
                             </th>
@@ -106,10 +104,22 @@
                     </thead>
                     <tbody style="background-color:white;"
                 <?php
-                if ($data->num_rows > 0)
-                {
-                    while($row = $data->fetch_assoc())
-                    {
+                $per_page_record = 10;  // Number of entries to show in a page.   
+                // Look for a GET variable page if not found default is 1.        
+                if (isset($_GET["page"])) {    
+                    $page  = $_GET["page"];    
+                }    
+                else {    
+                $page=1;    
+                }    
+            
+                $start_from = ($page-1) * $per_page_record;     
+            
+                $query = "SELECT a.mrn, name, ic_passport, address, email, lastUpdateMH, b.lastUpdate, registeredOn, package FROM patient a INNER JOIN record b
+                ON a.mrn = b.mrn WHERE b.lastUpdate BETWEEN '".$start."' AND '".$end."' ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+                $rs_result = mysqli_query ($conn, $query);     
+
+                while ($row = mysqli_fetch_array($rs_result)) {  
                 ?> 
                     >
                         <tr>
@@ -118,6 +128,7 @@
                             <td><?php echo $row['ic_passport'];?></td>
                             <td><?php echo $row['address'];?></td>
                             <td><?php echo $row['email'];?></td>
+                            <td><?php echo $row['telephone'];?></td>
                             <td colspan="2"><?php echo $row['lastUpdateMH'];?></td>
                             <td colspan="2"><?php echo $row['lastUpdate'];?></td>
                             <td><?php echo $row['registeredOn'];?></td>
@@ -125,15 +136,63 @@
                         </tr>
                         <?php
                             }
-                        }
-                        else
-                        {
-                            echo "<tr><td colspan = '12' style='text-align: center;'>No Patient Found</td></tr>";
-                        }
                         ?>
                     </tbody>
                 </table>
             <?php
+            $query = "SELECT COUNT(*) FROM patient a INNER JOIN record b
+            ON a.mrn = b.mrn WHERE b.lastUpdate BETWEEN '".$start."' AND '".$end."'";     
+            $rs_result = mysqli_query($conn, $query);     
+            $row = mysqli_fetch_row($rs_result);     
+            $total_records = $row[0];     
+            $total_pages = ceil($total_records / $per_page_record); 
+            $start = "";
+            $end = "";
+            if($total_records == 0){
+                echo "<span class='text-center' style='color:white;'>No Record Found</span>";
+            }
+            else{
+                $start = $per_page_record * ($page-1) + 1;
+                if($total_records%$per_page_record != 0){
+                    if($page == $total_pages){
+                        $end = $total_records;
+                    }
+                    else{
+                        $end = $per_page_record * ($page);
+                    }
+                }
+                else{
+                    $end = $per_page_record * ($page);
+                }
+                    echo "<span style='color:white;'>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
+                    echo "</br>"; 
+                }  
+            $pagLink = "";       
+
+            echo "<nav aria-label='page nav'>";
+            echo "<ul class='pagination justify-content-center'>";
+            if($page>=2){   
+                echo "<li class='page-item'><a class='page-link' href='searchReport.php?page=".($page-1)."'>  Prev </a></li>";   
+            }       
+                    
+            for ($i=1; $i<=$total_pages; $i++) {   
+            if ($i == $page) {   
+                $pagLink .= "<li class='page-item active'><a class ='page-link' href='searchReport.php?page=" .$i."'>".$i." </a> </li>"; 
+                                                      
+            }               
+            else  {   
+                $pagLink .= "<li class='page-item'><a class='page-link' href='searchReport.php?page=".$i."'> ".$i." </a> </li>";  
+                                                         
+            }   
+            };     
+            echo $pagLink;   
+    
+            if($page<$total_pages){   
+                echo "<li class='page-item'><a class='page-link' href='searchReport.php?page=".($page+1)."'>  Next </a></li>";   
+            }  
+            echo "</ul>";
+            echo "</nav>";
+
             $conn->close();
             }
             else

@@ -31,7 +31,7 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewRecord.php">View Patients</a>
+                            <a class="nav-link" href="viewRecord.php">Patient's Record</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="selectRecord.php">Fill form</a>
@@ -40,7 +40,7 @@
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="viewReport.php">View Report</a>
+                            <a class="nav-link active" href="viewReport.php">Chronological Summary</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -82,6 +82,9 @@
                         <th rowspan="2">
                             Email
                         </th>
+                        <th rowspan="2">
+                            Telephone
+                        </th>
                         <th colspan="4">
                             Last Updated On
                         </th>
@@ -98,7 +101,7 @@
                     </tr>
                 </thead>
             <?php
-            $per_page_record = 5;  // Number of entries to show in a page.   
+            $per_page_record = 10;  // Number of entries to show in a page.   
             // Look for a GET variable page if not found default is 1.        
             if (isset($_GET["page"])) {    
                 $page  = $_GET["page"];    
@@ -109,7 +112,7 @@
         
             $start_from = ($page-1) * $per_page_record;     
         
-            $query = "SELECT a.mrn, name, ic_passport, address, email, lastUpdateMH, lastUpdate, registeredOn, package  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+            $query = "SELECT a.mrn, name, ic_passport, address, email, telephone, lastUpdateMH, lastUpdate, registeredOn, package  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
             $rs_result = mysqli_query ($conn, $query);     
 
             while ($row = mysqli_fetch_array($rs_result)) {  
@@ -121,6 +124,7 @@
                         <td><?php echo $row['ic_passport'];?></td>
                         <td><?php echo $row['address'];?></td>
                         <td><?php echo $row['email'];?></td>
+                        <td><?php echo $row['telephone'];?></td>
                         <td colspan="2"><?php echo $row['lastUpdateMH'];?></td>
                         <td colspan="2"><?php echo $row['lastUpdate'];?></td>
                         <td><?php echo $row['registeredOn'];?></td>
@@ -137,32 +141,50 @@
                 $rs_result = mysqli_query($conn, $query);     
                 $row = mysqli_fetch_row($rs_result);     
                 $total_records = $row[0];     
-                
-                echo "</br>";     
-                // Number of pages required.   
-                $total_pages = ceil($total_records / $per_page_record);     
+                $total_pages = ceil($total_records / $per_page_record); 
+                $start = "";
+                $end = "";
+                if($total_records == 0){
+                    echo "<span class='text-center' style='color:white;'>No Record Found</span>";
+                }
+                else{
+                    $start = $per_page_record * ($page-1) + 1;
+                    if($total_records%$per_page_record != 0){
+                        if($page == $total_pages){
+                            $end = $total_records;
+                        }
+                        else{
+                            $end = $per_page_record * ($page);
+                        }
+                    }
+                    else{
+                        $end = $per_page_record * ($page);
+                    }
+                    echo "<span style='color:white;'>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
+                    echo "</br>"; 
+                }            
                 $pagLink = "";       
 
                 echo "<nav aria-label='page nav'>";
                 echo "<ul class='pagination justify-content-center'>";
                 if($page>=2){   
-                    echo "<li class='page-item'><a class='page-link' href='viewRecord.php?page=".($page-1)."'>  Prev </a></li>";   
+                    echo "<li class='page-item'><a class='page-link' href='viewReport.php?page=".($page-1)."'>  Prev </a></li>";   
                 }       
                         
                 for ($i=1; $i<=$total_pages; $i++) {   
                 if ($i == $page) {   
-                    $pagLink .= "<li class='page-item active'><a class ='page-link' href='viewRecord.php?page=" .$i."'>".$i." </a> </li>"; 
+                    $pagLink .= "<li class='page-item active'><a class ='page-link' href='viewReport.php?page=" .$i."'>".$i." </a> </li>"; 
                                                           
                 }               
                 else  {   
-                    $pagLink .= "<li class='page-item'><a class='page-link' href='viewRecord.php?page=".$i."'> ".$i." </a> </li>";  
+                    $pagLink .= "<li class='page-item'><a class='page-link' href='viewReport.php?page=".$i."'> ".$i." </a> </li>";  
                                                              
                 }   
                 };     
                 echo $pagLink;   
         
                 if($page<$total_pages){   
-                    echo "<li class='page-item'><a class='page-link' href='viewRecord.php?page=".($page+1)."'>  Next </a></li>";   
+                    echo "<li class='page-item'><a class='page-link' href='viewReport.php?page=".($page+1)."'>  Next </a></li>";   
                 }  
                 echo "</ul>";
                 echo "</nav>";

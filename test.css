@@ -105,8 +105,15 @@ label.inline-radio {
     place-self: end;
     margin-top: 100vh;
   }
-  nav{
-    margin-left: 16%;
-    margin-right: 16%;
-    border-radius: 10px;
-  }
+#printable { 
+    display: none; 
+}
+
+@media print{
+    #non-printable { 
+        display: none; 
+    }
+    #printable { 
+        display: block; 
+    }
+}

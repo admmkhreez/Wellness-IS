@@ -35,7 +35,7 @@
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewRecord.php">View Patients</a>
+                        <a class="nav-link" href="viewRecord.php">Patient's Record</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectRecord.php">Fill form</a>
@@ -44,7 +44,7 @@
                         <a class="nav-link active" href="selectPatient.php">Search Patient</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewReport.php">View Report</a>
+                        <a class="nav-link" href="viewReport.php">Chronological Summary</a>
                     </li>
                     <?php
                         if($_SESSION["type"] == "admin"){
@@ -139,12 +139,12 @@
                         <dt class="col-sm-3">Registered On: </dt>
                         <dd class="col-sm-9"><?php echo $row['registeredOn'];?></dd>
                         <dt class="col-sm-3">Last Edited On: </dt>
-                        <a id="medical_history"> <dd class="col-sm-9"><?php echo $row['lastUpdateOn'];?></dd>
+                         <dd class="col-sm-9"><?php echo $row['lastUpdateOn'];?></dd>
                     </dl>    
-                </div></a>
+                </div>
                 <hr>
                 <div>
-                    <h3>Past Medical History</h3>
+                    <a id="medical_history"><h3>Past Medical History</h3></a>
                     <dl class="row">
                         <dt class="col-sm-3">Smoker/Non Smoker: </dt>
                         <dd class="col-sm-9"><?php echo $row['smoker'];?></dd>
@@ -186,12 +186,12 @@
                         <dt class="col-sm-3">Medication: </dt>
                         <dd class="col-sm-9"><?php echo $row['medication'];?></dd>
                         <dt class="col-sm-3">Last Updated On: </dt>
-                        <a id="doctors_form"><dd class="col-sm-9"><?php echo $row['lastUpdateMH'];?></dd>
+                        <dd class="col-sm-9"><?php echo $row['lastUpdateMH'];?></dd>
                     </dl>
-                </div></a>
+                </div>
                 <hr>
                 <div>
-                <h3>Physical Examination</h3>    
+                <a id="doctors_form"><h3>Physical Examination</h3></a>   
                 <dl class="row">
                     <dt class="col-sm-3">General Appearance: </dt>
                     <dd class="col-sm-9"><?php echo $row['appearance'];?></dd>
@@ -413,6 +413,7 @@
                         <dd class="col-sm-9"><?php echo $row['lastUpdate'];?></dd>
                     </dl>
                     </div></a>
+                    <button class="btn btn-primary" onclick="window.print()">Print</button>
                     <br><br>
                     <a href="#top" class="top">Back to Top</a>
             <?php
