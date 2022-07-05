@@ -246,7 +246,7 @@
             <?php
                 if ($row['sex'] == 'Female' ){
             ?>
-            <h3>For Female Patient</h3>
+            <h3>For Female</h3>
             <label class="inline" for="breast">Breast: </label>
             <input type="text" id="breast" name="breast" required><br>
             <label class="inline" for="lmp">Last Menstrual Period: </label>

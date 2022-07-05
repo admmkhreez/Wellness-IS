@@ -123,7 +123,7 @@
                         <td><?php echo $row['mrn'];?></td>
                         <td><?php echo $row['name'];?></td>
                         <td><?php echo $row['ic_passport'];?></td>
-                        <td><?php echo nl2br($row['address'];?></td>
+                        <td><?php echo nl2br($row['address']);?></td>
                         <td><?php echo $row['email'];?></td>
                         <td><?php echo $row['telephone'];?></td>
                         <td colspan="2"><?php echo $row['lastUpdateMH'];?></td>

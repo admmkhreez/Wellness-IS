@@ -91,7 +91,7 @@
                             }
                         ?>
                         <button formaction="historyUpdateForm.php" class="btn btn-primary">Update Medical History</button>
-                        <button formaction="printForm.php" class="btn btn-primary">Printable Form</button>
+                        <button formaction="printForm.php" class="btn btn-primary">Print</button>
                     </div>    
                 </form>
                 <br>
@@ -136,7 +136,7 @@
                         <dt class="col-sm-3">Package: </dt>
                         <dd class="col-sm-9"><?php echo $row['package'];?></dd>
                         <dt class="col-sm-3">Additional Test: </dt>
-                        <dd class="col-sm-9"><?php echo $row['addons'];?></dd>
+                        <dd class="col-sm-9"><?php echo nl2br($row['addons']);?></dd>
                         <dt class="col-sm-3">Registered On: </dt>
                         <dd class="col-sm-9"><?php echo $row['registeredOn'];?></dd>
                         <dt class="col-sm-3">Last Edited On: </dt>
@@ -353,7 +353,7 @@
                     <?php
                         if($row['sex'] == "Female"){
                     ?>
-                    <h3>For Female Patient</h3>
+                    <h3>For Female</h3>
                     <div>
                     <dl class="row">
                         <dt class="col-sm-3">Breast: </dt>
@@ -383,6 +383,10 @@
                         <dd class="col-sm-9"><?php echo $row['mammogram'];?></dd>
                         <dt class="col-sm-3">Ultrasound Breast: </dt>
                         <dd class="col-sm-9"><?php echo $row['us_breast'];?></dd>
+                        <dt class="col-sm-3">Pure Tone Audiometry: </dt>
+                        <dd class="col-sm-9"><?php echo $row['pta'];?></dd>
+                        <dt class="col-sm-3">Lung Function Test: </dt>
+                        <dd class="col-sm-9"><?php echo $row['lft'];?></dd>
                         <?php
                             }
                             if($row['package'] == "Premium" || $row['package'] == "Comprehensive" || $row['package'] == "Custom"){
@@ -398,10 +402,6 @@
                         <?php
                             }
                         ?>
-                        <dt class="col-sm-3">Pure Tone Audiometry: </dt>
-                        <dd class="col-sm-9"><?php echo $row['pta'];?></dd>
-                        <dt class="col-sm-3">Lung Function Test: </dt>
-                        <dd class="col-sm-9"><?php echo $row['lft'];?></dd>
                         <dt class="col-sm-3">Urine: </dt>
                         <dd class="col-sm-9"><?php echo $row['urine'];?></dd>
                         <dt class="col-sm-3">Blood: </dt>

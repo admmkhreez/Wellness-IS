@@ -91,16 +91,14 @@
             if ($package == "Custom"){
                 $mammogram = $_POST["mammogram"];
                 $us_breast = $_POST["us_breast"];
+                $pta = $_POST["pta"];
+                $lft = $_POST["lft"];
             }
             if ($package == "Comprehensive" || $package == "Premium" || $package == "Custom"){
                 $us_abdopel = $_POST["us_abdopel"];
             }
             if ($package == "Premium" || $package == "Custom"){
                 $stresstest = $_POST["stresstest"];
-            }
-            if ($package == "Custom"){
-                $pta = $_POST["pta"];
-                $lft = $_POST["lft"];
             }
             $urine = $_POST["urine"];
             $blood = $_POST["blood"];
@@ -317,7 +315,7 @@
                 <?php
                     if($sex == "Female"){
                 ?>
-                <h3>For Female Patient</h3>
+                <h3>For Female</h3>
                 <div>
                 <dl class="row">
                     <dt class="col-sm-3">Breast: </dt>
@@ -347,6 +345,10 @@
                     <dd class="col-sm-9"><?php echo $mammogram;?></dd>
                     <dt class="col-sm-3">Ultrasound Breast: </dt>
                     <dd class="col-sm-9"><?php echo $us_breast;?></dd>
+                    <dt class="col-sm-3">Pure Tone Audiometry: </dt>
+                    <dd class="col-sm-9"><?php echo $pta;?></dd>
+                    <dt class="col-sm-3">Lung Function Test: </dt>
+                    <dd class="col-sm-9"><?php echo $lft;?></dd>
                     <?php
                         }
                         if($package == "Premium" || $package == "Comprehensive" || $package == "Custom"){
@@ -362,10 +364,7 @@
                     <?php
                         }
                     ?>
-                    <dt class="col-sm-3">Pure Tone Audiometry: </dt>
-                    <dd class="col-sm-9"><?php echo $pta;?></dd>
-                    <dt class="col-sm-3">Lung Function Test: </dt>
-                    <dd class="col-sm-9"><?php echo $lft;?></dd>
+                    
                     <dt class="col-sm-3">Urine: </dt>
                     <dd class="col-sm-9"><?php echo $urine;?></dd>
                     <dt class="col-sm-3">Blood: </dt>
