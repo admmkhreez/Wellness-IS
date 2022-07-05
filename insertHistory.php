@@ -117,6 +117,7 @@
         $username = "root";
         $password = "";
         $db = "wellness_is";
+        date_default_timezone_set("Asia/Kuala_Lumpur");
         $date = date("Y-m-d H:i:s");
 
         $conn = new mysqli($servername, $username, $password, $db);

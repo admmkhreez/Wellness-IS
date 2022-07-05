@@ -10,6 +10,7 @@
     $username = "root";
     $password = "";
     $db = "wellness_is";
+    date_default_timezone_set("Asia/Kuala_Lumpur");
     
     $conn = new mysqli($servername, $username, $password, $db);
 
@@ -109,149 +110,127 @@
             <dd class="col-sm-9"><?php echo $mrn;?></dd>
         </dl>
             <h5>Medical History</h5>
-            <fieldset>
             <legend>Smoker/Non Smoker:</legend>
             <div>
-                <input type="radio" class="form-check-input" id="yes" name="smoker" value="Yes" <?php if ($row['smoker'] == "Yes") echo "checked"; ?> required>
+                <input type="radio" class="form-check-input" id="yes" name="smoker" value="Yes" required <?php if ($row['smoker'] == "Yes") echo "checked"; ?> >
                 <label class="inline-radio" for="yes">Smoker</label>
-                <input type="radio" class="form-check-input" id="no" name="smoker" value="No"<?php if ($row['smoker']== "No") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="no" name="smoker" value="No" <?php if ($row['smoker']== "No") echo "checked"; ?>>
                 <label class="inline-radio" for="no">Non Smoker</label>
             </div>
-            </fieldset>
-            <fieldset>
             <legend>Asthma:</legend>
             <div>
-            <input type="radio" class="form-check-input" id="yes" name="asthma" value="Yes"<?php if ($row['asthma'] == "Yes") echo "checked"; ?> required>
-            <label class="inline-radio" for="yes">Yes</label>
-                <input type="radio" class="form-check-input" id="no" name="asthma" value="No"<?php if ($row['asthma'] == "No") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="yes" name="asthma" value="Yes" required <?php if ($row['asthma'] == "Yes") echo "checked"; ?> >
+                <label class="inline-radio" for="yes">Yes</label>
+                <input type="radio" class="form-check-input" id="no" name="asthma" value="No" <?php if ($row['asthma'] == "No") echo "checked"; ?>>
                 <label class="inline-radio" for="no">No</label>
-                <input type="radio" class="form-check-input" id="unknown" name="asthma" value="Unknown"<?php if ($row['asthma'] == "Unknown") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="unknown" name="asthma" value="Unknown" <?php if ($row['asthma'] == "Unknown") echo "checked"; ?>>
                 <label class="inline-radio" for="unknown">Unknown</label>
             </div>
-            </fieldset>
-            <fieldset>
             <legend>Diabetes:</legend>
             <div>
-                <input type="radio" class="form-check-input" id="yes" name="diabetes" value="Yes"<?php if ($row['diabetes'] == "Yes") echo "checked"; ?>required>
+                <input type="radio" class="form-check-input" id="yes" name="diabetes" value="Yes" required <?php if ($row['diabetes'] == "Yes") echo "checked"; ?>>
                 <label class="inline-radio" for="yes">Yes</label>
-                <input type="radio" class="form-check-input" id="no" name="diabetes" value="No"<?php if ($row['diabetes']== "No") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="no" name="diabetes" value="No" <?php if ($row['diabetes']== "No") echo "checked"; ?>>
                 <label class="inline-radio" for="no">No</label>
-                <input type="radio" class="form-check-input" id="unknown" name="diabetes" value="Unknown"<?php if ($row['diabetes'] == "Unknown") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="unknown" name="diabetes" value="Unknown" <?php if ($row['diabetes'] == "Unknown") echo "checked"; ?>>
                 <label class="inline-radio" for="unknown">Unknown</label>
             </div>
-            </fieldset>
-            <fieldset>
             <legend>Heart Disease:</legend>
             <div>
-                <input type="radio" class="form-check-input" id="yes" name="heart_disease" value="Yes"<?php if ($row['heart_disease'] == "Yes") echo "checked"; ?>required>
+                <input type="radio" class="form-check-input" id="yes" name="heart_disease" value="Yes" required                                                                                     <?php if ($row['heart_disease'] == "Yes") echo "checked"; ?>>
                 <label class="inline-radio" for="yes">Yes</label>
-                <input type="radio" class="form-check-input" id="no" name="heart_disease" value="No"<?php if ($row['heart_disease'] == "No") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="no" name="heart_disease" value="No" <?php if ($row['heart_disease'] == "No") echo "checked"; ?>>
                 <label class="inline-radio" for="no">No</label>
-                <input type="radio" class="form-check-input" id="unknown" name="heart_disease" value="Unknown"<?php if ($row['heart_disease'] == "Unknown") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="unknown" name="heart_disease" value="Unknown" <?php if ($row['heart_disease'] == "Unknown") echo "checked"; ?>>
                 <label class="inline-radio" for="unknown">Unknown</label>
             </div>
-            </fieldset>
-            <fieldset>
             <legend>Hypertension:</legend>
             <div>
-                <input type="radio" class="form-check-input" id="yes" name="hypertension" value="Yes"<?php if ($row['hypertension'] == "Yes") echo "checked"; ?>required>
+                <input type="radio" class="form-check-input" id="yes" name="hypertension" value="Yes" required <?php if ($row['hypertension'] == "Yes") echo "checked"; ?>>
                 <label class="inline-radio" for="yes">Yes</label>
-                <input type="radio" class="form-check-input" id="no" name="hypertension" value="No"<?php if ($row['hypertension'] == "No") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="no" name="hypertension" value="No" <?php if ($row['hypertension'] == "No") echo "checked"; ?>>
                 <label class="inline-radio" for="no">No</label>
-                <input type="radio" class="form-check-input" id="unknown" name="hypertension" value="Unknown"<?php if ($row['hypertension'] == "Unknown") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="unknown" name="hypertension" value="Unknown" <?php if ($row['hypertension'] == "Unknown") echo "checked"; ?>>
                 <label class="inline-radio" for="unknown">Unknown</label>
             </div>
-            </fieldset>
-            <fieldset>
             <legend>Stroke:</legend>
             <div>
-                <input type="radio" class="form-check-input" id="yes" name="stroke" value="Yes"<?php if ($row['stroke'] == "Yes") echo "checked"; ?>required>
+                <input type="radio" class="form-check-input" id="yes" name="stroke" value="Yes" required <?php if ($row['stroke'] == "Yes") echo "checked"; ?>>
                 <label class="inline-radio" for="yes">Yes</label>
-                <input type="radio" class="form-check-input" id="no" name="stroke" value="No"<?php if ($row['stroke'] == "No") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="no" name="stroke" value="No" <?php if ($row['stroke'] == "No") echo "checked"; ?>>
                 <label class="inline-radio" for="no">No</label>
-                <input type="radio" class="form-check-input" id="unknown" name="stroke" value="Unknown"<?php if ($row['stroke']== "Unknown") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="unknown" name="stroke" value="Unknown" <?php if ($row['stroke']== "Unknown") echo "checked"; ?>>
                 <label class="inline-radio" for="unknown">Unknown</label>
             </div>
-            </fieldset>
-            <fieldset>
             <legend>Cancer:</legend>
             <div>
-                <input type="radio" class="form-check-input" id="yes" name="cancer" value="Yes"<?php if ($row['cancer'] == "Yes") echo "checked"; ?>required>
+                <input type="radio" class="form-check-input" id="yes" name="cancer" value="Yes" required <?php if ($row['cancer'] == "Yes") echo "checked"; ?>>
                 <label class="inline-radio" for="yes">Yes</label>
-                <input type="radio" class="form-check-input" id="no" name="cancer" value="No"<?php if ($row['cancer'] == "No") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="no" name="cancer" value="No" <?php if ($row['cancer'] == "No") echo "checked"; ?>>
                 <label class="inline-radio" for="no">No</label>
-                <input type="radio" class="form-check-input" id="unknown" name="cancer" value="Unknown"<?php if ($row['cancer'] == "Unknown") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="unknown" name="cancer" value="Unknown" <?php if ($row['cancer'] == "Unknown") echo "checked"; ?>>
                 <label class="inline-radio" for="unknown">Unknown</label>
             </div>
-            </fieldset>
-            <fieldset>
             <legend>Tuberculosis:</legend>
             <div>
-                <input type="radio" class="form-check-input" id="yes" name="tuberculosis" value="Yes"<?php if ($row['tuberculosis'] == "Yes") echo "checked"; ?>required>
+                <input type="radio" class="form-check-input" id="yes" name="tuberculosis" value="Yes" required <?php if ($row['tuberculosis'] == "Yes") echo "checked"; ?>>
                 <label class="inline-radio" for="yes">Yes</label>
-                <input type="radio" class="form-check-input" id="no" name="tuberculosis" value="No"<?php if ($row['tuberculosis']  == "No") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="no" name="tuberculosis" value="No" <?php if ($row['tuberculosis']  == "No") echo "checked"; ?>>
                 <label class="inline-radio" for="no">No</label>
-                <input type="radio" class="form-check-input" id="unknown" name="tuberculosis" value="Unknown"<?php if ($row['tuberculosis']  == "Unknown") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="unknown" name="tuberculosis" value="Unknown" <?php if ($row['tuberculosis']  == "Unknown") echo "checked"; ?>>
                 <label class="inline-radio" for="unknown">Unknown</label>
             </div>
-            </fieldset>
-            <fieldset>
             <legend>Skin Disesase:</legend>
             <div>
-                <input type="radio" class="form-check-input" id="yes" name="skin_disease" value="Yes"<?php if ($row['skin_disease'] == "Yes") echo "checked"; ?>required>
+                <input type="radio" class="form-check-input" id="yes" name="skin_disease" value="Yes" required <?php if ($row['skin_disease'] == "Yes") echo "checked"; ?>>
                 <label class="inline-radio" for="yes">Yes</label>
-                <input type="radio" class="form-check-input" id="no" name="skin_disease" value="No"<?php if ($row['skin_disease'] == "No") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="no" name="skin_disease" value="No" <?php if ($row['skin_disease'] == "No") echo "checked"; ?>>
                 <label class="inline-radio" for="no">No</label>
-                <input type="radio" class="form-check-input" id="unknown" name="skin_disease" value="Unknown"<?php if ($row['skin_disease'] == "Unknown") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="unknown" name="skin_disease" value="Unknown" <?php if ($row['skin_disease'] == "Unknown") echo "checked"; ?>>
                 <label class="inline-radio" for="unknown">Unknown</label>
             </div>
-            </fieldset>
-            <fieldset>
             <legend>Kidney Problem:</legend>
             <div>
-                <input type="radio" class="form-check-input" id="yes" name="kidneyp" value="Yes"<?php if ($row['kidneyp']  == "Yes") echo "checked"; ?>required>
+                <input type="radio" class="form-check-input" id="yes" name="kidneyp" value="Yes" required <?php if ($row['kidneyp']  == "Yes") echo "checked"; ?>>
                 <label class="inline-radio" for="yes">Yes</label>
-                <input type="radio" class="form-check-input" id="no" name="kidneyp" value="No"<?php if ($row['kidneyp'] == "No") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="no" name="kidneyp" value="No" <?php if ($row['kidneyp'] == "No") echo "checked"; ?>>
                 <label class="inline-radio" for="no">No</label>
-                <input type="radio" class="form-check-input" id="unknown" name="kidneyp" value="Unknown"<?php if ($row['kidneyp'] == "Unknown") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="unknown" name="kidneyp" value="Unknown" <?php if ($row['kidneyp'] == "Unknown") echo "checked"; ?>>
                 <label class="inline-radio" for="unknown">Unknown</label>
             </div>
-            </fieldset>
-            <fieldset>
             <legend>Fits/Psychiatric:</legend>
             <div>
-                <input type="radio" class="form-check-input" id="yes" name="fits_psychiatric" value="Yes"<?php if ($row['fits_psychiatric'] == "Yes") echo "checked"; ?>required>
+                <input type="radio" class="form-check-input" id="yes" name="fits_psychiatric" value="Yes" required <?php if ($row['fits_psychiatric'] == "Yes") echo "checked"; ?>>
                 <label class="inline-radio" for="yes">Yes</label>
-                <input type="radio" class="form-check-input" id="no" name="fits_psychiatric" value="No"<?php if ($row['fits_psychiatric']== "No") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="no" name="fits_psychiatric" value="No" <?php if ($row['fits_psychiatric']== "No") echo "checked"; ?>>
                 <label class="inline-radio" for="no">No</label>
-                <input type="radio" class="form-check-input" id="unknown" name="fits_psychiatric" value="Unknown"<?php if ($row['fits_psychiatric'] == "Unknown") echo "checked"; ?>>
+                <input type="radio" class="form-check-input" id="unknown" name="fits_psychiatric" value="Unknown" <?php if ($row['fits_psychiatric'] == "Unknown") echo "checked"; ?>>
                 <label class="inline-radio" for="unknown">Unknown</label>
             </div>
-            </fieldset>
             <p>Family History</p>
             <div>
                 <label class="inline" for="father_history">Father: </label>
-                <input type="text" id="father_history" name="father_history" maxlength="30" value="<?php echo $row['father_history'];?>" required>
+                <input type="text" id="father_history" name="father_history" maxlength="30" value=" <?php echo $row['father_history'];?>" required>
             </div>
             <div>
                 <label class="inline" for="mother_history">Mother: </label>
-                <input type="text" id="mother_history" name="mother_history" maxlength="30" value="<?php echo $row['mother_history'];?>" required>
+                <input type="text" id="mother_history" name="mother_history" maxlength="30" value=" <?php echo $row['mother_history'];?>" required>
             </div>
             <div>
                 <label class="inline" for="siblings_history">Siblings: </label>
-                <input type="text" id="siblings_history" name="siblings_history" maxlength="30" value="<?php echo $row['siblings_history'];?>" required>
+                <input type="text" id="siblings_history" name="siblings_history" maxlength="30" value=" <?php echo $row['siblings_history'];?>" required>
             </div>
             <div>
                 <label class="inline" for="habits">Habits: </label>
-                <input type="text" id="habits" name="habits" maxlength="30" value="<?php echo $row['habits'];?>" required>
+                <input type="text" id="habits" name="habits" maxlength="30" value=" <?php echo $row['habits'];?>" required>
             </div>
             <div>
                 <label class="inline" for="allergy">Allergy: </label>
-                <input type="text" id="allergy" name="allergy" maxlength="30" value="<?php echo $row['allergy'];?>" required>
+                <input type="text" id="allergy" name="allergy" maxlength="30" value=" <?php echo $row['allergy'];?>" required>
             </div>
             <div>
                 <label class="inline" for="others">Others: </label>
-                <input type="text" id="others" name="others" maxlength="30" value="<?php echo $row['others'];?>" required>
+                <input type="text" id="others" name="others" maxlength="30" value=" <?php echo $row['others'];?>" required>
             </div>
             <div>
                 <label class="inline" for="medication">Medication: </label>

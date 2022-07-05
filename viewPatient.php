@@ -15,6 +15,7 @@
             $username = "root";
             $password = "";
             $db = "wellness_is";
+            date_default_timezone_set("Asia/Kuala_Lumpur");
 
             $conn = new mysqli($servername, $username, $password, $db);
 
@@ -90,7 +91,7 @@
                             }
                         ?>
                         <button formaction="historyUpdateForm.php" class="btn btn-primary">Update Medical History</button>
-                        
+                        <button formaction="printForm.php" class="btn btn-primary">Printable Form</button>
                     </div>    
                 </form>
                 <br>
@@ -111,7 +112,7 @@
                         <dt class="col-sm-3">Date of Birth: </dt>
                         <dd class="col-sm-9"><?php echo $row['date_of_birth'];?></dd>
                         <dt class="col-sm-3">Home Address: </dt>
-                        <dd class="col-sm-9"><?php echo $row['address'];?></dd>
+                        <dd class="col-sm-9"><?php echo nl2br($row['address']);?></dd>
                         <dt class="col-sm-3">Email: </dt>
                         <dd class="col-sm-9"><?php echo $row['email'];?></dd>
                         <dt class="col-sm-3">Telephone: </dt>
@@ -406,16 +407,20 @@
                         <dt class="col-sm-3">Blood: </dt>
                         <dd class="col-sm-9"><?php echo $row['blood'];?></dd>
                         <dt class="col-sm-3">Impression: </dt>
-                        <dd class="col-sm-9"><?php echo $row['impression'];?></dd>
+                        <dd class="col-sm-9"><?php echo nl2br($row['impression']);?></dd>
                         <dt class="col-sm-3">Recommendation: </dt>
-                        <dd class="col-sm-9"><?php echo $row['recommendation'];?></dd>
+                        <dd class="col-sm-9"><?php echo nl2br($row['recommendation']);?></dd>
                         <dt class="col-sm-3">Last Updated On: </dt>
                         <dd class="col-sm-9"><?php echo $row['lastUpdate'];?></dd>
                     </dl>
                     </div></a>
-                    <button class="btn btn-primary" onclick="window.print()">Print</button>
                     <br><br>
                     <a href="#top" class="top">Back to Top</a>
+                    <script>
+                        print(){
+                            window.print();
+                        }
+                    </script>
             <?php
                     }
                 }

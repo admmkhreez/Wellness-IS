@@ -35,6 +35,7 @@
         $username = "root";
         $password = "";
         $db = "wellness_is";
+        date_default_timezone_set("Asia/Kuala_Lumpur");
         $date = date("Y-m-d H:i:s");
         $conn = new mysqli($servername, $username, $password, $db);
 
@@ -116,7 +117,7 @@
                         if($package == "Custom"){
                     ?>
                     <dt class="col-sm-3">Additional Test: </dt>
-                    <dd class="col-sm-9"><?php echo $addons;?></dd>
+                    <dd class="col-sm-9"><?php echo nl2br($addons);?></dd>
                     <?php
                         }
                     ?>

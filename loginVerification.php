@@ -6,7 +6,8 @@ $password = $_POST['password'];
 $servername = "localhost"; //host name
 $user = "root"; //database userid 
 $pass = ""; //database pwd
-$db = "wellness_is";// please write your DB name 
+$db = "wellness_is";
+date_default_timezone_set("Asia/Kuala_Lumpur");// please write your DB name 
 
 // Create connection
 $conn = new mysqli($servername, $user, $pass, $db);

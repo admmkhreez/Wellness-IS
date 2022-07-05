@@ -36,6 +36,7 @@
         $username = "root";
         $password = "";
         $db = "wellness_is";
+        date_default_timezone_set("Asia/Kuala_Lumpur");
         $date = date("Y-m-d H:i:s");
         $conn = new mysqli($servername, $username, $password, $db);
 
@@ -88,7 +89,7 @@
             {
                 if ($mrn == $row['mrn'])
                 {
-                    echo "<div class='container'><p>Record already exist, click <a href='viewRecord.php'>here</a> to view</p></div>";
+                    echo "<div class='container'><p>Record with that MRN already exist, click <a href='viewRecord.php'>here</a> to view/find</p></div>";
                     die;
                 }       
             }       

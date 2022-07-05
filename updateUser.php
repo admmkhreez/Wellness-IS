@@ -21,6 +21,7 @@
         $username = "root";
         $password = "";
         $db = "wellness_is";
+        date_default_timezone_set("Asia/Kuala_Lumpur");
         $conn = new mysqli($servername, $username, $password, $db);
 
         if ($conn->connect_error)
