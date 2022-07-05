@@ -54,7 +54,7 @@
                             }
                         ?>
                     </ul>
-                    <a class="nav-link" href="logout.php">Logout</a>
+                    <a class="nav-link" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
                 </div>
             </nav>
             <br>

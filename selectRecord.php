@@ -40,7 +40,7 @@
                         }
                     ?>
                 </ul>
-                <a class="nav-link" href="logout.php">Logout</a>
+                <a class="nav-link" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
             </div>
         </nav>
         <br>
@@ -50,7 +50,13 @@
             <form action="recordForm.php" method="post">
             <label for="mrn">Enter Patient's MRN</label><br>
             <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br>
+        <?php
+            if($_SESSION["type"] == "admin" or $_SESSION["type"] == "Doctor"){
+        ?>
             <input class="btn btn-primary" type="submit" value="Fill form">
+        <?php
+            }
+        ?>
             <button formaction="historyForm.php" class="btn btn-primary">Fill Medical History</button>
             </form>
         </div>
