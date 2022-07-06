@@ -44,7 +44,7 @@
                 </div>
             </nav>
         <br>
-        <h1>Medical Report</h1>
+        <h1>Select Patient</h1>
         <br>
         <div class="container">    
             <form method="post">

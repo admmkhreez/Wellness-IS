@@ -135,7 +135,8 @@
                         <td colspan="2"><?php echo $row['lastUpdate'];?></td>
                         <td><?php echo $row['registeredOn'];?></td>
                         <td><?php echo $row['package'];?></td>
-                        <td><form method="post">
+                        <td>
+                            <form method="post">
                             <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
                             <button formaction="viewPatient.php" class="btn btn-primary">View</button>
                             </form>

@@ -20,6 +20,7 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     display: grid;
+    padding: 20px;
 }
 html{
     height: 100%;
@@ -34,9 +35,6 @@ html{
 }
 a{
     color: black;
-}
-a:hover{
-    color: yellow;
 }
 .success{
     color: rgb(0, 190, 0);
@@ -116,7 +114,18 @@ label.inline-radio {
     #printable { 
         display: block;
     }
+    html, body{
+        height: 99%;
+    }
 }
 .textfield *{
     vertical-align: top;
+}
+nav{
+    margin: -20px;
+}
+.date{
+    top: 0;
+    right: 0;
+    position: absolute;
 }

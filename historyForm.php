@@ -36,37 +36,6 @@
         </script>
     </head>
     <body>
-        <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
-            <div class="container-sm">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="homepage.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="viewRecord.php">Patient's Record</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="selectRecord.php">Fill form</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="selectPatient.php">Search Patient</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="viewReport.php">Chronological Summary</a>
-                    </li>
-                    <?php
-                        if($_SESSION["type"] == "admin"){
-                    ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="viewUser.php">View User</a>
-                    </li>
-                    <?php
-                        }
-                    ?>
-                </ul>
-                <a class="nav-link" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
-            </div>
-        </nav>
         <br>
         <h1>Past Medical History</h1>
         <br>
@@ -87,9 +56,9 @@
             <fieldset>
             <legend>Smoker/Non Smoker:</legend>
             <div>
-                <input type="radio" class="form-check-input" id="yes" name="smoker" value="Yes" required>
+                <input type="radio" class="form-check-input" id="yes" name="smoker" value="Smoker" required>
                 <label class="inline-radio" for="yes">Smoker</label>
-                <input type="radio" class="form-check-input" id="no" name="smoker" value="No">
+                <input type="radio" class="form-check-input" id="no" name="smoker" value="Non-Smoker">
                 <label class="inline-radio" for="no">Non Smoker</label>
             </div>
             </fieldset>
@@ -231,8 +200,9 @@
             <div>
                 <label class="inline" for="medication">Medication: </label>
                 <textarea id="medication" name="medication" rows="5" cols="100" required></textarea>
-            </div>
+            </div><br><br>
             <div style="text-align: center;">
+                <a class="btn btn-danger" href="homepage.php">Cancel</a>
                 <input type="reset" class="btn btn-danger" value="Reset" onclick="return confirm_reset();">
                 <input type="submit" class="btn btn-primary" value="Update Info">
                 <input type="hidden" name="mrn" value="<?php echo $mrn; ?>">

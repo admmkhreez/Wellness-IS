@@ -86,7 +86,7 @@
                 <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
                 <input type="hidden" name="sex" value="<?php echo $row["sex"];?>">
                 <input type="hidden" name="package" value="<?php echo $row["package"];?>">
-                <button formaction="viewPatient.php" class="btn btn-primary">View Patient's Details</button>
+                <button formaction="viewPatient.php" class="btn btn-primary">View Patient's Report</button>
                 <button formaction="editProfile.php" class="btn btn-primary">Edit Patient's Details</button>
                 <?php
                     if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
@@ -229,14 +229,14 @@
             <label class="inline-radio" for="normal">Normal</label>
             <input type="radio" class="form-check-input" id="abnormal" name="genitalia" value="Abnormal" required <?php if ($row['genitalia']== "Abnormal") echo "checked"; ?>>
             <label class="inline-radio" for="abnormal">Abnormal</label>
-            <input type="radio" class="form-check-input" id="unknown" name="genitalia" value="Unknown" required <?php if ($row['genitalia']== "Abnormal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="unknown" name="genitalia" value="Unknown" required <?php if ($row['genitalia']== "Unknown") echo "checked"; ?>>
             <label class="inline-radio" for="unknown">Unknown</label>
             <br>Rectal Examination<br>
             <input type="radio" class="form-check-input" id="normal" name="rectal" value="Normal" required <?php if ($row['rectal'] == "Normal") echo "checked"; ?>>
             <label class="inline-radio" for="normal">Normal</label>
             <input type="radio" class="form-check-input" id="abnormal" name="rectal" value="Abnormal" required <?php if ($row['rectal']== "Abnormal") echo "checked"; ?>>
             <label class="inline-radio" for="abnormal">Abnormal</label>
-            <input type="radio" class="form-check-input" id="unknown" name="rectal" value="Unknown" required <?php if ($row['genitalia']== "Abnormal") echo "checked"; ?>>
+            <input type="radio" class="form-check-input" id="unknown" name="rectal" value="Unknown" required <?php if ($row['genitalia']== "Unknown") echo "checked"; ?>>
             <label class="inline-radio" for="unknown">Unknown</label>
         <div class="lrcol">
             <h3>Musculoskeletal System</h3>

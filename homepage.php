@@ -68,19 +68,19 @@
                 <input type="tel" id="telephone" name="telephone" placeholder="Telephone" maxlength="15"><br>
                 <fieldset>
                 <legend>Sex:</legend>
-                    <input type="radio" class="form-check-input" id="male" name="sex" value="Male"required>
+                    <input type="radio" class="form-check-input" id="male" name="sex" value="Male" required>
                     <label class="inline-radio" for="male">Male</label>
-                    <input type="radio" class="form-check-input" id="female" name="sex" value="Female"required>
+                    <input type="radio" class="form-check-input" id="female" name="sex" value="Female" required>
                     <label class="inline-radio" for="female">Female</label>
                 </fieldset><br>
                 <label class="inline" for="occupation">Occupation: </label>
                 <input type="text" id="occupation" name="occupation" placeholder="Occupation" maxlength="30"><br>
                 <label class="inline" for="race">Race: </label>
-                <input type="text" id="race" name="race" placeholder="Race" maxlength="20"><br>
+                <input type="text" id="race" name="race" placeholder="Race" maxlength="20" required><br>
                 <label class="inline" for="religion">Religion: </label>
-                <input type="text" id="religion" name="religion" placeholder="Religion" maxlength="20"><br>
+                <input type="text" id="religion" name="religion" placeholder="Religion" maxlength="20" required><br>
                 <label class="inline" for="marital_status">Marital Status: </label>
-                <select id="marital_status" name="marital_status">
+                <select id="marital_status" name="marital_status" required>
                     <option value="">--Please Select--</option>
                     <option value="Married">Married</option>
                     <option value="Widowed">Widowed</option>

@@ -63,7 +63,7 @@
                 </div>
             </nav>
             <br>
-            <h1>Health Screening Services</h1>
+            <h1>Patient's Details</h1>
             <br>
             <div class="container">
             <form method="post" style="text-align: center;">
@@ -82,7 +82,7 @@
                     <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
                     <input type="hidden" name="sex" value="<?php echo $row['sex'];?>">
                     <input type="hidden" name="package" value="<?php echo $row['package'];?>">
-                    <button formaction="viewPatient.php" class="btn btn-primary">View Patient's Details</button>
+                    <button formaction="viewPatient.php" class="btn btn-primary">View Patient's Report</button>
                     <button formaction="editProfile.php" class="btn btn-primary active">Edit Patient's Details</button>
                     <?php
                         if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){

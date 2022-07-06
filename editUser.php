@@ -82,6 +82,8 @@
             <dd class="col-sm-9"><input type="text" name="username" value="<?php echo $row["username"];?>"></dd>
             <dt class="col-sm-3">Name: </dt>
             <dd class="col-sm-9"><input type="text" name="name" value="<?php echo $row["name"];?>"></dd>
+            <dt class="col-sm-3">Position: </dt>
+            <dd class="col-sm-9"><input type="text" name="position" value="<?php echo $row["position"];?>"></dd>
             <dt class="col-sm-3">User Type: </dt>
             <dd class="col-sm-9"><input type="text" name="type" value="<?php echo $row["type"];?>"></dd>
             <dt class="col-sm-3">Password: </dt>

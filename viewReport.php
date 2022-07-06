@@ -64,6 +64,9 @@
                 <input type="date" name="endDate">
                 <button formaction="searchReport.php" class="btn btn-primary">Search</button>
             </form>
+            <div class="text-center" style="color: white;" >
+                Click <a href="viewRecord.php">here</a> if you want to search by keyword.
+            </div>
             <br><br>
             <table style="width: 100%;" class="table table-bordered">
                 <thead class="table-dark" style="text-align:center;">
@@ -94,6 +97,9 @@
                         </th>
                         <th rowspan="2">
                             Package
+                        </th>
+                        <th rowspan="2">
+
                         </th>
                     </tr>
                     <tr>
@@ -130,6 +136,12 @@
                         <td colspan="2"><?php echo $row['lastUpdate'];?></td>
                         <td><?php echo $row['registeredOn'];?></td>
                         <td><?php echo $row['package'];?></td>
+                        <td>
+                            <form method="post">
+                            <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
+                            <button formaction="viewPatient.php" class="btn btn-primary">View</button>
+                            </form>
+                        </td>
                     </tr>
                 </tbody>
             <?php

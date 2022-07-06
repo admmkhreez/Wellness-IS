@@ -109,6 +109,10 @@
             ?>
                 <br><div class='container'><span class='success'>Successfully registered patient</span><br><br>
                 <button class='btn btn-primary' onclick="window.location.href='homepage.php'">Back to Home Page</button></div>
+                <form method="post">
+                    <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
+                    <button formaction="viewPatient.php" class="btn btn-primary">View</button>
+                </form>
             <?php
             }
             else

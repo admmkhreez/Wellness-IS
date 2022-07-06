@@ -16,6 +16,7 @@
         $name = $_POST["name"];
         $type = $_POST["type"];
         $pw = $_POST["pw"];
+        $pos = $_POST["position"];
 
         $servername = "localhost";
         $username = "root";
@@ -70,13 +71,15 @@
                     <dd class="col-sm-9"><?php echo $us;?></dd>
                     <dt class="col-sm-3">Name: </dt>
                     <dd class="col-sm-9"><?php echo $name;?></dd>
+                    <dt class="col-sm-3">Position: </dt>
+                    <dd class="col-sm-9"><?php echo $pos;?></dd>
                     <dt class="col-sm-3">User Type: </dt>
                     <dd class="col-sm-9"><?php echo $type;?></dd>
                     <dt class="col-sm-3">Password: </dt>
                     <dd class="col-sm-9"><?php echo $pw;?></dd>
                 </dl>    
     <?php
-        $insert = "UPDATE user SET username = '".$us."', name = '".$name."', type = '".$type."', password = '".$pw."' WHERE ID = '".$id."'";
+        $insert = "UPDATE user SET username = '".$us."', name = '".$name."', type = '".$type."', password = '".$pw."', position = '".$pos."' WHERE ID = '".$id."'";
 
         if ($conn->query($insert) === TRUE)
         {
