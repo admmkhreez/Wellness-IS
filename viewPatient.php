@@ -114,7 +114,7 @@
                     <hr>
                     <div class="btn-group text-center position-sticky">
                         <a href="#medical_history" class="btn btn-primary">Medical History</a>
-                        <a href="#doctors_form" class="btn btn-primary">doctor's Report</a>
+                        <a href="#doctors_form" class="btn btn-primary">Doctor's Report</a>
                         <button class="btn btn-primary" onclick="print()">Print</button>
                     </div>
                     <br><hr>
