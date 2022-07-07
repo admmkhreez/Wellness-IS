@@ -72,7 +72,7 @@
                             }
                         ?>
                     </ul>
-                    <a class="nav-link" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
+                        <a class="nav-link btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
                 </div>
             </nav>
             <br>
@@ -101,7 +101,7 @@
                             <button formaction="viewPatient.php" class="btn btn-primary active">View Patient's Report</button>
                             <button formaction="editProfile.php" class="btn btn-primary">Edit Patient's Details</button>
                             <?php
-                                if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
+                                if($_SESSION["type"] == "doctor" || $_SESSION["type"] == "admin"){
                             ?>
                             <button formaction="recordUpdateForm.php" class="btn btn-primary">Update Patient's Record</button>
                             <?php
@@ -114,7 +114,7 @@
                     <hr>
                     <div class="btn-group text-center position-sticky">
                         <a href="#medical_history" class="btn btn-primary">Medical History</a>
-                        <a href="#doctors_form" class="btn btn-primary">Doctor's Report</a>
+                        <a href="#doctors_form" class="btn btn-primary">doctor's Report</a>
                         <button class="btn btn-primary" onclick="print()">Print</button>
                     </div>
                     <br><hr>

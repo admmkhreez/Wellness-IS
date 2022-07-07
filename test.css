@@ -16,7 +16,7 @@ h3{
     margin: auto;
 }
 body{
-    background-image: linear-gradient(to bottom right, rgba(255, 0, 0), rgb(172, 172, 172), rgba(0, 0, 128));
+    background-image: linear-gradient(to bottom right, rgba(255, 0, 0), rgb(151, 151, 151), rgba(0, 0, 128));
     background-repeat: no-repeat;
     background-attachment: fixed;
     display: grid;

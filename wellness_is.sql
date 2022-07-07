@@ -202,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`ID`, `username`, `password`, `name`, `type`) VALUES
 (1, 'admin', '@dm1n', 'admin', 'admin'),
-(2, 'user1', 'abcd.1234', 'Dr. Shobana Supramaniam', 'Doctor'),
+(2, 'user1', 'abcd.1234', 'Dr. Shobana Supramaniam', 'doctor'),
 (3, 'user', 'test', 'Nurse', 'staff');
 COMMIT;
 

@@ -40,7 +40,7 @@
                         }
                     ?>
                 </ul>
-                <a class="nav-link" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
+                    <a class="nav-link btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
             </div>
         </nav>
         <br>
@@ -60,8 +60,10 @@
                 <input type="text" id="icpp"maxlength="12" placeholder="IC / Passport" name="icpp" required><br>
                 <label class="inline" for="dob">Date of Birth: </label>
                 <input type="date" id="dob" name="dob" required><br>
-                <label class="inline" for="address">Home Address:</label>
-                <textarea type="text" id="address" maxlength="100" name="address" rows="4" cols="50" required></textarea><br>
+                <div class="textfield">
+                    <label class="inline" for="address">Home Address:</label>
+                    <textarea type="text" id="address" maxlength="100" placeholder="Address" name="address" rows="4" cols="50" required></textarea><br>
+                </div>
                 <label class="inline" for="email">E-mail Address: </label>
                 <input type="email" id="email" maxlength="320" placeholder="Email" name="email"><br>
                 <label class="inline" for="telephone">Telephone: </label>
@@ -107,8 +109,10 @@
                     <option value = "Custom">Custom</option>
                 </select>
                 <br>
-                <label class="inline" for="addons">Additional Test: </label>
-                <textarea type="text" id="addons" placeholder="*MENTION THE PACKAGE CHOSEN IF CUSTOM" maxlength="100" name="addons" rows="4" cols="50"></textarea><br>
+                <div class="textfield">
+                    <label class="inline" for="addons">Additional Test: </label>
+                    <textarea type="text" id="addons" placeholder="*MENTION THE PACKAGE CHOSEN IF CUSTOM" maxlength="100" name="addons" rows="4" cols="50"></textarea><br>
+                </div>
                 <br><br>
                 <div style="text-align: center;">
                     <input type="reset" class="btn btn-danger" value="Reset">

@@ -59,7 +59,7 @@
                             }
                         ?>
                     </ul>
-                    <a class="nav-link" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
+                        <a class="nav-link btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
                 </div>
             </nav>
             <br>
@@ -85,7 +85,7 @@
                     <button formaction="viewPatient.php" class="btn btn-primary">View Patient's Report</button>
                     <button formaction="editProfile.php" class="btn btn-primary active">Edit Patient's Details</button>
                     <?php
-                        if($_SESSION["type"] == "Doctor" || $_SESSION["type"] == "admin"){
+                        if($_SESSION["type"] == "doctor" || $_SESSION["type"] == "admin"){
                     ?>
                     <button formaction="recordUpdateForm.php" class="btn btn-primary">Update Patient's Record</button>
                     <?php
@@ -115,8 +115,8 @@
                     <label class="inline" for="dob">Date of Birth: </label>
                     <input type="date" id="dob" name="dob" value="<?php echo $row["date_of_birth"]?>" required>
                 </div>
-                <div>
-                    <label class="inline" for="address">Home Address:</label><br>
+                <div class="textfield">
+                    <label class="inline" for="address">Home Address:</label>
                     <textarea type="text" id="address" maxlength="100" name="address" rows="4" cols="50" required><?php echo $row["address"]?></textarea>
                 </div>
                 <div>
@@ -162,7 +162,7 @@
                 </div>
                 
                 
-                <p>Next Of Kin</p>
+                <h5>Next Of Kin</h5>
                 <div>       
                     <label class="inline" for="next_of_kin">Name: </label>
                     <input type="text" id="next_of_kin" maxlength="70" name="next_of_kin" value="<?php echo $row["next_of_kin"]?>" required>
@@ -186,7 +186,7 @@
                     </select>
                 </div>
                 <br>
-                <div>
+                <div class="textfield">
                     <label class="inline" for="addons">Additional Test: </label>
                     <textarea type="text" id="addons" maxlength="100" placeholder="*MENTION THE PACKAGE CHOSEN IF CUSTOM" name="addons" rows="4" cols="50"><?php echo $row["addons"]?></textarea>
                 </div>

@@ -59,7 +59,7 @@
                         }
                     ?>
                 </ul>
-                <a class="nav-link" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
+                    <a class="nav-link btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
             </div>
         </nav>
         <br>

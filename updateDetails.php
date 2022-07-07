@@ -73,7 +73,7 @@
                         }
                     ?>
                 </ul>
-                <a class="nav-link" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
+                    <a class="nav-link btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
             </div>
         </nav>
         <br>
@@ -131,7 +131,7 @@
         else{
             $insert = "UPDATE patient SET name = '".$name."', ic_passport = '".$icpp."', date_of_birth = '".$dob."', address = '".$address."', email = '".$email."', telephone = '".$tel."',
             sex = '".$sex."', occupation = '".$occupation."', race = '".$race."', religion = '".$religion."', marital_status = '".$mstatus."', next_of_kin = '".$nok."', relationship = '".$rs."',
-            telephone_nok = '".$tel_nok."', package = '".$package."', lastUpdateOn = '".$date."', pic = '".$pic."' WHERE mrn = '".$mrn."'";
+            telephone_nok = '".$tel_nok."', package = '".$package."', lastUpdateOn = '".$date."', addons = NULL, pic = '".$pic."' WHERE mrn = '".$mrn."'";
         }
         
 
@@ -153,7 +153,7 @@
             echo "</script>";
         }
     ?>
-    <br><button class="btn btn-primary" onclick="window.location.href='homepage.php'">Back to Home Page</button>
+    <br><button class="btn btn-primary" onclick="window.location.href='homepage.php'">Back to Home Page</button><br><br>
     <form method="post">
         <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
         <button formaction="viewPatient.php" class="btn btn-primary">View</button>
