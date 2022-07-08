@@ -22,7 +22,7 @@
                         <a class="nav-link" href="viewPatient.php">View Patient List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="fillForm.php">Fill form</a>
+                        <a class="nav-link active" href="fillForm.php">Fill form</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
@@ -44,15 +44,20 @@
             </div>
         </nav>
         <br>
-        <h1>Medical Report</h1>
+        <h1>Fill Form</h1>
         <br>
         <div class="container">
-            <form action="historyForm.php" method="post">
+            <form action="recordForm.php" method="post">
             <label for="mrn">Enter Patient's MRN</label><br>
             <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br>
-            <div class="btn-group">
-                <input class="btn btn-primary" type="submit" value="Fill Medical History">
-            </div>
+        <?php
+            if($_SESSION["type"] == "admin" or $_SESSION["type"] == "doctor"){
+        ?>
+            <input class="btn btn-primary" type="submit" value="Fill form">
+        <?php
+            }
+        ?>
+            <button formaction="historyForm.php" class="btn btn-primary">Fill Medical History</button>
             </form>
         </div>
     </body>

@@ -33,10 +33,10 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="viewRecord.php">Patient's Record</a>
+                            <a class="nav-link active" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="selectRecord.php">Fill form</a>
+                            <a class="nav-link" href="fillForm.php">Fill form</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
@@ -120,8 +120,8 @@
             
                 $start_from = ($page-1) * $per_page_record;     
             
-                $query = "SELECT a.mrn, name, ic_passport, address, email, telephone, lastUpdateMH, b.lastUpdate, registeredOn, package FROM patient a INNER JOIN record b
-                ON a.mrn = b.mrn WHERE a.mrn LIKE '%$kw%' OR a.name LIKE '%$kw%' OR a.ic_passport LIKE '%$kw%' OR a.email LIKE '%$kw%' OR a.telephone LIKE '%$kw%' ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+                $query = "SELECT a.mrn, name, ic_passport, address, email, telephone, lastUpdateMH, b.lastUpdate, registeredOn, b.package, b.visits FROM patient a INNER JOIN record b
+                ON a.mrn = b.mrn WHERE a.mrn LIKE '%$kw%' OR a.name LIKE '%$kw%' OR a.ic_passport LIKE '%$kw%' OR a.email LIKE '%$kw%' OR a.telephone LIKE '%$kw%' AND visits > '0' ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
                 $rs_result = mysqli_query ($conn, $query);     
 
                 while ($row = mysqli_fetch_array($rs_result)) { 
@@ -141,7 +141,7 @@
                             <td>
                                 <form method="post">
                                 <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
-                                <button formaction="viewPatient.php" class="btn btn-primary">View</button>
+                                <button formaction="selectRecord.php" class="btn btn-primary">View</button>
                                 </form>
                             </td>
                         </tr>

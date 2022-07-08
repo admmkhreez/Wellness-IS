@@ -52,10 +52,10 @@
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewRecord.php">Patient's Record</a>
+                        <a class="nav-link" href="viewPatient.php">View Patient List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="selectRecord.php">Fill form</a>
+                        <a class="nav-link" href="fillForm.php">Fill form</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
@@ -156,7 +156,7 @@
     <br><button class="btn btn-primary" onclick="window.location.href='homepage.php'">Back to Home Page</button><br><br>
     <form method="post">
         <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
-        <button formaction="viewPatient.php" class="btn btn-primary">View</button>
+        <button formaction="selectRecord.php" class="btn btn-primary">View</button>
     </form>
     </div>
     </body>

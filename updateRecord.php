@@ -28,6 +28,7 @@
     
     <body>
     <?php
+        $visits = $_POST["visits"];
         $package = $_POST["package"];
         $sex = $_POST["sex"];
         $mrn = $_POST["mrn"];
@@ -118,10 +119,10 @@
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewRecord.php">Patient's Record</a>
+                        <a class="nav-link" href="viewPatient.php">View Patient List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="selectRecord.php">Fill form</a>
+                        <a class="nav-link" href="fillForm.php">Fill form</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
@@ -380,7 +381,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = '".$us_breast."', 
                     us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 elseif ($package == "Premium"){
                     $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
@@ -392,7 +393,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
                     us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 elseif ($package == "Comprehensive"){
                     $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
@@ -404,7 +405,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
                     us_abdopel = '".$us_abdopel."', stresstest = NULL, pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 else{
                     $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
@@ -416,7 +417,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
                     us_abdopel = NULL, stresstest = NULL, pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
             }
             else{
@@ -430,7 +431,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
                     us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 elseif ($package == "Premium"){
                     $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
@@ -442,7 +443,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
                     us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 elseif ($package == "Comprehensive"){
                     $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
@@ -454,7 +455,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
                     us_abdopel = '".$us_abdopel."', stresstest = NULL, pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 else{
                     $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
@@ -466,7 +467,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
                     us_abdopel = NULL, stresstest = NULL, pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
             }
     
@@ -492,7 +493,7 @@
         <br><br><button class="btn btn-primary" onclick="window.location.href='homepage.php'">Back to Home Page</button>
         <form method="post">
             <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
-            <button formaction="viewPatient.php" class="btn btn-primary">View</button>
+            <button formaction="selectRecord.php" class="btn btn-primary">View</button>
         </form>
         </div>
     </body>

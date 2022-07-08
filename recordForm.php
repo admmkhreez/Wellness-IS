@@ -19,10 +19,10 @@
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewRecord.php">Patient's Record</a>
+                        <a class="nav-link" href="viewPatient.php">View Patient List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="selectRecord.php">Fill form</a>
+                        <a class="nav-link active" href="fillForm.php">Fill form</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
@@ -61,14 +61,12 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $check = "SELECT a.name, a.sex, a.package, b.status FROM patient a, record b WHERE a.mrn = '".$mrn."' AND b.mrn = '".$mrn."'";
+            $check = "SELECT name, sex, package, addons FROM patient WHERE mrn = '".$mrn."'";
             $data = $conn->query($check);
             if ($data->num_rows>0)
             {
                 while($row=$data->fetch_assoc())
                 {
-                    if ($row['status'] == 0)
-                    {
         ?>
         <div class="container">
         <dl class="row h5">
@@ -304,21 +302,18 @@
             <br>
             <input type="submit" class="btn btn-primary" value="Submit Record">
             <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
-            <input type="hidden" name="sex" value="<?php echo $row['sex'];?>">
-            <input type="hidden" name="package" value="<?php echo $row['package'];?>">
+            <input type="hidden" name="sex" value="<?php echo $row["sex"];?>">
+            <input type="hidden" name="package" value="<?php echo $row["package"];?>">
             <input type="hidden" name="name" value="<?php echo $row["name"];?>">
+            <input type="hidden" name="addons" value="<?php echo $row["addons"];?>">
         </form>
         <?php
-                    }
-                else{
-                    echo "<div class='container'><p>Record already exist, click <a href='selectPatient.php'>here</a> to update</p>";
                 }
             }
-        }
         else{
-                    echo "<div class='container'><p>User does not exist, click <a href='homepage.php'>here</a> to Register</p>";
-                }
+            echo "<div class='container'><p>User does not exist, click <a href='homepage.php'>here</a> to Register</p>";
         }
+    }
         else
         {
             echo "<script type='text/javascript'>";
@@ -326,6 +321,7 @@
             echo "window.location.href = 'log-in.html';";
             echo "</script>";
         }
+    
         $conn->close();
         ?>
         </div>

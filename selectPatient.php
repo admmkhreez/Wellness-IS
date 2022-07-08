@@ -19,7 +19,7 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewRecord.php">Patient's Record</a>
+                            <a class="nav-link" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="selectRecord.php">Fill form</a>
@@ -50,7 +50,7 @@
             <form method="post">
                 <label for="mrn">Enter Patient's MRN</label><br>
                 <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br>
-                <button formaction="viewPatient.php" class="btn btn-primary">Search</button>
+                <button formaction="selectRecord.php" class="btn btn-primary">Search</button>
             </form>
         </div>
     </body>

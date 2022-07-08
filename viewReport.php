@@ -32,10 +32,10 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewRecord.php">Patient's Record</a>
+                            <a class="nav-link" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="selectRecord.php">Fill form</a>
+                            <a class="nav-link" href="fillForm.php">Fill form</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
@@ -65,7 +65,7 @@
                 <button formaction="searchReport.php" class="btn btn-primary">Search</button>
             </form>
             <div class="text-center" style="color: white;" >
-                Click <a href="viewRecord.php">here</a> if you want to search by keyword.
+                Click <a href="viewPatient.php">here</a> if you want to search by keyword.
             </div>
             <br><br>
             <table style="width: 100%;" class="table table-bordered">
@@ -119,7 +119,7 @@
         
             $start_from = ($page-1) * $per_page_record;     
         
-            $query = "SELECT a.mrn, name, ic_passport, address, email, telephone, lastUpdateMH, lastUpdate, registeredOn, package  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+            $query = "SELECT a.mrn, name, ic_passport, address, email, telephone, lastUpdateMH, lastUpdate, registeredOn, b.package, visits  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
             $rs_result = mysqli_query ($conn, $query);     
 
             while ($row = mysqli_fetch_array($rs_result)) {  
@@ -139,7 +139,8 @@
                         <td>
                             <form method="post">
                             <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
-                            <button formaction="viewPatient.php" class="btn btn-primary">View</button>
+                            <input type="hidden" name="visits" value="<?php echo $row["visits"];?>">
+                            <button formaction="viewDetails.php" class="btn btn-primary">View</button>
                             </form>
                         </td>
                     </tr>
@@ -150,7 +151,7 @@
             </table>
                 <?php
                 
-                $query = "SELECT COUNT(*) FROM patient";     
+                $query = "SELECT COUNT(*) FROM patient a, record b WHERE a.mrn = b.mrn";     
                 $rs_result = mysqli_query($conn, $query);     
                 $row = mysqli_fetch_row($rs_result);     
                 $total_records = $row[0];     

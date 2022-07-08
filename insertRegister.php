@@ -53,10 +53,10 @@
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewRecord.php">Patient's Record</a>
+                        <a class="nav-link" href="viewPatient.php">View Patient List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="selectRecord.php">Fill form</a>
+                        <a class="nav-link" href="fillForm.php">Fill form</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
@@ -89,7 +89,12 @@
             {
                 if ($mrn == $row['mrn'])
                 {
-                    echo "<div class='container'><p>Record with that MRN already exist, click <a href='viewRecord.php'>here</a> to view/find</p></div>";
+                    echo "<div class='container'><p>Record with MRN $mrn already exist<br><br>";
+                    echo "  <form method='post'>
+                                <input type='hidden' value='$mrn' name='mrn'>
+                                <button formaction='selectRecord.php' class='btn btn-primary'>View Here</button>
+                            </form>";
+                    echo "</div>";
                     die;
                 }       
             }       
@@ -108,10 +113,10 @@
             {
             ?>
                 <br><div class='container'><span class='success'>Successfully registered patient</span><br><br>
-                <button class='btn btn-primary' onclick="window.location.href='homepage.php'">Back to Home Page</button></div>
+                <button class='btn btn-primary' onclick="window.location.href='homepage.php'">Back to Home Page</button>
                 <form method="post">
                     <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
-                    <button formaction="viewPatient.php" class="btn btn-primary">View</button>
+                    <button formaction="selectRecord.php" class="btn btn-primary">View</button>
                 </form>
             <?php
             }
@@ -129,6 +134,7 @@
                 echo "</script>";
             }
             ?>
+        </div>    
     </body>
     
 </html>

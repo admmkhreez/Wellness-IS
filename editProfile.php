@@ -14,7 +14,6 @@
     <body>
         <?php
             $mrn = $_POST["mrn"];
-
             $servername = "localhost";
             $username = "root";
             $password = "";
@@ -38,10 +37,10 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewRecord.php">Patient's Record</a>
+                            <a class="nav-link" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="selectRecord.php">Fill form</a>
+                            <a class="nav-link" href="fillForm.php">Fill form</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="selectPatient.php">Search Patient</a>
@@ -69,32 +68,13 @@
             <form method="post" style="text-align: center;">
                 <label class="inline" for="mrn">Enter Patient's MRN</label><br>
                 <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br>
-                <button formaction="editProfile.php" class="btn btn-primary">Search</button>
+                <button formaction="selectRecord.php" class="btn btn-primary">Search</button>
             </form>
             <br>
             <?php
                 if($data->num_rows > 0){
                     while($row = $data->fetch_assoc()){
             ?>
-            
-            <form method="post" style="text-align:center;">
-                <div class="btn-group" style="width:100%;">
-                    <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
-                    <input type="hidden" name="sex" value="<?php echo $row['sex'];?>">
-                    <input type="hidden" name="package" value="<?php echo $row['package'];?>">
-                    <button formaction="viewPatient.php" class="btn btn-primary">View Patient's Report</button>
-                    <button formaction="editProfile.php" class="btn btn-primary active">Edit Patient's Details</button>
-                    <?php
-                        if($_SESSION["type"] == "doctor" || $_SESSION["type"] == "admin"){
-                    ?>
-                    <button formaction="recordUpdateForm.php" class="btn btn-primary">Update Patient's Record</button>
-                    <?php
-                        }
-                    ?>
-                    <button formaction="historyUpdateForm.php" class="btn btn-primary">Update Medical History</button>
-                    
-                </div>    
-            </form>
             <br>
             <form action="updateDetails.php" method="post">
             
@@ -202,7 +182,7 @@
                 }
             }
             else{
-                echo "Patient does not exist in system.";
+                echo "<div style='text-align:center;'>Patient does not exist in system.</div>";
             }
         }
         else

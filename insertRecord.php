@@ -28,6 +28,7 @@
     
     <body>
         <?php
+            $addons = $_POST["addons"];
             $package = $_POST["package"];
             $sex = $_POST["sex"];  
             $mrn = $_POST["mrn"];
@@ -110,6 +111,20 @@
             $heightm = $height/100;
             $temp = $weight/($heightm*$heightm);
             $bmi = number_format((float)$temp, 2, '.', '');
+
+            $select = "SELECT visits FROM record WHERE mrn = '".$mrn."' ORDER BY visits DESC LIMIT 1";
+            $data = $conn->query($select);
+
+            if ($data->num_rows>0)
+            {
+                while($row=$data->fetch_assoc())
+                {
+                    $visits = $row["visits"]+1;
+                }
+            }
+            else{
+                $visits = 1;
+            }
             ?>
             <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
                 <div class="container-sm">
@@ -118,10 +133,10 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewRecord.php">Patient's Record</a>
+                            <a class="nav-link" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="selectRecord.php">Fill form</a>
+                            <a class="nav-link" href="fillForm.php">Fill form</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
@@ -378,102 +393,86 @@
             <?php
                 if($sex == "Female"){
                     if ($package == "Custom"){
-                        $insert = "INSERT INTO record (mrn) VALUES ('".$mrn."') ON DUPLICATE KEY UPDATE appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                        pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                        fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
-                        excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
-                        airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
-                        coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
-                        lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
-                        breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = '".$us_breast."', 
-                        us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                        lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."'";
+                        $insert = "INSERT INTO record (mrn, appearance, weight, height, bmi, systolic, diastolic, pulse, va_aidedr, va_aidedl, va_unaidedr, va_unaidedl, colour_r, colour_l, fundoscopy_r, fundoscopy_l, nose, throat, neck, skin, 
+                        excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
+                        usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, position, package, addons) VALUES
+                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
+                        '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
+                        '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', '".$breast."', '".$lmp."', '".$gynaecology."', '".$lastps."', '".$cxr."', '".$ecg."', '".$mammogram."', '".$us_breast."', 
+                        '".$us_abdopel."', '".$stresstest."', '".$pta."', '".$lft."', '".$urine."', '".$blood."', '".$impression."', '".$recommendation."', '".$date."', '".$visits."', '".$doneBy."', '".$pos."', '".$package."', '".$addons."')";
                     }
                     elseif ($package == "Premium"){
-                        $insert = "INSERT INTO record (mrn) VALUES ('".$mrn."') ON DUPLICATE KEY UPDATE appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                        pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                        fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
-                        excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
-                        airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
-                        coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
-                        lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
-                        breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
-                        us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                        lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."'";
+                        $insert = "INSERT INTO record (mrn, appearance, weight, height, bmi, systolic, diastolic, pulse, va_aidedr, va_aidedl, va_unaidedr, va_unaidedl, colour_r, colour_l, fundoscopy_r, fundoscopy_l, nose, throat, neck, skin, 
+                        excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
+                        usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, position, package, addons) VALUES
+                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
+                        '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
+                        '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', '".$breast."', '".$lmp."', '".$gynaecology."', '".$lastps."', '".$cxr."', '".$ecg."', NULL, NULL, 
+                        '".$us_abdopel."', '".$stresstest."', NULL, NULL, '".$urine."', '".$blood."', '".$impression."', '".$recommendation."', '".$date."', '".$visits."', '".$doneBy."', '".$pos."', '".$package."', '".$addons."')";
                     }
                     elseif ($package == "Comprehensive"){
-                        $insert = "INSERT INTO record (mrn) VALUES ('".$mrn."') ON DUPLICATE KEY UPDATE appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                        pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                        fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
-                        excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
-                        airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
-                        coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
-                        lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
-                        breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
-                        us_abdopel = '".$us_abdopel."', stresstest = NULL, pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                        lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."'";
+                        $insert = "INSERT INTO record (mrn, appearance, weight, height, bmi, systolic, diastolic, pulse, va_aidedr, va_aidedl, va_unaidedr, va_unaidedl, colour_r, colour_l, fundoscopy_r, fundoscopy_l, nose, throat, neck, skin, 
+                        excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
+                        usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, position, package, addons) VALUES
+                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
+                        '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
+                        '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', '".$breast."', '".$lmp."', '".$gynaecology."', '".$lastps."', '".$cxr."', '".$ecg."', NULL, NULL, 
+                        '".$us_abdopel."', NULL, NULL, NULL, '".$urine."', '".$blood."', '".$impression."', '".$recommendation."', '".$date."', '".$visits."', '".$doneBy."', '".$pos."', '".$package."', '".$addons."')";
                     }
                     else{
-                        $insert = "INSERT INTO record (mrn) VALUES ('".$mrn."') ON DUPLICATE KEY UPDATE appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                        pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                        fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
-                        excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
-                        airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
-                        coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
-                        lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
-                        breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
-                        us_abdopel = NULL, stresstest = NULL, pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                        lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."'";
+                        $insert = "INSERT INTO record (mrn, appearance, weight, height, bmi, systolic, diastolic, pulse, va_aidedr, va_aidedl, va_unaidedr, va_unaidedl, colour_r, colour_l, fundoscopy_r, fundoscopy_l, nose, throat, neck, skin, 
+                        excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
+                        usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, position, package, addons) VALUES
+                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
+                        '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
+                        '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', '".$breast."', '".$lmp."', '".$gynaecology."', '".$lastps."', '".$cxr."', '".$ecg."', NULL, NULL, 
+                        NULL, NULL, NULL, NULL, '".$urine."', '".$blood."', '".$impression."', '".$recommendation."', '".$date."', '".$visits."', '".$doneBy."', '".$pos."', '".$package."', '".$addons."')";
                     }
                 }
                 else{
                     if ($package == "Custom"){
-                        $insert = "INSERT INTO record (mrn) VALUES ('".$mrn."') ON DUPLICATE KEY UPDATE appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                        pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                        fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
-                        excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
-                        airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
-                        coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
-                        lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
-                        breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
-                        us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                        lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."'";
+                        $insert = "INSERT INTO record (mrn, appearance, weight, height, bmi, systolic, diastolic, pulse, va_aidedr, va_aidedl, va_unaidedr, va_unaidedl, colour_r, colour_l, fundoscopy_r, fundoscopy_l, nose, throat, neck, skin, 
+                        excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
+                        usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, position, package, addons) VALUES
+                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
+                        '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
+                        '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', NULL, NULL, NULL, NULL, '".$cxr."', '".$ecg."', NULL, NULL, 
+                        '".$us_abdopel."', '".$stresstest."', '".$pta."', '".$lft."', '".$urine."', '".$blood."', '".$impression."', '".$recommendation."', '".$date."', '".$visits."', '".$doneBy."', '".$pos."', '".$package."', '".$addons."')";
                     }
                     elseif ($package == "Premium"){
-                        $insert = "INSERT INTO record (mrn) VALUES ('".$mrn."') ON DUPLICATE KEY UPDATE appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                        pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                        fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
-                        excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
-                        airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
-                        coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
-                        lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
-                        breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
-                        us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                        lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."'";
+                        $insert = "INSERT INTO record (mrn, appearance, weight, height, bmi, systolic, diastolic, pulse, va_aidedr, va_aidedl, va_unaidedr, va_unaidedl, colour_r, colour_l, fundoscopy_r, fundoscopy_l, nose, throat, neck, skin, 
+                        excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
+                        usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, position, package, addons) VALUES
+                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
+                        '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
+                        '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', NULL, NULL, NULL, NULL, '".$cxr."', '".$ecg."', NULL, NULL, 
+                        '".$us_abdopel."', '".$stresstest."', NULL, NULL, '".$urine."', '".$blood."', '".$impression."', '".$recommendation."', '".$date."', '".$visits."', '".$doneBy."', '".$pos."', '".$package."', '".$addons."')";
                     }
                     elseif ($package == "Comprehensive"){
-                        $insert = "INSERT INTO record (mrn) VALUES ('".$mrn."') ON DUPLICATE KEY UPDATE appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                        pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                        fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
-                        excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
-                        airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
-                        coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
-                        lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
-                        breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
-                        us_abdopel = '".$us_abdopel."', stresstest = NULL, pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                        lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."'";
+                        $insert = "INSERT INTO record (mrn, appearance, weight, height, bmi, systolic, diastolic, pulse, va_aidedr, va_aidedl, va_unaidedr, va_unaidedl, colour_r, colour_l, fundoscopy_r, fundoscopy_l, nose, throat, neck, skin, 
+                        excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
+                        usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, position, package, addons) VALUES
+                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
+                        '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
+                        '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', NULL, NULL, NULL, NULL, '".$cxr."', '".$ecg."', NULL, NULL, 
+                        '".$us_abdopel."', NULL, NULL, NULL, '".$urine."', '".$blood."', '".$impression."', '".$recommendation."', '".$date."', '".$visits."', '".$doneBy."', '".$pos."', '".$package."', '".$addons."')";
                     }
                     else{
-                        $insert = "INSERT INTO record (mrn) VALUES ('".$mrn."') ON DUPLICATE KEY UPDATE appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                        pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                        fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
-                        excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
-                        airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
-                        coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
-                        lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
-                        breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
-                        us_abdopel = NULL, stresstest = NULL, pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                        lastUpdate = '".$date."', status='1', doneBy='".$doneBy."', position='".$pos."'";
+                        $insert = "INSERT INTO record (mrn, appearance, weight, height, bmi, systolic, diastolic, pulse, va_aidedr, va_aidedl, va_unaidedr, va_unaidedl, colour_r, colour_l, fundoscopy_r, fundoscopy_l, nose, throat, neck, skin, 
+                        excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
+                        usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, position, package, addons) VALUES
+                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
+                        '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
+                        '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', NULL, NULL, NULL, NULL, '".$cxr."', '".$ecg."', NULL, NULL, 
+                        NULL, NULL, NULL, NULL, '".$urine."', '".$blood."', '".$impression."', '".$recommendation."', '".$date."', '".$visits."', '".$doneBy."', '".$pos."', '".$package."', '".$addons."')";
                     }
                 }
                 if ($conn->query($insert) === TRUE)
@@ -497,8 +496,7 @@
             <br><br><button class="btn btn-primary" onclick="window.location.href='homepage.php'">Back to Home Page</button>
             <form method="post">
                 <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
-                <button formaction="viewPatient.php" class="btn btn-primary">View</button>
+                <button formaction="selectRecord.php" class="btn btn-primary">View</button>
             </form>
-            </div>
     </body>
 </html>

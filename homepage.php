@@ -7,11 +7,34 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .unstyled-button {
+                border: none;
+                padding: 0;
+                background: none;
+                text-decoration: underline;
+                color: blue;
+            }
+        </style>
         <title>KPJ Klang Wellness IS</title>
         <link rel="stylesheet" href="test.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
     <body>
+        <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $db = "wellness_is";
+            date_default_timezone_set("Asia/Kuala_Lumpur");
+            $date = date("Y-m-d H:i:s");
+            $conn = new mysqli($servername, $username, $password, $db);
+    
+            if ($conn->connect_error)
+            {
+                die("Connection failed: " . $conn->connect_error);
+            }
+        ?>
         <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
             <div class="container-sm">
                 <ul class="navbar-nav">
@@ -19,10 +42,10 @@
                         <a class="nav-link active" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewRecord.php">Patient's Record</a>
+                        <a class="nav-link" href="viewPatient.php">View Patient List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="selectRecord.php">Fill form</a>
+                        <a class="nav-link" href="fillForm.php">Fill form</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
@@ -48,12 +71,51 @@
         <br><br>
         <h2  style="color: white; text-align:center;">Register Patient</h2>
         <br>
-        <form action="insertRegister.php" method="post">
-            <div class="container">
+        <div class="container">
+        <?php
+            if(isset($_POST["check"])){
+                $mrn = $_POST["mrn"];
+                $check = "SELECT mrn FROM patient WHERE mrn = '".$mrn."'";
+                $data = $conn->query($check);
+                if ($data->num_rows>0)
+                {
+                    while($row=$data->fetch_assoc())
+                    {
+                        if ($mrn == $row['mrn'])
+                        {
+        ?>
+        <form method="post">
+            <p>MRN <?php echo $mrn;?> is already registered view <button class="unstyled-button" formaction="viewDetails.php">here</button></p>
+            <input type="hidden" name="mrn" value="<?php echo $mrn?>">
+        </form>
+        <?php
+                        }
+                        else{
+        ?>
+        <p>No existing record found.</p>
+        <?php
+                        }
+                    }
+                }
+            }
+        ?>
+        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+                <label class="inline" for="mrn">MRN: </label>
+                <input type="text" id="mrn" maxlength="10" placeholder="MRN" name="mrn" required>
+                <input type="submit" name="check" class="btn btn-primary" value="Check"><br>
+        </form>
+            <form action="insertRegister.php" method="post">
                 <h5>Patient's Information</h5>
                 <hr>
-                <label class="inline" for="mrn">MRN: </label>
-                <input type="text" id="mrn" maxlength="10" placeholder="MRN" name="mrn" required><br>
+                <label for="mrn" class="inline">MRN:</label>
+                <?php
+                    if(isset($mrn)){    
+                ?>
+                <span id="mrn"><?php echo $mrn;?></span>
+                <?php
+                    }
+                ?>
+                <br>
                 <label class="inline" for="name">Name: </label>
                 <input type="text" id="name" maxlength="70" placeholder="Name" name="name" required><br>
                 <label class="inline" for="icpp">I/C No or Passport: </label>
@@ -117,9 +179,11 @@
                 <div style="text-align: center;">
                     <input type="reset" class="btn btn-danger" value="Reset">
                     <input type="submit" class="btn btn-primary" value="Register">
+                    <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
                 </div>
-            </div>
-        </form>
+                
+            </form>
+        </div>
         <br><br>
     </body>
     <?php

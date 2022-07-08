@@ -14,6 +14,7 @@
     <body>
     <?php
         $mrn = $_POST["mrn"];
+        $visits = $_POST["visits"];
         $servername = "localhost";
         $username = "root";
         $password = "";
@@ -27,7 +28,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
         else{
-            $select = "SELECT * from record a, patient b WHERE a.mrn = '".$mrn."' AND b.mrn = '".$mrn."'";
+            $select = "SELECT * from record a, patient b WHERE a.mrn = '".$mrn."' AND b.mrn = '".$mrn."' AND visits = '".$visits."'";
             $data = $conn->query($select);
         }
     ?>
@@ -38,10 +39,10 @@
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewRecord.php">Patient's Record</a>
+                        <a class="nav-link" href="viewPatient.php">View Patient List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="selectRecord.php">Fill form</a>
+                        <a class="nav-link" href="fillForm.php">Fill form</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="selectPatient.php">Search Patient</a>
@@ -69,7 +70,7 @@
         <form method="post" style="text-align: center;">
                 <label class="inline" for="mrn">Enter Patient's MRN</label><br>
                 <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br>
-                <button formaction="recordUpdateForm.php" class="btn btn-primary">Search</button>
+                <button formaction="selectRecord.php" class="btn btn-primary">Search</button>
     <?php
         if ($data->num_rows>0)
         {
@@ -86,8 +87,8 @@
                 <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
                 <input type="hidden" name="sex" value="<?php echo $row["sex"];?>">
                 <input type="hidden" name="package" value="<?php echo $row["package"];?>">
-                <button formaction="viewPatient.php" class="btn btn-primary">View Patient's Report</button>
-                <button formaction="editProfile.php" class="btn btn-primary">Edit Patient's Details</button>
+                <input type="hidden" name="visits" value="<?php echo $row["visits"];?>">
+                <button formaction="viewDetails.php" class="btn btn-primary">View Patient's Report</button>
                 <?php
                     if($_SESSION["type"] == "doctor" || $_SESSION["type"] == "admin"){
                 ?>
@@ -336,6 +337,7 @@
             <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
             <input type="hidden" name="sex" value="<?php echo $row["sex"];?>">
             <input type="hidden" name="package" value="<?php echo $row["package"];?>">
+            <input type="hidden" name="visits" value="<?php echo $row["visits"];?>">
         </form>
         <br>
     <?php
