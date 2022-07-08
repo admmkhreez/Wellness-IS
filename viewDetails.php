@@ -111,7 +111,6 @@
                                     <?php
                                         }
                                     ?>
-                                    <button formaction="historyUpdateForm.php" class="btn btn-primary">Update Medical History</button>
                                 </div>    
                             </form>
                             <br>

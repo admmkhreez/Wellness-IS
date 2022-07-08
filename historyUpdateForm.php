@@ -5,7 +5,6 @@
     if(isset($_SESSION["username"])) {
 
     $mrn = $_POST["mrn"];
-    $visits = $_POST["visits"];
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -81,25 +80,7 @@
     if ($data->num_rows>0)
     {
         while($row=$data->fetch_assoc()){
-    ?>
-        
-        <form method="post" style="text-align:center;">
-            <div class="btn-group" style="width:100%;">
-                <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
-                <input type="hidden" name="sex" value="<?php echo $row['sex'];?>">
-                <input type="hidden" name="package" value="<?php echo $row['package'];?>">
-                <input type="hidden" name="visits" value="<?php echo $visits;?>">
-                <button formaction="viewDetails.php" class="btn btn-primary">View Patient's Report</button>
-                <?php
-                    if($_SESSION["type"] == "doctor" || $_SESSION["type"] == "admin"){
-                ?>
-                <button formaction="recordUpdateForm.php" class="btn btn-primary">Update Patient's Record</button>
-                <?php
-                    }
-                ?>
-                <button formaction="historyUpdateForm.php" class="btn btn-primary active">Update Medical History</button>
-                        
-            </div>    
+    ?> 
         </form>
         <br>
         <form action="updateHistory.php" method="post">

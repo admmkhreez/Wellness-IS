@@ -72,6 +72,11 @@
         <h2  style="color: white; text-align:center;">Register Patient</h2>
         <br>
         <div class="container">
+            <form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post">
+                <label class="inline" for="mrn">MRN: </label>
+                <input type="text" id="mrn" maxlength="10" placeholder="MRN" name="mrn" required autofocus>
+                <input type="submit" name="check" class="btn btn-primary" value="Check"><br>
+            </form><br>
         <?php
             if(isset($_POST["check"])){
                 $mrn = $_POST["mrn"];
@@ -81,40 +86,26 @@
                 {
                     while($row=$data->fetch_assoc())
                     {
-                        if ($mrn == $row['mrn'])
-                        {
         ?>
-        <form method="post">
-            <p>MRN <?php echo $mrn;?> is already registered view <button class="unstyled-button" formaction="viewDetails.php">here</button></p>
-            <input type="hidden" name="mrn" value="<?php echo $mrn?>">
-        </form>
+                    <form method="post">
+                        <p>MRN <?php echo $mrn;?> is already registered view <button class="unstyled-button" formaction="selectRecord.php">here</button></p>
+                        <input type="hidden" name="mrn" value="<?php echo $mrn?>">
+                    </form>
         <?php
-                        }
-                        else{
-        ?>
-        <p>No existing record found.</p>
-        <?php
-                        }
                     }
                 }
-            }
+                else
+                {
         ?>
-        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-                <label class="inline" for="mrn">MRN: </label>
-                <input type="text" id="mrn" maxlength="10" placeholder="MRN" name="mrn" required>
-                <input type="submit" name="check" class="btn btn-primary" value="Check"><br>
-        </form>
-            <form action="insertRegister.php" method="post">
+            
+            <?php
+                if(isset($mrn)){    
+            ?>
+                <form action="insertRegister.php" method="post">
                 <h5>Patient's Information</h5>
                 <hr>
                 <label for="mrn" class="inline">MRN:</label>
-                <?php
-                    if(isset($mrn)){    
-                ?>
                 <span id="mrn"><?php echo $mrn;?></span>
-                <?php
-                    }
-                ?>
                 <br>
                 <label class="inline" for="name">Name: </label>
                 <input type="text" id="name" maxlength="70" placeholder="Name" name="name" required><br>
@@ -180,9 +171,18 @@
                     <input type="reset" class="btn btn-danger" value="Reset">
                     <input type="submit" class="btn btn-primary" value="Register">
                     <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
+                    
                 </div>
                 
             </form>
+        <?php
+                }
+            }
+        ?>
+        
+            <?php
+                }
+            ?>
         </div>
         <br><br>
     </body>

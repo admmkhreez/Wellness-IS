@@ -28,6 +28,7 @@
     
     <body>
     <?php
+        $addons = $_POST["addons"];
         $visits = $_POST["visits"];
         $package = $_POST["package"];
         $sex = $_POST["sex"];
@@ -381,7 +382,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = '".$us_breast."', 
                     us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."',  package = '".$package."', addons = '".$addons."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 elseif ($package == "Premium"){
                     $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
@@ -393,7 +394,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
                     us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."',  package = '".$package."', addons = '".$addons."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 elseif ($package == "Comprehensive"){
                     $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
@@ -405,7 +406,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
                     us_abdopel = '".$us_abdopel."', stresstest = NULL, pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."',  package = '".$package."', addons = '".$addons."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 else{
                     $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
@@ -417,7 +418,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = '".$breast."', lmp = '".$lmp."', gynaecology = '".$gynaecology."', lastps = '".$lastps."', cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
                     us_abdopel = NULL, stresstest = NULL, pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."',  package = '".$package."', addons = '".$addons."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
             }
             else{
@@ -431,7 +432,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
                     us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."',  package = '".$package."', addons = '".$addons."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 elseif ($package == "Premium"){
                     $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
@@ -443,7 +444,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
                     us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."',  package = '".$package."', addons = '".$addons."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 elseif ($package == "Comprehensive"){
                     $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
@@ -455,7 +456,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
                     us_abdopel = '".$us_abdopel."', stresstest = NULL, pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."',  package = '".$package."', addons = '".$addons."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 else{
                     $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
@@ -467,7 +468,7 @@
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
                     breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
                     us_abdopel = NULL, stresstest = NULL, pta = NULL, lft = NULL, urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
-                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
+                    lastUpdate = '".$date."', visits = '".$visits."', doneBy='".$doneBy."', position='".$pos."',  package = '".$package."', addons = '".$addons."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
             }
     

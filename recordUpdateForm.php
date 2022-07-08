@@ -95,8 +95,7 @@
                 <button formaction="recordUpdateForm.php" class="btn btn-primary active">Update Patient's Record</button>
                 <?php
                     }
-                ?>
-                <button formaction="historyUpdateForm.php" class="btn btn-primary">Update Medical History</button>       
+                ?>     
             </div>    
         </form>
         <br>
@@ -338,6 +337,7 @@
             <input type="hidden" name="sex" value="<?php echo $row["sex"];?>">
             <input type="hidden" name="package" value="<?php echo $row["package"];?>">
             <input type="hidden" name="visits" value="<?php echo $row["visits"];?>">
+            <input type="hidden" name="addons" value="<?php echo $row["addons"];?>">
         </form>
         <br>
     <?php

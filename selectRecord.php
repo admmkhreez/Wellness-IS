@@ -69,14 +69,35 @@
             <button formaction="selectRecord.php" class="btn btn-primary">Search</button>
         </form>
         <br>
-        <form method="post" action="editProfile.php" style="text-align: center;">
-            <h5>MRN: <?php echo $mrn;?></h5>
-            <input type="submit" value="View Profile" class="btn btn-primary">
-            <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
-        </form>
+        <?php 
+            $check ="SELECT mrn FROM patient WHERE mrn = '".$mrn."'";
+            $data = $conn->query($check);
+
+            if($data->num_rows > 0)
+            {
+                while ($row = $data->fetch_assoc())
+                {
+        ?>
+                    <form method="post" action="editProfile.php" style="text-align: center;">
+                        <h5>MRN: <?php echo $mrn;?></h5>
+                        <input type="submit" value="View Profile" class="btn btn-primary">
+                        <button formaction="historyUpdateForm.php" class="btn btn-primary">Update Medical History</button>  
+                        <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+                    </form>
+        <?php
+                }
+            }
+                    else
+                    {
+        ?>
+                        <p>Patient does not exist, register <a href="homepage.php">here</a></p>
+        <?php 
+                    }
+        ?>
         </div>
         <br>
         <div>    
+            <h3 style="color: white; text-align: center;">Records History</h3>
             <table style="width: 100%;" class="table table-bordered">
                 <thead class="table-dark" style="text-align:center;">
                     <tr>
