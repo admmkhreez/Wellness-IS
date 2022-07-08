@@ -10,6 +10,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
     <?php
+        $mrn1 = $_POST["mrn1"];
         $mrn = $_POST["mrn"];
         $name = $_POST["name"];
         $icpp = $_POST["icpp"];
@@ -124,14 +125,14 @@
                 </dl>    
     <?php
         if($package == "Custom"){
-            $insert = "UPDATE patient SET name = '".$name."', ic_passport = '".$icpp."', date_of_birth = '".$dob."', address = '".$address."', email = '".$email."', telephone = '".$tel."',
+            $insert = "UPDATE patient SET mrn = '".$mrn."', name = '".$name."', ic_passport = '".$icpp."', date_of_birth = '".$dob."', address = '".$address."', email = '".$email."', telephone = '".$tel."',
             sex = '".$sex."', occupation = '".$occupation."', race = '".$race."', religion = '".$religion."', marital_status = '".$mstatus."', next_of_kin = '".$nok."', relationship = '".$rs."',
-            telephone_nok = '".$tel_nok."', package = '".$package."', lastUpdateOn = '".$date."', addons = '".$addons."', pic = '".$pic."' WHERE mrn = '".$mrn."'";
+            telephone_nok = '".$tel_nok."', package = '".$package."', lastUpdateOn = '".$date."', addons = '".$addons."', pic = '".$pic."' WHERE mrn = '".$mrn1."'";
         }
         else{
-            $insert = "UPDATE patient SET name = '".$name."', ic_passport = '".$icpp."', date_of_birth = '".$dob."', address = '".$address."', email = '".$email."', telephone = '".$tel."',
+            $insert = "UPDATE patient SET mrn = '".$mrn."', name = '".$name."', ic_passport = '".$icpp."', date_of_birth = '".$dob."', address = '".$address."', email = '".$email."', telephone = '".$tel."',
             sex = '".$sex."', occupation = '".$occupation."', race = '".$race."', religion = '".$religion."', marital_status = '".$mstatus."', next_of_kin = '".$nok."', relationship = '".$rs."',
-            telephone_nok = '".$tel_nok."', package = '".$package."', lastUpdateOn = '".$date."', addons = NULL, pic = '".$pic."' WHERE mrn = '".$mrn."'";
+            telephone_nok = '".$tel_nok."', package = '".$package."', lastUpdateOn = '".$date."', addons = NULL, pic = '".$pic."' WHERE mrn = '".$mrn1."'";
         }
         
 

@@ -13,6 +13,7 @@
     </head>
     <body>
         <?php
+            $mrn1 = $_POST["mrn"];
             $mrn = $_POST["mrn"];
             $servername = "localhost";
             $username = "root";
@@ -81,7 +82,20 @@
                 <h5>Patient's Information</h5>
                 <div>
                     <label class="inline" for="mrn">MRN: </label>
+            <?php 
+                    if($_SESSION["type"] == "admin")
+                    {
+            ?>
                     <input type="text" id="mrn" maxlength="10" name="mrn" value="<?php echo $row["mrn"]?>" required>
+            <?php
+                    }
+                    else{
+            ?>
+                    <input type="text" id="mrn" maxlength="10" name="mrn" value="<?php echo $row["mrn"]?>" required disabled>
+            <?php
+                    }
+            ?>
+
                 </div>
                 <div>
                     <label class="inline" for="name">Name: </label>
@@ -174,6 +188,7 @@
                 <div style="text-align: center;">
                     <input type="reset" class="btn btn-danger" value="Reset">
                     <input type="submit" class="btn btn-primary" value="Submit">
+                    <input type="hidden" name="mrn1" value="<?php echo $mrn1;?>"> 
                 </div>
                 <br>
         </form>
