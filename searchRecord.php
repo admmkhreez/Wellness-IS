@@ -89,8 +89,6 @@
                             <th rowspan="2">
                                 Telephone
                             </th>
-                            <th colspan="4">
-                                Last Updated On
                             </th>
                             <th rowspan="2">
                                 Registered On
@@ -101,10 +99,6 @@
                             <th rowspan="2">
                                 
                             </th>
-                        </tr>
-                        <tr>
-                            <th colspan="2">Medical History</th>
-                            <th colspan="2">Report Form</th>
                         </tr>
                     </thead>
                     <tbody style="background-color:white;"
@@ -118,10 +112,8 @@
                 $page=1;    
                 }    
             
-                $start_from = ($page-1) * $per_page_record;     
-            
-                $query = "SELECT a.mrn, name, ic_passport, address, email, telephone, lastUpdateMH, b.lastUpdate, registeredOn, b.package, b.visits FROM patient a INNER JOIN record b
-                ON a.mrn = b.mrn WHERE a.mrn LIKE '%$kw%' OR a.name LIKE '%$kw%' OR a.ic_passport LIKE '%$kw%' OR a.email LIKE '%$kw%' OR a.telephone LIKE '%$kw%' AND visits > '0' ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+                $start_from = ($page-1) * $per_page_record;
+                $query = "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package FROM patient WHERE mrn LIKE '%$kw%' OR name LIKE '%$kw%' OR ic_passport LIKE '%$kw%' OR email LIKE '%$kw%' OR telephone LIKE '%$kw%' ORDER BY registeredOn DESC LIMIT ". $start_from. ", " .$per_page_record;
                 $rs_result = mysqli_query ($conn, $query);     
 
                 while ($row = mysqli_fetch_array($rs_result)) { 
@@ -134,8 +126,6 @@
                             <td><?php echo $row['address'];?></td>
                             <td><?php echo $row['email'];?></td>
                             <td><?php echo $row['telephone'];?></td>
-                            <td colspan="2"><?php echo $row['lastUpdateMH'];?></td>
-                            <td colspan="2"><?php echo $row['lastUpdate'];?></td>
                             <td><?php echo $row['registeredOn'];?></td>
                             <td><?php echo $row['package'];?></td>
                             <td>
@@ -151,8 +141,7 @@
                     </tbody>
                 </table>
             <?php
-            $query = "SELECT COUNT(*) FROM patient a INNER JOIN record b
-            ON a.mrn = b.mrn WHERE a.mrn LIKE '%$kw%' OR a.name LIKE '%$kw%' OR a.ic_passport LIKE '%$kw%' OR a.email LIKE '%$kw%' OR a.telephone LIKE '%$kw%'";     
+            $query = "SELECT COUNT(*) FROM patient WHERE mrn LIKE '%$kw%' OR name LIKE '%$kw%' OR ic_passport LIKE '%$kw%' OR email LIKE '%$kw%' OR telephone LIKE '%$kw%'";     
             $rs_result = mysqli_query($conn, $query);     
             $row = mysqli_fetch_row($rs_result);     
             $total_records = $row[0];     
@@ -183,23 +172,23 @@
             echo "<nav aria-label='page nav'>";
             echo "<ul class='pagination justify-content-center'>";
             if($page>=2){   
-                echo "<li class='page-item'><a class='page-link' href='searchRecord.php?page=".($page-1)."'>  Prev </a></li>";   
+                echo "<li class='page-item'><form method='post'><input type='hidden' value='$kw' name='keyword'><button class='page-link' formaction='searchRecord.php?page=".($page-1)."'>  Prev </button></form></li>";   
             }       
                     
             for ($i=1; $i<=$total_pages; $i++) {   
             if ($i == $page) {   
-                $pagLink .= "<li class='page-item active'><a class ='page-link' href='searchRecord.php?page=" .$i."'>".$i." </a> </li>"; 
+                $pagLink .= "<li class='page-item active'><form method='post'><input type='hidden' value='$kw' name='keyword'><button class ='page-link' formaction='searchRecord.php?page=" .$i."'>".$i." </button></form></li>"; 
                                                       
             }               
             else  {   
-                $pagLink .= "<li class='page-item'><a class='page-link' href='searchRecord.php?page=".$i."'> ".$i." </a> </li>";  
+                $pagLink .= "<li class='page-item'><form method='post'><input type='hidden' value='$kw' name='keyword'><button class ='page-link' formaction='searchRecord.php?page=".$i."'> ".$i." </button></form></li>";  
                                                          
             }   
             };     
             echo $pagLink;   
     
             if($page<$total_pages){   
-                echo "<li class='page-item'><a class='page-link' href='searchRecord.php?page=".($page+1)."'>  Next </a></li>";   
+                echo "<li class='page-item'><form method='post'><input type='hidden' value='$kw' name='keyword'><button class='page-link' formaction='searchRecord.php?page=".($page+1)."'>  Next </button></form></li>";   
             }  
             echo "</ul>";
             echo "</nav>";

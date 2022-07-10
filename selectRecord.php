@@ -132,7 +132,7 @@
                 </thead>
                 <tbody style="background-color:white;">
                 <?php
-                    $per_page_record = 10;  // Number of entries to show in a page.   
+                    $per_page_record = 1;  // Number of entries to show in a page.   
                     // Look for a GET variable page if not found default is 1.        
                     if (isset($_GET["page"])) {    
                         $page  = $_GET["page"];    
@@ -220,23 +220,23 @@
                 echo "<nav aria-label='page nav'>";
                 echo "<ul class='pagination justify-content-center'>";
                 if($page>=2){   
-                    echo "<li class='page-item'><a class='page-link' href='viewPatient.php?page=".($page-1)."'>  Prev </a></li>";   
+                    echo "<li class='page-item'><form method='post'><input type='hidden' value='$mrn' name='mrn'><button class='page-link' formaction='selectRecord.php?page=".($page-1)."'>  Prev </button></form></li>";   
                 }       
                         
                 for ($i=1; $i<=$total_pages; $i++) {   
                 if ($i == $page) {   
-                    $pagLink .= "<li class='page-item active'><a class ='page-link' href='viewPatient.php?page=" .$i."'>".$i." </a> </li>"; 
+                    $pagLink .= "<li class='page-item active'><form method='post'><input type='hidden' value='$mrn' name='mrn'><button class='page-link' formaction='selectRecord.php?page=" .$i."'>".$i." </button></form></li>"; 
                                                           
                 }               
                 else  {   
-                    $pagLink .= "<li class='page-item'><a class='page-link' href='viewPatient.php?page=".$i."'> ".$i." </a> </li>";  
+                    $pagLink .= "<li class='page-item'><form method='post'><input type='hidden' value='$mrn' name='mrn'><button class='page-link' formaction='selectRecord.php?page=".$i."'> ".$i." </button></form></li>";  
                                                              
                 }   
                 };     
                 echo $pagLink;   
         
                 if($page<$total_pages){   
-                    echo "<li class='page-item'><a class='page-link' href='viewPatient.php?page=".($page+1)."'>  Next </a></li>";   
+                    echo "<li class='page-item'><form method='post'><input type='hidden' value='$mrn' name='mrn'><button class='page-link' formaction='selectRecord.php?page=".($page+1)."'>  Next </button></form></li>";   
                 }  
                 echo "</ul>";
                 echo "</nav>";
