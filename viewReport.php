@@ -68,7 +68,7 @@
                 Click <a href="viewPatient.php">here</a> if you want to search by keyword.
             </div>
             <br><br>
-            <table style="width: 100%;" class="table table-bordered">
+            <table style="width: 100%;" height="100%" class="table table-bordered">
                 <thead class="table-dark" style="text-align:center;">
                     <tr>
                         <th rowspan="2">

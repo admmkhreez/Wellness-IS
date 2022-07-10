@@ -11,8 +11,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
         <?php
-            $start = $_POST["startDate"];
-            $end = $_POST["endDate"];
+            $startDate = $_POST["startDate"];
+            $endDate = $_POST["endDate"];
             $servername = "localhost";
             $username = "root";
             $password = "";
@@ -62,8 +62,8 @@
             <h1>Patient's Record</h1>
             <br>
             <form method="post" style="text-align: center; color: white;">
-                Between <input type="date" name="startDate" value="<?php echo $start;?>"> And
-                <input type="date" name="endDate" value="<?php echo $end;?>">
+                Between <input type="date" name="startDate" value="<?php echo $startDate;?>"> And
+                <input type="date" name="endDate" value="<?php echo $endDate;?>">
                 <button formaction="searchReport.php" class="btn btn-primary">Search</button>
             </form>
             <br>
@@ -116,8 +116,8 @@
             
                 $start_from = ($page-1) * $per_page_record;     
             
-                $query = "SELECT a.mrn, name, ic_passport, address, email, lastUpdateMH, b.lastUpdate, registeredOn, b.package, b.visits FROM patient a INNER JOIN record b
-                ON a.mrn = b.mrn WHERE b.lastUpdate BETWEEN '".$start."' AND '".$end."' AND visits > '0' ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+                $query = "SELECT a.mrn, name, ic_passport, address, email, telephone, lastUpdateMH, b.lastUpdate, registeredOn, b.package, b.visits FROM patient a INNER JOIN record b
+                ON a.mrn = b.mrn WHERE b.lastUpdate BETWEEN '".$startDate."' AND '".$endDate."' ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
                 $rs_result = mysqli_query ($conn, $query);     
 
                 while ($row = mysqli_fetch_array($rs_result)) {  
@@ -142,7 +142,7 @@
                 </table>
             <?php
             $query = "SELECT COUNT(*) FROM patient a INNER JOIN record b
-            ON a.mrn = b.mrn WHERE b.lastUpdate BETWEEN '".$start."' AND '".$end."'";     
+            ON a.mrn = b.mrn WHERE b.lastUpdate BETWEEN '".$startDate."' AND '".$endDate."'";     
             $rs_result = mysqli_query($conn, $query);     
             $row = mysqli_fetch_row($rs_result);     
             $total_records = $row[0];     
@@ -173,23 +173,27 @@
             echo "<nav aria-label='page nav'>";
             echo "<ul class='pagination justify-content-center'>";
             if($page>=2){   
-                echo "<li class='page-item'><a class='page-link' href='searchReport.php?page=".($page-1)."'>  Prev </a></li>";   
+                echo "<li class='page-item'><form method='post'><input type='hidden' value='$startDate' name='startDate'><input type='hidden' value='$endDate' name='endDate'>
+                <button class='page-link' formaction='searchReport.php?page=".($page-1)."'>  Prev </button></form></li>";   
             }       
                     
             for ($i=1; $i<=$total_pages; $i++) {   
             if ($i == $page) {   
-                $pagLink .= "<li class='page-item active'><a class ='page-link' href='searchReport.php?page=" .$i."'>".$i." </a> </li>"; 
+                $pagLink .= "<li class='page-item active'><form method='post'><input type='hidden' value='$startDate' name='startDate'><input type='hidden' value='$endDate' name='endDate'>
+                <button class='page-link' formaction='searchReport.php?page=" .$i."'>".$i." </button></form></li>"; 
                                                       
             }               
             else  {   
-                $pagLink .= "<li class='page-item'><a class='page-link' href='searchReport.php?page=".$i."'> ".$i." </a> </li>";  
+                $pagLink .= "<li class='page-item'><form method='post'><input type='hidden' value='$startDate' name='startDate'><input type='hidden' value='$endDate' name='endDate'>
+                <button class='page-link' formaction='searchReport.php?page=".$i."'> ".$i." </button></form></li>";  
                                                          
             }   
             };     
             echo $pagLink;   
     
             if($page<$total_pages){   
-                echo "<li class='page-item'><a class='page-link' href='searchReport.php?page=".($page+1)."'>  Next </a></li>";   
+                echo "<li class='page-item'><form method='post'><input type='hidden' value='$startDate' name='startDate'><input type='hidden' value='$endDate' name='endDate'>
+                <button class='page-link' formaction='searchReport.php?page=".($page+1)."'>  Next </button></form></li>";   
             }  
             echo "</ul>";
             echo "</nav>";

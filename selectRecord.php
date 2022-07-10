@@ -132,7 +132,7 @@
                 </thead>
                 <tbody style="background-color:white;">
                 <?php
-                    $per_page_record = 1;  // Number of entries to show in a page.   
+                    $per_page_record = 10;  // Number of entries to show in a page.   
                     // Look for a GET variable page if not found default is 1.        
                     if (isset($_GET["page"])) {    
                         $page  = $_GET["page"];    
@@ -143,7 +143,7 @@
                 
                     $start_from = ($page-1) * $per_page_record;     
                 
-                    $query = "SELECT a.mrn, name, ic_passport, email, telephone, lastUpdate, b.package, visits  FROM patient a, record b WHERE a.mrn = $mrn and b.mrn = $mrn ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+                    $query = "SELECT a.mrn, name, ic_passport, email, telephone, lastUpdate, b.package, visits  FROM patient a, record b WHERE a.mrn = '$mrn' and b.mrn = '$mrn' ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
                     $rs_result = mysqli_query ($conn, $query);     
                     $i = 1;
                     while ($row = mysqli_fetch_array($rs_result)) {  
@@ -189,7 +189,7 @@
             </table>
         </div>
             <?php
-                $query = "SELECT COUNT(*) FROM record WHERE mrn = $mrn";     
+                $query = "SELECT COUNT(*) FROM record WHERE mrn = '$mrn'";     
                 $rs_result = mysqli_query($conn, $query);     
                 $row = mysqli_fetch_row($rs_result);     
                 $total_records = $row[0];     
