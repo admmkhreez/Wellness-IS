@@ -8,8 +8,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>KPJ Klang Wellness IS</title>
-        <link rel="stylesheet" href="test.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="wellness.css">
+        <link rel="stylesheet" href="bootstrap.css">
     </head>
     <body>
         <?php
@@ -76,6 +76,16 @@
                 if($data->num_rows > 0){
                     while($row = $data->fetch_assoc()){
             ?>
+            <div class="text-center">
+                <h5>MRN: <?php echo $mrn;?></h5>
+                <form method="post" style="text-align: center;" class="btn-group">
+                    <button formaction="selectRecord.php" class="btn btn-primary">View Record</button>
+                    <button formaction="editProfile.php" class="btn btn-primary active">Edit Profile</button>
+                    <button formaction="historyUpdateForm.php" class="btn btn-primary">Edit Medical History</button>  
+                    <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+                </form>
+            </div>
+                
             <br>
             <form action="updateDetails.php" method="post">
             

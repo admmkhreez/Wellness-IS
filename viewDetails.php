@@ -19,10 +19,13 @@
                 width: 80%; 
                 table-layout: fixed;
             }
+            span{
+                margin-left: 5px;
+            }
         </style>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="test.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="wellness.css">
+        <link rel="stylesheet" href="bootstrap.css">
         <?php
             $mrn = $_POST['mrn'];
             $visits = $_POST["visits"];
@@ -77,10 +80,13 @@
                                 <a class="nav-link btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
                         </div>
                     </nav>
-                    <br>
-                    <h1  id="top">Patient's Report</h1>
+                    <h1  id="top" style="margin-top: 40px;">Patient's Report</h1>
                     <br>
                     <div class="container">
+                        <form method="post" action="selectRecord.php">
+                            <input type="submit" value="Back" class="btn btn-danger" style="position: absolute;">
+                            <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
+                        </form>
                         <form method="post" style="text-align: center;">
                                 <label for="mrn">Enter Patient's MRN</label><br>
                                 <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br>
@@ -657,7 +663,7 @@
                                             <td><?php echo $row["lref_r"];?></td>
                                         </tr>
                                         <tr>
-                                            <th>Sensation</th>
+                                            <th>Sensation:</th>
                                             <td><?php echo $row["lsen_l"];?></td>
                                             <td><?php echo $row["lsen_r"];?></td>
                                         </tr>
@@ -682,7 +688,7 @@
                                             <td><?php echo $row["uref_r"];?></td>
                                         </tr>
                                         <tr>
-                                            <th>Sensation</th>
+                                            <th>Sensation:</th>
                                             <td><?php echo $row["usen_l"];?></td>
                                             <td><?php echo $row["usen_r"];?></td>
                                         </tr>

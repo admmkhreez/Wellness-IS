@@ -17,8 +17,8 @@
             }
         </style>
         <title>KPJ Klang Wellness IS</title>
-        <link rel="stylesheet" href="test.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="wellness.css">
+        <link rel="stylesheet" href="bootstrap.css">
     </head>
     <body>
         <?php
@@ -68,11 +68,10 @@
         </nav>
         <br>
         <h1>KPJ Klang Wellness Information System</h1>
-        <br><br>
-        <h2  style="color: white; text-align:center;">Register Patient</h2>
+        <h2  style="text-align:center;">Register Patient</h2>
         <br>
         <div class="container">
-            <form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post">
+            <form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post" style="margin-left: 40px;">
                 <label class="inline" for="mrn">MRN: </label>
                 <input type="text" id="mrn" maxlength="10" placeholder="MRN" name="mrn" required autofocus>
                 <input type="submit" name="check" class="btn btn-primary" value="Check"><br>
@@ -162,7 +161,7 @@
                     <option value = "Custom">Custom</option>
                 </select>
                 <br>
-                <div class="textfield">
+                <div class="textfield" style="margin-top: 10px;">
                     <label class="inline" for="addons">Additional Test: </label>
                     <textarea type="text" id="addons" placeholder="*MENTION THE PACKAGE CHOSEN IF CUSTOM" maxlength="100" name="addons" rows="4" cols="50"></textarea><br>
                 </div>

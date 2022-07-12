@@ -8,8 +8,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>KPJ Klang Wellness IS</title>
-        <link rel="stylesheet" href="test.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="wellness.css">
+        <link rel="stylesheet" href="bootstrap.css">
+        <style>
+            .unstyled-button {
+                border: none;
+                padding: 0;
+                background: none;
+                text-decoration: underline;
+                color: blue;
+            }
+        </style>
     </head>
     <body>
         <?php
@@ -78,26 +87,40 @@
                 while ($row = $data->fetch_assoc())
                 {
         ?>
-                    <form method="post" action="editProfile.php" style="text-align: center;">
+                    <div class="text-center">
                         <h5>MRN: <?php echo $mrn;?></h5>
-                        <input type="submit" value="View Profile" class="btn btn-primary">
-                        <button formaction="historyUpdateForm.php" class="btn btn-primary">Update Medical History</button>  
-                        <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
-                    </form>
+                        <form method="post" style="text-align: center;" class="btn-group">
+                            <button formaction="selectRecord.php" class="btn btn-primary active">View Record</button>
+                            <button formaction="editProfile.php" class="btn btn-primary">Edit Profile</button>
+                            <button formaction="historyUpdateForm.php" class="btn btn-primary">Edit Medical History</button>  
+                            <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+                        </form>
+                    </div>
         <?php
                 }
             }
                     else
                     {
         ?>
-                        <p>Patient does not exist, register <a href="homepage.php">here</a></p>
+                    <form method="post">
+                        <p>
+                            Patient does not exist, register <button formaction="homepage.php" class="unstyled-button">here</button>
+                        </p>
+                            <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+                            <input type="hidden" name="check" value="">
+                    </form>
         <?php 
                     }
         ?>
         </div>
         <br>
         <div>    
-            <h3 style="color: white; text-align: center;">Records History</h3>
+            <form method="post" style="position: absolute; right: 30px;">
+                <button class="btn btn-primary" formaction="recordForm.php">Insert Record</button>
+                <button class="btn btn-primary" formaction="historyForm.php">Insert New Medical History</button>
+                <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+            </form>
+            <h3 style="text-align: center; margin-top: -5px">Records History</h3>
             <table style="width: 100%;" class="table table-bordered">
                 <thead class="table-dark" style="text-align:center;">
                     <tr>
@@ -173,7 +196,7 @@
                         <td>
                             <?php echo $row["package"];?>
                         </td>
-                        <td>
+                        <td class="text-center">
                             <form method="post">
                                 <input type="hidden" name="mrn" value="<?php echo $row["mrn"];?>">
                                 <input type="hidden" name="visits" value="<?php echo $row["visits"];?>">
@@ -197,7 +220,7 @@
                 $start = "";
                 $end = "";
                 if($total_records == 0){
-                    echo "<span class='text-center' style='color:white;'>No Record Found</span>";
+                    echo "<span class='text-center'>No Record Found</span>";
                 }
                 else{
                     $start = $per_page_record * ($page-1) + 1;

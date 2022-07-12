@@ -7,8 +7,8 @@
     <head>
         <title>KPJ Klang Wellness IS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="test.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="wellness.css">
+        <link rel="stylesheet" href="bootstrap.css">
     </head>
         <?php
             $kw = $_POST["keyword"];
@@ -64,7 +64,7 @@
                 <input type="text" placeholder="MRN/Name/IC/Passport/Email/Telephone" name="keyword" value="<?php echo $kw;?>">
                 <button formaction="searchRecord.php" class="btn btn-primary">Search</button>
             </form>
-            <div class="text-center" style="color: white;" >
+            <div class="text-center">
                 Click <a href="viewReport.php">here</a> if you want to search by date.
             </div>
             <br>
@@ -101,7 +101,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody style="background-color:white;"
+                    <tbody style="background-color:white;">
                 <?php
                 $per_page_record = 10;  // Number of entries to show in a page.   
                 // Look for a GET variable page if not found default is 1.        
@@ -118,7 +118,6 @@
 
                 while ($row = mysqli_fetch_array($rs_result)) { 
                 ?> 
-                    >
                         <tr>
                             <td><?php echo $row['mrn'];?></td>
                             <td><?php echo $row['name'];?></td>
@@ -149,7 +148,7 @@
             $start = "";
             $end = "";
             if($total_records == 0){
-                echo "<span class='text-center' style='color:white;'>No Record Found</span>";
+                echo "<span class='text-center'>No Record Found</span>";
             }
             else{
                 $start = $per_page_record * ($page-1) + 1;
@@ -164,7 +163,7 @@
                 else{
                     $end = $per_page_record * ($page);
                 }
-                echo "<span style='color:white;'>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
+                echo "<span>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
                 echo "</br>"; 
             }  
             $pagLink = "";       

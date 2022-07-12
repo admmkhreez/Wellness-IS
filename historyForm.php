@@ -27,13 +27,22 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>KPJ Klang Wellness IS</title>
-        <link rel="stylesheet" href="test.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="wellness.css">
+        <link rel="stylesheet" href="bootstrap.css">
         <script>
             function confirm_reset() {
                 return confirm("Are you sure you want to reset all input?");
             }
         </script>
+        <style>
+            .unstyled-button {
+                border: none;
+                padding: 0;
+                background: none;
+                text-decoration: underline;
+                color: blue;
+            }
+        </style>
     </head>
     <body>
         <br>
@@ -213,7 +222,17 @@
             }
         }
         else{
-                    echo "<div class='container'><p>User does not exist, click <a href='homepage.php'>here</a> to Register</p>";
+        ?>
+        <div class="container">
+            <form method="post">
+                <p>
+                    Patient does not exist, register <button formaction="homepage.php" class="unstyled-button">here</button> 
+                </p>
+                    <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+                    <input type="hidden" name="check" value="">
+            </form>
+        </div>
+        <?php
                 }
         ?>
         </div>

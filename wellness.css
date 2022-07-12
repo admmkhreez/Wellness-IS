@@ -1,11 +1,10 @@
+
 *{
-    font-family: Helvetica, sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     box-sizing: border-box;
 }
 h1{
     text-align: center;
-    color: white;
 }
 h3{
     padding-left: 10px;
@@ -16,7 +15,6 @@ h3{
     margin: auto;
 }
 body{
-    background-image: linear-gradient(to bottom right, rgba(255, 0, 0), rgb(151, 151, 151), rgba(0, 0, 128));
     background-repeat: no-repeat;
     background-attachment: fixed;
     display: grid;
@@ -27,10 +25,10 @@ html{
 }
 .container{
     width: 100%;
-    background-color: white;
+    background-color: #e3f0ff;
     margin-left: auto;
     margin-right: auto;
-    padding: 20px;
+    padding: 30px;
     border-radius: 15px;
 }
 a{
@@ -75,6 +73,7 @@ nav{
         position: sticky;
         top: 0;
         z-index: 100;
+        margin: -20px;
 }
 label.inline {
     display: inline-block;
@@ -120,9 +119,6 @@ label.inline-radio {
 }
 .textfield *{
     vertical-align: top;
-}
-nav{
-    margin: -20px;
 }
 .date{
     top: 0;

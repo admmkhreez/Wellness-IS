@@ -7,8 +7,8 @@
         <head>
             <title>KPJ Klang Wellness IS</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="test.css">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+            <link rel="stylesheet" href="wellness.css">
+            <link rel="stylesheet" href="bootstrap.css">
         </head>
         <?php
             $servername = "localhost";
@@ -63,7 +63,7 @@
                 <input type="text" placeholder="MRN/Name/IC/Passport/Email/Telephone" name="keyword">
                 <button formaction="searchRecord.php" class="btn btn-primary">Search</button>
             </form>     
-            <div class="text-center" style="color: white;" >
+            <div class="text-center">
                 Click <a href="viewReport.php">here</a> if you want to search by date.
             </div>
             <br><br>
@@ -163,7 +163,7 @@
                     else{
                         $end = $per_page_record * ($page);
                     }
-                    echo "<span style='color:white;'>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
+                    echo "<span>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
                     echo "</br>"; 
                 }       
                 $pagLink = "";       

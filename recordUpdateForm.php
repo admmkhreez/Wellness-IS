@@ -7,8 +7,8 @@
     <head>
         <title>KPJ Klang Wellness IS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="test.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="wellness.css">
+        <link rel="stylesheet" href="bootstrap.css">
     </head>
     
     <body>
@@ -63,10 +63,13 @@
                     <a class="nav-link btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
             </div>
         </nav>
-        <br>
-        <h1>Patient Medical Report</h1>
+        <h1 style="margin-top: 40px;">Patient Medical Report</h1>
         <br>
         <div class="container">
+        <form method="post" action="selectRecord.php">
+            <input type="submit" value="Back" class="btn btn-danger" style="position: absolute;">
+            <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
+        </form>
         <form method="post" style="text-align: center;">
                 <label class="inline" for="mrn">Enter Patient's MRN</label><br>
                 <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br>

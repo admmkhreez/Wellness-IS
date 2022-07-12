@@ -7,8 +7,8 @@
     <head>
         <title>KPJ Klang Wellness IS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="test.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="wellness.css">
+        <link rel="stylesheet" href="bootstrap.css">
     </head>
         <?php
             $servername = "localhost";
@@ -59,12 +59,12 @@
             <br>
             <h1>Patient's Record</h1>
             <br>
-            <form method="post" style="text-align: center; color: white;">
+            <form method="post" style="text-align: center;">
                 Between <input type="date" name="startDate"> And
                 <input type="date" name="endDate">
                 <button formaction="searchReport.php" class="btn btn-primary">Search</button>
             </form>
-            <div class="text-center" style="color: white;" >
+            <div class="text-center">
                 Click <a href="viewPatient.php">here</a> if you want to search by keyword.
             </div>
             <br><br>
@@ -174,7 +174,7 @@
                     else{
                         $end = $per_page_record * ($page);
                     }
-                    echo "<span style='color:white;'>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
+                    echo "<span>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
                     echo "</br>"; 
                 }            
                 $pagLink = "";       
