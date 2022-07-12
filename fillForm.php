@@ -22,13 +22,13 @@
                         <a class="nav-link" href="viewPatient.php">View Patient List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="fillForm.php">Fill form</a>
+                        <a class="nav-link active" href="fillForm.php">Fill Record</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewReport.php">Chronological Summary</a>
+                        <a class="nav-link" href="viewReport.php">View Patient's Report</a>
                     </li>
                     <?php
                         if($_SESSION["type"] == "admin"){
@@ -44,7 +44,7 @@
             </div>
         </nav>
         <br>
-        <h1>Fill Form</h1>
+        <h1>Fill Record</h1>
         <br>
         <div class="container">
             <form action="recordForm.php" method="post">
@@ -53,11 +53,11 @@
         <?php
             if($_SESSION["type"] == "admin" or $_SESSION["type"] == "doctor"){
         ?>
-            <input class="btn btn-primary" type="submit" value="Fill form">
+            <input class="btn btn-primary" type="submit" value="Insert Record">
         <?php
             }
         ?>
-            <button formaction="historyForm.php" class="btn btn-primary">Fill Medical History</button>
+            <button formaction="historyForm.php" class="btn btn-primary">Insert Medical History</button>
             </form>
         </div>
     </body>

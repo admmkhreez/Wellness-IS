@@ -35,13 +35,13 @@
                             <a class="nav-link" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="fillForm.php">Fill form</a>
+                            <a class="nav-link" href="fillForm.php">Fill Record</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="viewReport.php">Chronological Summary</a>
+                            <a class="nav-link active" href="viewReport.php">View Patient's Report</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -65,7 +65,7 @@
                 <button formaction="searchReport.php" class="btn btn-primary">Search</button>
             </form>
             <div class="text-center">
-                Click <a href="viewPatient.php">here</a> if you want to search by keyword.
+                Click <a href="viewPatient.php">here</a> if you want to search for patient.
             </div>
             <br><br>
             <table style="width: 100%;" height="100%" class="table table-bordered">
@@ -124,7 +124,7 @@
 
             while ($row = mysqli_fetch_array($rs_result)) {  
             ?> 
-                <tbody style="background-color:white;">
+                <tbody style="background-color: #e3f0ff;">
                     <tr>
                         <td><?php echo $row['mrn'];?></td>
                         <td><?php echo $row['name'];?></td>

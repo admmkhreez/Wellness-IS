@@ -35,13 +35,13 @@
                             <a class="nav-link active" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="fillForm.php">Fill form</a>
+                            <a class="nav-link" href="fillForm.php">Fill Record</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewReport.php">Chronological Summary</a>
+                            <a class="nav-link" href="viewReport.php">View Patient's Report</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -57,14 +57,14 @@
                 </div>
             </nav>
             <br>
-            <h1>Patient's Record</h1>
+            <h1>Patients List</h1>
             <br>
             <form method="post" style="text-align: center;">
                 <input type="text" placeholder="MRN/Name/IC/Passport/Email/Telephone" name="keyword">
                 <button formaction="searchRecord.php" class="btn btn-primary">Search</button>
             </form>     
             <div class="text-center">
-                Click <a href="viewReport.php">here</a> if you want to search by date.
+                Click <a href="viewReport.php">here</a> if you want to search for patient's report.
             </div>
             <br><br>
             <table style="width: 100%;" class="table table-bordered">
@@ -116,7 +116,7 @@
 
             while ($row = mysqli_fetch_array($rs_result)) {  
             ?> 
-                <tbody style="background-color:white;">
+                <tbody style="background-color: #e3f0ff;">
                     <tr>
                         <td><?php echo $row['mrn'];?></td>
                         <td><?php echo $row['name'];?></td>

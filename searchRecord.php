@@ -36,13 +36,13 @@
                             <a class="nav-link active" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="fillForm.php">Fill form</a>
+                            <a class="nav-link" href="fillForm.php">Fill Record</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewReport.php">Chronological Summary</a>
+                            <a class="nav-link" href="viewReport.php">View Patient's Report</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -101,7 +101,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody style="background-color:white;">
+                    <tbody style="background-color: #e3f0ff;">
                 <?php
                 $per_page_record = 10;  // Number of entries to show in a page.   
                 // Look for a GET variable page if not found default is 1.        

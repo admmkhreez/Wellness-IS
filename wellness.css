@@ -29,6 +29,8 @@ html{
     margin-left: auto;
     margin-right: auto;
     padding: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 15px;
 }
 a{
