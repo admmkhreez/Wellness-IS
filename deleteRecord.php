@@ -34,8 +34,8 @@
             if ($data === TRUE) 
             {
                 echo "<script type='text/javascript'>";
-                echo "alert('Record successfully deleted, redirecting to Home page.');";
-                echo "window.location.href = 'homepage.php';";
+                echo "alert('Record successfully deleted, redirecting to report page.');";
+                echo "window.location.href = 'viewReport.php';";
                 echo "</script>";
             }
             else
