@@ -45,9 +45,6 @@
                         <a class="nav-link" href="viewPatient.php">View Patient List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="fillForm.php">Fill Record</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link active" href="selectPatient.php">Search Patient</a>
                     </li>
                     <li class="nav-item">
@@ -71,8 +68,8 @@
         <br>
         <div class="container">
         <form method="post" style="text-align: center;">
-                <label class="inline" for="mrn">Enter Patient's MRN</label><br>
-                <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br>
+                <label for="mrn">Enter Patient's MRN</label><br>
+                <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus>
                 <button formaction="selectRecord.php" class="btn btn-primary">Search</button>
         </form>
         <br>

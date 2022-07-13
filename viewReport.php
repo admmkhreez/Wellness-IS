@@ -35,9 +35,6 @@
                             <a class="nav-link" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="fillForm.php">Fill Record</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
                         </li>
                         <li class="nav-item">
@@ -159,7 +156,7 @@
                 $start = "";
                 $end = "";
                 if($total_records == 0){
-                    echo "<span class='text-center' style='color:white;'>No Record Found</span>";
+                    echo "<span class='text-center'>No Record Found</span>";
                 }
                 else{
                     $start = $per_page_record * ($page-1) + 1;
@@ -207,8 +204,10 @@
                 }
                 else
                 {
-                    echo "No session exist or session has expired. Please log in again.<br>";
-                    echo "<a href=log-in.html> Login </a>";
+                    echo "<script type='text/javascript'>";
+                    echo "alert('Session does not exist. Please login again');";
+                    echo "window.location.href = 'log-in.html';";
+                    echo "</script>";
                 }
                 ?> 
         </body>

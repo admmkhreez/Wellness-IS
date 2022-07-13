@@ -35,9 +35,6 @@
                             <a class="nav-link active" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="fillForm.php">Fill Record</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
                         </li>
                         <li class="nav-item">
@@ -64,7 +61,7 @@
                 <button formaction="searchRecord.php" class="btn btn-primary">Search</button>
             </form>     
             <div class="text-center">
-                Click <a href="viewReport.php">here</a> if you want to search for patient's report.
+                Click <a href="viewReport.php">here</a> if you want to search for patient's report by date.
             </div>
             <br><br>
             <table style="width: 100%;" class="table table-bordered">

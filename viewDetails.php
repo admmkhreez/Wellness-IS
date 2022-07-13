@@ -59,9 +59,6 @@
                                     <a class="nav-link" href="viewPatient.php">View Patient List</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="fillForm.php">Fill Record</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link active" href="selectPatient.php">Search Patient</a>
                                 </li>
                                 <li class="nav-item">
@@ -84,7 +81,7 @@
                     <br>
                     <div class="container">
                         <form method="post" action="selectRecord.php">
-                            <input type="submit" value="Back" class="btn btn-danger" style="position: absolute;">
+                            <input type="submit" value="View All Record" class="btn btn-danger" style="position: absolute;">
                             <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
                         </form>
                         <form method="post" style="text-align: center;">

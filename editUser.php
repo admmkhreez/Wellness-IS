@@ -46,9 +46,6 @@
                         <a class="nav-link" href="viewPatient.php">View Patient List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="fillForm.php">Fill Record</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
                     <li class="nav-item">
@@ -83,7 +80,7 @@
             <dt class="col-sm-3">Name: </dt>
             <dd class="col-sm-9"><input type="text" name="name" value="<?php echo $row["name"];?>"></dd>
             <dt class="col-sm-3">Position: </dt>
-            <dd class="col-sm-9"><input type="text" name="position" value="<?php echo $row["position"];?>"></dd>
+            <dd class="col-sm-9"><textarea type="text" name="position"><?php echo nl2br($row["position"]);?></textarea>
             <dt class="col-sm-3">User Type: </dt>
             <dd class="col-sm-9"><input type="text" name="type" value="<?php echo $row["type"];?>"></dd>
             <dt class="col-sm-3">Password: </dt>

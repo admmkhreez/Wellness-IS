@@ -35,9 +35,6 @@
                             <a class="nav-link" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="fillForm.php">Fill Record</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
                         </li>
                         <li class="nav-item">
@@ -92,11 +89,15 @@
             ?> 
                 <tbody style="background-color:white;">
                     <tr>
-                        <td class="text-center"><input type="radio" class="form-check-input" name="id" value="<?php echo $row["ID"];?>" required></td>
                         <td><?php echo $row['username'];?></td>
                         <td><?php echo $row['name'];?></td>
                         <td><?php echo $row['type'];?></td>
                         <td><?php echo $row['password'];?></td>
+                        <td class="text-center">
+                            <button formaction="editUser.php" class="btn btn-primary">Edit</button>
+                            <button formaction="deleteUser.php" class="btn btn-primary">Delete</button>
+                        </td>
+                        <input type="hidden" name="id" value="<?php echo $row["ID"];?>">
                     </tr>
                 </tbody>
             <?php
@@ -108,9 +109,6 @@
             }
             ?>
             </table>
-            <div class="text-center">
-                <button formaction="editUser.php" class="btn btn-primary">Next ></button>
-            </div>
         </form>
         <?php
         $conn->close();

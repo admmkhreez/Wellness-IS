@@ -31,9 +31,6 @@
                         <a class="nav-link" href="viewPatient.php">View Patient List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="fillForm.php">Fill Record</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
                     <li class="nav-item">
@@ -70,7 +67,7 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $check = "SELECT name, sex, package, addons FROM patient WHERE mrn = '".$mrn."'";
+            $check = "SELECT name, sex, package, addons, appearance FROM patient WHERE mrn = '".$mrn."'";
             $data = $conn->query($check);
             if ($data->num_rows>0)
             {
@@ -78,6 +75,13 @@
                 {
         ?>
         <div class="container">
+        <?php 
+            if($row["appearance"] != NULL){
+        ?>
+            <form method="post" action="selectRecord.php" style="margin-bottom: 20px;">
+                <input type="submit" value="Back" class="btn btn-danger" style="position: relative;">
+                <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
+            </form>
             <dl class="row h5">
                 <dt class="col-sm-3">Name: </dt>
                 <dd class="col-sm-9"><?php echo $row["name"];?></dd>
@@ -85,42 +89,6 @@
                 <dd class="col-sm-9"><?php echo $mrn;?></dd>
             </dl>
             <form action="insertRecord.php" method="post">
-                <label class="inline" for="appearance">General Appearance: </label>
-                <input type="text" id="appearance" name="appearance" required><br>
-                <label class="inline" for="weight">Weight: </label>
-                <input type="number" id="weight" step=".1" name="weight" required>kg<br>
-                <label class="inline" for="height">Height: </label>
-                <input type="number" id="height" step=".1" name="height" required>cm<br>
-                <label class="inline" for="systolic">Systolic: </label>
-                <input type="number" id="systolic" step="1" name="systolic" required><br>
-                <label class="inline" for="diastolic">Diastolic: </label>
-                <input type="number" id="diastolic" step="1" name="diastolic" required><br>
-                <label class="inline" for="pulse">Pulse: </label>
-                <input type="number" id="pulse" step="1" name="pulse" required><br>
-            <div class="lrcol">
-                <h3>Eyes</h3>
-                Visual Acuity (Aided)<br>
-                <label class="inline" for="va_aidedl">Left: </label>
-                <input type="text" id="va_aidedl" name="va_aidedl" required>
-                <label class="inline" for="va_aidedr">Right: </label>
-                <input type="text" id="va_aidedr" name="va_aidedr" required>
-                <br>Visual Acuity (Unaided)<br>
-                <label class="inline" for="va_unaidedl">Left: </label>
-                <input type="text" id="va_unaidedl" name="va_unaidedl" required>
-                <label class="inline" for="va_unaidedr">Right: </label>
-                <input type="text" id="va_unaidedr" name="va_unaidedr" required>
-                <br>Colour<br>
-                <label class="inline" for="colour_l">Left: </label>
-                <input type="text" id="colour_l" name="colour_l" required>
-                <label class="inline" for="colour_r">Right: </label>
-                <input type="text" id="colour_r" name="colour_r" required>
-                <br>Fundoscopy<br>
-                <label class="inline" for="fundoscopy_l">Left: </label>
-                <input type="text" id="fundoscopy_l" name="fundoscopy_l" required>
-                <label class="inline" for="fundoscopy_r">Right: </label>
-                <input type="text" id="fundoscopy_r"name="fundoscopy_r" required>  
-            </div> 
-                <br><br>
                 <label class="inline" for="nose">Nose: </label>
                 <input type="text" id="nose" name="nose" required><br>
                 <label class="inline" for="throat">Throat: </label>
@@ -316,6 +284,20 @@
                 <input type="hidden" name="name" value="<?php echo $row["name"];?>">
                 <input type="hidden" name="addons" value="<?php echo $row["addons"];?>">
             </form>
+            <?php
+            }
+            else{
+            ?>
+                <form method="post">
+                    <p>
+                        Physical Examinantion incomplete, complete <button formaction="physicalExam.php" class="unstyled-button">here</button>
+                    </p>
+                        <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+                        <input type="hidden" name="check" value="">
+                </form>
+            <?php
+            }
+            ?>
             <?php
                     }
                 }

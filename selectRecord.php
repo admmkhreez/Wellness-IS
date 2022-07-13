@@ -47,9 +47,6 @@
                             <a class="nav-link" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="fillForm.php">Fill Record</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link active" href="selectPatient.php">Search Patient</a>
                         </li>
                         <li class="nav-item">
@@ -74,7 +71,7 @@
         <div class="container">
         <form method="post" style="text-align: center;">
             <label for="mrn">Enter Patient's MRN</label><br>
-            <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus><br>
+            <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus>
             <button formaction="selectRecord.php" class="btn btn-primary">Search</button>
         </form>
         <br>
@@ -116,7 +113,14 @@
         <br>
         <div>    
             <form method="post" style="position: absolute; right: 30px;">
-                <button class="btn btn-primary" formaction="recordForm.php">Insert Record</button>
+            <?php
+                if($_SESSION["type"] == "admin" or $_SESSION["type"] == "doctor"){
+            ?>
+                    <button class="btn btn-primary" formaction="recordForm.php">Insert Record</button>
+            <?php
+                }
+            ?>
+                <button class="btn btn-primary" formaction="physicalExam.php">Insert Physical Examinantion</button>
                 <button class="btn btn-primary" formaction="historyForm.php">Insert New Medical History</button>
                 <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
             </form>
@@ -235,7 +239,7 @@
                     else{
                         $end = $per_page_record * ($page);
                     }
-                    echo "<span style='color:white;'>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
+                    echo "<span>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
                     echo "</br>"; 
                 }       
                 $pagLink = "";       

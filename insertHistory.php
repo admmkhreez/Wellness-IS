@@ -42,9 +42,6 @@
                         <a class="nav-link" href="viewPatient.php">View Patient List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="fillForm.php">Fill Record</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search Patient</a>
                     </li>
                     <li class="nav-item">

@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="wellness.css">
         <link rel="stylesheet" href="bootstrap.css">
         <?php
+            $mrn = $_POST["mrn"];
             $servername = "localhost";
             $username = "root";
             $password = "";
@@ -28,24 +29,32 @@
     
     <body>
         <?php
+        $check = "SELECT * FROM patient WHERE mrn = '".$mrn."'";
+        $data = $conn->query($check);
+        if ($data->num_rows>0)
+        {
+            while($row=$data->fetch_assoc())
+            {
+                $appearance = $row["appearance"];
+                $weight = $row["weight"];
+                $height = $row["height"];
+                $systolic = $row["systolic"];
+                $diastolic = $row["diastolic"];
+                $pulse = $row["pulse"];
+                $va_aidedl = $row["va_aidedl"];
+                $va_aidedr = $row["va_aidedr"];
+                $va_unaidedl = $row["va_unaidedl"];
+                $va_unaidedr = $row["va_unaidedr"];
+                $colour_l = $row["colour_l"];
+                $colour_r = $row["colour_r"];
+                $fundoscopy_l = $row["fundoscopy_l"];
+                $fundoscopy_r = $row["fundoscopy_r"];
+                $bmi = $row["bmi"];
+            }
+        }
             $addons = $_POST["addons"];
             $package = $_POST["package"];
             $sex = $_POST["sex"];  
-            $mrn = $_POST["mrn"];
-            $appearance = $_POST["appearance"];
-            $weight = $_POST["weight"];
-            $height = $_POST["height"];
-            $systolic = $_POST["systolic"];
-            $diastolic = $_POST["diastolic"];
-            $pulse = $_POST["pulse"];
-            $va_aidedl = $_POST["va_aidedl"];
-            $va_aidedr = $_POST["va_aidedr"];
-            $va_unaidedl = $_POST["va_unaidedl"];
-            $va_unaidedr = $_POST["va_unaidedr"];
-            $colour_l = $_POST["colour_l"];
-            $colour_r = $_POST["colour_r"];
-            $fundoscopy_l = $_POST["fundoscopy_l"];
-            $fundoscopy_r = $_POST["fundoscopy_r"];
             $nose = $_POST["nose"];
             $throat = $_POST["throat"];
             $neck = $_POST["neck"];
@@ -108,10 +117,6 @@
             $doneBy = $_SESSION["name"];
             $pos = $_SESSION["pos"];
 
-            $heightm = $height/100;
-            $temp = $weight/($heightm*$heightm);
-            $bmi = number_format((float)$temp, 2, '.', '');
-
             $select = "SELECT visits FROM record WHERE mrn = '".$mrn."' ORDER BY visits DESC LIMIT 1";
             $data = $conn->query($select);
 
@@ -134,9 +139,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="viewPatient.php">View Patient List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="fillForm.php">Fill Record</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="selectPatient.php">Search Patient</a>
