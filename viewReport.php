@@ -95,8 +95,8 @@
                         <th rowspan="2">
                             Package
                         </th>
-                        <th rowspan="2">
-
+                        <th rowspan="2" style="text-align: right;">
+                            Actions
                         </th>
                     </tr>
                     <tr>
@@ -133,11 +133,18 @@
                         <td colspan="2"><?php echo $row['lastUpdate'];?></td>
                         <td><?php echo $row['registeredOn'];?></td>
                         <td><?php echo $row['package'];?></td>
-                        <td>
+                        <td style="text-align: right;">
                             <form method="post">
                             <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
                             <input type="hidden" name="visits" value="<?php echo $row["visits"];?>">
                             <button formaction="viewDetails.php" class="btn btn-primary">View</button>
+            <?php
+                    if ($_SESSION["type"] == "admin"){
+            ?>
+                            <button formaction="deleteRecord.php" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
+            <?php
+                    }
+            ?>
                             </form>
                         </td>
                     </tr>

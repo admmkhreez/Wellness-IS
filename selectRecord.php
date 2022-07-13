@@ -152,8 +152,8 @@
                         <th rowspan="2">
                             Package
                         </th>
-                        <th rowspan="2">
-
+                        <th rowspan="2" style="text-align: right;">
+                            Actions
                         </th>
                     </tr>
                 </thead>
@@ -200,13 +200,18 @@
                         <td>
                             <?php echo $row["package"];?>
                         </td>
-                        <td class="text-center">
+                        <td style="text-align: right;">
                             <form method="post">
-                                <input type="hidden" name="mrn" value="<?php echo $row["mrn"];?>">
-                                <input type="hidden" name="visits" value="<?php echo $row["visits"];?>">
-                                <button formaction="viewDetails.php" class="btn btn-primary">View</button>
-                            </form>
-                        </td>
+                            <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
+                            <input type="hidden" name="visits" value="<?php echo $row["visits"];?>">
+                            <button formaction="viewDetails.php" class="btn btn-primary">View</button>
+                        <?php
+                            if ($_SESSION["type"] == "admin"){
+                        ?>
+                                <button formaction="deleteRecord.php" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?');">Delete</button>
+                        <?php
+                            }
+                        ?>
                     </tr>
                 <?php
                     $i++;

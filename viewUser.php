@@ -61,12 +61,9 @@
             $data = $conn->query($display);
         ?>
         <form method="post">
-            <table style="width: 100%;" class="table table-bordered">
+            <table style="" class="table table-bordered">
                 <thead class="table-dark" style="text-align:center;">
                     <tr>
-                        <th>
-
-                        </th>
                         <th rowspan="2">
                             Username
                         </th>
@@ -79,6 +76,9 @@
                         <th rowspan="2">
                             Password
                         </th>
+                        <th rowspan="2" style="text-align: right;">
+                            Actions
+                        </th>
                     </tr>
                 </thead>
             <?php
@@ -87,15 +87,15 @@
                 while($row = $data->fetch_assoc())
                 {
             ?> 
-                <tbody style="background-color:white;">
+                <tbody style="background-color:#e3f0ff;">
                     <tr>
                         <td><?php echo $row['username'];?></td>
                         <td><?php echo $row['name'];?></td>
                         <td><?php echo $row['type'];?></td>
                         <td><?php echo $row['password'];?></td>
-                        <td class="text-center">
+                        <td style="text-align: right;">
                             <button formaction="editUser.php" class="btn btn-primary">Edit</button>
-                            <button formaction="deleteUser.php" class="btn btn-primary">Delete</button>
+                            <button formaction="deleteUser.php" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
                         </td>
                         <input type="hidden" name="id" value="<?php echo $row["ID"];?>">
                     </tr>
@@ -110,6 +110,7 @@
             ?>
             </table>
         </form>
+        <a class="btn btn-primary" href="addUser.php" style="width: 100px;">Add User</a>
         <?php
         $conn->close();
         }

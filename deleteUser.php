@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
     <?php
         session_start();
@@ -13,8 +13,7 @@
     </head>
     <body>
         <?php
-            $mrn = $_POST["mrn"];
-            $visits = $_POST["visits"];
+            $id = $_POST["id"];
             $servername = "localhost";
             $username = "root";
             $password = "";
@@ -28,13 +27,13 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $delete = "DELETE FROM record WHERE mrn = '".$mrn."' AND visits='".$visits."'";
+            $delete = "DELETE FROM user WHERE ID = '".$id."'";
             $data = $conn->query($delete);
 
-            if ($data === TRUE) 
+            if ($data === TRUE)
             {
                 echo "<script type='text/javascript'>";
-                echo "alert('Record successfully deleted, redirecting to Home page.');";
+                echo "alert('User successfully deleted, redirecting to Home page.');";
                 echo "window.location.href = 'homepage.php';";
                 echo "</script>";
             }
