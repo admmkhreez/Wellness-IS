@@ -10,6 +10,7 @@
         <title>KPJ Klang Wellness IS</title>
         <link rel="stylesheet" href="wellness.css">
         <link rel="stylesheet" href="bootstrap.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
         <?php
@@ -41,10 +42,7 @@
                             <a class="nav-link" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="selectPatient.php">Search Patient</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="viewReport.php">View Patient's Report</a>
+                            <a class="nav-link active" href="selectPatient.php">Search</a>
                         </li>
                         <?php
                             if($_SESSION["type"] == "admin"){
@@ -80,10 +78,31 @@
                         <button formaction="editProfile.php" class="btn btn-primary active">Edit Profile</button>
                         <button formaction="historyUpdateForm.php" class="btn btn-primary">Edit Medical History</button>  
                         <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+                        <div class="btn-group" role="group">
+                            <button id="btnGroupDrop" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Insert
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop">
+                                <li>
+                                <?php
+                                    if($_SESSION["type"] == "admin" or $_SESSION["type"] == "doctor"){
+                                ?>
+                                    <button class="dropdown-item" formaction="recordForm.php">Record</button>
+                                <?php
+                                    }
+                                ?>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" formaction="physicalExam.php">Physical Examinantion</button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" formaction="historyForm.php">Medical History</button>
+                                </li>
+                            </ul>
+                        </div>
                     </form>
-                </div>
-                    
-                <br>
+                </div>  
+                <hr>
                 <form action="updateDetails.php" method="post">
                 
                     <h5>Patient's Information</h5>

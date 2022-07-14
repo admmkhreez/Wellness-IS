@@ -36,10 +36,7 @@
                             <a class="nav-link active" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="selectPatient.php">Search Patient</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="viewReport.php">View Patient's Report</a>
+                            <a class="nav-link" href="selectPatient.php">Search</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -62,7 +59,7 @@
                 <button formaction="searchRecord.php" class="btn btn-primary">Search</button>
             </form>
             <div class="text-center" style='color: white;'>
-                Click <a href="viewReport.php">here</a> if you want to search by date.
+                Click <a href="viewReport.php">here</a> if you want to search for patient's record.
             </div>
             <br>
                 <table style="width: 100%;" height="100%" class="table table-bordered">

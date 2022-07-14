@@ -45,10 +45,7 @@
                         <a class="nav-link" href="viewPatient.php">View Patient List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="selectPatient.php">Search Patient</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="viewReport.php">View Patient's Report</a>
+                        <a class="nav-link" href="selectPatient.php">Search</a>
                     </li>
                     <?php
                         if($_SESSION["type"] == "admin"){
@@ -72,7 +69,7 @@
                 <label class="inline" for="mrn">MRN: </label>
                 <input type="text" id="mrn" maxlength="10" placeholder="MRN" name="mrn" required autofocus>
                 <input type="submit" name="check" class="btn btn-primary" value="Check"><br>
-            </form><br>
+            </form>
         <?php
             if(isset($_POST["check"])){
                 $mrn = $_POST["mrn"];
@@ -83,6 +80,7 @@
                     while($row=$data->fetch_assoc())
                     {
         ?>
+                    <br>
                     <form method="post">
                         <p>MRN <?php echo $mrn;?> is already registered view <button class="unstyled-button" formaction="selectRecord.php">here</button></p>
                         <input type="hidden" name="mrn" value="<?php echo $mrn?>">

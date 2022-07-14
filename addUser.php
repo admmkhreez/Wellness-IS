@@ -22,10 +22,7 @@
                         <a class="nav-link" href="viewPatient.php">View Patient List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="selectPatient.php">Search Patient</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="viewReport.php">View Patient's Report</a>
+                        <a class="nav-link" href="selectPatient.php">Search</a>
                     </li>
                     <?php
                         if($_SESSION["type"] == "admin"){

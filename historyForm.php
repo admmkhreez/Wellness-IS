@@ -215,7 +215,6 @@
                     <textarea id="medication" name="medication" rows="5" cols="100" required></textarea>
                 </div><br><br>
                 <div style="text-align: center;">
-                    <a class="btn btn-danger" href="homepage.php">Cancel</a>
                     <input type="reset" class="btn btn-danger" value="Reset" onclick="return confirm_reset();">
                     <input type="submit" class="btn btn-primary" value="Update Info">
                     <input type="hidden" name="mrn" value="<?php echo $mrn; ?>">

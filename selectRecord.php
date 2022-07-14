@@ -10,6 +10,7 @@
         <title>KPJ Klang Wellness IS</title>
         <link rel="stylesheet" href="wellness.css">
         <link rel="stylesheet" href="bootstrap.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <style>
             .unstyled-button {
                 border: none;
@@ -47,10 +48,7 @@
                             <a class="nav-link" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="selectPatient.php">Search Patient</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="viewReport.php">View Patient's Report</a>
+                            <a class="nav-link active" href="selectPatient.php">Search</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -68,62 +66,70 @@
         <br>
         <h1 style='color: white;'>Select Record</h1>
         <br>
-        <div class="container">
-        <form method="post" style="text-align: center;">
-            <label for="mrn">Enter Patient's MRN</label><br>
-            <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus>
-            <button formaction="selectRecord.php" class="btn btn-primary">Search</button>
-        </form>
-        <br>
-        <?php 
-            $check ="SELECT mrn FROM patient WHERE mrn = '".$mrn."'";
-            $data = $conn->query($check);
-
-            if($data->num_rows > 0)
-            {
-                while ($row = $data->fetch_assoc())
-                {
-        ?>
-                    <div class="text-center">
-                        <h5>MRN: <?php echo $mrn;?></h5>
-                        <form method="post" style="text-align: center;" class="btn-group">
-                            <button formaction="selectRecord.php" class="btn btn-primary active">View Record</button>
-                            <button formaction="editProfile.php" class="btn btn-primary">Edit Profile</button>
-                            <button formaction="historyUpdateForm.php" class="btn btn-primary">Edit Medical History</button>  
-                            <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
-                        </form>
-                    </div>
-        <?php
-                }
-            }
-                    else
-                    {
-        ?>
-                    <form method="post">
-                        <p>
-                            Patient does not exist, register <button formaction="homepage.php" class="unstyled-button">here</button>
-                        </p>
-                            <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
-                            <input type="hidden" name="check" value="">
-                    </form>
-        <?php 
-                    }
-        ?>
-        </div>
-        <br>
-        <div>    
-            <form method="post" style="position: absolute; right: 30px;">
-            <?php
-                if($_SESSION["type"] == "admin" or $_SESSION["type"] == "doctor"){
-            ?>
-                    <button class="btn btn-primary" formaction="recordForm.php">Insert Record</button>
-            <?php
-                }
-            ?>
-                <button class="btn btn-primary" formaction="physicalExam.php">Insert Physical Examinantion</button>
-                <button class="btn btn-primary" formaction="historyForm.php">Insert New Medical History</button>
-                <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+        <div class="container" style="width: 550px; height: 250px;">
+            <form method="post" style="text-align: center;">
+                <label for="mrn">Enter Patient's MRN</label><br>
+                <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus>
+                <button formaction="selectRecord.php" class="btn btn-primary">Search</button>
             </form>
+            <?php 
+                $check ="SELECT mrn FROM patient WHERE mrn = '".$mrn."'";
+                $data = $conn->query($check);
+
+                if($data->num_rows > 0)
+                {
+                    while ($row = $data->fetch_assoc())
+                    {
+            ?>
+                        <div class="text-center">
+                            <h5>MRN: <?php echo $mrn;?></h5>
+                            <form method="post" style="text-align: center;" class="btn-group">
+                                <button formaction="selectRecord.php" class="btn btn-primary active">View Record</button>
+                                <button formaction="editProfile.php" class="btn btn-primary">Edit Profile</button>
+                                <button formaction="historyUpdateForm.php" class="btn btn-primary">Edit Medical History</button>  
+                                <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Insert
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop">
+                                        <li>
+                                        <?php
+                                            if($_SESSION["type"] == "admin" or $_SESSION["type"] == "doctor"){
+                                        ?>
+                                                <button class="dropdown-item" formaction="recordForm.php">Record</button>
+                                        <?php
+                                            }
+                                        ?>
+                                        </li>
+                                        <li>
+                                            <button class="dropdown-item" formaction="physicalExam.php">Physical Examinantion</button>
+                                        </li>
+                                        <li>
+                                            <button class="dropdown-item" formaction="historyForm.php">Medical History</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </form>
+                        </div>
+            <?php
+                    }
+                }
+                        else
+                        {
+            ?>
+                        <form method="post">
+                            <p>
+                                Patient does not exist, register <button formaction="homepage.php" class="unstyled-button">here</button>
+                            </p>
+                                <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+                                <input type="hidden" name="check" value="">
+                        </form>
+            <?php 
+                        }
+            ?>
+        </div>
+            <br>
             <h3 style="text-align: center; margin-top: -5px; color: white;">Records History</h3>
             <table style="width: 100%;" class="table table-bordered">
                 <thead class="table-dark" style="text-align:center;">

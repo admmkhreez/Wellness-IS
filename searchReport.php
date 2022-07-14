@@ -37,10 +37,7 @@
                             <a class="nav-link" href="viewPatient.php">View Patient List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="selectPatient.php">Search Patient</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="viewReport.php">View Patient's Report</a>
+                            <a class="nav-link active" href="selectPatient.php">Search</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -56,14 +53,27 @@
                 </div>
             </nav>
             <br>
-            <h1 style='color: white;'>Patient's Record</h1>
+            <h1 style='color: white;'>Search</h1>
             <br>
+            <div class="container" style="text-align: center; width: 450px; height: 250px;">
+            <h3>Select Patient</h3>    
+            <form method="post">
+                <label for="mrn">Enter Patient's MRN</label><br>
+                <input type="text" id="mrn" name="mrn" maxlength="10" placeholder="MRN" required autofocus>
+                <button formaction="selectRecord.php" class="btn btn-primary">Search</button>
+            </form>
+            </div>
+            <hr style="border: 3px solid white;">
+            <h2 class="text-center" style="color: white; margin-bottom: 30px; margin-top: 10px;">Records List</h2>
             <form method="post" style="text-align: center; color: white;">
-                Between <input type="date" name="startDate" value="<?php echo $startDate;?>"> And
-                <input type="date" name="endDate" value="<?php echo $endDate;?>">
+                Between <input type="date" name="startDate"> And
+                <input type="date" name="endDate">
                 <button formaction="searchReport.php" class="btn btn-primary">Search</button>
             </form>
-            <br>
+            <div class="text-center" style="color: white;">
+                Click <a href="viewPatient.php">here</a> if you want to view patients list.
+            </div>
+                <br>
                 <table style="width: 100%;" height="100%" class="table table-bordered">
                     <thead class="table-dark" style="text-align:center;">
                         <tr>
@@ -146,7 +156,7 @@
             $start = "";
             $end = "";
             if($total_records == 0){
-                echo "<span class='text-center'>No Record Found</span>";
+                echo "<span class='text-center' style='color: white;'>No Record Found</span>";
             }
             else{
                 $start = $per_page_record * ($page-1) + 1;
@@ -161,7 +171,7 @@
                 else{
                     $end = $per_page_record * ($page);
                 }
-                    echo "<span>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
+                    echo "<span style='color: white;'>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
                     echo "</br>"; 
                 }  
             $pagLink = "";       
