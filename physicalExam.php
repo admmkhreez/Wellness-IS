@@ -50,7 +50,7 @@
             </div>
         </nav>
         <br>
-        <h1>Physical Examinantion</h1>
+        <h1 style='color: white;'>Physical Examinantion</h1>
         <br>
         <?php
             $mrn = $_POST["mrn"];

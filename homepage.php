@@ -64,8 +64,8 @@
             </div>
         </nav>
         <br>
-        <h1>KPJ Klang Wellness Information System</h1>
-        <h2  style="text-align:center;">Register Patient</h2>
+        <h1 style="color: white;">KPJ Klang Wellness Information System</h1>
+        <h2  style="text-align:center; color: white;">Register Patient</h2>
         <br>
         <div class="container">
             <form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post" style="margin-left: 40px;">

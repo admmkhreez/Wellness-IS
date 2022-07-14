@@ -55,13 +55,13 @@
                 </div>
             </nav>
             <br>
-            <h1>Patient's Record</h1>
+            <h1 style='color: white;'>Patients List</h1>
             <br>
             <form method="post" style="text-align: center;">
                 <input type="text" placeholder="MRN/Name/IC/Passport/Email/Telephone" name="keyword" value="<?php echo $kw;?>">
                 <button formaction="searchRecord.php" class="btn btn-primary">Search</button>
             </form>
-            <div class="text-center">
+            <div class="text-center" style='color: white;'>
                 Click <a href="viewReport.php">here</a> if you want to search by date.
             </div>
             <br>
@@ -145,7 +145,7 @@
             $start = "";
             $end = "";
             if($total_records == 0){
-                echo "<span class='text-center'>No Record Found</span>";
+                echo "<span class='text-center' style='color: white;'>No Record Found</span>";
             }
             else{
                 $start = $per_page_record * ($page-1) + 1;
@@ -160,7 +160,7 @@
                 else{
                     $end = $per_page_record * ($page);
                 }
-                echo "<span>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
+                echo "<span style='color: white;'>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
                 echo "</br>"; 
             }  
             $pagLink = "";       

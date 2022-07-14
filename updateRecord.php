@@ -140,7 +140,7 @@
             </div>
         </nav>
         <br>
-        <h1>Patient Medical History</h1>
+        <h1 style='color: white;'>Patient's Report</h1>
         <br>
         <div class="container">
         <h3>Physical Examination</h3>

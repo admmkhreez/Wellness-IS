@@ -54,13 +54,13 @@
                 </div>
             </nav>
             <br>
-            <h1>Patients List</h1>
+            <h1 style='color: white;'>Patients List</h1>
             <br>
             <form method="post" style="text-align: center;">
                 <input type="text" placeholder="MRN/Name/IC/Passport/Email/Telephone" name="keyword">
                 <button formaction="searchRecord.php" class="btn btn-primary">Search</button>
             </form>     
-            <div class="text-center">
+            <div class="text-center" style='color: white;'>
                 Click <a href="viewReport.php">here</a> if you want to search for patient's report by date.
             </div>
             <br><br>
@@ -160,7 +160,7 @@
                     else{
                         $end = $per_page_record * ($page);
                     }
-                    echo "<span>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
+                    echo "<span style='color: white;'>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
                     echo "</br>"; 
                 }       
                 $pagLink = "";       

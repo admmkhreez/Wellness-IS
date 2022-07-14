@@ -77,7 +77,7 @@
                                 <a class="nav-link btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
                         </div>
                     </nav>
-                    <h1  id="top" style="margin-top: 40px;">Patient's Report</h1>
+                    <h1  id="top" style="margin-top: 40px; color: white;">Patient's Report</h1>
                     <br>
                     <div class="container">
                         <form method="post" action="selectRecord.php">

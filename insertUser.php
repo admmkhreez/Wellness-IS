@@ -62,7 +62,7 @@
             </div>
         </nav>
         <br>
-        <h1>Patient Medical History</h1>
+        <h1 style='color: white;'>Add User</h1>
         <br>
         <div class="container">
             <dl class="row">

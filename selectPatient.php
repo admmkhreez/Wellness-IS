@@ -41,12 +41,12 @@
                 </div>
             </nav>
         <br>
-        <h1>Select Patient</h1>
+        <h1 style='color: white;'>Select Patient</h1>
         <br>
         <div class="container">    
             <form method="post">
                 <label for="mrn">Enter Patient's MRN</label><br>
-                <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus>
+                <input type="text" id="mrn" name="mrn" maxlength="10" placeholder="MRN" required autofocus>
                 <button formaction="selectRecord.php" class="btn btn-primary">Search</button>
             </form>
         </div>

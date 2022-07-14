@@ -50,7 +50,7 @@
             </div>
         </nav>
         <br>
-        <h1>Patient Medical Report</h1>
+        <h1 style='color: white;'>Patient's Report</h1>
         <br>
         <?php
             $mrn = $_POST["mrn"];

@@ -56,9 +56,9 @@
                 </div>
             </nav>
             <br>
-            <h1>Patient's Record</h1>
+            <h1 style='color: white;'>Patient's Record</h1>
             <br>
-            <form method="post" style="text-align: center;">
+            <form method="post" style="text-align: center; color: white;">
                 Between <input type="date" name="startDate" value="<?php echo $startDate;?>"> And
                 <input type="date" name="endDate" value="<?php echo $endDate;?>">
                 <button formaction="searchReport.php" class="btn btn-primary">Search</button>

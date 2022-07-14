@@ -54,7 +54,7 @@
                 </div>
             </nav>
             <br>
-            <h1>Users</h1>
+            <h1 style='color: white;'>Users</h1>
             <br>
         <?php    
             $display = "SELECT *  FROM user";

@@ -75,7 +75,7 @@
             </div>
         </nav>
         <br>
-        <h1>User Registration Details</h1>
+        <h1 style='color: white;'>Patient Registration Details</h1>
         <br>
         <?php
         $check = "SELECT mrn FROM patient WHERE mrn = '".$mrn."'";
@@ -104,13 +104,13 @@
                 $insert1 = "INSERT INTO patient (mrn, name, ic_passport, date_of_birth, address, email, telephone, sex, occupation, race, religion, marital_status, next_of_kin, relationship, telephone_nok, registeredOn, package, addons, pic) 
                 VALUES ('".$mrn."', '".$name."', '".$icpp."', '".$dob."', '".$address."', '".$email."', '".$tel."', '".$sex."', '".$occupation."', '".$race."', '".$religion."', '".$mstatus."', '".$nok."', '".$rs."', '".$tel_nok."', '".$date."', '".$package."', NULL, '".$pic."')";
             }
-            $insert2 = "INSERT INTO record (mrn) VALUES ('".$mrn."')";
+           
 
-            if ($conn->query($insert1) && $conn->query($insert2 )=== TRUE)
+            if ($conn->query($insert1)=== TRUE)
             {
             ?>
                 <br><div class='container'><span class='success'>Successfully registered patient</span><br><br>
-                <button class='btn btn-primary' onclick="window.location.href='homepage.php'">Back to Home Page</button>
+                <button class='btn btn-primary' onclick="window.location.href='homepage.php'">Back to Home Page</button><br><br>
                 <form method="post">
                     <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
                     <button formaction="selectRecord.php" class="btn btn-primary">View</button>

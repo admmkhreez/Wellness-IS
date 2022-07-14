@@ -66,7 +66,7 @@
                 </div>
             </nav>
         <br>
-        <h1>Select Record</h1>
+        <h1 style='color: white;'>Select Record</h1>
         <br>
         <div class="container">
         <form method="post" style="text-align: center;">
@@ -124,7 +124,7 @@
                 <button class="btn btn-primary" formaction="historyForm.php">Insert New Medical History</button>
                 <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
             </form>
-            <h3 style="text-align: center; margin-top: -5px">Records History</h3>
+            <h3 style="text-align: center; margin-top: -5px; color: white;">Records History</h3>
             <table style="width: 100%;" class="table table-bordered">
                 <thead class="table-dark" style="text-align:center;">
                     <tr>
@@ -152,12 +152,15 @@
                         <th rowspan="2">
                             Package
                         </th>
+                        <th rowspan="2">
+                            Visits
+                        </th>
                         <th rowspan="2" style="text-align: right;">
                             Actions
                         </th>
                     </tr>
                 </thead>
-                <tbody style="background-color: #e3f0ffx;">
+                <tbody style="background-color: #e3f0ff;">
                 <?php
                     $per_page_record = 10;  // Number of entries to show in a page.   
                     // Look for a GET variable page if not found default is 1.        
@@ -200,6 +203,9 @@
                         <td>
                             <?php echo $row["package"];?>
                         </td>
+                        <td>
+                            <?php echo $row["visits"];?>
+                        </td>
                         <td style="text-align: right;">
                             <form method="post">
                             <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
@@ -229,7 +235,7 @@
                 $start = "";
                 $end = "";
                 if($total_records == 0){
-                    echo "<span class='text-center'>No Record Found</span>";
+                    echo "<span class='text-center' style='color: white;'>No Record Found</span>";
                 }
                 else{
                     $start = $per_page_record * ($page-1) + 1;
@@ -244,7 +250,7 @@
                     else{
                         $end = $per_page_record * ($page);
                     }
-                    echo "<span>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
+                    echo "<span style='color: white;'>Showing " .$start. '-' .$end. ' of ' . $total_records . " result(s).</span>";
                     echo "</br>"; 
                 }       
                 $pagLink = "";       

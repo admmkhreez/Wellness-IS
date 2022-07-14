@@ -74,7 +74,7 @@
             </div>
         </nav>
         <br>
-        <h1>Physical Examinantion</h1>
+        <h1 style='color: white;'>Physical Examinantion</h1>
         <br>
         <div class="container">
             <dl class="row">

@@ -76,7 +76,7 @@
             </div>
         </nav>
         <br>
-        <h1>User Registration Details</h1>
+        <h1 style='color: white;'>Update Patient's Details</h1>
         <br>
         <div class="container">
                 <dl class="row">

@@ -61,7 +61,7 @@
             </div>
         </nav>
         <br>
-        <h1>Medical History</h1>
+        <h1 style='color: white;'>Medical History</h1>
         <br>
         <div class="container">
         <h3>Past Medical History</h3>

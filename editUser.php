@@ -65,7 +65,7 @@
             </div>
         </nav>
         <br>
-        <h1>Past Medical History</h1>
+        <h1 style='color: white;'>Edit User</h1>
         <br>
         <div class="container">
     <?php
