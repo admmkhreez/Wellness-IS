@@ -46,13 +46,14 @@
         }
     ?>
         <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
+        <span class="nav-item" style="padding-left: 10px;color: white;"><?php echo $_SESSION["name"];?></span>
             <div class="container-sm">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewPatient.php">View Patient List</a>
+                        <a class="nav-link" href="viewPatient.php">Patients List</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search</a>
@@ -67,8 +68,8 @@
                         }
                     ?>
                 </ul>
-                    <a class="nav-link btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
             </div>
+            <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
         </nav>
         <br>
         <h1 style='color: white;'>Physical Examinantion</h1>

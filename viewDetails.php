@@ -50,13 +50,14 @@
             <div>
                 <div id="non-printable">
                     <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
+                    <span class="nav-item" style="padding-left: 10px;color: white;"><?php echo $_SESSION["name"];?></span>
                         <div class="container-sm">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
                                     <a class="nav-link" href="homepage.php">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="viewPatient.php">View Patient List</a>
+                                    <a class="nav-link" href="viewPatient.php">Patients List</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link active" href="selectPatient.php">Search</a>
@@ -71,7 +72,7 @@
                                     }
                                 ?>
                             </ul>
-                                <a class="nav-link btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
+                        <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
                         </div>
                     </nav>
                     <h1  id="top" style="margin-top: 40px; color: white;">Patient's Report</h1>
@@ -159,6 +160,8 @@
                                     <dd class="col-sm-9"><?php echo nl2br($row['addons']);?></dd>
                                     <dt class="col-sm-3">Registered On: </dt>
                                     <dd class="col-sm-9"><?php echo $row['registeredOn'];?></dd>
+                                    <dt class="col-sm-3">Registered By: </dt>
+                                    <dd class="col-sm-9"><?php echo $row['pic'];?></dd>
                                     <dt class="col-sm-3">Last Edited On: </dt>
                                     <dd class="col-sm-9"><?php echo $row['lastUpdateOn'];?></dd>
                                 </dl>    

@@ -37,13 +37,14 @@
     </head>
     <body>
         <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
+        <span class="nav-item" style="padding-left: 10px;color: white;"><?php echo $_SESSION["name"];?></span>
             <div class="container-sm">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewPatient.php">View Patient List</a>
+                        <a class="nav-link" href="viewPatient.php">Patients List</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search</a>
@@ -58,8 +59,8 @@
                         }
                     ?>
                 </ul>
-                    <a class="nav-link btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
             </div>
+            <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
         </nav>
         <br>
         <h1 style='color: white;'>Edit User</h1>
@@ -77,7 +78,7 @@
             <dt class="col-sm-3">Name: </dt>
             <dd class="col-sm-9"><input type="text" name="name" value="<?php echo $row["name"];?>"></dd>
             <dt class="col-sm-3">Position: </dt>
-            <dd class="col-sm-9"><textarea type="text" name="position"><?php echo nl2br($row["position"]);?></textarea>
+            <dd class="col-sm-9"><textarea type="text" name="position"><?php echo $row["position"];?></textarea>
             <dt class="col-sm-3">User Type: </dt>
             <dd class="col-sm-9"><input type="text" name="type" value="<?php echo $row["type"];?>"></dd>
             <dt class="col-sm-3">Password: </dt>

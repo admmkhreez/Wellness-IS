@@ -33,13 +33,14 @@
             $data = $conn->query($display);
         ?>
             <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
+            <span class="nav-item" style="padding-left: 10px;color: white;"><?php echo $_SESSION["name"];?></span>
                 <div class="container-sm">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewPatient.php">View Patient List</a>
+                            <a class="nav-link" href="viewPatient.php">Patients List</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="selectPatient.php">Search</a>
@@ -54,8 +55,8 @@
                             }
                         ?>
                     </ul>
-                        <a class="nav-link btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
                 </div>
+                <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
             </nav>
             <br>
             <h1 style='color: white;'>Edit Patient's Profile</h1>
@@ -82,7 +83,7 @@
                             <button id="btnGroupDrop" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 Insert
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop">
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="btnGroupDrop">
                                 <li>
                                 <?php
                                     if($_SESSION["type"] == "admin" or $_SESSION["type"] == "doctor"){

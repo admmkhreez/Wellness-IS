@@ -14,7 +14,6 @@
     <body>
         <?php
             $mrn = $_POST["mrn"];
-            $visits = $_POST["visits"];
             $servername = "localhost";
             $username = "root";
             $password = "";
@@ -28,7 +27,7 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $delete = "DELETE FROM record WHERE mrn = '".$mrn."' AND visits='".$visits."'";
+            $delete = "DELETE FROM patient WHERE mrn = '".$mrn."'";
             $data = $conn->query($delete);
 
             if ($data === TRUE) 

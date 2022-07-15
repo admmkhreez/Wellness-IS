@@ -26,13 +26,14 @@
         ?>
         <body>
             <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
+            <span class="nav-item" style="padding-left: 10px;color: white;"><?php echo $_SESSION["name"];?></span>
                 <div class="container-sm">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="viewPatient.php">View Patient List</a>
+                            <a class="nav-link active" href="viewPatient.php">Patients List</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="selectPatient.php">Search</a>
@@ -47,8 +48,8 @@
                             }
                         ?>
                     </ul>
-                        <a class="nav-link btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
                 </div>
+                <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
             </nav>
             <br>
             <h1 style='color: white;'>Patients List</h1>
@@ -89,7 +90,7 @@
                             Package
                         </th>
                         <th rowspan="2">
-
+                            Actions
                         </th>
                     </tr>
                 </thead>
@@ -121,9 +122,10 @@
                         <td><?php echo $row['registeredOn'];?></td>
                         <td><?php echo $row['package'];?></td>
                         <td>
-                            <form method="post">
+                            <form method="post" class="text-center">
                             <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
                             <button formaction="selectRecord.php" class="btn btn-primary">View</button>
+                            <button formaction="deletePatient.php" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
                             </form>
                         </td>
                     </tr>

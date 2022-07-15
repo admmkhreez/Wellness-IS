@@ -36,13 +36,14 @@
             }
         ?>
         <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
+        <span class="nav-item" style="padding-left: 10px;color: white;"><?php echo $_SESSION["name"];?></span>
             <div class="container-sm">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewPatient.php">View Patient List</a>
+                        <a class="nav-link" href="viewPatient.php">Patients List</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="selectPatient.php">Search</a>
@@ -57,8 +58,12 @@
                         }
                     ?>
                 </ul>
-                    <a class="nav-link btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
+                <form class="d-flex" method="post" style="margin-left: 400px;">
+                    <input type="search" class="form-control me-2" placeholder="Search" aria-label="Search" name="mrn">
+                    <button class="btn btn-outline-success" formaction="selectRecord.php">Search</button>
+                </form>
             </div>
+            <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
         </nav>
         <br>
         <h1 style="color: white;">KPJ Klang Wellness Information System</h1>
