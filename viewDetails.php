@@ -60,7 +60,7 @@
                                     <a class="nav-link" href="viewPatient.php">Patients List</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="selectPatient.php">Search</a>
+                                    <a class="nav-link active" href="viewRecords.php">Records</a>
                                 </li>
                                 <?php
                                     if($_SESSION["type"] == "admin"){
@@ -72,8 +72,12 @@
                                     }
                                 ?>
                             </ul>
-                        <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700;">Logout</a>
+                            <form class="d-flex" method="post" style="margin-left: 400px;">
+                                <input type="search" class="form-control me-2" placeholder="Search" aria-label="Search" name="mrn">
+                                <button class="btn btn-outline-success" formaction="selectRecord.php">Search</button>
+                            </form>
                         </div>
+                        <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
                     </nav>
                     <h1  id="top" style="margin-top: 40px; color: white;">Patient's Report</h1>
                     <br>
@@ -160,7 +164,7 @@
                                     <dd class="col-sm-9"><?php echo nl2br($row['addons']);?></dd>
                                     <dt class="col-sm-3">Registered On: </dt>
                                     <dd class="col-sm-9"><?php echo $row['registeredOn'];?></dd>
-                                    <dt class="col-sm-3">Registered By: </dt>
+                                    <dt class="col-sm-3">Last Edit By: </dt>
                                     <dd class="col-sm-9"><?php echo $row['pic'];?></dd>
                                     <dt class="col-sm-3">Last Edited On: </dt>
                                     <dd class="col-sm-9"><?php echo $row['lastUpdateOn'];?></dd>
@@ -622,6 +626,7 @@
                             <label for="rectal" class="inline">Rectal Examination</label>
                             : <span id="rectal"><?php echo $row["rectal"];?></span><br><br>
                         </div>
+                        <div style="break-after:page;"></div>
                         <div>
                             <?php
                                 if($row['sex'] == "Female"){
@@ -639,7 +644,6 @@
                                 }
                             ?>
                         </div>
-                        <div style="break-after:page;"></div>
                         <h5>Musculoskeletal System</h5>
                         <div>
                             <table>

@@ -50,10 +50,10 @@
                 $fundoscopy_l = $row["fundoscopy_l"];
                 $fundoscopy_r = $row["fundoscopy_r"];
                 $bmi = $row["bmi"];
+                $addons = $row["addons"];
+                $package = $row["package"];
             }
         }
-            $addons = $_POST["addons"];
-            $package = $_POST["package"];
             $sex = $_POST["sex"];  
             $nose = $_POST["nose"];
             $throat = $_POST["throat"];
@@ -142,7 +142,7 @@
                             <a class="nav-link" href="viewPatient.php">Patients List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="selectPatient.php">Search</a>
+                            <a class="nav-link" href="viewRecords.php">Records</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -154,8 +154,12 @@
                             }
                         ?>
                     </ul>
-                </div>
-                <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
+                <form class="d-flex" method="post" style="margin-left: 400px;">
+                    <input type="search" class="form-control me-2" placeholder="Search" aria-label="Search" name="mrn">
+                    <button class="btn btn-outline-success" formaction="selectRecord.php">Search</button>
+                </form>
+            </div>
+            <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
             </nav>
             <br>
             <h1 style='color: white;'>Patient's Report</h1>

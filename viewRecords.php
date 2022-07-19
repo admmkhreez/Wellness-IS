@@ -28,43 +28,36 @@
     <body style="text-align: center;">
         <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
         <span class="nav-item" style="padding-left: 10px;color: white;"><?php echo $_SESSION["name"];?></span>
-                <div class="container-sm">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="homepage.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="viewPatient.php">Patients List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="selectPatient.php">Search</a>
-                        </li>
-                        <?php
-                        if($_SESSION["type"] == "admin"){
-                        ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="viewUser.php">View User</a>
-                        </li>
-                        <?php
-                            }
-                        ?>
-                    </ul>
-                </div>
-                <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
-            </nav>
+            <div class="container-sm">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="homepage.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="viewPatient.php">Patients List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="viewRecords.php">Records</a>
+                    </li>
+                    <?php
+                    if($_SESSION["type"] == "admin"){
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="viewUser.php">View User</a>
+                    </li>
+                    <?php
+                        }
+                    ?>
+                </ul>
+                <form class="d-flex" method="post" style="margin-left: 400px;">
+                    <input type="search" class="form-control me-2" placeholder="Search" aria-label="Search" name="mrn">
+                    <button class="btn btn-outline-success" formaction="selectRecord.php">Search</button>
+                </form>
+            </div>
+            <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
+        </nav>
         <br>
-        <h1 style='color: white;'>Search</h1>
-        <br>
-        <div class="container" style="width: 450px; height: 250px;">
-            <h3>Select Patient</h3>    
-            <form method="post">
-                <label for="mrn">Enter Patient's MRN</label><br>
-                <input type="text" id="mrn" name="mrn" maxlength="10" placeholder="MRN" required autofocus>
-                <button formaction="selectRecord.php" class="btn btn-primary">Search</button>
-            </form>
-        </div>
-        <hr style="border: 3px solid white;">
-        <h2 class="text-center" style="color: white; margin-bottom: 30px; margin-top: 10px;">Records List</h2>
+        <h1 style='color: white; margin-bottom: 30px;'>Records</h1>
             <form method="post" style="text-align: center; color: white;">
                 Between <input type="date" name="startDate"> And
                 <input type="date" name="endDate">
@@ -99,7 +92,7 @@
                             Last Updated On
                         </th>
                         <th rowspan="2">
-                            Registered On
+                            Physical Exam On
                         </th>
                         <th rowspan="2">
                             Package
@@ -125,12 +118,12 @@
         
             $start_from = ($page-1) * $per_page_record;     
         
-            $query = "SELECT a.mrn, name, ic_passport, address, email, telephone, lastUpdateMH, lastUpdate, registeredOn, b.package, visits  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+            $query = "SELECT a.mrn, name, ic_passport, address, email, telephone, lastUpdateMH, lastUpdate, phyExam, b.package, visits  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
             $rs_result = mysqli_query ($conn, $query);     
 
             while ($row = mysqli_fetch_array($rs_result)) {  
             ?> 
-                <tbody style="background-color: #e3f0ff;">
+                <tbody style="background-color: #e3f0ff; text-align: left;">
                     <tr>
                         <td><?php echo $row['mrn'];?></td>
                         <td><?php echo $row['name'];?></td>
@@ -140,7 +133,7 @@
                         <td><?php echo $row['telephone'];?></td>
                         <td colspan="2"><?php echo $row['lastUpdateMH'];?></td>
                         <td colspan="2"><?php echo $row['lastUpdate'];?></td>
-                        <td><?php echo $row['registeredOn'];?></td>
+                        <td><?php echo $row['phyExam'];?></td>
                         <td><?php echo $row['package'];?></td>
                         <td style="text-align: right;">
                             <form method="post">
@@ -195,23 +188,23 @@
                 echo "<nav aria-label='page nav'>";
                 echo "<ul class='pagination justify-content-center'>";
                 if($page>=2){   
-                    echo "<li class='page-item'><a class='page-link' href='viewReport.php?page=".($page-1)."'>  Prev </a></li>";   
+                    echo "<li class='page-item'><a class='page-link' href='viewRecords.php?page=".($page-1)."'>  Prev </a></li>";   
                 }       
                         
                 for ($i=1; $i<=$total_pages; $i++) {   
                 if ($i == $page) {   
-                    $pagLink .= "<li class='page-item active'><a class ='page-link' href='viewReport.php?page=" .$i."'>".$i." </a> </li>"; 
+                    $pagLink .= "<li class='page-item active'><a class ='page-link' href='viewRecords.php?page=" .$i."'>".$i." </a> </li>"; 
                                                           
                 }               
                 else  {   
-                    $pagLink .= "<li class='page-item'><a class='page-link' href='viewReport.php?page=".$i."'> ".$i." </a> </li>";  
+                    $pagLink .= "<li class='page-item'><a class='page-link' href='viewRecords.php?page=".$i."'> ".$i." </a> </li>";  
                                                              
                 }   
                 };     
                 echo $pagLink;   
         
                 if($page<$total_pages){   
-                    echo "<li class='page-item'><a class='page-link' href='viewReport.php?page=".($page+1)."'>  Next </a></li>";   
+                    echo "<li class='page-item'><a class='page-link' href='viewRecords.php?page=".($page+1)."'>  Next </a></li>";   
                 }  
                 echo "</ul>";
                 echo "</nav>";

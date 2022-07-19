@@ -46,7 +46,7 @@
                         <a class="nav-link" href="viewPatient.php">Patients List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="selectPatient.php">Search</a>
+                        <a class="nav-link" href="viewRecords.php">Records</a>
                     </li>
                     <?php
                         if($_SESSION["type"] == "admin"){

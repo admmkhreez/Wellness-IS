@@ -43,7 +43,7 @@
                         <a class="nav-link" href="viewPatient.php">Patients List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="selectPatient.php">Search</a>
+                        <a class="nav-link" href="viewRecords.php">Records</a>
                     </li>
                     <?php
                         if($_SESSION["type"] == "admin"){
@@ -55,6 +55,10 @@
                         }
                     ?>
                 </ul>
+                <form class="d-flex" method="post" style="margin-left: 400px;">
+                    <input type="search" class="form-control me-2" placeholder="Search" aria-label="Search" name="mrn">
+                    <button class="btn btn-outline-success" formaction="selectRecord.php">Search</button>
+                </form>
             </div>
             <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
         </nav>

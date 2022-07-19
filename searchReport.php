@@ -38,7 +38,7 @@
                             <a class="nav-link" href="viewPatient.php">Patients List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="selectPatient.php">Search</a>
+                            <a class="nav-link active" href="viewRecords.php">Records</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -50,25 +50,18 @@
                             }
                         ?>
                     </ul>
+                    <form class="d-flex" method="post" style="margin-left: 400px;">
+                        <input type="search" class="form-control me-2" placeholder="Search" aria-label="Search" name="mrn">
+                        <button class="btn btn-outline-success" formaction="selectRecord.php">Search</button>
+                    </form>
                 </div>
                 <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
             </nav>
             <br>
-            <h1 style='color: white;'>Search</h1>
-            <br>
-            <div class="container" style="text-align: center; width: 450px; height: 250px;">
-            <h3>Select Patient</h3>    
-            <form method="post">
-                <label for="mrn">Enter Patient's MRN</label><br>
-                <input type="text" id="mrn" name="mrn" maxlength="10" placeholder="MRN" required autofocus>
-                <button formaction="selectRecord.php" class="btn btn-primary">Search</button>
-            </form>
-            </div>
-            <hr style="border: 3px solid white;">
-            <h2 class="text-center" style="color: white; margin-bottom: 30px; margin-top: 10px;">Records List</h2>
+            <h1 style='color: white; margin-bottom: 30px;'>Records</h1>
             <form method="post" style="text-align: center; color: white;">
-                Between <input type="date" name="startDate"> And
-                <input type="date" name="endDate">
+                Between <input type="date" name="startDate" value="<?php echo $startDate;?>"> And
+                <input type="date" name="endDate" value="<?php echo $endDate;?>">
                 <button formaction="searchReport.php" class="btn btn-primary">Search</button>
             </form>
             <div class="text-center" style="color: white;">

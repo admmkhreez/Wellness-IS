@@ -59,133 +59,171 @@
                 <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
             </form>
             <form action="insertHistory.php" method="post">
-            <dl class="row h5">
-                <dt class="col-sm-3">Name: </dt>
-                <dd class="col-sm-9"><?php echo $row["name"];?></dd>
-                <dt class="col-sm-3">MRN: </dt>
-                <dd class="col-sm-9"><?php echo $mrn;?></dd>
-            </dl>
-                <h5>Medical History</h5>
-                <fieldset>
-                <legend>Smoker/Non Smoker:</legend>
-                <div>
-                    <input type="radio" class="form-check-input" id="yes" name="smoker" value="Smoker" required>
-                    <label class="inline-radio" for="yes">Smoker</label>
-                    <input type="radio" class="form-check-input" id="no" name="smoker" value="Non-Smoker">
-                    <label class="inline-radio" for="no">Non Smoker</label>
+            <div class="info">
+                <dl class="row h5">
+                    <dt class="col-sm-3">Name: </dt>
+                    <dd class="col-sm-9"><?php echo $row["name"];?></dd>
+                    <dt class="col-sm-3">MRN: </dt>
+                    <dd class="col-sm-9"><?php echo $mrn;?></dd>
+                </dl>
+            </div>
+                <h2>Medical History</h2>
+                <hr>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Smoker/Non Smoker:</legend>
+                        <div>
+                            <input type="radio" class="form-check-input" id="yes" name="smoker" value="Smoker" required>
+                            <label class="inline-radio" for="yes">Smoker</label>
+                            <input type="radio" class="form-check-input" id="no" name="smoker" value="Non-Smoker">
+                            <label class="inline-radio" for="no">Non Smoker</label>
+                        </div>
+                    </fieldset>
                 </div>
-                </fieldset>
-                <fieldset>
-                <legend>Asthma:</legend>
-                <div>
-                <input type="radio" class="form-check-input" id="yes" name="asthma" value="Yes" required>
-                <label class="inline-radio" for="yes">Yes</label>
-                    <input type="radio" class="form-check-input" id="no" name="asthma" value="No">
-                    <label class="inline-radio" for="no">No</label>
-                    <input type="radio" class="form-check-input" id="unknown" name="asthma" value="Unknown">
-                    <label class="inline-radio" for="unknown">Unknown</label>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Diabetes:</legend>
+                        <div>
+                            <input type="radio" class="form-check-input" id="yes" name="diabetes" value="Yes" required>
+                            <label class="inline-radio" for="yes">Yes</label>
+                            <input type="radio" class="form-check-input" id="no" name="diabetes" value="No">
+                            <label class="inline-radio" for="no">No</label>
+                            <input type="radio" class="form-check-input" id="unknown" name="diabetes" value="Unknown">
+                            <label class="inline-radio" for="unknown">Unknown</label>
+                        </div>
+                    </fieldset>
                 </div>
-                </fieldset>
-                <fieldset>
-                <legend>Diabetes:</legend>
-                <div>
-                    <input type="radio" class="form-check-input" id="yes" name="diabetes" value="Yes" required>
-                    <label class="inline-radio" for="yes">Yes</label>
-                    <input type="radio" class="form-check-input" id="no" name="diabetes" value="No">
-                    <label class="inline-radio" for="no">No</label>
-                    <input type="radio" class="form-check-input" id="unknown" name="diabetes" value="Unknown">
-                    <label class="inline-radio" for="unknown">Unknown</label>
+                <div class="col">
+                    <fieldset>
+                        <legend>Heart Disease:</legend>
+                        <div>
+                            <input type="radio" class="form-check-input" id="yes" name="heart_disease" value="Yes" required>
+                            <label class="inline-radio" for="yes">Yes</label>
+                            <input type="radio" class="form-check-input" id="no" name="heart_disease" value="No">
+                            <label class="inline-radio" for="no">No</label>
+                            <input type="radio" class="form-check-input" id="unknown" name="heart_disease" value="Unknown">
+                            <label class="inline-radio" for="unknown">Unknown</label>
+                        </div>
+                    </fieldset>
                 </div>
-                </fieldset>
-                <fieldset>
-                <legend>Heart Disease:</legend>
-                <div>
-                    <input type="radio" class="form-check-input" id="yes" name="heart_disease" value="Yes" required>
-                    <label class="inline-radio" for="yes">Yes</label>
-                    <input type="radio" class="form-check-input" id="no" name="heart_disease" value="No">
-                    <label class="inline-radio" for="no">No</label>
-                    <input type="radio" class="form-check-input" id="unknown" name="heart_disease" value="Unknown">
-                    <label class="inline-radio" for="unknown">Unknown</label>
+            </div>
+            <div class="row">
+                <div class="col">
+                        <fieldset>
+                            <legend>Hypertension:</legend>
+                            <div>
+                                <input type="radio" class="form-check-input" id="yes" name="hypertension" value="Yes" required>
+                                <label class="inline-radio" for="yes">Yes</label>
+                                <input type="radio" class="form-check-input" id="no" name="hypertension" value="No">
+                                <label class="inline-radio" for="no">No</label>
+                                <input type="radio" class="form-check-input" id="unknown" name="hypertension" value="Unknown">
+                                <label class="inline-radio" for="unknown">Unknown</label>
+                            </div>
+                        </fieldset>
                 </div>
-                </fieldset>
-                <fieldset>
-                <legend>Hypertension:</legend>
-                <div>
-                    <input type="radio" class="form-check-input" id="yes" name="hypertension" value="Yes" required>
-                    <label class="inline-radio" for="yes">Yes</label>
-                    <input type="radio" class="form-check-input" id="no" name="hypertension" value="No">
-                    <label class="inline-radio" for="no">No</label>
-                    <input type="radio" class="form-check-input" id="unknown" name="hypertension" value="Unknown">
-                    <label class="inline-radio" for="unknown">Unknown</label>
+                <div class="col">
+                        <fieldset>
+                            <legend>Stroke:</legend>
+                            <div>
+                                <input type="radio" class="form-check-input" id="yes" name="stroke" value="Yes" required>
+                                <label class="inline-radio" for="yes">Yes</label>
+                                <input type="radio" class="form-check-input" id="no" name="stroke" value="No">
+                                <label class="inline-radio" for="no">No</label>
+                                <input type="radio" class="form-check-input" id="unknown" name="stroke" value="Unknown">
+                                <label class="inline-radio" for="unknown">Unknown</label>
+                            </div>
+                        </fieldset>
                 </div>
-                </fieldset>
-                <fieldset>
-                <legend>Stroke:</legend>
-                <div>
-                    <input type="radio" class="form-check-input" id="yes" name="stroke" value="Yes" required>
-                    <label class="inline-radio" for="yes">Yes</label>
-                    <input type="radio" class="form-check-input" id="no" name="stroke" value="No">
-                    <label class="inline-radio" for="no">No</label>
-                    <input type="radio" class="form-check-input" id="unknown" name="stroke" value="Unknown">
-                    <label class="inline-radio" for="unknown">Unknown</label>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Asthma:</legend>
+                        <div>
+                        <input type="radio" class="form-check-input" id="yes" name="asthma" value="Yes" required>
+                        <label class="inline-radio" for="yes">Yes</label>
+                            <input type="radio" class="form-check-input" id="no" name="asthma" value="No">
+                            <label class="inline-radio" for="no">No</label>
+                            <input type="radio" class="form-check-input" id="unknown" name="asthma" value="Unknown">
+                            <label class="inline-radio" for="unknown">Unknown</label>
+                        </div>
+                    </fieldset>
                 </div>
-                </fieldset>
-                <fieldset>
-                <legend>Cancer:</legend>
-                <div>
-                    <input type="radio" class="form-check-input" id="yes" name="cancer" value="Yes" required>
-                    <label class="inline-radio" for="yes">Yes</label>
-                    <input type="radio" class="form-check-input" id="no" name="cancer" value="No">
-                    <label class="inline-radio" for="no">No</label>
-                    <input type="radio" class="form-check-input" id="unknown" name="cancer" value="Unknown">
-                    <label class="inline-radio" for="unknown">Unknown</label>
+                <div class="col">
+                    <fieldset>
+                        <legend>Tuberculosis:</legend>
+                        <div>
+                            <input type="radio" class="form-check-input" id="yes" name="tuberculosis" value="Yes" required>
+                            <label class="inline-radio" for="yes">Yes</label>
+                            <input type="radio" class="form-check-input" id="no" name="tuberculosis" value="No">
+                            <label class="inline-radio" for="no">No</label>
+                            <input type="radio" class="form-check-input" id="unknown" name="tuberculosis" value="Unknown">
+                            <label class="inline-radio" for="unknown">Unknown</label>
+                        </div>
+                    </fieldset>
                 </div>
-                </fieldset>
-                <fieldset>
-                <legend>Tuberculosis:</legend>
-                <div>
-                    <input type="radio" class="form-check-input" id="yes" name="tuberculosis" value="Yes" required>
-                    <label class="inline-radio" for="yes">Yes</label>
-                    <input type="radio" class="form-check-input" id="no" name="tuberculosis" value="No">
-                    <label class="inline-radio" for="no">No</label>
-                    <input type="radio" class="form-check-input" id="unknown" name="tuberculosis" value="Unknown">
-                    <label class="inline-radio" for="unknown">Unknown</label>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Skin Disesase:</legend>
+                        <div>
+                            <input type="radio" class="form-check-input" id="yes" name="skin_disease" value="Yes" required>
+                            <label class="inline-radio" for="yes">Yes</label>
+                            <input type="radio" class="form-check-input" id="no" name="skin_disease" value="No">
+                            <label class="inline-radio" for="no">No</label>
+                            <input type="radio" class="form-check-input" id="unknown" name="skin_disease" value="Unknown">
+                            <label class="inline-radio" for="unknown">Unknown</label>
+                        </div>
+                    </fieldset>
                 </div>
-                </fieldset>
-                <fieldset>
-                <legend>Skin Disesase:</legend>
-                <div>
-                    <input type="radio" class="form-check-input" id="yes" name="skin_disease" value="Yes" required>
-                    <label class="inline-radio" for="yes">Yes</label>
-                    <input type="radio" class="form-check-input" id="no" name="skin_disease" value="No">
-                    <label class="inline-radio" for="no">No</label>
-                    <input type="radio" class="form-check-input" id="unknown" name="skin_disease" value="Unknown">
-                    <label class="inline-radio" for="unknown">Unknown</label>
+                <div class="col">
+                    <fieldset>
+                        <legend>Kidney Problem:</legend>
+                        <div>
+                            <input type="radio" class="form-check-input" id="yes" name="kidneyp" value="Yes" required>
+                            <label class="inline-radio" for="yes">Yes</label>
+                            <input type="radio" class="form-check-input" id="no" name="kidneyp" value="No">
+                            <label class="inline-radio" for="no">No</label>
+                            <input type="radio" class="form-check-input" id="unknown" name="kidneyp" value="Unknown">
+                            <label class="inline-radio" for="unknown">Unknown</label>
+                        </div>
+                    </fieldset>
                 </div>
-                </fieldset>
-                <fieldset>
-                <legend>Kidney Problem:</legend>
-                <div>
-                    <input type="radio" class="form-check-input" id="yes" name="kidneyp" value="Yes" required>
-                    <label class="inline-radio" for="yes">Yes</label>
-                    <input type="radio" class="form-check-input" id="no" name="kidneyp" value="No">
-                    <label class="inline-radio" for="no">No</label>
-                    <input type="radio" class="form-check-input" id="unknown" name="kidneyp" value="Unknown">
-                    <label class="inline-radio" for="unknown">Unknown</label>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <fieldset>
+                        <legend>Fits/Psychiatric:</legend>
+                        <div>
+                            <input type="radio" class="form-check-input" id="yes" name="fits_psychiatric" value="Yes" required>
+                            <label class="inline-radio" for="yes">Yes</label>
+                            <input type="radio" class="form-check-input" id="no" name="fits_psychiatric" value="No">
+                            <label class="inline-radio" for="no">No</label>
+                            <input type="radio" class="form-check-input" id="unknown" name="fits_psychiatric" value="Unknown">
+                            <label class="inline-radio" for="unknown">Unknown</label>
+                        </div>
+                    </fieldset>
                 </div>
-                </fieldset>
-                <fieldset>
-                <legend>Fits/Psychiatric:</legend>
-                <div>
-                    <input type="radio" class="form-check-input" id="yes" name="fits_psychiatric" value="Yes" required>
-                    <label class="inline-radio" for="yes">Yes</label>
-                    <input type="radio" class="form-check-input" id="no" name="fits_psychiatric" value="No">
-                    <label class="inline-radio" for="no">No</label>
-                    <input type="radio" class="form-check-input" id="unknown" name="fits_psychiatric" value="Unknown">
-                    <label class="inline-radio" for="unknown">Unknown</label>
+                <div class="col">
+                    <fieldset>
+                        <legend>Cancer:</legend>
+                        <div>
+                            <input type="radio" class="form-check-input" id="yes" name="cancer" value="Yes" required>
+                            <label class="inline-radio" for="yes">Yes</label>
+                            <input type="radio" class="form-check-input" id="no" name="cancer" value="No">
+                            <label class="inline-radio" for="no">No</label>
+                            <input type="radio" class="form-check-input" id="unknown" name="cancer" value="Unknown">
+                            <label class="inline-radio" for="unknown">Unknown</label>
+                        </div>
+                    </fieldset>
                 </div>
-                </fieldset>
-                <p>Family History</p>
+            </div>
+                <h2>Family History</h2>
+                <hr>
                 <div>
                     <label class="inline" for="father_history">Father: </label>
                     <input type="text" id="father_history" name="father_history" maxlength="30" required>
@@ -221,23 +259,23 @@
                 </div>
             
             </form>
-        <?php
-            }
-        }
-        else{
-        ?>
-        <div class="container">
-            <form method="post">
-                <p>
-                    Patient does not exist, register <button formaction="homepage.php" class="unstyled-button">here</button> 
-                </p>
-                    <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
-                    <input type="hidden" name="check" value="">
-            </form>
-        </div>
-        <?php
+            <?php
                 }
-        ?>
+            }
+            else{
+            ?>
+            <div class="container">
+                <form method="post">
+                    <p>
+                        Patient does not exist, register <button formaction="homepage.php" class="unstyled-button">here</button> 
+                    </p>
+                        <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+                        <input type="hidden" name="check" value="">
+                </form>
+            </div>
+            <?php
+                    }
+            ?>
         </div>
     </body>
     <?php

@@ -36,7 +36,7 @@
                             <a class="nav-link active" href="viewPatient.php">Patients List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="selectPatient.php">Search</a>
+                            <a class="nav-link" href="viewRecords.php">Records</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -48,6 +48,10 @@
                             }
                         ?>
                     </ul>
+                    <form class="d-flex" method="post" style="margin-left: 400px;">
+                        <input type="search" class="form-control me-2" placeholder="Search" aria-label="Search" name="mrn">
+                        <button class="btn btn-outline-success" formaction="selectRecord.php">Search</button>
+                    </form>
                 </div>
                 <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
             </nav>
@@ -56,10 +60,10 @@
             <br>
             <form method="post" style="text-align: center;">
                 <input type="text" placeholder="MRN/Name/IC/Passport/Email/Telephone" name="keyword">
-                <button formaction="searchRecord.php" class="btn btn-primary">Search</button>
+                <button formaction="searchPatient.php" class="btn btn-primary">Search</button>
             </form>     
             <div class="text-center" style='color: white;'>
-                Click <a href="viewReport.php">here</a> if you want to search for patient's record.
+                Click <a href="viewRecords.php">here</a> if you want to search for patient's record.
             </div>
             <br><br>
             <table style="width: 100%;" class="table table-bordered">
@@ -106,7 +110,7 @@
         
             $start_from = ($page-1) * $per_page_record;     
         
-            $query = "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package FROM patient ORDER BY registeredOn DESC LIMIT ". $start_from. ", " .$per_page_record;
+            $query = "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package FROM patient ORDER BY lastUpdateMH DESC LIMIT ". $start_from. ", " .$per_page_record;
             $rs_result = mysqli_query ($conn, $query);     
 
             while ($row = mysqli_fetch_array($rs_result)) {  
@@ -125,7 +129,13 @@
                             <form method="post" class="text-center">
                             <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
                             <button formaction="selectRecord.php" class="btn btn-primary">View</button>
+                            <?php
+                                if ($_SESSION["type"] == "admin"){
+                            ?>
                             <button formaction="deletePatient.php" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
+                            <?php
+                                }
+                            ?>
                             </form>
                         </td>
                     </tr>

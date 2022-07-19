@@ -29,8 +29,8 @@ html{
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
     border-radius: 15px;
 }
 a{
@@ -133,19 +133,41 @@ label.inline-radio {
 /* width */
 ::-webkit-scrollbar {
     width: 7px;
-  }
+}
   
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #ffffff;
-  }
+/* Track */
+::-webkit-scrollbar-track {
+background: #ffffff;
+}
   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.562);
-  }
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #8d8d8d;
+}
   
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555;
+}
+
+.info{
+    padding: 10px;
+}
+
+fieldset{
+    max-width: 500px;
+    border-radius: 5px;
+    background-color: white;
+    margin-bottom: 20px;
+}
+legend{
+    background-color: #1e398d;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px 10px;
+    color: white;
+}
+
+.row, h2{
+    margin-bottom: 20px;
+}

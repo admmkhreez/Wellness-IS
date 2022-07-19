@@ -37,7 +37,7 @@
                             <a class="nav-link active" href="viewPatient.php">Patients List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="selectPatient.php">Search</a>
+                            <a class="nav-link" href="viewRecords.php">Records</a>
                         </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
@@ -49,6 +49,10 @@
                             }
                         ?>
                     </ul>
+                    <form class="d-flex" method="post" style="margin-left: 400px;">
+                        <input type="search" class="form-control me-2" placeholder="Search" aria-label="Search" name="mrn">
+                        <button class="btn btn-outline-success" formaction="selectRecord.php">Search</button>
+                    </form>
                 </div>
                 <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
             </nav>
@@ -57,10 +61,10 @@
             <br>
             <form method="post" style="text-align: center;">
                 <input type="text" placeholder="MRN/Name/IC/Passport/Email/Telephone" name="keyword" value="<?php echo $kw;?>">
-                <button formaction="searchRecord.php" class="btn btn-primary">Search</button>
+                <button formaction="searchPatient.php" class="btn btn-primary">Search</button>
             </form>
             <div class="text-center" style='color: white;'>
-                Click <a href="viewReport.php">here</a> if you want to search for patient's record.
+                Click <a href="viewRecords.php">here</a> if you want to search for patient's record.
             </div>
             <br>
                 <table style="width: 100%;" height="100%" class="table table-bordered">
@@ -166,23 +170,23 @@
             echo "<nav aria-label='page nav'>";
             echo "<ul class='pagination justify-content-center'>";
             if($page>=2){   
-                echo "<li class='page-item'><form method='post'><input type='hidden' value='$kw' name='keyword'><button class='page-link' formaction='searchRecord.php?page=".($page-1)."'>  Prev </button></form></li>";   
+                echo "<li class='page-item'><form method='post'><input type='hidden' value='$kw' name='keyword'><button class='page-link' formaction='searchPatient.php?page=".($page-1)."'>  Prev </button></form></li>";   
             }       
                     
             for ($i=1; $i<=$total_pages; $i++) {   
             if ($i == $page) {   
-                $pagLink .= "<li class='page-item active'><form method='post'><input type='hidden' value='$kw' name='keyword'><button class ='page-link' formaction='searchRecord.php?page=" .$i."'>".$i." </button></form></li>"; 
+                $pagLink .= "<li class='page-item active'><form method='post'><input type='hidden' value='$kw' name='keyword'><button class ='page-link' formaction='searchPatient.php?page=" .$i."'>".$i." </button></form></li>"; 
                                                       
             }               
             else  {   
-                $pagLink .= "<li class='page-item'><form method='post'><input type='hidden' value='$kw' name='keyword'><button class ='page-link' formaction='searchRecord.php?page=".$i."'> ".$i." </button></form></li>";  
+                $pagLink .= "<li class='page-item'><form method='post'><input type='hidden' value='$kw' name='keyword'><button class ='page-link' formaction='searchPatient.php?page=".$i."'> ".$i." </button></form></li>";  
                                                          
             }   
             };     
             echo $pagLink;   
     
             if($page<$total_pages){   
-                echo "<li class='page-item'><form method='post'><input type='hidden' value='$kw' name='keyword'><button class='page-link' formaction='searchRecord.php?page=".($page+1)."'>  Next </button></form></li>";   
+                echo "<li class='page-item'><form method='post'><input type='hidden' value='$kw' name='keyword'><button class='page-link' formaction='searchPatient.php?page=".($page+1)."'>  Next </button></form></li>";   
             }  
             echo "</ul>";
             echo "</nav>";

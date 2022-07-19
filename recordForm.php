@@ -32,7 +32,7 @@
                         <a class="nav-link" href="viewPatient.php">Patients List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="selectPatient.php">Search</a>
+                        <a class="nav-link" href="viewRecords.php">Records</a>
                     </li>
                     <?php
                         if($_SESSION["type"] == "admin"){
@@ -44,6 +44,10 @@
                         }
                     ?>
                 </ul>
+                <form class="d-flex" method="post" style="margin-left: 400px;">
+                    <input type="search" class="form-control me-2" placeholder="Search" aria-label="Search" name="mrn">
+                    <button class="btn btn-outline-success" formaction="selectRecord.php">Search</button>
+                </form>
             </div>
             <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
         </nav>
@@ -119,68 +123,90 @@
                 <label class="inline" for="murmur">Murmur: </label>
                 <input type="text" id="murmur" name="murmur" required><br>
                 <h3>Respiratory System</h3>
-                Air Entry<br>
-                <input type="radio" class="form-check-input" id="normal" name="airentry" value="Normal" required>
-                <label class="inline-radio" for="normal">Normal</label>
-                <input type="radio" class="form-check-input" id="abnormal" name="airentry" value="Abnormal">
-                <label class="inline-radio" for="abnormal">Abnormal</label>
-                <br>Chest Expansion<br>
-                <input type="radio" class="form-check-input" id="normal" name="chestexp" value="Normal" required>
-                <label class="inline-radio" for="normal">Normal</label>
-                <input type="radio" class="form-check-input" id="abnormal" name="chestexp" value="Abnormal">
-                <label class="inline-radio" for="abnormal">Abnormal</label>
-                <br>Breath Sound<br>
-                <input type="radio" class="form-check-input" id="normal" name="breathsound" value="Normal" required>
-                <label class="inline-radio" for="normal">Normal</label>
-                <input type="radio" class="form-check-input" id="abnormal" name="breathsound" value="Abnormal">
-                <label class="inline-radio" for="abnormal">Abnormal</label>
+                <fieldset>
+                    <legend>Air Entery</legend>
+                    <input type="radio" class="form-check-input" id="normal" name="airentry" value="Normal" required>
+                    <label class="inline-radio" for="normal">Normal</label>
+                    <input type="radio" class="form-check-input" id="abnormal" name="airentry" value="Abnormal">
+                    <label class="inline-radio" for="abnormal">Abnormal</label>
+                </fieldset>
+                <fieldset>
+                    <legend>Chest Expansion</legend>
+                    <input type="radio" class="form-check-input" id="normal" name="chestexp" value="Normal" required>
+                    <label class="inline-radio" for="normal">Normal</label>
+                    <input type="radio" class="form-check-input" id="abnormal" name="chestexp" value="Abnormal">
+                    <label class="inline-radio" for="abnormal">Abnormal</label>
+                </fieldset>
+                <fieldset>
+                    <legend>Breath Sound</legend>
+                    <input type="radio" class="form-check-input" id="normal" name="breathsound" value="Normal" required>
+                    <label class="inline-radio" for="normal">Normal</label>
+                    <input type="radio" class="form-check-input" id="abnormal" name="breathsound" value="Abnormal">
+                    <label class="inline-radio" for="abnormal">Abnormal</label>
+                </fieldset>
                 <h3>Gastrointestinal System</h3>
-                Liver<br>
-                <input type="radio" class="form-check-input" id="palpable" name="liver" value="Palpable" required>
-                <label class="inline-radio" for="palpable">Palpable</label>
-                <input type="radio" class="form-check-input" id="notpalpable" name="liver" value="Not Palpable">
-                <label class="inline-radio" for="notpalpable">Not Palpable</label>
-                <br>Spleen<br>
-                <input type="radio" class="form-check-input" id="palpable" name="spleen" value="Palpable" required>
-                <label class="inline-radio" for="palpable">Palpable</label>
-                <input type="radio" class="form-check-input" id="notpalpable" name="spleen" value="Not Palpable">
-                <label class="inline-radio" for="notpalpable">Not Palpable</label>
-                <br>Kidney<br>
-                <input type="radio" class="form-check-input" id="palpable" name="kidney" value="Palpable" required>
-                <label class="inline-radio" for="palpable">Palpable</label>
-                <input type="radio" class="form-check-input" id="notpalpable" name="kidney" value="Not Palpable">
-                <label class="inline-radio" for="notpalpable">Not Palpable</label>
+                <fieldset>
+                    <legend>Liver</legend>
+                    <input type="radio" class="form-check-input" id="palpable" name="liver" value="Palpable" required>
+                    <label class="inline-radio" for="palpable">Palpable</label>
+                    <input type="radio" class="form-check-input" id="notpalpable" name="liver" value="Not Palpable">
+                    <label class="inline-radio" for="notpalpable">Not Palpable</label>
+                </fieldset>
+                <fieldset>
+                    <legend>Spleen</legend>
+                    <input type="radio" class="form-check-input" id="palpable" name="spleen" value="Palpable" required>
+                    <label class="inline-radio" for="palpable">Palpable</label>
+                    <input type="radio" class="form-check-input" id="notpalpable" name="spleen" value="Not Palpable">
+                    <label class="inline-radio" for="notpalpable">Not Palpable</label>
+                </fieldset>    
+                <fieldset>
+                    <legend>Kidney</legend>
+                    <input type="radio" class="form-check-input" id="palpable" name="kidney" value="Palpable" required>
+                    <label class="inline-radio" for="palpable">Palpable</label>
+                    <input type="radio" class="form-check-input" id="notpalpable" name="kidney" value="Not Palpable">
+                    <label class="inline-radio" for="notpalpable">Not Palpable</label>
+                </fieldset>
                 <h3>Central Nervous System</h3>
-                Mental Function<br>
-                <input type="radio" class="form-check-input" id="normal" name="mentalfunct" value="Normal" required>
-                <label class="inline-radio" for="normal">Normal</label>
-                <input type="radio" class="form-check-input" id="abnormal" name="mentalfunct" value="Abnormal">
-                <label class="inline-radio" for="abnormal">Abnormal</label>
-                <br>Coordination<br>
-                <input type="radio" class="form-check-input" id="normal" name="coordination" value="Normal" required>
-                <label class="inline-radio" for="normal">Normal</label>
-                <input type="radio" class="form-check-input" id="abnormal" name="coordination" value="Abnormal">
-                <label class="inline-radio" for="abnormal">Abnormal</label>
-                <br>Gait<br>
-                <input type="radio" class="form-check-input" id="normal" name="gait" value="Normal" required>
-                <label class="inline-radio" for="normal">Normal</label>
-                <input type="radio" class="form-check-input" id="abnormal" name="gait" value="Abnormal">
-                <label class="inline-radio" for="abnormal">Abnormal</label>
+                <fieldset>
+                    <legend>Mental Function</legend>
+                    <input type="radio" class="form-check-input" id="normal" name="mentalfunct" value="Normal" required>
+                    <label class="inline-radio" for="normal">Normal</label>
+                    <input type="radio" class="form-check-input" id="abnormal" name="mentalfunct" value="Abnormal">
+                    <label class="inline-radio" for="abnormal">Abnormal</label>
+                </fieldset>
+                <fieldset>
+                    <legend>Coordination</legend>
+                    <input type="radio" class="form-check-input" id="normal" name="coordination" value="Normal" required>
+                    <label class="inline-radio" for="normal">Normal</label>
+                    <input type="radio" class="form-check-input" id="abnormal" name="coordination" value="Abnormal">
+                    <label class="inline-radio" for="abnormal">Abnormal</label>
+                </fieldset>
+                <fieldset>
+                    <legend>Gait</legend>
+                    <input type="radio" class="form-check-input" id="normal" name="gait" value="Normal" required>
+                    <label class="inline-radio" for="normal">Normal</label>
+                    <input type="radio" class="form-check-input" id="abnormal" name="gait" value="Abnormal">
+                    <label class="inline-radio" for="abnormal">Abnormal</label>
+                </fieldset>
                 <h3>Genitourinary System</h3>
-                Genitalia<br>
-                <input type="radio" class="form-check-input" id="normal" name="genitalia" value="Normal" required>
-                <label class="inline-radio" for="normal">Normal</label>
-                <input type="radio" class="form-check-input" id="abnormal" name="genitalia" value="Abnormal">
-                <label class="inline-radio" for="abnormal">Abnormal</label>
-                <input type="radio" class="form-check-input" id="unknown" name="genitalia" value="Unknown">
-                <label class="inline-radio" for="unknown">Unknown</label>
-                <br>Rectal Examination<br>
-                <input type="radio" class="form-check-input" id="normal" name="rectal" value="Normal" required>
-                <label class="inline-radio" for="normal">Normal</label>
-                <input type="radio" class="form-check-input" id="abnormal" name="rectal" value="Abnormal">
-                <label class="inline-radio" for="abnormal">Abnormal</label>
-                <input type="radio" class="form-check-input" id="unknown" name="rectal" value="Unknown">
-                <label class="inline-radio" for="unknown">Unknown</label>
+                <fieldset>
+                    <legend>Genitalia</legend>
+                    <input type="radio" class="form-check-input" id="normal" name="genitalia" value="Normal" required>
+                    <label class="inline-radio" for="normal">Normal</label>
+                    <input type="radio" class="form-check-input" id="abnormal" name="genitalia" value="Abnormal">
+                    <label class="inline-radio" for="abnormal">Abnormal</label>
+                    <input type="radio" class="form-check-input" id="unknown" name="genitalia" value="Unknown">
+                    <label class="inline-radio" for="unknown">Unknown</label>
+                </fieldset>    
+                <fieldset>
+                    <legend>Rectal Examinantion</legend>
+                    <input type="radio" class="form-check-input" id="normal" name="rectal" value="Normal" required>
+                    <label class="inline-radio" for="normal">Normal</label>
+                    <input type="radio" class="form-check-input" id="abnormal" name="rectal" value="Abnormal">
+                    <label class="inline-radio" for="abnormal">Abnormal</label>
+                    <input type="radio" class="form-check-input" id="unknown" name="rectal" value="Unknown">
+                    <label class="inline-radio" for="unknown">Unknown</label>
+                </fieldset>
             <div class="lrcol">
                 <h3>Musculoskeletal System</h3>
                 <h4>Lower Limb</h4>
