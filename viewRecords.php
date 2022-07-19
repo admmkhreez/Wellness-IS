@@ -80,13 +80,7 @@
                             I/C No/Passport
                         </th>
                         <th rowspan="2">
-                            Address
-                        </th>
-                        <th rowspan="2">
-                            Email
-                        </th>
-                        <th rowspan="2">
-                            Telephone
+                            Additional Test
                         </th>
                         <th colspan="4">
                             Last Updated On
@@ -118,7 +112,7 @@
         
             $start_from = ($page-1) * $per_page_record;     
         
-            $query = "SELECT a.mrn, name, ic_passport, address, email, telephone, lastUpdateMH, lastUpdate, phyExam, b.package, visits  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+            $query = "SELECT a.mrn, name, ic_passport, addonsUsed, lastUpdateMH, lastUpdate, phyExam, packageUsed, visits  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
             $rs_result = mysqli_query ($conn, $query);     
 
             while ($row = mysqli_fetch_array($rs_result)) {  
@@ -128,13 +122,11 @@
                         <td><?php echo $row['mrn'];?></td>
                         <td><?php echo $row['name'];?></td>
                         <td><?php echo $row['ic_passport'];?></td>
-                        <td><?php echo nl2br($row['address']);?></td>
-                        <td><?php echo $row['email'];?></td>
-                        <td><?php echo $row['telephone'];?></td>
+                        <td><?php echo nl2br($row['addonsUsed']);?></td>
                         <td colspan="2"><?php echo $row['lastUpdateMH'];?></td>
                         <td colspan="2"><?php echo $row['lastUpdate'];?></td>
                         <td><?php echo $row['phyExam'];?></td>
-                        <td><?php echo $row['package'];?></td>
+                        <td><?php echo $row['packageUsed'];?></td>
                         <td style="text-align: right;">
                             <form method="post">
                             <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">

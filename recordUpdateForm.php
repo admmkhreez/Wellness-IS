@@ -28,7 +28,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
         else{
-            $select = "SELECT *, a.package from record a, patient b WHERE a.mrn = '".$mrn."' AND b.mrn = '".$mrn."' AND visits = '".$visits."'";
+            $select = "SELECT * from record a, patient b WHERE a.mrn = '".$mrn."' AND b.mrn = '".$mrn."' AND visits = '".$visits."'";
             $data = $conn->query($select);
         }
     ?>
@@ -80,15 +80,13 @@
     ?>
         
                 <input type="hidden" name="sex" value="<?php echo $row["sex"];?>">
-                <input type="hidden" name="package" value="<?php echo $row["package"];?>">
+                <input type="hidden" name="packageUsed" value="<?php echo $row["packageUsed"];?>">
                 
         </form>
         <br>
         <form method="post" style="text-align:center;">
             <div class="btn-group" style="width:100%;">
                 <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
-                <input type="hidden" name="sex" value="<?php echo $row["sex"];?>">
-                <input type="hidden" name="package" value="<?php echo $row["package"];?>">
                 <input type="hidden" name="visits" value="<?php echo $row["visits"];?>">
                 <button formaction="viewDetails.php" class="btn btn-primary">View Patient's Report</button>
                 <?php
@@ -106,6 +104,8 @@
             <dd class="col-sm-9"><?php echo $row["name"];?></dd>
             <dt class="col-sm-3">MRN: </dt>
             <dd class="col-sm-9"><?php echo $mrn;?></dd>
+            <dt class="col-sm-3">Package: </dt>
+            <dd class="col-sm-9"><?php echo $row["packageUsed"];?></dd>
             <dt class="col-sm-3">Done by: </dt>
             <dd class="col-sm-9"><?php echo $row["doneBy"];?></dd>
         </dl>  
@@ -318,7 +318,7 @@
             <label class="inline" for="ecg">Electrocardiogram: </label>
             <input type="text" id="ecg" name="ecg" value="<?php echo $row["ecg"];?>" required><br>
             <?php
-                if ($row["package"] == "Custom"){
+                if ($row["packageUsed"] == "Custom"){
             ?>
             <label class="inline" for="mmg">Mammogram: </label>
             <input type="text" id="mmg" name="mammogram" value="<?php echo $row["mammogram"];?>" required><br>
@@ -326,19 +326,19 @@
             <input type="text" id="us_breast" name="us_breast" value="<?php echo $row["us_breast"];?>" required><br>
             <?php
                 }
-                if ($row["package"] == "Comprehensive" || $row["package"] == "Premium" || $row["package"] == "Custom"){
+                if ($row["packageUsed"] == "Comprehensive" || $row["packageUsed"] == "Premium" || $row["packageUsed"] == "Custom"){
             ?>
             <label class="inline" for="us_abdopel">Ultrasound Abdomen Pelvis: </label>
             <input type="text" id="us_abdopel" name="us_abdopel" value="<?php echo $row["us_abdopel"];?>" required><br>
             <?php
                 }
-                if ($row["package"] == "Premium" || $row["package"] == "Custom"){
+                if ($row["packageUsed"] == "Premium" || $row["packageUsed"] == "Custom"){
             ?>
             <label class="inline" for="stress">Stress Test: </label>
             <input type="text" id="stress" name="stresstest" value="<?php echo $row["stresstest"];?>" required><br>
             <?php
                 }
-                if ($row["package"] == "Custom"){
+                if ($row["packageUsed"] == "Custom"){
             ?>
             <label class="inline" for="pta">Pure Tone Audiometry: </label>
             <input type="text" id="pta" name="pta" value="<?php echo $row["pta"];?>" required><br>
@@ -359,9 +359,9 @@
             <input type="submit" class="btn btn-primary" value="Submit Record">
             <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
             <input type="hidden" name="sex" value="<?php echo $row["sex"];?>">
-            <input type="hidden" name="package" value="<?php echo $row["package"];?>">
+            <input type="hidden" name="packageUsed" value="<?php echo $row["packageUsed"];?>">
             <input type="hidden" name="visits" value="<?php echo $row["visits"];?>">
-            <input type="hidden" name="addons" value="<?php echo $row["addons"];?>">
+            <input type="hidden" name="addonsUsed" value="<?php echo $row["addonsUsed"];?>">
         </form>
         <br>
     <?php

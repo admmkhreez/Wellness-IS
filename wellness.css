@@ -151,7 +151,13 @@ background: #555;
 }
 
 .info{
-    padding: 10px;
+    padding: 10px 10px;
+    border: 2px solid black;
+    width: 600px;
+    position: absolute;
+    right: 320px;
+    top: 190px;
+    border-radius: 10px 20px;
 }
 
 fieldset{
@@ -170,4 +176,10 @@ legend{
 
 .row, h2{
     margin-bottom: 20px;
+}
+
+footer {
+    position: relative;
+    right: 0;
+    bottom: 0;
 }

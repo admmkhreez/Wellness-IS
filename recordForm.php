@@ -84,12 +84,14 @@
                 <input type="submit" value="Back" class="btn btn-danger" style="position: relative;">
                 <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
             </form>
-            <dl class="row h5">
-                <dt class="col-sm-3">Name: </dt>
-                <dd class="col-sm-9"><?php echo $row["name"];?></dd>
-                <dt class="col-sm-3">MRN: </dt>
-                <dd class="col-sm-9"><?php echo $mrn;?></dd>
-            </dl>
+            <div class="info">
+                <dl class="row h5">
+                    <dt class="col-sm-3">Name: </dt>
+                    <dd class="col-sm-9"><?php echo $row["name"];?></dd>
+                    <dt class="col-sm-3">MRN: </dt>
+                    <dd class="col-sm-9"><?php echo $mrn;?></dd>
+                </dl>
+            </div>
             <form action="insertRecord.php" method="post">
                 <label class="inline" for="nose">Nose: </label>
                 <input type="text" id="nose" name="nose" required><br>
@@ -124,7 +126,7 @@
                 <input type="text" id="murmur" name="murmur" required><br>
                 <h3>Respiratory System</h3>
                 <fieldset>
-                    <legend>Air Entery</legend>
+                    <legend>Air Entry</legend>
                     <input type="radio" class="form-check-input" id="normal" name="airentry" value="Normal" required>
                     <label class="inline-radio" for="normal">Normal</label>
                     <input type="radio" class="form-check-input" id="abnormal" name="airentry" value="Abnormal">

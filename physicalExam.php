@@ -68,7 +68,7 @@
             {
                 die("Connection failed: " . $conn->connect_error);
             }
-            $check = "SELECT mrn FROM patient WHERE mrn = '".$mrn."'";
+            $check = "SELECT name, mrn FROM patient WHERE mrn = '".$mrn."'";
             $data = $conn->query($check);
             if ($data->num_rows>0)
             {
@@ -80,7 +80,14 @@
                 <input type="submit" value="Back" class="btn btn-danger" style="position: relative;">
                 <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
             </form>
-            <p>MRN: <?php echo $mrn;?></p>
+            <div class="info">
+                <dl class="row h5">
+                    <dt class="col-sm-3">Name: </dt>
+                    <dd class="col-sm-9"><?php echo $row["name"];?></dd>
+                    <dt class="col-sm-3">MRN: </dt>
+                    <dd class="col-sm-9"><?php echo $mrn;?></dd>
+                </dl>
+            </div>
             <form action="insertExam.php" method="post">
                 <label class="inline" for="appearance">General Appearance: </label>
                 <input type="text" id="appearance" name="appearance" required><br>

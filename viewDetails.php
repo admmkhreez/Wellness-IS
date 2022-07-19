@@ -105,9 +105,7 @@
                             <form method="post" style="text-align:center;">
                                 <div class="btn-group" style="width:100%;">
                                     <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
-                                    <input type="hidden" name="sex" value="<?php echo $row['sex'];?>">
-                                    <input type="hidden" name="package" value="<?php echo $row['package'];?>">
-                                    <input type="hidden" name="visits" value="<?php echo $row["visits"];?>">
+                                    <input type="hidden" name="visits" value="<?php echo $visits;?>">
                                     <button formaction="viewDetails.php" class="btn btn-primary active">View Patient's Report</button>
                                     <?php
                                         if($_SESSION["type"] == "doctor" || $_SESSION["type"] == "admin"){
@@ -159,7 +157,7 @@
                                     <dt class="col-sm-3">Telephone: </dt>
                                     <dd class="col-sm-9"><?php echo $row['telephone_nok'];?></dd>
                                     <dt class="col-sm-3">Package: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['package'];?></dd>
+                                    <dd class="col-sm-9"><?php echo $row['packageUsed'];?></dd>
                                     <dt class="col-sm-3">Additional Test: </dt>
                                     <dd class="col-sm-9"><?php echo nl2br($row['addons']);?></dd>
                                     <dt class="col-sm-3">Registered On: </dt>
@@ -404,7 +402,7 @@
                                         <dt class="col-sm-3">Electrocardiogram: </dt>
                                         <dd class="col-sm-9"><?php echo $row['ecg'];?></dd>
                                         <?php
-                                            if($row['package'] == "Custom"){
+                                            if($row['packageUsed'] == "Custom"){
                                         ?>
                                         <dt class="col-sm-3">Mammogram: </dt>
                                         <dd class="col-sm-9"><?php echo $row['mammogram'];?></dd>
@@ -416,13 +414,13 @@
                                         <dd class="col-sm-9"><?php echo $row['lft'];?></dd>
                                         <?php
                                             }
-                                            if($row['package'] == "Premium" || $row['package'] == "Comprehensive" || $row['package'] == "Custom"){
+                                            if($row['packageUsed'] == "Premium" || $row['packageUsed'] == "Comprehensive" || $row['packageUsed'] == "Custom"){
                                         ?>
                                         <dt class="col-sm-3">Ultrasound Abdomen Pelvis: </dt>
                                         <dd class="col-sm-9"><?php echo $row['us_abdopel'];?></dd>
                                         <?php
                                             }
-                                            if($row['package'] == "Custom" || $row['package'] == "Premium"){
+                                            if($row['packageUsed'] == "Custom" || $row['packageUsed'] == "Premium"){
                                         ?>
                                         <dt class="col-sm-3">Stress Test: </dt>
                                         <dd class="col-sm-9"><?php echo $row['stresstest'];?></dd>
@@ -481,8 +479,8 @@
                             : <span id="religion"><?php echo $row["religion"];?></span><br>
                             <label for="mstatus" class="inline">Marital Status</label>
                             : <span id="mstatus"><?php echo $row["marital_status"];?></span><br>
-                            <label for="package" class="inline">Package</label>
-                            : <span id="package"><?php echo $row["package"];?></span><br>
+                            <label for="packageUsed" class="inline">Package</label>
+                            : <span id="packageUsed"><?php echo $row["packageUsed"];?></span><br>
                             <div class="textfield">
                                 <label for="addons" class="inline">Additional Test</label>
                                 : <span id="addons" style="display: inline-block"><?php echo nl2br($row["addons"]);?></span><br><br>
@@ -703,7 +701,7 @@
                             <label for="ecg" class="inline">Electrocardiogram</label>
                             : <span id="ecg"><?php echo $row["ecg"];?></span><br>
                             <?php
-                                if($row['package'] == "Custom"){
+                                if($row['packageUsed'] == "Custom"){
                             ?>
                             <label for="mammogram" class="inline">Mammogram</label>
                             : <span id="mammogram"><?php echo $row["mammogram"];?></span><br>
@@ -715,13 +713,13 @@
                             : <span id="lft"><?php echo $row["lft"];?></span><br>
                             <?php
                                 }
-                                if($row['package'] == "Premium" || $row['package'] == "Comprehensive" || $row['package'] == "Custom"){
+                                if($row['packageUsed'] == "Premium" || $row['packageUsed'] == "Comprehensive" || $row['packageUsed'] == "Custom"){
                             ?>
                             <label for="us_abdopel" class="inline">Ultrasound Abdomen Pelvis</label>
                             : <span id="us_abdopel"><?php echo $row["us_abdopel"];?></span><br>
                             <?php
                                 }
-                                if($row['package'] == "Custom" || $row['package'] == "Premium"){
+                                if($row['packageUsed'] == "Custom" || $row['packageUsed'] == "Premium"){
                             ?>
                             <label for="stresstest" class="inline">Stress Test</label>
                             : <span id="stresstest"><?php echo $row["stresstest"];?></span><br>
@@ -742,7 +740,7 @@
                             </div>
                         </div>
                         <div>
-                            <footer class="page-footer font-small pt-4" style="position: absolute; bottom: 0; right: 0;">
+                            <footer class="page-footer font-small pt-4" >
                                 <div class="container-fluid text-md-left">
                                     <div class="row">
                                         <div class="col-md-6 mt-md-0 mt-3">

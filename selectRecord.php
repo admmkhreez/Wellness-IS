@@ -136,10 +136,7 @@
                             I/C No/Passport
                         </th>
                         <th rowspan="2">
-                            Email
-                        </th>
-                        <th rowspan="2">
-                            Telephone
+                            Additional Test
                         </th>
                         <th rowspan="2">
                             Screening Date
@@ -168,7 +165,7 @@
                 
                     $start_from = ($page-1) * $per_page_record;     
                 
-                    $query = "SELECT a.mrn, name, ic_passport, email, telephone, lastUpdate, b.package, visits  FROM patient a, record b WHERE a.mrn = '$mrn' and b.mrn = '$mrn' ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+                    $query = "SELECT a.mrn, name, ic_passport, addonsUsed, lastUpdate, packageUsed, visits  FROM patient a, record b WHERE a.mrn = '$mrn' AND b.mrn = '$mrn' ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
                     $rs_result = mysqli_query ($conn, $query);     
                     $i = 1;
                     while ($row = mysqli_fetch_array($rs_result)) {  
@@ -187,16 +184,13 @@
                             <?php echo $row["ic_passport"];?>
                         </td>
                         <td>
-                            <?php echo $row["email"];?>
-                        </td>
-                        <td>
-                            <?php echo $row["telephone"];?>
+                            <?php echo nl2br($row["addonsUsed"]);?>
                         </td>
                         <td>
                             <?php echo $row["lastUpdate"];?>
                         </td>
                         <td>
-                            <?php echo $row["package"];?>
+                            <?php echo $row["packageUsed"];?>
                         </td>
                         <td>
                             <?php echo $row["visits"];?>
@@ -213,6 +207,8 @@
                         <?php
                             }
                         ?>
+                        </form>
+                        </td>
                     </tr>
                 <?php
                     $i++;
