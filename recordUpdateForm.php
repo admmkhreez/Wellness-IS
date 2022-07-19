@@ -28,7 +28,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
         else{
-            $select = "SELECT * from record a, patient b WHERE a.mrn = '".$mrn."' AND b.mrn = '".$mrn."' AND visits = '".$visits."'";
+            $select = "SELECT * from patient a, record b WHERE a.mrn = '".$mrn."' AND b.mrn = '".$mrn."' AND visits = '".$visits."'";
             $data = $conn->query($select);
         }
     ?>
@@ -111,39 +111,39 @@
         </dl>  
         <form action="updateRecord.php" method="post">
             <label class="inline" for="appearance">General Appearance: </label>
-            <input type="text" id="appearance" name="appearance" value="<?php echo $row["appearance"];?>" required><br>
+            <input type="text" id="appearance" name="appearance" value="<?php echo $row["appearanceUsed"];?>" required><br>
             <label class="inline" for="weight">Weight: </label>
-            <input type="number" id="weight" step=".1" name="weight" value="<?php echo $row["weight"];?>" required>kg<br>
+            <input type="number" id="weight" step=".1" name="weight" value="<?php echo $row["weightUsed"];?>" required>kg<br>
             <label class="inline" for="height">Height: </label>
-            <input type="number" id="height" step=".1" name="height" value="<?php echo $row["height"];?>" required>cm<br>
+            <input type="number" id="height" step=".1" name="height" value="<?php echo $row["heightUsed"];?>" required>cm<br>
             <label class="inline" for="systolic">Systolic: </label>
-            <input type="number" id="systolic" step="1" name="systolic" value="<?php echo $row["systolic"];?>" required><br>
+            <input type="number" id="systolic" step="1" name="systolic" value="<?php echo $row["systolicUsed"];?>" required><br>
             <label class="inline" for="diastolic">Diastolic: </label>
-            <input type="number" id="diastolic" step="1" name="diastolic" value="<?php echo $row["diastolic"];?>" required><br>
+            <input type="number" id="diastolic" step="1" name="diastolic" value="<?php echo $row["diastolicUsed"];?>" required><br>
             <label class="inline" for="pulse">Pulse: </label>
-            <input type="number" id="pulse" step="1" name="pulse" value="<?php echo $row["pulse"];?>" required><br>
+            <input type="number" id="pulse" step="1" name="pulse" value="<?php echo $row["pulseUsed"];?>" required><br>
         <div class="lrcol">
             <h3>Eyes</h3>
             Visual Acuity (Aided)<br>
             <label class="inline" for="va_aidedl">Left: </label>
-            <input type="text" id="va_aidedl" name="va_aidedl" value="<?php echo $row["va_aidedl"];?>" required>
+            <input type="text" id="va_aidedl" name="va_aidedl" value="<?php echo $row["va_aidedlUsed"];?>" required>
             <label class="inline" for="va_aidedr">Right: </label>
-            <input type="text" id="va_aidedr" name="va_aidedr" value="<?php echo $row["va_aidedr"];?>" required>
+            <input type="text" id="va_aidedr" name="va_aidedr" value="<?php echo $row["va_aidedrUsed"];?>" required>
             <br>Visual Acuity (Unaided)<br>
             <label class="inline" for="va_unaidedl">Left: </label>
-            <input type="text" id="va_unaidedl" name="va_unaidedl" value="<?php echo $row["va_unaidedl"];?>" required>
+            <input type="text" id="va_unaidedl" name="va_unaidedl" value="<?php echo $row["va_unaidedlUsed"];?>" required>
             <label class="inline" for="va_unaidedr">Right: </label>
-            <input type="text" id="va_unaidedr" name="va_unaidedr" value="<?php echo $row["va_unaidedr"];?>" required>
+            <input type="text" id="va_unaidedr" name="va_unaidedr" value="<?php echo $row["va_unaidedrUsed"];?>" required>
             <br>Colour<br>
             <label class="inline" for="colour_l">Left: </label>
-            <input type="text" id="colour_l" name="colour_l" value="<?php echo $row["colour_l"];?>" required>
+            <input type="text" id="colour_l" name="colour_l" value="<?php echo $row["colour_lUsed"];?>" required>
             <label class="inline" for="colour_r">Right: </label>
             <input type="text" id="colour_r" name="colour_r" value="<?php echo $row["colour_r"];?>" required>
             <br>Fundoscopy<br>
             <label class="inline" for="fundoscopy_l">Left: </label>
-            <input type="text" id="fundoscopy_l" name="fundoscopy_l" value="<?php echo $row["fundoscopy_l"];?>" required>
+            <input type="text" id="fundoscopy_l" name="fundoscopy_l" value="<?php echo $row["fundoscopy_lUsed"];?>" required>
             <label class="inline" for="fundoscopy_r">Right: </label>
-            <input type="text" id="fundoscopy_r"name="fundoscopy_r" value="<?php echo $row["fundoscopy_r"];?>" required>   
+            <input type="text" id="fundoscopy_r"name="fundoscopy_r" value="<?php echo $row["fundoscopy_rUsed"];?>" required>   
             <br><br>
         </div>
             <label class="inline" for="nose">Nose: </label>

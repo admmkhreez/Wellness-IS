@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 19, 2022 at 04:43 AM
+-- Generation Time: Jul 19, 2022 at 08:47 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -168,8 +168,8 @@ CREATE TABLE IF NOT EXISTS `record` (
   `doneBy` varchar(40) DEFAULT NULL,
   `position` varchar(200) DEFAULT NULL,
   `visits` int(11) NOT NULL DEFAULT '0',
-  `package` varchar(20) DEFAULT NULL,
-  `addons` varchar(500) DEFAULT NULL,
+  `packageUsed` varchar(20) DEFAULT NULL,
+  `addonsUsed` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`recordID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 

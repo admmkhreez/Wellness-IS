@@ -93,7 +93,7 @@
                         </form>
                         <br>
                         <?php
-                        $display = "SELECT * FROM patient a, record b WHERE a.mrn = '".$mrn."' AND b.mrn = '".$mrn."' AND visits = '".$visits."'";
+                        $display = "SELECT * FROM record a, patient b WHERE a.mrn = '".$mrn."' AND b.mrn = '".$mrn."' AND visits = '".$visits."'";
                         $data = $conn->query($display);
                             if ($data->num_rows > 0)
                             {
@@ -159,7 +159,7 @@
                                     <dt class="col-sm-3">Package: </dt>
                                     <dd class="col-sm-9"><?php echo $row['packageUsed'];?></dd>
                                     <dt class="col-sm-3">Additional Test: </dt>
-                                    <dd class="col-sm-9"><?php echo nl2br($row['addons']);?></dd>
+                                    <dd class="col-sm-9"><?php echo nl2br($row['addonsUsed']);?></dd>
                                     <dt class="col-sm-3">Registered On: </dt>
                                     <dd class="col-sm-9"><?php echo $row['registeredOn'];?></dd>
                                     <dt class="col-sm-3">Last Edit By: </dt>
@@ -220,15 +220,15 @@
                                 <a id="doctors_form"><h3>Physical Examination</h3></a>   
                                 <dl class="row">
                                     <dt class="col-sm-3">General Appearance: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['appearance'];?></dd>
+                                    <dd class="col-sm-9"><?php echo $row['appearanceUsed'];?></dd>
                                     <dt class="col-sm-3">Weight: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['weight'];?></dd>
+                                    <dd class="col-sm-9"><?php echo $row['weightUsed'];?></dd>
                                     <dt class="col-sm-3">Height: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['height'];?></dd>
+                                    <dd class="col-sm-9"><?php echo $row['heightUsed'];?></dd>
                                     <dt class="col-sm-3">BMI: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['bmi'];?></dd>
+                                    <dd class="col-sm-9"><?php echo $row['bmiUsed'];?></dd>
                                     <dt class="col-sm-3">Blood Pressure: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['systolic'];?>/<?php echo $row['diastolic'];?></dd>
+                                    <dd class="col-sm-9"><?php echo $row['systolicUsed'];?>/<?php echo $row['diastolic'];?></dd>
                                     <dt class="col-sm-3">Nose: </dt>
                                     <dd class="col-sm-9"><?php echo $row['nose'];?></dd>
                                     <dt class="col-sm-3">Throat: </dt>
@@ -251,23 +251,23 @@
                                     <tbody>
                                     <tr>
                                         <th>Visual Acuity(Aided)</th>
-                                        <td><?php echo $row['va_aidedl'];?></td>
-                                        <td><?php echo $row['va_aidedr'];?></td>
+                                        <td><?php echo $row['va_aidedlUsed'];?></td>
+                                        <td><?php echo $row['va_aidedrUsed'];?></td>
                                     </tr>
                                     <tr>
                                         <th>Visual Acuity(Unaided)</th>
-                                        <td><?php echo $row['va_unaidedl'];?></td>
-                                        <td><?php echo $row['va_unaidedr'];?></td>
+                                        <td><?php echo $row['va_unaidedlUsed'];?></td>
+                                        <td><?php echo $row['va_unaidedrUsed'];?></td>
                                     </tr>
                                     <tr>
                                         <th>Colour</th>
-                                        <td><?php echo $row['colour_l'];?></td>
-                                        <td><?php echo $row['colour_r'];?></td>
+                                        <td><?php echo $row['colour_lUsed'];?></td>
+                                        <td><?php echo $row['colour_rUsed'];?></td>
                                     </tr>
                                     <tr>
                                         <th>Fundoscopy</th>
-                                        <td><?php echo $row['fundoscopy_l'];?></td>
-                                        <td><?php echo $row['fundoscopy_r'];?></td>
+                                        <td><?php echo $row['fundoscopy_lUsed'];?></td>
+                                        <td><?php echo $row['fundoscopy_rUsed'];?></td>
                                     </tr>
                                     </tbody>
                                 </table>

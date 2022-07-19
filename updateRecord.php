@@ -370,9 +370,9 @@
         <?php
             if($sex == "Female"){
                 if ($package == "Custom"){
-                    $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                    pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                    fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                    $insert = "UPDATE record SET appearanceUsed = '".$appearance."', weightUsed = '".$weight."', heightUsed = '".$height."', bmiUsed = '".$bmi."', systolicUsed = '".$systolic."', diastolicUsed = '".$diastolic."', 
+                    pulseUsed = '".$pulse."', va_aidedrUsed = '".$va_aidedr."', va_aidedlUsed = '".$va_aidedl."', va_unaidedrUsed = '".$va_unaidedr."', va_unaidedlUsed = '".$va_unaidedl."', colour_rUsed = '".$colour_r."', colour_lUsed = '".$colour_l."', 
+                    fundoscopy_rUsed = '".$fundoscopy_r."', fundoscopy_lUsed = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
                     excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
                     airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
                     coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
@@ -382,9 +382,9 @@
                     lastUpdate = '".$date."', visits = '".$visits."', packageUsed = '".$package."', addonsUsed = '".$addons."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 elseif ($package == "Premium"){
-                    $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                    pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                    fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                    $insert = "UPDATE record SET appearanceUsed = '".$appearance."', weightUsed = '".$weight."', heightUsed = '".$height."', bmiUsed = '".$bmi."', systolicUsed = '".$systolic."', diastolicUsed = '".$diastolic."', 
+                    pulseUsed = '".$pulse."', va_aidedrUsed = '".$va_aidedr."', va_aidedlUsed = '".$va_aidedl."', va_unaidedrUsed = '".$va_unaidedr."', va_unaidedlUsed = '".$va_unaidedl."', colour_rUsed = '".$colour_r."', colour_lUsed = '".$colour_l."', 
+                    fundoscopy_rUsed = '".$fundoscopy_r."', fundoscopy_lUsed = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
                     excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
                     airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
                     coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
@@ -394,9 +394,9 @@
                     lastUpdate = '".$date."', visits = '".$visits."', packageUsed = '".$package."', addonsUsed = '".$addons."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 elseif ($package == "Comprehensive"){
-                    $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                    pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                    fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                    $insert = "UPDATE record SET appearanceUsed = '".$appearance."', weightUsed = '".$weight."', heightUsed = '".$height."', bmiUsed = '".$bmi."', systolicUsed = '".$systolic."', diastolicUsed = '".$diastolic."', 
+                    pulseUsed = '".$pulse."', va_aidedrUsed = '".$va_aidedr."', va_aidedlUsed = '".$va_aidedl."', va_unaidedrUsed = '".$va_unaidedr."', va_unaidedlUsed = '".$va_unaidedl."', colour_rUsed = '".$colour_r."', colour_lUsed = '".$colour_l."', 
+                    fundoscopy_rUsed = '".$fundoscopy_r."', fundoscopy_lUsed = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
                     excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
                     airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
                     coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
@@ -406,9 +406,9 @@
                     lastUpdate = '".$date."', visits = '".$visits."', packageUsed = '".$package."', addonsUsed = '".$addons."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 else{
-                    $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                    pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                    fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                    $insert = "UPDATE record SET appearanceUsed = '".$appearance."', weightUsed = '".$weight."', heightUsed = '".$height."', bmiUsed = '".$bmi."', systolicUsed = '".$systolic."', diastolicUsed = '".$diastolic."', 
+                    pulseUsed = '".$pulse."', va_aidedrUsed = '".$va_aidedr."', va_aidedlUsed = '".$va_aidedl."', va_unaidedrUsed = '".$va_unaidedr."', va_unaidedlUsed = '".$va_unaidedl."', colour_rUsed = '".$colour_r."', colour_lUsed = '".$colour_l."', 
+                    fundoscopy_rUsed = '".$fundoscopy_r."', fundoscopy_lUsed = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
                     excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
                     airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
                     coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
@@ -420,9 +420,9 @@
             }
             else{
                 if ($package == "Custom"){
-                    $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                    pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                    fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                    $insert = "UPDATE record SET appearanceUsed = '".$appearance."', weightUsed = '".$weight."', heightUsed = '".$height."', bmiUsed = '".$bmi."', systolicUsed = '".$systolic."', diastolicUsed = '".$diastolic."', 
+                    pulseUsed = '".$pulse."', va_aidedrUsed = '".$va_aidedr."', va_aidedlUsed = '".$va_aidedl."', va_unaidedrUsed = '".$va_unaidedr."', va_unaidedlUsed = '".$va_unaidedl."', colour_rUsed = '".$colour_r."', colour_lUsed = '".$colour_l."', 
+                    fundoscopy_rUsed = '".$fundoscopy_r."', fundoscopy_lUsed = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
                     excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
                     airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
                     coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
@@ -432,9 +432,9 @@
                     lastUpdate = '".$date."', visits = '".$visits."', packageUsed = '".$package."', addonsUsed = '".$addons."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 elseif ($package == "Premium"){
-                    $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                    pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                    fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                    $insert = "UPDATE record SET appearanceUsed = '".$appearance."', weightUsed = '".$weight."', heightUsed = '".$height."', bmiUsed = '".$bmi."', systolicUsed = '".$systolic."', diastolicUsed = '".$diastolic."', 
+                    pulseUsed = '".$pulse."', va_aidedrUsed = '".$va_aidedr."', va_aidedlUsed = '".$va_aidedl."', va_unaidedrUsed = '".$va_unaidedr."', va_unaidedlUsed = '".$va_unaidedl."', colour_rUsed = '".$colour_r."', colour_lUsed = '".$colour_l."', 
+                    fundoscopy_rUsed = '".$fundoscopy_r."', fundoscopy_lUsed = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
                     excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
                     airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
                     coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
@@ -444,9 +444,9 @@
                     lastUpdate = '".$date."', visits = '".$visits."', packageUsed = '".$package."', addonsUsed = '".$addons."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 elseif ($package == "Comprehensive"){
-                    $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                    pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                    fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                    $insert = "UPDATE record SET appearanceUsed = '".$appearance."', weightUsed = '".$weight."', heightUsed = '".$height."', bmiUsed = '".$bmi."', systolicUsed = '".$systolic."', diastolicUsed = '".$diastolic."', 
+                    pulseUsed = '".$pulse."', va_aidedrUsed = '".$va_aidedr."', va_aidedlUsed = '".$va_aidedl."', va_unaidedrUsed = '".$va_unaidedr."', va_unaidedlUsed = '".$va_unaidedl."', colour_rUsed = '".$colour_r."', colour_lUsed = '".$colour_l."', 
+                    fundoscopy_rUsed = '".$fundoscopy_r."', fundoscopy_lUsed = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
                     excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
                     airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
                     coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
@@ -456,9 +456,9 @@
                     lastUpdate = '".$date."', visits = '".$visits."', packageUsed = '".$package."', addonsUsed = '".$addons."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }
                 else{
-                    $insert = "UPDATE record SET appearance = '".$appearance."', weight = '".$weight."', height = '".$height."', bmi = '".$bmi."', systolic = '".$systolic."', diastolic = '".$diastolic."', 
-                    pulse = '".$pulse."', va_aidedr = '".$va_aidedr."', va_aidedl = '".$va_aidedl."', va_unaidedr = '".$va_unaidedr."', va_unaidedl = '".$va_unaidedl."', colour_r = '".$colour_r."', colour_l = '".$colour_l."', 
-                    fundoscopy_r = '".$fundoscopy_r."', fundoscopy_l = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
+                    $insert = "UPDATE record SET appearanceUsed = '".$appearance."', weightUsed = '".$weight."', heightUsed = '".$height."', bmiUsed = '".$bmi."', systolicUsed = '".$systolic."', diastolicUsed = '".$diastolic."', 
+                    pulseUsed = '".$pulse."', va_aidedrUsed = '".$va_aidedr."', va_aidedlUsed = '".$va_aidedl."', va_unaidedrUsed = '".$va_unaidedr."', va_unaidedlUsed = '".$va_unaidedl."', colour_rUsed = '".$colour_r."', colour_lUsed = '".$colour_l."', 
+                    fundoscopy_rUsed = '".$fundoscopy_r."', fundoscopy_lUsed = '".$fundoscopy_l."', nose = '".$nose."', throat = '".$throat."', neck = '".$neck."', skin = '".$skin."', excanal_r = '".$excanal_r."',
                     excanal_l = '".$excanal_l."', eardrum_r = '".$eardrum_r."', eardrum_l = '".$eardrum_l."', discharged_r = '".$discharged_r."', discharged_l = '".$discharged_l."', sound = '".$sound."', murmur = '".$murmur."',
                     airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
                     coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
