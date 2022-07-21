@@ -739,17 +739,13 @@
                             <span id="recommendation" style="display: inline-block;"><?php echo nl2br($row["recommendation"]);?></span>
                             </div>
                         </div>
-                        <div>
-                            <footer class="page-footer font-small pt-4" >
-                                <div class="container-fluid text-md-left">
-                                    <div class="row">
-                                        <div class="col-md-6 mt-md-0 mt-3">
-                                            <h6 class="font-weight-bold"><?php echo $row["doneBy"];?></h6>
-                                            <p style="line-height: 100%;"><?php echo nl2br($row["position"]);?></p>
-                                        </div>
-                                    </div>
+                        <div class="signature">
+                            <div class="row">
+                                <div class="col-md-6 mt-md-0 mt-3">
+                                    <h6 class="font-weight-bold"><?php echo $row["doneBy"];?></h6>
+                                    <p style="line-height: 100%;"><?php echo nl2br($row["position"]);?></p>
                                 </div>
-                            </footer>
+                            </div>
                         </div>
                         <div class="date">
                             <p>Date: <?php echo $lastUpdate;?></p>

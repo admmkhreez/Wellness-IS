@@ -172,14 +172,15 @@ legend{
     padding-right: 10px;
     border-radius: 5px 10px;
     color: white;
+    font-size: 24px;
 }
 
 .row, h2{
     margin-bottom: 20px;
 }
 
-footer {
-    position: relative;
+.signature {
+    position: absolute;
     right: 0;
     bottom: 0;
 }
