@@ -43,7 +43,7 @@
                         <a class="nav-link" href="viewPatient.php">Patients List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="viewRecords.php">Records</a>
+                        <a class="nav-link" href="viewRecords.php">Records</a>
                     </li>
                     <?php
                         if($_SESSION["type"] == "admin"){

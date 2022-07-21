@@ -71,15 +71,19 @@
 
             $check = "SELECT name, sex, package, addons, appearance FROM patient WHERE mrn = '".$mrn."'";
             $data = $conn->query($check);
-            if ($data->num_rows>0)
-            {
-                while($row=$data->fetch_assoc())
+            ?>
+            <div class="container">
+                <form method="post" action="selectRecord.php" style="margin-bottom: 20px;">
+                    <input type="submit" value="Back" class="btn btn-danger" style="position: relative;">
+                    <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
+                </form>
+            <?php
+                if ($data->num_rows>0)
                 {
-        ?>
-        <div class="container">
-        <?php 
-            if($row["appearance"] != NULL){
-        ?>
+                    while($row=$data->fetch_assoc())
+                    {
+                        if($row["appearance"] != NULL){
+            ?>
             <form method="post" action="selectRecord.php" style="margin-bottom: 20px;">
                 <input type="submit" value="Back" class="btn btn-danger" style="position: relative;">
                 <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
@@ -322,9 +326,7 @@
                         <input type="hidden" name="check" value="">
                 </form>
             <?php
-            }
-            ?>
-            <?php
+                        }
                     }
                 }
             else{

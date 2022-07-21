@@ -70,16 +70,18 @@
             }
             $check = "SELECT name, mrn FROM patient WHERE mrn = '".$mrn."'";
             $data = $conn->query($check);
-            if ($data->num_rows>0)
-            {
-                while($row=$data->fetch_assoc())
+            ?>
+            <div class="container">
+                <form method="post" action="selectRecord.php" style="margin-bottom: 20px;">
+                    <input type="submit" value="Back" class="btn btn-danger" style="position: relative;">
+                    <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
+                </form>
+            <?php
+                if ($data->num_rows>0)
                 {
-        ?>
-        <div class="container">
-            <form method="post" action="selectRecord.php" style="margin-bottom: 20px;">
-                <input type="submit" value="Back" class="btn btn-danger" style="position: relative;">
-                <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
-            </form>
+                    while($row=$data->fetch_assoc())
+                    {
+            ?>
             <div class="info">
                 <dl class="row h5">
                     <dt class="col-sm-3">Name: </dt>
