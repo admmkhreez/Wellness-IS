@@ -26,7 +26,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>KPJ Klang Wellness IS</title>
+        <title>Medical History Form</title>
         <link rel="stylesheet" href="wellness.css">
         <link rel="stylesheet" href="bootstrap.css">
         <script>

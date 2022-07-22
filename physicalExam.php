@@ -16,7 +16,7 @@
                 color: blue;
             }
         </style>
-        <title>KPJ Klang Wellness IS</title>
+        <title>Physical Examination Form</title>
         <link rel="stylesheet" href="wellness.css">
         <link rel="stylesheet" href="bootstrap.css">
     </head>

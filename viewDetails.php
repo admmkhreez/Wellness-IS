@@ -5,7 +5,7 @@
         if(isset($_SESSION["username"])) {
     ?>
     <head>
-        <title>KPJ Klang Wellness IS</title>
+        <title>Patient's Report</title>
         <style type="text/css">
             @page {
               size: A4;
@@ -26,6 +26,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="wellness.css">
         <link rel="stylesheet" href="bootstrap.css">
+        <script src="bootstrap.min.js"></script>
         <?php
             $mrn = $_POST['mrn'];
             $visits = $_POST["visits"];
@@ -119,333 +120,371 @@
                             <br>
                             <hr>
                             <div class="btn-group text-center position-sticky">
-                                <a href="#medical_history" class="btn btn-primary">Medical History</a>
-                                <a href="#doctors_form" class="btn btn-primary">Doctor's Report</a>
                                 <button class="btn btn-primary" onclick="print()">Print</button>
                             </div>
                             <br><hr>
-                            <div>
-                                <dl class="row">
-                                    <dt class="col-sm-3">MRN: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['mrn'];?></dd>
-                                    <dt class="col-sm-3">Name: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['name'];?></dd>
-                                    <dt class="col-sm-3">IC No/Passport: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['ic_passport'];?></dd>
-                                    <dt class="col-sm-3">Date of Birth: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['date_of_birth'];?></dd>
-                                    <dt class="col-sm-3">Home Address: </dt>
-                                    <dd class="col-sm-9"><?php echo nl2br($row['address']);?></dd>
-                                    <dt class="col-sm-3">Email: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['email'];?></dd>
-                                    <dt class="col-sm-3">Telephone: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['telephone'];?></dd>
-                                    <dt class="col-sm-3">Sex: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['sex'];?></dd>
-                                    <dt class="col-sm-3">Occupation: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['occupation'];?></dd>
-                                    <dt class="col-sm-3">Race: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['race'];?></dd>
-                                    <dt class="col-sm-3">Religion: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['religion'];?></dd>
-                                    <dt class="col-sm-3">Marital Status: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['marital_status'];?></dd>
-                                    <dt class="col-sm-3">Next of Kin: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['next_of_kin'];?></dd>
-                                    <dt class="col-sm-3">Relationship: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['relationship'];?></dd>
-                                    <dt class="col-sm-3">Telephone: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['telephone_nok'];?></dd>
-                                    <dt class="col-sm-3">Package: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['packageUsed'];?></dd>
-                                    <dt class="col-sm-3">Additional Test: </dt>
-                                    <dd class="col-sm-9"><?php echo nl2br($row['addonsUsed']);?></dd>
-                                    <dt class="col-sm-3">Registered On: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['registeredOn'];?></dd>
-                                    <dt class="col-sm-3">Last Edit By: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['pic'];?></dd>
-                                    <dt class="col-sm-3">Last Edited On: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['lastUpdateOn'];?></dd>
-                                </dl>    
-                            </div>
-                            <hr>
-                            <div>
-                                <a id="medical_history"><h3>Past Medical History</h3></a>
-                                <dl class="row">
-                                    <dt class="col-sm-3">Smoker/Non Smoker: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['smoker'];?></dd>
-                                    <dt class="col-sm-3">Asthma: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['asthma'];?></dd>
-                                    <dt class="col-sm-3">Diabetes: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['diabetes'];?></dd>
-                                    <dt class="col-sm-3">Heart Disease: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['heart_disease'];?></dd>
-                                    <dt class="col-sm-3">Hypertension: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['hypertension'];?></dd>
-                                    <dt class="col-sm-3">Stroke: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['stroke'];?></dd>
-                                    <dt class="col-sm-3">Cancer: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['cancer'];?></dd>
-                                    <dt class="col-sm-3">Tuberculosis: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['tuberculosis'];?></dd>
-                                    <dt class="col-sm-3">Skin Disease: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['skin_disease'];?></dd>
-                                    <dt class="col-sm-3">Kidney Problem: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['kidneyp'];?></dd>
-                                    <dt class="col-sm-3">Fits/Psychiatric: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['fits_psychiatric'];?></dd>
-                                </dl>
-                                <h3>Family History</h3>
-                                <dl class="row">
-                                    <dt class="col-sm-3">Father: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['father_history'];?></dd>
-                                    <dt class="col-sm-3">Mother: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['mother_history'];?></dd>
-                                    <dt class="col-sm-3">Siblings: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['siblings_history'];?></dd>
-                                    <dt class="col-sm-3">Habits: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['habits'];?></dd>
-                                    <dt class="col-sm-3">Allergy: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['allergy'];?></dd>
-                                    <dt class="col-sm-3">Others: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['others'];?></dd>
-                                    <dt class="col-sm-3">Medication: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['medication'];?></dd>
-                                    <dt class="col-sm-3">Last Updated On: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['lastUpdateMH'];?></dd>
-                                </dl>
-                            </div>
-                            <hr>
-                            <div>
-                                <a id="doctors_form"><h3>Physical Examination</h3></a>   
-                                <dl class="row">
-                                    <dt class="col-sm-3">General Appearance: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['appearanceUsed'];?></dd>
-                                    <dt class="col-sm-3">Weight: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['weightUsed'];?></dd>
-                                    <dt class="col-sm-3">Height: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['heightUsed'];?></dd>
-                                    <dt class="col-sm-3">BMI: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['bmiUsed'];?></dd>
-                                    <dt class="col-sm-3">Blood Pressure: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['systolicUsed'];?>/<?php echo $row['diastolic'];?></dd>
-                                    <dt class="col-sm-3">Nose: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['nose'];?></dd>
-                                    <dt class="col-sm-3">Throat: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['throat'];?></dd>
-                                    <dt class="col-sm-3">Neck: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['neck'];?></dd>
-                                    <dt class="col-sm-3">Skin: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['skin'];?></dd>
-                                </dl>
-                            </div>
-                            <h3>Eyes</h3>
-                                <table style="table-layout: fixed; width:100%;" class="table table-bordered">
-                                    <thead class="table-dark" style="text-align:center;">
-                                        <tr>
-                                            <th></th>
-                                            <th>Left</th>
-                                            <th>Right</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <th>Visual Acuity(Aided)</th>
-                                        <td><?php echo $row['va_aidedlUsed'];?></td>
-                                        <td><?php echo $row['va_aidedrUsed'];?></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Visual Acuity(Unaided)</th>
-                                        <td><?php echo $row['va_unaidedlUsed'];?></td>
-                                        <td><?php echo $row['va_unaidedrUsed'];?></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Colour</th>
-                                        <td><?php echo $row['colour_lUsed'];?></td>
-                                        <td><?php echo $row['colour_rUsed'];?></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Fundoscopy</th>
-                                        <td><?php echo $row['fundoscopy_lUsed'];?></td>
-                                        <td><?php echo $row['fundoscopy_rUsed'];?></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            <h3>Cardiovascular System</h3>
-                            <div>
-                                <dl class="row">
-                                    <dt class="col-sm-3">Sound: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['sound'];?></dd>
-                                    <dt class="col-sm-3">Murmur: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['murmur'];?></dd>
-                                </dl>
-                            </div>    
-                            <h3>Respiratory System</h3>
-                            <div>
-                                <dl class="row">
-                                    <dt class="col-sm-3">Air Entry: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['airentry'];?></dd>
-                                    <dt class="col-sm-3">Chest Expansion: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['chestexp'];?></dd>
-                                    <dt class="col-sm-3">Breath Sound: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['breathsound'];?></dd>
-                                </dl>
-                            </div>
-                            <h3>Gastrointestinal System</h3>
-                            <div>
-                                <dl class="row">
-                                    <dt class="col-sm-3">Liver: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['liver'];?></dd>
-                                    <dt class="col-sm-3">Spleen: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['spleen'];?></dd>
-                                    <dt class="col-sm-3">Kidney: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['kidney'];?></dd>
-                                </dl>
-                            </div>
-                            <h3>Central Nervous System</h3>
-                            <div>
-                                <dl class="row">
-                                    <dt class="col-sm-3">Mental Function: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['mentalfunct'];?></dd>
-                                    <dt class="col-sm-3">Coordination: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['coordination'];?></dd>
-                                    <dt class="col-sm-3">Gait: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['gait'];?></dd>
-                                </dl>
-                            </div>
-                            <h3>Genitourinary System</h3>
-                            <div>
-                                <dl class="row">
-                                    <dt class="col-sm-3">Genitalia: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['genitalia'];?></dd>
-                                    <dt class="col-sm-3">Rectal Examination: </dt>
-                                    <dd class="col-sm-9"><?php echo $row['rectal'];?></dd>
-                                </dl>
-                            </div>
-                            <h3>Musculoskeletal System</h3>
-                            <table style="table-layout: fixed; width:100%;" class="table table-bordered">
-                                    <thead class="table-dark" style="text-align:center;">
-                                    <tr>
-                                        <th>Lower Limb</th>
-                                        <th>Left</th>
-                                        <th>Right</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th>Power</th>
-                                        <td><?php echo $row['lpow_l'];?></td>
-                                        <td><?php echo $row['lpow_r'];?></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Reflex</th>
-                                        <td><?php echo $row['lref_l'];?></td>
-                                        <td><?php echo $row['lref_r'];?></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Sensation</th>
-                                        <td><?php echo $row['lsen_l'];?></td>
-                                        <td><?php echo $row['lsen_r'];?></td>
-                                    </tr>
-                                </tbody>
-                                </table><br>
-                                <table style="table-layout: fixed; width:100%;" class="table table-bordered">
-                                    <thead class="table-dark" style="text-align:center;">
-                                        <tr>
-                                            <th>Upper Limb</th>
-                                            <th>Left</th>
-                                            <th>Right</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th>Power</th>
-                                            <td><?php echo $row['upow_l'];?></td>
-                                            <td><?php echo $row['upow_r'];?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Reflex</th>
-                                            <td><?php echo $row['uref_l'];?></td>
-                                            <td><?php echo $row['uref_r'];?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Sensation</th>
-                                            <td><?php echo $row['usen_l'];?></td>
-                                            <td><?php echo $row['usen_r'];?></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <?php
-                                    if($row['sex'] == "Female"){
-                                ?>
-                                <h3>For Female</h3>
-                                <div>
-                                    <dl class="row">
-                                        <dt class="col-sm-3">Breast: </dt>
-                                        <dd class="col-sm-9"><?php echo $row['breast'];?></dd>
-                                        <dt class="col-sm-3">Last Menstrual Period: </dt>
-                                        <dd class="col-sm-9"><?php echo $row['lmp'];?></dd>
-                                        <dt class="col-sm-3">Gynaecology History: </dt>
-                                        <dd class="col-sm-9"><?php echo $row['gynaecology'];?></dd>
-                                        <dt class="col-sm-3">Last Pap Smear: </dt>
-                                        <dd class="col-sm-9"><?php echo $row['lastps'];?></dd>
-                                    </dl>
+                            <div class="accordion" id="accordionDetails">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Patient's Information
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionDetails">
+                                        <div class="accordion-body">
+                                            <dl class="row">
+                                                <dt class="col-sm-3">MRN: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['mrn'];?></dd>
+                                                <dt class="col-sm-3">Name: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['name'];?></dd>
+                                                <dt class="col-sm-3">IC No/Passport: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['ic_passport'];?></dd>
+                                                <dt class="col-sm-3">Date of Birth: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['date_of_birth'];?></dd>
+                                                <dt class="col-sm-3">Home Address: </dt>
+                                                <dd class="col-sm-9"><?php echo nl2br($row['address']);?></dd>
+                                                <dt class="col-sm-3">Email: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['email'];?></dd>
+                                                <dt class="col-sm-3">Telephone: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['telephone'];?></dd>
+                                                <dt class="col-sm-3">Sex: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['sex'];?></dd>
+                                                <dt class="col-sm-3">Occupation: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['occupation'];?></dd>
+                                                <dt class="col-sm-3">Race: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['race'];?></dd>
+                                                <dt class="col-sm-3">Religion: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['religion'];?></dd>
+                                                <dt class="col-sm-3">Marital Status: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['marital_status'];?></dd>
+                                                <dt class="col-sm-3">Next of Kin: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['next_of_kin'];?></dd>
+                                                <dt class="col-sm-3">Relationship: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['relationship'];?></dd>
+                                                <dt class="col-sm-3">Telephone: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['telephone_nok'];?></dd>
+                                                <dt class="col-sm-3">Package: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['packageUsed'];?></dd>
+                                                <dt class="col-sm-3">Additional Test: </dt>
+                                                <dd class="col-sm-9"><?php echo nl2br($row['addonsUsed']);?></dd>
+                                                <dt class="col-sm-3">Registered On: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['registeredOn'];?></dd>
+                                                <dt class="col-sm-3">Last Edit By: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['pic'];?></dd>
+                                                <dt class="col-sm-3">Last Edited On: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['lastUpdateOn'];?></dd>
+                                            </dl>    
+                                        </div>
+                                    </div>
                                 </div>
-                                <?php
-                                    }
-                                ?>
-                                <h3>Investigation</h3>
-                                <div>
-                                    <dl class="row">
-                                        <dt class="col-sm-3">Chest X-Ray: </dt>
-                                        <dd class="col-sm-9"><?php echo $row['cxr'];?></dd>
-                                        <dt class="col-sm-3">Electrocardiogram: </dt>
-                                        <dd class="col-sm-9"><?php echo $row['ecg'];?></dd>
-                                        <?php
-                                            if($row['packageUsed'] == "Custom"){
-                                        ?>
-                                        <dt class="col-sm-3">Mammogram: </dt>
-                                        <dd class="col-sm-9"><?php echo $row['mammogram'];?></dd>
-                                        <dt class="col-sm-3">Ultrasound Breast: </dt>
-                                        <dd class="col-sm-9"><?php echo $row['us_breast'];?></dd>
-                                        <dt class="col-sm-3">Pure Tone Audiometry: </dt>
-                                        <dd class="col-sm-9"><?php echo $row['pta'];?></dd>
-                                        <dt class="col-sm-3">Lung Function Test: </dt>
-                                        <dd class="col-sm-9"><?php echo $row['lft'];?></dd>
-                                        <?php
-                                            }
-                                            if($row['packageUsed'] == "Premium" || $row['packageUsed'] == "Comprehensive" || $row['packageUsed'] == "Custom"){
-                                        ?>
-                                        <dt class="col-sm-3">Ultrasound Abdomen Pelvis: </dt>
-                                        <dd class="col-sm-9"><?php echo $row['us_abdopel'];?></dd>
-                                        <?php
-                                            }
-                                            if($row['packageUsed'] == "Custom" || $row['packageUsed'] == "Premium"){
-                                        ?>
-                                        <dt class="col-sm-3">Stress Test: </dt>
-                                        <dd class="col-sm-9"><?php echo $row['stresstest'];?></dd>
-                                        <?php
-                                            }
-                                        ?>
-                                        <dt class="col-sm-3">Urine: </dt>
-                                        <dd class="col-sm-9"><?php echo $row['urine'];?></dd>
-                                        <dt class="col-sm-3">Blood: </dt>
-                                        <dd class="col-sm-9"><?php echo $row['blood'];?></dd>
-                                        <dt class="col-sm-3">Impression: </dt>
-                                        <dd class="col-sm-9"><?php echo nl2br($row['impression']);?></dd>
-                                        <dt class="col-sm-3">Recommendation: </dt>
-                                        <dd class="col-sm-9"><?php echo nl2br($row['recommendation']);?></dd>
-                                        <dt class="col-sm-3">Last Updated On: </dt>
-                                        <dd class="col-sm-9"><?php echo $row['lastUpdate'];?></dd>
-                                    </dl>
-                                </div></a>
-                                <br><br>
-                                <a href="#top" class="top">Back to Top</a>
-                                <script>
-                                    print(){
-                                        window.print();
-                                    }
-                                </script>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                            Medical History
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionDetails">
+                                        <div class="accordion-body">
+                                            <dl class="row">
+                                                <dt class="col-sm-3">Smoker/Non Smoker: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['smoker'];?></dd>
+                                                <dt class="col-sm-3">Asthma: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['asthma'];?></dd>
+                                                <dt class="col-sm-3">Diabetes: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['diabetes'];?></dd>
+                                                <dt class="col-sm-3">Heart Disease: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['heart_disease'];?></dd>
+                                                <dt class="col-sm-3">Hypertension: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['hypertension'];?></dd>
+                                                <dt class="col-sm-3">Stroke: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['stroke'];?></dd>
+                                                <dt class="col-sm-3">Cancer: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['cancer'];?></dd>
+                                                <dt class="col-sm-3">Tuberculosis: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['tuberculosis'];?></dd>
+                                                <dt class="col-sm-3">Skin Disease: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['skin_disease'];?></dd>
+                                                <dt class="col-sm-3">Kidney Problem: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['kidneyp'];?></dd>
+                                                <dt class="col-sm-3">Fits/Psychiatric: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['fits_psychiatric'];?></dd>
+                                            </dl>
+                                            <h3>Family History</h3>
+                                            <dl class="row">
+                                                <dt class="col-sm-3">Father: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['father_history'];?></dd>
+                                                <dt class="col-sm-3">Mother: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['mother_history'];?></dd>
+                                                <dt class="col-sm-3">Siblings: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['siblings_history'];?></dd>
+                                                <dt class="col-sm-3">Habits: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['habits'];?></dd>
+                                                <dt class="col-sm-3">Allergy: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['allergy'];?></dd>
+                                                <dt class="col-sm-3">Others: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['others'];?></dd>
+                                                <dt class="col-sm-3">Medication: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['medication'];?></dd>
+                                                <dt class="col-sm-3">Last Updated On: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['lastUpdateMH'];?></dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                            Physical Examination
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionDetails">
+                                        <div class="accordion-body">   
+                                            <dl class="row">
+                                                <dt class="col-sm-3">General Appearance: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['appearanceUsed'];?></dd>
+                                                <dt class="col-sm-3">Weight: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['weightUsed'];?></dd>
+                                                <dt class="col-sm-3">Height: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['heightUsed'];?></dd>
+                                                <dt class="col-sm-3">BMI: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['bmiUsed'];?></dd>
+                                                <dt class="col-sm-3">Blood Pressure: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['systolicUsed'];?>/<?php echo $row['diastolic'];?></dd>
+                                                
+                                            </dl>
+                                        
+                                            <h3>Eyes</h3>
+                                            <table style="table-layout: fixed; width:100%;" class="table table-bordered">
+                                                <thead class="table-dark" style="text-align:center;">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Left</th>
+                                                        <th>Right</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th>Visual Acuity(Aided)</th>
+                                                    <td><?php echo $row['va_aidedlUsed'];?></td>
+                                                    <td><?php echo $row['va_aidedrUsed'];?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Visual Acuity(Unaided)</th>
+                                                    <td><?php echo $row['va_unaidedlUsed'];?></td>
+                                                    <td><?php echo $row['va_unaidedrUsed'];?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Colour</th>
+                                                    <td><?php echo $row['colour_lUsed'];?></td>
+                                                    <td><?php echo $row['colour_rUsed'];?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Fundoscopy</th>
+                                                    <td><?php echo $row['fundoscopy_lUsed'];?></td>
+                                                    <td><?php echo $row['fundoscopy_rUsed'];?></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingFour">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                            Screening Record
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionDetails">
+                                        <div class="accordion-body">
+                                            <dl class="row">
+                                                <dt class="col-sm-3">Nose: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['nose'];?></dd>
+                                                <dt class="col-sm-3">Throat: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['throat'];?></dd>
+                                                <dt class="col-sm-3">Neck: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['neck'];?></dd>
+                                                <dt class="col-sm-3">Skin: </dt>
+                                                <dd class="col-sm-9"><?php echo $row['skin'];?></dd>
+                                            </dl>
+                                            <h3>Cardiovascular System</h3>
+                                            <div>
+                                                <dl class="row">
+                                                    <dt class="col-sm-3">Sound: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['sound'];?></dd>
+                                                    <dt class="col-sm-3">Murmur: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['murmur'];?></dd>
+                                                </dl>
+                                            </div>    
+                                            <h3>Respiratory System</h3>
+                                            <div>
+                                                <dl class="row">
+                                                    <dt class="col-sm-3">Air Entry: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['airentry'];?></dd>
+                                                    <dt class="col-sm-3">Chest Expansion: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['chestexp'];?></dd>
+                                                    <dt class="col-sm-3">Breath Sound: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['breathsound'];?></dd>
+                                                </dl>
+                                            </div>
+                                            <h3>Gastrointestinal System</h3>
+                                            <div>
+                                                <dl class="row">
+                                                    <dt class="col-sm-3">Liver: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['liver'];?></dd>
+                                                    <dt class="col-sm-3">Spleen: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['spleen'];?></dd>
+                                                    <dt class="col-sm-3">Kidney: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['kidney'];?></dd>
+                                                </dl>
+                                            </div>
+                                            <h3>Central Nervous System</h3>
+                                            <div>
+                                                <dl class="row">
+                                                    <dt class="col-sm-3">Mental Function: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['mentalfunct'];?></dd>
+                                                    <dt class="col-sm-3">Coordination: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['coordination'];?></dd>
+                                                    <dt class="col-sm-3">Gait: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['gait'];?></dd>
+                                                </dl>
+                                            </div>
+                                            <h3>Genitourinary System</h3>
+                                            <div>
+                                                <dl class="row">
+                                                    <dt class="col-sm-3">Genitalia: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['genitalia'];?></dd>
+                                                    <dt class="col-sm-3">Rectal Examination: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['rectal'];?></dd>
+                                                </dl>
+                                            </div>
+                                            <h3>Musculoskeletal System</h3>
+                                            <table style="table-layout: fixed; width:100%;" class="table table-bordered">
+                                                <thead class="table-dark" style="text-align:center;">
+                                                <tr>
+                                                    <th>Lower Limb</th>
+                                                    <th>Left</th>
+                                                    <th>Right</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th>Power</th>
+                                                    <td><?php echo $row['lpow_l'];?></td>
+                                                    <td><?php echo $row['lpow_r'];?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Reflex</th>
+                                                    <td><?php echo $row['lref_l'];?></td>
+                                                    <td><?php echo $row['lref_r'];?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Sensation</th>
+                                                    <td><?php echo $row['lsen_l'];?></td>
+                                                    <td><?php echo $row['lsen_r'];?></td>
+                                                </tr>
+                                            </tbody>
+                                            </table><br>
+                                            <table style="table-layout: fixed; width:100%;" class="table table-bordered">
+                                                <thead class="table-dark" style="text-align:center;">
+                                                    <tr>
+                                                        <th>Upper Limb</th>
+                                                        <th>Left</th>
+                                                        <th>Right</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Power</th>
+                                                        <td><?php echo $row['upow_l'];?></td>
+                                                        <td><?php echo $row['upow_r'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Reflex</th>
+                                                        <td><?php echo $row['uref_l'];?></td>
+                                                        <td><?php echo $row['uref_r'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Sensation</th>
+                                                        <td><?php echo $row['usen_l'];?></td>
+                                                        <td><?php echo $row['usen_r'];?></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <?php
+                                                if($row['sex'] == "Female"){
+                                            ?>
+                                            <h3>For Female</h3>
+                                            <div>
+                                                <dl class="row">
+                                                    <dt class="col-sm-3">Breast: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['breast'];?></dd>
+                                                    <dt class="col-sm-3">Last Menstrual Period: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['lmp'];?></dd>
+                                                    <dt class="col-sm-3">Gynaecology History: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['gynaecology'];?></dd>
+                                                    <dt class="col-sm-3">Last Pap Smear: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['lastps'];?></dd>
+                                                </dl>
+                                            </div>
+                                            <?php
+                                                }
+                                            ?>
+                                            <h3>Investigation</h3>
+                                            <div>
+                                                <dl class="row">
+                                                    <dt class="col-sm-3">Chest X-Ray: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['cxr'];?></dd>
+                                                    <dt class="col-sm-3">Electrocardiogram: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['ecg'];?></dd>
+                                                    <?php
+                                                        if($row['packageUsed'] == "Custom"){
+                                                    ?>
+                                                    <dt class="col-sm-3">Mammogram: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['mammogram'];?></dd>
+                                                    <dt class="col-sm-3">Ultrasound Breast: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['us_breast'];?></dd>
+                                                    <dt class="col-sm-3">Pure Tone Audiometry: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['pta'];?></dd>
+                                                    <dt class="col-sm-3">Lung Function Test: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['lft'];?></dd>
+                                                    <?php
+                                                        }
+                                                        if($row['packageUsed'] == "Premium" || $row['packageUsed'] == "Comprehensive" || $row['packageUsed'] == "Custom"){
+                                                    ?>
+                                                    <dt class="col-sm-3">Ultrasound Abdomen Pelvis: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['us_abdopel'];?></dd>
+                                                    <?php
+                                                        }
+                                                        if($row['packageUsed'] == "Custom" || $row['packageUsed'] == "Premium"){
+                                                    ?>
+                                                    <dt class="col-sm-3">Stress Test: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['stresstest'];?></dd>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                    <dt class="col-sm-3">Urine: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['urine'];?></dd>
+                                                    <dt class="col-sm-3">Blood: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['blood'];?></dd>
+                                                    <dt class="col-sm-3">Impression: </dt>
+                                                    <dd class="col-sm-9"><?php echo nl2br($row['impression']);?></dd>
+                                                    <dt class="col-sm-3">Recommendation: </dt>
+                                                    <dd class="col-sm-9"><?php echo nl2br($row['recommendation']);?></dd>
+                                                    <dt class="col-sm-3">Last Updated On: </dt>
+                                                    <dd class="col-sm-9"><?php echo $row['lastUpdate'];?></dd>
+                                                </dl>
+                                            </div>
+                                            <br>
+                                            <a href="#top" class="top">Back to Top</a>
+                                            <script>
+                                                print(){
+                                                    window.print();
+                                                }
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
                 <div id="printable">
@@ -483,7 +522,7 @@
                             : <span id="packageUsed"><?php echo $row["packageUsed"];?></span><br>
                             <div class="textfield">
                                 <label for="addons" class="inline">Additional Test</label>
-                                : <span id="addons" style="display: inline-block"><?php echo nl2br($row["addons"]);?></span><br><br>
+                                : <span id="addons" style="display: inline-block"><?php echo nl2br($row["addons"]);?></span><br>
                             </div>
                         </div>
                         <h5>Next of Kin</h5>
@@ -493,7 +532,7 @@
                             <label for="rs" class="inline">Relationship</label>
                             : <span id="rs"><?php echo $row["relationship"];?></span><br>
                             <label for="telnok" class="inline">Telephone</label>
-                            : <span id="telnok"><?php echo $row["telephone_nok"];?></span><br><br>
+                            : <span id="telnok"><?php echo $row["telephone_nok"];?></span><br>
                             <div style="break-after:page;"></div>
                             <h5>Past Medical History</h5>
                             <span id="smoker"><?php echo $row["smoker"];?></span><br>
@@ -516,7 +555,7 @@
                             <label for="kidneyp" class="inline">Kidney Problem</label>
                             : <span id="kidneyp"><?php echo $row["kidneyp"];?></span><br>
                             <label for="fits" class="inline">Fits/Psychiatric</label>
-                            : <span id="fits"><?php echo $row["fits_psychiatric"];?></span><br><br>
+                            : <span id="fits"><?php echo $row["fits_psychiatric"];?></span><br>
                             <h5>Family History</h5>
                             <label for="father" class="inline">Father</label>
                             : <span id="father"><?php echo $row["father_history"];?></span><br>
@@ -531,7 +570,7 @@
                             <label for="others" class="inline">Others</label>
                             : <span id="others"><?php echo $row["others"];?></span><br>
                             <label for="medication" class="inline">Medication</label>
-                            : <span id="medication"><?php echo $row["medication"];?></span><br><br>
+                            : <span id="medication"><?php echo $row["medication"];?></span><br>
                             <h5>Physical Examination</h5>
                             <label for="appearance" class="inline">General Appearance</label>
                             : <span id="appearance"><?php echo $row["appearance"];?></span><br>
@@ -543,6 +582,40 @@
                             : <span id="bmi"><?php echo $row["bmi"];?></span><br>
                             <label for="bloodp" class="inline">Blood Pressure</label>
                             : <span id="bloodp"><?php echo $row["systolic"];?>/<?php echo $row["diastolic"];?></span><br>
+                            <h5>Eyes</h5>
+                            <table>
+                                <thead>
+                                    <th></th>
+                                    <th>Left</th>
+                                    <th>Right</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Visual Acuity(Aided):</th>
+                                        <td><?php echo $row["va_aidedl"];?></td>
+                                        <td><?php echo $row["va_aidedr"];?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Visual Acuity(Unaided):</th>
+                                        <td><?php echo $row["va_unaidedl"];?></td>
+                                        <td><?php echo $row["va_unaidedr"];?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Colour:</th>
+                                        <td><?php echo $row["colour_l"];?></td>
+                                        <td><?php echo $row["colour_r"];?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Fundoscopy:</th>
+                                        <td><?php echo $row["fundoscopy_l"];?></td>
+                                        <td><?php echo $row["fundoscopy_r"];?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                        </div>
+                        <div style="break-after:page;"></div>
+                        <div>
                             <label for="nose" class="inline">Nose</label>
                             : <span id="nose"><?php echo $row["nose"];?></span><br>
                             <label for="throat" class="inline">Throat</label>
@@ -550,47 +623,14 @@
                             <label for="neck" class="inline">Neck</label>
                             : <span id="neck"><?php echo $row["neck"];?></span><br>
                             <label for="skin" class="inline">Skin</label>
-                            : <span id="skin"><?php echo $row["skin"];?></span><br><br>
-                        </div>
-                        <div style="break-after:page;"></div>
-                        <h5>Eyes</h5>
-                        <div>
-                            <table>
-                                    <thead>
-                                        <th></th>
-                                        <th>Left</th>
-                                        <th>Right</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th>Visual Acuity(Aided):</th>
-                                            <td><?php echo $row["va_aidedl"];?></td>
-                                            <td><?php echo $row["va_aidedr"];?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Visual Acuity(Unaided):</th>
-                                            <td><?php echo $row["va_unaidedl"];?></td>
-                                            <td><?php echo $row["va_unaidedr"];?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Colour:</th>
-                                            <td><?php echo $row["colour_l"];?></td>
-                                            <td><?php echo $row["colour_r"];?></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Fundoscopy:</th>
-                                            <td><?php echo $row["fundoscopy_l"];?></td>
-                                            <td><?php echo $row["fundoscopy_r"];?></td>
-                                        </tr>
-                                    </tbody>
-                            </table><br>
+                            : <span id="skin"><?php echo $row["skin"];?></span><br>
                         </div>
                         <h5>Cardiovascular System</h5>
                         <div>
                             <label for="sound" class="inline">Sound</label>
                             : <span id="sound"><?php echo $row["sound"];?></span><br>
                             <label for="murmur" class="inline">Murmur</label>
-                            : <span id="murmur"><?php echo $row["murmur"];?></span><br><br>
+                            : <span id="murmur"><?php echo $row["murmur"];?></span><br>
                         </div>
                         <div>
                             <h5>Respiratory System</h5>
@@ -599,7 +639,7 @@
                             <label for="chestexp" class="inline">Chest Expansion</label>
                             : <span id="chestexp"><?php echo $row["chestexp"];?></span><br>
                             <label for="bs" class="inline">Breath Sound</label>
-                            : <span id="bs"><?php echo $row["breathsound"];?></span><br><br>
+                            : <span id="bs"><?php echo $row["breathsound"];?></span><br>
                         </div>
                         <div>
                             <h5>Gastrointestinal System</h5>
@@ -608,7 +648,7 @@
                             <label for="spleen" class="inline">Spleen</label>
                             : <span id="spleen"><?php echo $row["spleen"];?></span><br>
                             <label for="kidney" class="inline">Kidney</label>
-                            : <span id="kidney"><?php echo $row["kidney"];?></span><br><br>
+                            : <span id="kidney"><?php echo $row["kidney"];?></span><br>
                         </div>
                         <div>
                             <h5>Central Nervous System</h5>
@@ -617,14 +657,13 @@
                             <label for="coordination" class="inline">Coordination</label>
                             : <span id="coordination"><?php echo $row["coordination"];?></span><br>
                             <label for="gait" class="inline">Gait</label>
-                            : <span id="gait"><?php echo $row["gait"];?></span><br><br>
+                            : <span id="gait"><?php echo $row["gait"];?></span><br>
                             <h5>Genitourinary System</h5>
                             <label for="genitalia" class="inline">Genitalia</label>
                             : <span id="genitalia"><?php echo $row["genitalia"];?></span><br>
                             <label for="rectal" class="inline">Rectal Examination</label>
-                            : <span id="rectal"><?php echo $row["rectal"];?></span><br><br>
+                            : <span id="rectal"><?php echo $row["rectal"];?></span><br>
                         </div>
-                        <div style="break-after:page;"></div>
                         <div>
                             <?php
                                 if($row['sex'] == "Female"){
@@ -637,11 +676,12 @@
                             <label for="gynaecology" class="inline">Gynaecology</label>
                             : <span id="gynaecology"><?php echo $row["gynaecology"];?></span><br>
                             <label for="lastps" class="inline">Last Pap Smear</label>
-                            : <span id="lastps"><?php echo $row["lastps"];?></span><br><br> 
+                            : <span id="lastps"><?php echo $row["lastps"];?></span><br> 
                             <?php
                                 }
                             ?>
                         </div>
+                        <div style="break-after:page;"></div>
                         <h5>Musculoskeletal System</h5>
                         <div>
                             <table>

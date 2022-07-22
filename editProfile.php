@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>KPJ Klang Wellness IS</title>
+        <title>Edit Patient's Profile</title>
         <link rel="stylesheet" href="wellness.css">
         <link rel="stylesheet" href="bootstrap.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -80,6 +80,7 @@
                     <h5>MRN: <?php echo $mrn;?></h5>
                     <form method="post" style="text-align: center;" class="btn-group">
                         <button formaction="selectRecord.php" class="btn btn-primary">View Record</button>
+                        <button formaction="activeDetails.php" class="btn btn-primary">Latest Details</button>
                         <button formaction="editProfile.php" class="btn btn-primary active">Edit Profile</button>
                         <button formaction="historyUpdateForm.php" class="btn btn-primary">Edit Medical History</button>  
                         <input type="hidden" name="mrn" value="<?php echo $mrn;?>">

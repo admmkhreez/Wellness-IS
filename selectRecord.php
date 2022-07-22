@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>KPJ Klang Wellness IS</title>
+        <title>Patient Overview</title>
         <link rel="stylesheet" href="wellness.css">
         <link rel="stylesheet" href="bootstrap.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -71,7 +71,7 @@
         <br>
         <h1 style='color: white;'>Select Record</h1>
         <br>
-        <div class="container" style="width: 550px; height: 250px;">
+        <div class="container" style=" height: 250px;">
             <form method="post" style="text-align: center;">
                 <label for="mrn">Enter Patient's MRN</label><br>
                 <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus>
@@ -90,6 +90,7 @@
                             <h5>MRN: <?php echo $mrn;?></h5>
                             <form method="post" style="text-align: center;" class="btn-group">
                                 <button formaction="selectRecord.php" class="btn btn-primary active">View Record</button>
+                                <button formaction="activeDetails.php" class="btn btn-primary">Latest Details</button>
                                 <button formaction="editProfile.php" class="btn btn-primary">Edit Profile</button>
                                 <button formaction="historyUpdateForm.php" class="btn btn-primary">Edit Medical History</button>  
                                 <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
@@ -117,7 +118,7 @@
                                 </div>
                             </form>
                         </div>
-                        </div>
+            </div>
             <br>
             <h3 style="text-align: center; margin-top: -5px; color: white;">Records History</h3>
             <table style="width: 100%;" class="table table-bordered">
