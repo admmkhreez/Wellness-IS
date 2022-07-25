@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 19, 2022 at 08:47 AM
+-- Generation Time: Jul 25, 2022 at 04:39 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -97,21 +97,21 @@ DROP TABLE IF EXISTS `record`;
 CREATE TABLE IF NOT EXISTS `record` (
   `recordID` int(11) NOT NULL AUTO_INCREMENT,
   `mrn` varchar(10) NOT NULL,
-  `appearance` varchar(20) DEFAULT NULL,
-  `weight` float DEFAULT NULL,
-  `height` float DEFAULT NULL,
-  `bmi` float DEFAULT NULL,
-  `systolic` int(11) DEFAULT NULL,
-  `diastolic` int(11) DEFAULT NULL,
-  `pulse` int(11) DEFAULT NULL,
-  `va_aidedr` varchar(10) DEFAULT NULL,
-  `va_aidedl` varchar(10) DEFAULT NULL,
-  `va_unaidedr` varchar(10) DEFAULT NULL,
-  `va_unaidedl` varchar(10) DEFAULT NULL,
-  `colour_r` varchar(10) DEFAULT NULL,
-  `colour_l` varchar(10) DEFAULT NULL,
-  `fundoscopy_r` varchar(10) DEFAULT NULL,
-  `fundoscopy_l` varchar(10) DEFAULT NULL,
+  `appearanceUsed` varchar(20) DEFAULT NULL,
+  `weightUsed` float DEFAULT NULL,
+  `heightUsed` float DEFAULT NULL,
+  `bmiUsed` float DEFAULT NULL,
+  `systolicUsed` int(11) DEFAULT NULL,
+  `diastolicUsed` int(11) DEFAULT NULL,
+  `pulseUsed` int(11) DEFAULT NULL,
+  `va_aidedrUsed` varchar(10) DEFAULT NULL,
+  `va_aidedlUsed` varchar(10) DEFAULT NULL,
+  `va_unaidedrUsed` varchar(10) DEFAULT NULL,
+  `va_unaidedlUsed` varchar(10) DEFAULT NULL,
+  `colour_rUsed` varchar(10) DEFAULT NULL,
+  `colour_lUsed` varchar(10) DEFAULT NULL,
+  `fundoscopy_rUsed` varchar(10) DEFAULT NULL,
+  `fundoscopy_lUsed` varchar(10) DEFAULT NULL,
   `nose` varchar(10) DEFAULT NULL,
   `throat` varchar(10) DEFAULT NULL,
   `neck` varchar(10) DEFAULT NULL,
