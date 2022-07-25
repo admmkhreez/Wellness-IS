@@ -65,8 +65,8 @@
             <div class="text-center" style='color: white;'>
                 Click <a href="viewRecords.php">here</a> if you want to search for patient's record.
             </div>
-            <br><br>
-            <table style="width: 100%;" class="table table-bordered">
+            <br>
+            <table style="width: 100%;" height="100%" class="table table-bordered">
                 <thead class="table-dark" style="text-align:center;">
                     <tr>
                         <th rowspan="2">

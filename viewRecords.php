@@ -91,6 +91,9 @@
                         <th rowspan="2">
                             Package
                         </th>
+                        <th rowspan="2">
+                            Visits
+                        </th>
                         <th rowspan="2" style="text-align: right;">
                             Actions
                         </th>
@@ -127,6 +130,7 @@
                         <td colspan="2"><?php echo $row['lastUpdate'];?></td>
                         <td><?php echo $row['phyExam'];?></td>
                         <td><?php echo $row['packageUsed'];?></td>
+                        <td><?php echo $row['visits'];?></td>
                         <td style="text-align: right;">
                             <form method="post">
                             <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">

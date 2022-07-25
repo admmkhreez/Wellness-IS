@@ -96,11 +96,11 @@
                                 Package
                             </th>
                             <th rowspan="2">
-                                
+                                Actions
                             </th>
                         </tr>
                     </thead>
-                    <tbody style="background-color: #e3f0ff;">
+                    
                 <?php
                 $per_page_record = 10;  // Number of entries to show in a page.   
                 // Look for a GET variable page if not found default is 1.        
@@ -117,11 +117,12 @@
 
                 while ($row = mysqli_fetch_array($rs_result)) { 
                 ?> 
+                    <tbody style="background-color: #e3f0ff;">
                         <tr>
                             <td><?php echo $row['mrn'];?></td>
                             <td><?php echo $row['name'];?></td>
                             <td><?php echo $row['ic_passport'];?></td>
-                            <td><?php echo $row['address'];?></td>
+                            <td><?php echo nl2br($row['address']);?></td>
                             <td><?php echo $row['email'];?></td>
                             <td><?php echo $row['telephone'];?></td>
                             <td><?php echo $row['registeredOn'];?></td>
@@ -130,6 +131,13 @@
                                 <form method="post">
                                 <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
                                 <button formaction="selectRecord.php" class="btn btn-primary">View</button>
+                                <?php
+                                if ($_SESSION["type"] == "admin"){
+                                ?>
+                                <button formaction="deletePatient.php" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
+                                <?php
+                                    }
+                                ?>
                                 </form>
                             </td>
                         </tr>

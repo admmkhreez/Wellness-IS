@@ -81,22 +81,22 @@
                                 I/C No/Passport
                             </th>
                             <th rowspan="2">
-                                Address
-                            </th>
-                            <th rowspan="2">
-                                Email
-                            </th>
-                            <th rowspan="2">
-                                Telephone
+                                Additional Test
                             </th>
                             <th colspan="4">
                                 Last Updated On
                             </th>
                             <th rowspan="2">
-                                Registered On
+                                Physical Exam On
                             </th>
                             <th rowspan="2">
                                 Package
+                            </th>
+                            <th rowspan="2">
+                                Visits
+                            </th>
+                            <th rowspan="2" style="text-align: right;">
+                                Actions
                             </th>
                         </tr>
                         <tr>
@@ -104,7 +104,6 @@
                             <th colspan="2">Report Form</th>
                         </tr>
                     </thead>
-                    <tbody style="background-color: #e3f0ff;">
                 <?php
                 $per_page_record = 10;  // Number of entries to show in a page.   
                 // Look for a GET variable page if not found default is 1.        
@@ -117,27 +116,39 @@
             
                 $start_from = ($page-1) * $per_page_record;     
             
-                $query = "SELECT a.mrn, name, ic_passport, address, email, telephone, lastUpdateMH, b.lastUpdate, registeredOn, packageUsed, visits FROM patient a INNER JOIN record b
+                $query = "SELECT a.mrn, name, ic_passport, addonsUsed, lastUpdateMH, lastUpdate, phyExam, packageUsed, visits FROM patient a INNER JOIN record b
                 ON a.mrn = b.mrn WHERE b.lastUpdate BETWEEN '".$startDate."' AND '".$endDate."' ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
                 $rs_result = mysqli_query ($conn, $query);     
 
                 while ($row = mysqli_fetch_array($rs_result)) {  
                 ?> 
+                    <tbody style="background-color: #e3f0ff; text-align: left;">
                         <tr>
                             <td><?php echo $row['mrn'];?></td>
                             <td><?php echo $row['name'];?></td>
                             <td><?php echo $row['ic_passport'];?></td>
-                            <td><?php echo $row['address'];?></td>
-                            <td><?php echo $row['email'];?></td>
-                            <td><?php echo $row['telephone'];?></td>
+                            <td><?php echo nl2br($row['addonsUsed']);?></td>
                             <td colspan="2"><?php echo $row['lastUpdateMH'];?></td>
                             <td colspan="2"><?php echo $row['lastUpdate'];?></td>
-                            <td><?php echo $row['registeredOn'];?></td>
+                            <td><?php echo $row['phyExam'];?></td>
                             <td><?php echo $row['packageUsed'];?></td>
+                            <td><?php echo $row['visits'];?></td>
+                            <td style="text-align: right;">
+                                <form method="post">
+                                <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
+                                <input type="hidden" name="visits" value="<?php echo $row["visits"];?>">
+                                <button formaction="viewDetails.php" class="btn btn-primary">View</button>
+                <?php
+                        if ($_SESSION["type"] == "admin"){
+                ?>
+                                <button formaction="deleteRecord.php" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
+                <?php
+                        }
+                    }
+                ?>
+                                </form>
+                            </td>
                         </tr>
-                        <?php
-                            }
-                        ?>
                     </tbody>
                 </table>
             <?php
