@@ -155,14 +155,13 @@
                     </div>
                     <div>
                         <fieldset>
-                            <legend>Sex: </legend>
+                            <legend>Sex: </legend><br>
                                 <input type="radio" class="form-check-input" id="male" name="sex" value="Male" <?php if ($row['sex'] == "Male") echo "checked"?> required>
                                 <label class="inline" for="male">Male</label>
                                 <input type="radio" class="form-check-input" id="female" name="sex" value="Female" <?php if ($row['sex'] == "Female") echo "checked"?> required>
                                 <label class="inline" for="female">Female</label>
                         </fieldset>
                     </div>
-                    <br>
                     <div>
                         <label class="inline" for="occupation">Occupation: </label>
                         <input type="text" id="occupation" name="occupation" maxlength="30" value="<?php echo $row["occupation"]?>">

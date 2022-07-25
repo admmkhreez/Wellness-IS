@@ -22,11 +22,11 @@
             span{
                 margin-left: 5px;
             }
-        </style>
+        </style> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="wellness.css">
         <link rel="stylesheet" href="bootstrap.css">
-        <script src="bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <?php
             $mrn = $_POST['mrn'];
             $servername = "localhost";
@@ -47,79 +47,77 @@
             <?php
    
             ?>
-            <div>
-                <div id="non-printable">
-                    <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
-                    <span class="nav-item" style="padding-left: 10px;color: white;"><?php echo $_SESSION["name"];?></span>
-                        <div class="container-sm">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="homepage.php">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="viewPatient.php">Patients List</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="viewRecords.php">Records</a>
-                                </li>
-                                <?php
-                                    if($_SESSION["type"] == "admin"){
-                                ?>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="viewUser.php">View User</a>
-                                </li>
-                                <?php
-                                    }
-                                ?>
-                            </ul>
-                            <form class="d-flex" method="post" style="margin-left: 400px;">
-                                <input type="search" class="form-control me-2" placeholder="Search" aria-label="Search" name="mrn">
-                                <button class="btn btn-outline-success" formaction="selectRecord.php">Search</button>
-                            </form>
-                        </div>
-                        <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
-                    </nav>
-                    <h1  id="top" style="margin-top: 40px; color: white;">Patient's Report</h1>
-                    <br>
-                    <div class="container">
-                        <form method="post" style="text-align: center;">
-                            <label for="mrn">Enter Patient's MRN</label><br>
-                            <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus>
-                            <button formaction="selectRecord.php" class="btn btn-primary">Search</button>
+            <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
+                <span class="nav-item" style="padding-left: 10px;color: white;"><?php echo $_SESSION["name"];?></span>
+                <div class="container-sm">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="homepage.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="viewPatient.php">Patients List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="viewRecords.php">Records</a>
+                        </li>
+                        <?php
+                            if($_SESSION["type"] == "admin"){
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="viewUser.php">View User</a>
+                        </li>
+                        <?php
+                            }
+                        ?>
+                    </ul>
+                    <form class="d-flex" method="post" style="margin-left: 400px;">
+                        <input type="search" class="form-control me-2" placeholder="Search" aria-label="Search" name="mrn">
+                        <button class="btn btn-outline-success" formaction="selectRecord.php">Search</button>
+                    </form>
+                </div>
+                <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
+            </nav>
+                <h1  id="top" style="margin-top: 40px; color: white;">Patient's Report</h1>
+                <br>
+                <div class="container">
+                    <form method="post" style="text-align: center;">
+                        <label for="mrn">Enter Patient's MRN</label><br>
+                        <input type="text" id="mrn" name="mrn" maxlength="10" required autofocus>
+                        <button formaction="selectRecord.php" class="btn btn-primary">Search</button>
+                    </form>
+                    <div class="text-center">
+                        <h5>MRN: <?php echo $mrn;?></h5>
+                        <form method="post" style="text-align: center;" class="btn-group">
+                            <button formaction="selectRecord.php" class="btn btn-primary">View Record</button>
+                            <button formaction="activeDetails.php" class="btn btn-primary active">Latest Details</button>
+                            <button formaction="editProfile.php" class="btn btn-primary">Edit Profile</button>
+                            <button formaction="historyUpdateForm.php" class="btn btn-primary">Edit Medical History</button>  
+                            <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Insert
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="btnGroupDrop">
+                                    <li>
+                                    <?php
+                                        if($_SESSION["type"] == "admin" or $_SESSION["type"] == "doctor"){
+                                    ?>
+                                            <button class="dropdown-item" formaction="recordForm.php">Record</button>
+                                    <?php
+                                        }
+                                    ?>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" formaction="physicalExam.php">Physical Examinantion</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" formaction="historyForm.php">Medical History</button>
+                                    </li>
+                                </ul>
+                            </div>
                         </form>
-                        <div class="text-center">
-                            <h5>MRN: <?php echo $mrn;?></h5>
-                            <form method="post" style="text-align: center;" class="btn-group">
-                                <button formaction="selectRecord.php" class="btn btn-primary">View Record</button>
-                                <button formaction="activeDetails.php" class="btn btn-primary active">Latest Details</button>
-                                <button formaction="editProfile.php" class="btn btn-primary">Edit Profile</button>
-                                <button formaction="historyUpdateForm.php" class="btn btn-primary">Edit Medical History</button>  
-                                <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
-                                <div class="btn-group" role="group">
-                                    <button id="btnGroupDrop" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Insert
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="btnGroupDrop">
-                                        <li>
-                                        <?php
-                                            if($_SESSION["type"] == "admin" or $_SESSION["type"] == "doctor"){
-                                        ?>
-                                                <button class="dropdown-item" formaction="recordForm.php">Record</button>
-                                        <?php
-                                            }
-                                        ?>
-                                        </li>
-                                        <li>
-                                            <button class="dropdown-item" formaction="physicalExam.php">Physical Examinantion</button>
-                                        </li>
-                                        <li>
-                                            <button class="dropdown-item" formaction="historyForm.php">Medical History</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </form>
-                        </div>
-                        <hr>
+                    </div>
+                    <hr>
                         <?php
                         $display = "SELECT * FROM patient WHERE mrn = '".$mrn."'";
                         $data = $conn->query($display);
@@ -184,7 +182,7 @@
                                 </div>
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                             Medical History
                                         </button>
                                     </h2>
@@ -238,7 +236,7 @@
                                 </div>
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                             Physical Examination
                                         </button>
                                     </h2>

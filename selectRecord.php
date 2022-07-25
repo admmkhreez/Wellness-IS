@@ -255,7 +255,7 @@
                         
                 for ($i=1; $i<=$total_pages; $i++) {   
                 if ($i == $page) {   
-                    $pagLink .= "<li class='page-item active'><form method='post'><input type='hidden' value='$mrn' name='mrn'><button class='page-link' formaction='selectRecord.php?page=" .$i."'>".$i." </button></form></li>"; 
+                    $pagLink .= "<li class='page-item active'><form method='post'><input type='hidden' value='$mrn' name='mrn'><button class='page-link active' formaction='selectRecord.php?page=" .$i."'>".$i." </button></form></li>"; 
                                                           
                 }               
                 else  {   

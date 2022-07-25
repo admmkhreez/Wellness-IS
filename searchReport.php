@@ -117,7 +117,7 @@
             
                 $start_from = ($page-1) * $per_page_record;     
             
-                $query = "SELECT a.mrn, name, ic_passport, address, email, telephone, lastUpdateMH, b.lastUpdate, registeredOn, b.package, b.visits FROM patient a INNER JOIN record b
+                $query = "SELECT a.mrn, name, ic_passport, address, email, telephone, lastUpdateMH, b.lastUpdate, registeredOn, packageUsed, visits FROM patient a INNER JOIN record b
                 ON a.mrn = b.mrn WHERE b.lastUpdate BETWEEN '".$startDate."' AND '".$endDate."' ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
                 $rs_result = mysqli_query ($conn, $query);     
 
@@ -133,7 +133,7 @@
                             <td colspan="2"><?php echo $row['lastUpdateMH'];?></td>
                             <td colspan="2"><?php echo $row['lastUpdate'];?></td>
                             <td><?php echo $row['registeredOn'];?></td>
-                            <td><?php echo $row['package'];?></td>
+                            <td><?php echo $row['packageUsed'];?></td>
                         </tr>
                         <?php
                             }
@@ -180,7 +180,7 @@
             for ($i=1; $i<=$total_pages; $i++) {   
             if ($i == $page) {   
                 $pagLink .= "<li class='page-item active'><form method='post'><input type='hidden' value='$startDate' name='startDate'><input type='hidden' value='$endDate' name='endDate'>
-                <button class='page-link' formaction='searchReport.php?page=" .$i."'>".$i." </button></form></li>"; 
+                <button class='page-link active' formaction='searchReport.php?page=" .$i."'>".$i." </button></form></li>"; 
                                                       
             }               
             else  {   

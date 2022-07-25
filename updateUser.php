@@ -72,7 +72,7 @@
                     <dt class="col-sm-3">Name: </dt>
                     <dd class="col-sm-9"><?php echo $name;?></dd>
                     <dt class="col-sm-3">Position: </dt>
-                    <dd class="col-sm-9"><?php echo $pos;?></dd>
+                    <dd class="col-sm-9"><?php echo nl2br($pos);?></dd>
                     <dt class="col-sm-3">User Type: </dt>
                     <dd class="col-sm-9"><?php echo $type;?></dd>
                     <dt class="col-sm-3">Password: </dt>

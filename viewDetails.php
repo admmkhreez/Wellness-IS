@@ -26,7 +26,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="wellness.css">
         <link rel="stylesheet" href="bootstrap.css">
-        <script src="bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <?php
             $mrn = $_POST['mrn'];
             $visits = $_POST["visits"];
@@ -119,10 +119,9 @@
                             </form>
                             <br>
                             <hr>
-                            <div class="btn-group text-center position-sticky">
+                            <div>
                                 <button class="btn btn-primary" onclick="print()">Print</button>
-                            </div>
-                            <br><hr>
+                            </div><hr>
                             <div class="accordion" id="accordionDetails">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
@@ -780,11 +779,9 @@
                             </div>
                         </div>
                         <div class="signature">
-                            <div class="row">
-                                <div class="col-md-6 mt-md-0 mt-3">
-                                    <h6 class="font-weight-bold"><?php echo $row["doneBy"];?></h6>
-                                    <p style="line-height: 100%;"><?php echo nl2br($row["position"]);?></p>
-                                </div>
+                            <div>
+                                <h6 class="font-weight-bold"><?php echo $row["doneBy"];?></h6>
+                                <p style="line-height: 100%;"><?php echo nl2br($row["position"]);?></p>
                             </div>
                         </div>
                         <div class="date">

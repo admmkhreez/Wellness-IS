@@ -179,21 +179,21 @@
             <input type="text" id="murmur" name="murmur" value="<?php echo $row["murmur"];?>" required><br>
             <h3>Respiratory System</h3>
             <fieldset>
-                <legend>Air Entry</legend>
+                <legend>Air Entry</legend><br>
                 <input type="radio" class="form-check-input" id="normal" name="airentry" value="Normal" required <?php if ($row['airentry'] == "Normal") echo "checked"; ?>>
                 <label class="inline-radio" for="normal">Normal</label>
                 <input type="radio" class="form-check-input" id="abnormal" name="airentry" value="Abnormal" required <?php if ($row['airentry']== "Abnormal") echo "checked"; ?>>
                 <label class="inline-radio" for="abnormal">Abnormal</label>
             </fieldset>
             <fieldset>
-                <legend>Chest Expansion</legend>
+                <legend>Chest Expansion</legend><br>
                 <input type="radio" class="form-check-input" id="normal" name="chestexp" value="Normal" required <?php if ($row['chestexp'] == "Normal") echo "checked"; ?>>
                 <label class="inline-radio" for="normal">Normal</label>
                 <input type="radio" class="form-check-input" id="abnormal" name="chestexp" value="Abnormal" required <?php if ($row['chestexp']== "Abnormal") echo "checked"; ?>>
                 <label class="inline-radio" for="abnormal">Abnormal</label>
             </fieldset>
             <fieldset>
-                <legend>Breath Sound</legend>
+                <legend>Breath Sound</legend><br>
                 <input type="radio" class="form-check-input" id="normal" name="breathsound" value="Normal" required <?php if ($row['breathsound'] == "Normal") echo "checked"; ?>>
                 <label class="inline-radio" for="normal">Normal</label>
                 <input type="radio" class="form-check-input" id="abnormal" name="breathsound" value="Abnormal" required <?php if ($row['breathsound']== "Abnormal") echo "checked"; ?>>
@@ -201,21 +201,21 @@
             </fieldset>
             <h3>Gastrointestinal System</h3>
             <fieldset>
-                <legend>Liver</legend>
+                <legend>Liver</legend><br>
                 <input type="radio" class="form-check-input" id="palpable" name="liver" value="Palpable" required <?php if ($row['liver'] == "Palpable") echo "checked"; ?>>
                 <label class="inline-radio" for="palpable">Palpable</label>
                 <input type="radio" class="form-check-input" id="notpalpable" name="liver" value="Not Palpable" required <?php if ($row['liver'] == "Not Palpable") echo "checked"; ?>>
                 <label class="inline-radio" for="notpalpable">Not Palpable</label>
             </fieldset>
             <fieldset>
-                <legend>Spleen</legend>
+                <legend>Spleen</legend><br>
                 <input type="radio" class="form-check-input" id="palpable" name="spleen" value="Palpable" required <?php if ($row['spleen'] == "Palpable") echo "checked"; ?>>
                 <label class="inline-radio" for="palpable">Palpable</label>
                 <input type="radio" class="form-check-input" id="notpalpable" name="spleen" value="Not Palpable" required <?php if ($row['spleen'] == "Not Palpable") echo "checked"; ?>>
                 <label class="inline-radio" for="notpalpable">Not Palpable</label>
             </fieldset>
             <fieldset>
-                <legend>Kidney</legend>
+                <legend>Kidney</legend><br>
                 <input type="radio" class="form-check-input" id="palpable" name="kidney" value="Palpable" required <?php if ($row['kidney'] == "Palpable") echo "checked"; ?>>
                 <label class="inline-radio" for="palpable">Palpable</label>
                 <input type="radio" class="form-check-input" id="notpalpable" name="kidney" value="Not Palpable" required <?php if ($row['kidney'] == "Not Palpable") echo "checked"; ?>>
@@ -223,21 +223,21 @@
             </fieldset>
             <h3>Central Nervous System</h3>
             <fieldset>
-                <legend>Mental Function</legend>
+                <legend>Mental Function</legend><br>
                 <input type="radio" class="form-check-input" id="normal" name="mentalfunct" value="Normal" required <?php if ($row['mentalfunct'] == "Normal") echo "checked"; ?>>
                 <label class="inline-radio" for="normal">Normal</label>
                 <input type="radio" class="form-check-input" id="abnormal" name="mentalfunct" value="Abnormal" required <?php if ($row['mentalfunct']== "Abnormal") echo "checked"; ?>>
                 <label class="inline-radio" for="abnormal">Abnormal</label>
             </fieldset>
             <fieldset>
-                <legend>Coordination</legend>
+                <legend>Coordination</legend><br>
                 <input type="radio" class="form-check-input" id="normal" name="coordination" value="Normal" required <?php if ($row['coordination'] == "Normal") echo "checked"; ?>>
                 <label class="inline-radio" for="normal">Normal</label>
                 <input type="radio" class="form-check-input" id="abnormal" name="coordination" value="Abnormal" required <?php if ($row['coordination']== "Abnormal") echo "checked"; ?>>
                 <label class="inline-radio" for="abnormal">Abnormal</label>
             </fieldset>                
             <fieldset>
-                <legend>Gait</legend>
+                <legend>Gait</legend><br>
                 <input type="radio" class="form-check-input" id="normal" name="gait" value="Normal" required <?php if ($row['gait'] == "Normal") echo "checked"; ?>>
                 <label class="inline-radio" for="normal">Normal</label>
                 <input type="radio" class="form-check-input" id="abnormal" name="gait" value="Abnormal" required <?php if ($row['gait']== "Abnormal") echo "checked"; ?>>
@@ -245,7 +245,7 @@
             </fieldset>
             <h3>Genitourinary System</h3>
             <fieldset>
-                <legend>Genitalia</legend>
+                <legend>Genitalia</legend><br>
                 <input type="radio" class="form-check-input" id="normal" name="genitalia" value="Normal" required <?php if ($row['genitalia'] == "Normal") echo "checked"; ?>>
                 <label class="inline-radio" for="normal">Normal</label>
                 <input type="radio" class="form-check-input" id="abnormal" name="genitalia" value="Abnormal" required <?php if ($row['genitalia']== "Abnormal") echo "checked"; ?>>
@@ -254,7 +254,7 @@
                 <label class="inline-radio" for="unknown">Unknown</label>
             </fieldset>
             <fieldset>
-                <legend>Rectal Examinantion</legend>
+                <legend>Rectal Examinantion</legend><br>
                 <input type="radio" class="form-check-input" id="normal" name="rectal" value="Normal" required <?php if ($row['rectal'] == "Normal") echo "checked"; ?>>
                 <label class="inline-radio" for="normal">Normal</label>
                 <input type="radio" class="form-check-input" id="abnormal" name="rectal" value="Abnormal" required <?php if ($row['rectal']== "Abnormal") echo "checked"; ?>>

@@ -134,7 +134,7 @@
     ?>
                 <p class='success'>Successfully Inserted medical report</p>
                 <form method="post">
-                    <button class="btn btn-primary" formaction="selectRecord.php">View</button>
+                    <button class="btn btn-primary" formaction="activeDetails.php">View</button>
                     <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
                 </form>
     <?php

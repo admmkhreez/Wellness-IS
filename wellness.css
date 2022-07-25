@@ -29,9 +29,6 @@ html{
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
-    padding-left: 30px;
-    padding-right: 30px;
-    border-radius: 15px;
 }
 a{
     color: black;
@@ -42,12 +39,10 @@ a{
 input[type=text], input[type=number], input[type=password], input[type=email], input[type=tel], input[type=date]
 {
     padding:10px;
-    border-radius:10px;;
     margin: 5px 0;
     width: 350px;
     box-shadow:15px 10px 25px 5px rgba(0,0,0,0.1);
     border: 1px solid #eee;
-    transition: .3s border-color;
 }
       
 select:hover, textarea:hover, input:hover{
@@ -234,24 +229,9 @@ label.inline-radio {
     border: 2px solid black;
     width: 600px;
     position: absolute;
-    right: 320px;
-    top: 190px;
+    right: 300px;
+    top: 150px;
     border-radius: 10px 20px;
-}
-
-fieldset{
-    max-width: 500px;
-    border-radius: 5px;
-    background-color: white;
-    margin-bottom: 20px;
-}
-legend{
-    background-color: #1e398d;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 5px 10px;
-    color: white;
-    font-size: 24px;
 }
 
 .row, h2{
