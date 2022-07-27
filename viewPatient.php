@@ -5,7 +5,7 @@
             if(isset($_SESSION["username"])) {
         ?>
         <head>
-            <title>Patients List</title>
+            <title>Patients</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="wellness.css">
             <link rel="stylesheet" href="bootstrap.css">
@@ -33,7 +33,7 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="viewPatient.php">Patients List</a>
+                            <a class="nav-link active" href="viewPatient.php">Patients</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="viewRecords.php">Records</a>
@@ -56,7 +56,7 @@
                 <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
             </nav>
             <br>
-            <h1 style='color: white;'>Patients List</h1>
+            <h1 style='color: white;'>Patients</h1>
             <br>
             <form method="post" style="text-align: center;">
                 <input type="text" placeholder="MRN/Name/IC/Passport/Email/Telephone" name="keyword">

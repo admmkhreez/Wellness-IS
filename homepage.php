@@ -43,7 +43,7 @@
                         <a class="nav-link active" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewPatient.php">Patients List</a>
+                        <a class="nav-link" href="viewPatient.php">Patients</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="viewRecords.php">Records</a>

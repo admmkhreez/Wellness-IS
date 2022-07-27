@@ -119,7 +119,7 @@
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewPatient.php">Patients List</a>
+                        <a class="nav-link" href="viewPatient.php">Patients</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="viewRecords.php">Records</a>
@@ -427,7 +427,7 @@
                     airentry = '".$airentry."', chestexp = '".$chestexp."', breathsound = '".$breathsound."', liver = '".$liver."', spleen = '".$spleen."', kidney = '".$kidney."', mentalfunct = '".$mentalfunct."',
                     coordination = '".$coordination."', gait = '".$gait."', genitalia = '".$genitalia."', rectal = '".$rectal."', lpow_r = '".$lpow_r."', lpow_l = '".$lpow_l."', lref_r = '".$lref_r."', lref_l = '".$lref_l."',
                     lsen_r = '".$lsen_r."', lsen_l = '".$lsen_l."', upow_r = '".$upow_r."', upow_l = '".$upow_l."', uref_r = '".$uref_r."', uref_l = '".$uref_l."', usen_r = '".$usen_r."', usen_l = '".$usen_l."',
-                    breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = NULL, us_breast = NULL, 
+                    breast = NULL, lmp = NULL, gynaecology = NULL, lastps = NULL, cxr = '".$cxr."', ecg = '".$ecg."', mammogram = '".$mammogram."', us_breast = '".$us_breast."', 
                     us_abdopel = '".$us_abdopel."', stresstest = '".$stresstest."', pta = '".$pta."', lft = '".$lft."', urine = '".$urine."', blood = '".$blood."', impression = '".$impression."', recommendation = '".$recommendation."', 
                     lastUpdate = '".$date."', visits = '".$visits."', packageUsed = '".$package."', addonsUsed = '".$addons."' WHERE mrn = '".$mrn."' AND visits = '".$visits."'";
                 }

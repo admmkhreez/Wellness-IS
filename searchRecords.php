@@ -35,7 +35,7 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewPatient.php">Patients List</a>
+                            <a class="nav-link" href="viewPatient.php">Patients</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="viewRecords.php">Records</a>
@@ -62,7 +62,7 @@
             <form method="post" style="text-align: center; color: white;">
                 Between <input type="date" name="startDate" value="<?php echo $startDate;?>"> And
                 <input type="date" name="endDate" value="<?php echo $endDate;?>">
-                <button formaction="searchReport.php" class="btn btn-primary">Search</button>
+                <button formaction="searchRecords.php" class="btn btn-primary">Search</button>
             </form>
             <div class="text-center" style="color: white;">
                 Click <a href="viewPatient.php">here</a> if you want to view patients list.
@@ -185,18 +185,18 @@
             echo "<ul class='pagination justify-content-center'>";
             if($page>=2){   
                 echo "<li class='page-item'><form method='post'><input type='hidden' value='$startDate' name='startDate'><input type='hidden' value='$endDate' name='endDate'>
-                <button class='page-link' formaction='searchReport.php?page=".($page-1)."'>  Prev </button></form></li>";   
+                <button class='page-link' formaction='searchRecords.php?page=".($page-1)."'>  Prev </button></form></li>";   
             }       
                     
             for ($i=1; $i<=$total_pages; $i++) {   
             if ($i == $page) {   
                 $pagLink .= "<li class='page-item active'><form method='post'><input type='hidden' value='$startDate' name='startDate'><input type='hidden' value='$endDate' name='endDate'>
-                <button class='page-link active' formaction='searchReport.php?page=" .$i."'>".$i." </button></form></li>"; 
+                <button class='page-link active' formaction='searchRecords.php?page=" .$i."'>".$i." </button></form></li>"; 
                                                       
             }               
             else  {   
                 $pagLink .= "<li class='page-item'><form method='post'><input type='hidden' value='$startDate' name='startDate'><input type='hidden' value='$endDate' name='endDate'>
-                <button class='page-link' formaction='searchReport.php?page=".$i."'> ".$i." </button></form></li>";  
+                <button class='page-link' formaction='searchRecords.php?page=".$i."'> ".$i." </button></form></li>";  
                                                          
             }   
             };     
@@ -204,7 +204,7 @@
     
             if($page<$total_pages){   
                 echo "<li class='page-item'><form method='post'><input type='hidden' value='$startDate' name='startDate'><input type='hidden' value='$endDate' name='endDate'>
-                <button class='page-link' formaction='searchReport.php?page=".($page+1)."'>  Next </button></form></li>";   
+                <button class='page-link' formaction='searchRecords.php?page=".($page+1)."'>  Next </button></form></li>";   
             }  
             echo "</ul>";
             echo "</nav>";

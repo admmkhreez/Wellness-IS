@@ -34,7 +34,7 @@
                         <a class="nav-link" href="homepage.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="viewPatient.php">Patients List</a>
+                        <a class="nav-link" href="viewPatient.php">Patients</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="viewRecords.php">Records</a>
@@ -61,7 +61,7 @@
             <form method="post" style="text-align: center; color: white;">
                 Between <input type="date" name="startDate"> And
                 <input type="date" name="endDate">
-                <button formaction="searchReport.php" class="btn btn-primary">Search</button>
+                <button formaction="searchRecords.php" class="btn btn-primary">Search</button>
             </form>
             <div class="text-center" style="color: white;">
                 Click <a href="viewPatient.php">here</a> if you want to view patients list.

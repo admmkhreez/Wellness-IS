@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Patient Overview</title>
+        <title>Patient's Overview</title>
         <link rel="stylesheet" href="wellness.css">
         <link rel="stylesheet" href="bootstrap.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -46,7 +46,7 @@
                             <a class="nav-link" href="homepage.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="viewPatient.php">Patients List</a>
+                            <a class="nav-link" href="viewPatient.php">Patients</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="viewRecords.php">Records</a>
@@ -69,7 +69,7 @@
                 <a class="btn btn-danger" href="logout.php" style="color: white; font-weight: 700; margin-right: 30px">Logout</a>
             </nav>
         <br>
-        <h1 style='color: white;'>Select Record</h1>
+        <h1 style='color: white;'>Patient's Overview</h1>
         <br>
         <div class="container" style=" height: 250px;">
             <form method="post" style="text-align: center;">
