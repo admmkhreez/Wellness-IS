@@ -53,8 +53,6 @@
                 <input type="password" id="password" placeholder="Password" name="password" maxlength="30" required><br>
                 <label for="name" class="inline">Name</label>
                 <input type="text" id="name" placeholder="Name" name="name" maxlength="40" required><br>
-                <label for="position" class="inline">Position</label>
-                <textarea type="text" id="position" name="position" placeholder="Position" maxlength="200" required></textarea><br>
                 <label for="type" class="inline">User Type</label>
                 <input type="text" id="type" placeholder="User Type *all lowercase" name="type" maxlength="10" required><br>
                 <input type="submit" value="Add" class="btn btn-primary">

@@ -17,7 +17,6 @@
         $pw = $_POST["password"];
         $name = $_POST["name"];
         $type = $_POST["type"];
-        $position = $_POST["position"];
 
         $servername = "localhost";
         $username = "root";
@@ -74,14 +73,12 @@
                 <dd class="col-sm-9"><?php echo $pw;?></dd>
                 <dt class="col-sm-3">Name: </dt>
                 <dd class="col-sm-9"><?php echo $name;?></dd>
-                <dt class="col-sm-3">Position: </dt>
-                <dd class="col-sm-9"><?php echo nl2br($position);?></dd>
                 <dt class="col-sm-3">User Type: </dt>
                 <dd class="col-sm-9"><?php echo $type;?></dd>
             </dl>
         
             <?php
-            $insert = "INSERT INTO user (username, password, name, position, type) VALUES ('".$user_name."', '".$pw."', '".$name."', '".$position."', '".$type."')";
+            $insert = "INSERT INTO user (username, password, name, type) VALUES ('".$user_name."', '".$pw."', '".$name."', '".$type."')";
             $data = $conn->query($insert);
 
             if($data === TRUE)

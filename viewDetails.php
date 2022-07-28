@@ -778,12 +778,6 @@
                             <span id="recommendation" style="display: inline-block;"><?php echo nl2br($row["recommendation"]);?></span>
                             </div>
                         </div>
-                        <div class="signature">
-                            <div>
-                                <h6 class="font-weight-bold"><?php echo $row["doneBy"];?></h6>
-                                <p style="line-height: 100%;"><?php echo nl2br($row["position"]);?></p>
-                            </div>
-                        </div>
                         <div class="date">
                             <p>Date: <?php echo $lastUpdate;?></p>
                         </div>

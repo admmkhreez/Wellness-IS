@@ -44,7 +44,6 @@ $resultCheck = $conn->query($queryCheck);
                 $_SESSION["username"] = $username ;
                 $_SESSION["type"] = $row["type"];
                 $_SESSION["name"] = $row["name"];
-                $_SESSION["pos"] = $row["position"];
                 //redirect to page homepage.php
                 header("Location:homepage.php");
 		    }
