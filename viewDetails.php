@@ -50,8 +50,7 @@
             ?>
             <div>
                 <div id="non-printable">
-                    <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
-                    <span class="nav-item" style="padding-left: 10px;color: white;"><?php echo $_SESSION["name"];?></span>
+                    <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">  
                         <div class="container-sm">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -186,46 +185,46 @@
                                         <div class="accordion-body">
                                             <dl class="row">
                                                 <dt class="col-sm-3">Smoker/Non Smoker: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['smoker'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['smokerUsed'];?></dd>
                                                 <dt class="col-sm-3">Asthma: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['asthma'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['asthmaUsed'];?></dd>
                                                 <dt class="col-sm-3">Diabetes: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['diabetes'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['diabetesUsed'];?></dd>
                                                 <dt class="col-sm-3">Heart Disease: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['heart_disease'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['heart_diseaseUsed'];?></dd>
                                                 <dt class="col-sm-3">Hypertension: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['hypertension'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['hypertensionUsed'];?></dd>
                                                 <dt class="col-sm-3">Stroke: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['stroke'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['strokeUsed'];?></dd>
                                                 <dt class="col-sm-3">Cancer: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['cancer'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['cancerUsed'];?></dd>
                                                 <dt class="col-sm-3">Tuberculosis: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['tuberculosis'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['tuberculosisUsed'];?></dd>
                                                 <dt class="col-sm-3">Skin Disease: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['skin_disease'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['skin_diseaseUsed'];?></dd>
                                                 <dt class="col-sm-3">Kidney Problem: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['kidneyp'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['kidneypUsed'];?></dd>
                                                 <dt class="col-sm-3">Fits/Psychiatric: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['fits_psychiatric'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['fits_psychiatricUsed'];?></dd>
                                             </dl>
                                             <h3>Family History</h3>
                                             <dl class="row">
                                                 <dt class="col-sm-3">Father: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['father_history'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['fatherUsed'];?></dd>
                                                 <dt class="col-sm-3">Mother: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['mother_history'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['motherUsed'];?></dd>
                                                 <dt class="col-sm-3">Siblings: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['siblings_history'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['siblingsUsed'];?></dd>
                                                 <dt class="col-sm-3">Habits: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['habits'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['habitsUsed'];?></dd>
                                                 <dt class="col-sm-3">Allergy: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['allergy'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['allergyUsed'];?></dd>
                                                 <dt class="col-sm-3">Others: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['others'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['othersUsed'];?></dd>
                                                 <dt class="col-sm-3">Medication: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['medication'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['medicationUsed'];?></dd>
                                                 <dt class="col-sm-3">Last Updated On: </dt>
-                                                <dd class="col-sm-9"><?php echo $row['lastUpdateMH'];?></dd>
+                                                <dd class="col-sm-9"><?php echo $row['historyDate'];?></dd>
                                             </dl>
                                         </div>
                                     </div>

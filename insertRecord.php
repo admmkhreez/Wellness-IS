@@ -35,6 +35,25 @@
         {
             while($row=$data->fetch_assoc())
             {
+                $smoker = $row["smoker"];
+                $asthma = $row["asthma"];
+                $diabetes = $row["diabetes"];
+                $heart_disease = $row["heart_disease"];
+                $hypertension = $row["hypertension"];
+                $stroke = $row["stroke"];
+                $cancer = $row["cancer"];
+                $tb = $row["tuberculosis"];
+                $skin_disease = $row["skin_disease"];
+                $kidneyp = $row["kidneyp"];
+                $fits = $row["fits_psychiatric"];
+                $father = $row["father_history"];
+                $mother = $row["mother_history"];
+                $siblings = $row["siblings_history"];
+                $habits = $row["habits"];
+                $allergy = $row["allergy"];
+                $others = $row["others"];
+                $medication = $row["medication"];
+                $historyDate = $row["lastUpdateMH"];
                 $appearance = $row["appearance"];
                 $weight = $row["weight"];
                 $height = $row["height"];
@@ -131,7 +150,6 @@
             }
             ?>
             <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
-            <span class="nav-item" style="padding-left: 10px;color: white;"><?php echo $_SESSION["name"];?></span>
                 <div class="container-sm">
                     <ul class="navbar-nav">
                         <li class="nav-item">
@@ -396,40 +414,48 @@
             <?php
                 if($sex == "Female"){
                     if ($package == "Custom"){
-                        $insert = "INSERT INTO record (mrn, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
+                        $insert = "INSERT INTO record (mrn, smokerUsed, asthmaUsed, diabetesUsed, heart_diseaseUsed, hypertensionUsed, strokeUsed, cancerUsed, tuberculosisUsed, skin_diseaseUsed, kidneypUsed, fits_psychiatricUsed, fatherUsed, motherUsed, siblingsUsed, habitsUsed, allergyUsed, othersUsed, 
+                        medicationUsed, historyDate, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
                         excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
                         usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, packageUsed, addonsUsed) VALUES
-                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        ('".$mrn."', '".$smoker."', '".$asthma."', '".$diabetes."', '".$heart_disease."', '".$hypertension."', '".$stroke."', '".$cancer."', '".$tb."', '".$skin_disease."', '".$kidneyp."', '".$fits."', '".$father."', '".$mother."', '".$siblings."', '".$habits."', '".$allergy."', '".$others."', 
+                        '".$medication."', '".$historyDate."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
                         '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
                         '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
                         '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', '".$breast."', '".$lmp."', '".$gynaecology."', '".$lastps."', '".$cxr."', '".$ecg."', '".$mammogram."', '".$us_breast."', 
                         '".$us_abdopel."', '".$stresstest."', '".$pta."', '".$lft."', '".$urine."', '".$blood."', '".$impression."', '".$recommendation."', '".$date."', '".$visits."', '".$doneBy."', '".$package."', '".$addons."')";
                     }
                     elseif ($package == "Premium"){
-                        $insert = "INSERT INTO record (mrn, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
+                        $insert = "INSERT INTO record (mrn, smokerUsed, asthmaUsed, diabetesUsed, heart_diseaseUsed, hypertensionUsed, strokeUsed, cancerUsed, tuberculosisUsed, skin_diseaseUsed, kidneypUsed, fits_psychiatricUsed, fatherUsed, motherUsed, siblingsUsed, habitsUsed, allergyUsed, othersUsed, 
+                        medicationUsed, historyDate, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
                         excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
                         usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, packageUsed, addonsUsed) VALUES
-                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        ('".$mrn."', '".$smoker."', '".$asthma."', '".$diabetes."', '".$heart_disease."', '".$hypertension."', '".$stroke."', '".$cancer."', '".$tb."', '".$skin_disease."', '".$kidneyp."', '".$fits."', '".$father."', '".$mother."', '".$siblings."', '".$habits."', '".$allergy."', '".$others."', 
+                        '".$medication."', '".$historyDate."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
                         '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
                         '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
                         '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', '".$breast."', '".$lmp."', '".$gynaecology."', '".$lastps."', '".$cxr."', '".$ecg."', NULL, NULL, 
                         '".$us_abdopel."', '".$stresstest."', NULL, NULL, '".$urine."', '".$blood."', '".$impression."', '".$recommendation."', '".$date."', '".$visits."', '".$doneBy."', '".$package."', '".$addons."')";
                     }
                     elseif ($package == "Comprehensive"){
-                        $insert = "INSERT INTO record (mrn, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
+                        $insert = "INSERT INTO record (mrn, smokerUsed, asthmaUsed, diabetesUsed, heart_diseaseUsed, hypertensionUsed, strokeUsed, cancerUsed, tuberculosisUsed, skin_diseaseUsed, kidneypUsed, fits_psychiatricUsed, fatherUsed, motherUsed, siblingsUsed, habitsUsed, allergyUsed, othersUsed, 
+                        medicationUsed, historyDate, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
                         excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
                         usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, packageUsed, addonsUsed) VALUES
-                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        ('".$mrn."', '".$smoker."', '".$asthma."', '".$diabetes."', '".$heart_disease."', '".$hypertension."', '".$stroke."', '".$cancer."', '".$tb."', '".$skin_disease."', '".$kidneyp."', '".$fits."', '".$father."', '".$mother."', '".$siblings."', '".$habits."', '".$allergy."', '".$others."', 
+                        '".$medication."', '".$historyDate."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
                         '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
                         '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
                         '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', '".$breast."', '".$lmp."', '".$gynaecology."', '".$lastps."', '".$cxr."', '".$ecg."', NULL, NULL, 
                         '".$us_abdopel."', NULL, NULL, NULL, '".$urine."', '".$blood."', '".$impression."', '".$recommendation."', '".$date."', '".$visits."', '".$doneBy."', '".$package."', '".$addons."')";
                     }
                     else{
-                        $insert = "INSERT INTO record (mrn, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
+                        $insert = "INSERT INTO record (mrn, smokerUsed, asthmaUsed, diabetesUsed, heart_diseaseUsed, hypertensionUsed, strokeUsed, cancerUsed, tuberculosisUsed, skin_diseaseUsed, kidneypUsed, fits_psychiatricUsed, fatherUsed, motherUsed, siblingsUsed, habitsUsed, allergyUsed, othersUsed, 
+                        medicationUsed, historyDate, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
                         excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
                         usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, packageUsed, addonsUsed) VALUES
-                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        ('".$mrn."', '".$smoker."', '".$asthma."', '".$diabetes."', '".$heart_disease."', '".$hypertension."', '".$stroke."', '".$cancer."', '".$tb."', '".$skin_disease."', '".$kidneyp."', '".$fits."', '".$father."', '".$mother."', '".$siblings."', '".$habits."', '".$allergy."', '".$others."', 
+                        '".$medication."', '".$historyDate."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
                         '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
                         '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
                         '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', '".$breast."', '".$lmp."', '".$gynaecology."', '".$lastps."', '".$cxr."', '".$ecg."', NULL, NULL, 
@@ -438,40 +464,48 @@
                 }
                 else{
                     if ($package == "Custom"){
-                        $insert = "INSERT INTO record (mrn, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
+                        $insert = "INSERT INTO record (mrn, smokerUsed, asthmaUsed, diabetesUsed, heart_diseaseUsed, hypertensionUsed, strokeUsed, cancerUsed, tuberculosisUsed, skin_diseaseUsed, kidneypUsed, fits_psychiatricUsed, fatherUsed, motherUsed, siblingsUsed, habitsUsed, allergyUsed, othersUsed, 
+                        medicationUsed, historyDate, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
                         excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
                         usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, packageUsed, addonsUsed) VALUES
-                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        ('".$mrn."', '".$smoker."', '".$asthma."', '".$diabetes."', '".$heart_disease."', '".$hypertension."', '".$stroke."', '".$cancer."', '".$tb."', '".$skin_disease."', '".$kidneyp."', '".$fits."', '".$father."', '".$mother."', '".$siblings."', '".$habits."', '".$allergy."', '".$others."', 
+                        '".$medication."', '".$historyDate."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
                         '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
                         '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
                         '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', NULL, NULL, NULL, NULL, '".$cxr."', '".$ecg."', '".$mammogram."', '".$us_breast."', 
                         '".$us_abdopel."', '".$stresstest."', '".$pta."', '".$lft."', '".$urine."', '".$blood."', '".$impression."', '".$recommendation."', '".$date."', '".$visits."', '".$doneBy."', '".$package."', '".$addons."')";
                     }
                     elseif ($package == "Premium"){
-                        $insert = "INSERT INTO record (mrn, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
+                        $insert = "INSERT INTO record (mrn, smokerUsed, asthmaUsed, diabetesUsed, heart_diseaseUsed, hypertensionUsed, strokeUsed, cancerUsed, tuberculosisUsed, skin_diseaseUsed, kidneypUsed, fits_psychiatricUsed, fatherUsed, motherUsed, siblingsUsed, habitsUsed, allergyUsed, othersUsed, 
+                        medicationUsed, historyDate, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
                         excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
                         usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, packageUsed, addonsUsed) VALUES
-                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        ('".$mrn."', '".$smoker."', '".$asthma."', '".$diabetes."', '".$heart_disease."', '".$hypertension."', '".$stroke."', '".$cancer."', '".$tb."', '".$skin_disease."', '".$kidneyp."', '".$fits."', '".$father."', '".$mother."', '".$siblings."', '".$habits."', '".$allergy."', '".$others."', 
+                        '".$medication."', '".$historyDate."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
                         '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
                         '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
                         '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', NULL, NULL, NULL, NULL, '".$cxr."', '".$ecg."', NULL, NULL, 
                         '".$us_abdopel."', '".$stresstest."', NULL, NULL, '".$urine."', '".$blood."', '".$impression."', '".$recommendation."', '".$date."', '".$visits."', '".$doneBy."', '".$package."', '".$addons."')";
                     }
                     elseif ($package == "Comprehensive"){
-                        $insert = "INSERT INTO record (mrn, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
+                        $insert = "INSERT INTO record (mrn, smokerUsed, asthmaUsed, diabetesUsed, heart_diseaseUsed, hypertensionUsed, strokeUsed, cancerUsed, tuberculosisUsed, skin_diseaseUsed, kidneypUsed, fits_psychiatricUsed, fatherUsed, motherUsed, siblingsUsed, habitsUsed, allergyUsed, othersUsed, 
+                        medicationUsed, historyDate, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
                         excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
                         usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, packageUsed, addonsUsed) VALUES
-                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        ('".$mrn."', '".$smoker."', '".$asthma."', '".$diabetes."', '".$heart_disease."', '".$hypertension."', '".$stroke."', '".$cancer."', '".$tb."', '".$skin_disease."', '".$kidneyp."', '".$fits."', '".$father."', '".$mother."', '".$siblings."', '".$habits."', '".$allergy."', '".$others."', 
+                        '".$medication."', '".$historyDate."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
                         '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
                         '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
                         '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', NULL, NULL, NULL, NULL, '".$cxr."', '".$ecg."', NULL, NULL, 
                         '".$us_abdopel."', NULL, NULL, NULL, '".$urine."', '".$blood."', '".$impression."', '".$recommendation."', '".$date."', '".$visits."', '".$doneBy."', '".$package."', '".$addons."')";
                     }
                     else{
-                        $insert = "INSERT INTO record (mrn, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
+                        $insert = "INSERT INTO record (mrn, smokerUsed, asthmaUsed, diabetesUsed, heart_diseaseUsed, hypertensionUsed, strokeUsed, cancerUsed, tuberculosisUsed, skin_diseaseUsed, kidneypUsed, fits_psychiatricUsed, fatherUsed, motherUsed, siblingsUsed, habitsUsed, allergyUsed, othersUsed, 
+                        medicationUsed, historyDate, appearanceUsed, weightUsed, heightUsed, bmiUsed, systolicUsed, diastolicUsed, pulseUsed, va_aidedrUsed, va_aidedlUsed, va_unaidedrUsed, va_unaidedlUsed, colour_rUsed, colour_lUsed, fundoscopy_rUsed, fundoscopy_lUsed, nose, throat, neck, skin, 
                         excanal_r, excanal_l, eardrum_r, eardrum_l, discharged_r, discharged_l, sound, murmur, airentry, chestexp, breathsound, liver, spleen, kidney, mentalfunct, coordination, gait, genitalia, rectal, lpow_r, lpow_l, lref_r, lref_l, lsen_r, lsen_l, upow_r, upow_l, uref_r, uref_l, usen_r,
                         usen_l, breast, lmp, gynaecology, lastps, cxr, ecg, mammogram, us_breast, us_abdopel, stresstest, pta, lft, urine, blood, impression, recommendation, lastUpdate, visits, doneBy, packageUsed, addonsUsed) VALUES
-                        ('".$mrn."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
+                        ('".$mrn."', '".$smoker."', '".$asthma."', '".$diabetes."', '".$heart_disease."', '".$hypertension."', '".$stroke."', '".$cancer."', '".$tb."', '".$skin_disease."', '".$kidneyp."', '".$fits."', '".$father."', '".$mother."', '".$siblings."', '".$habits."', '".$allergy."', '".$others."', 
+                        '".$medication."', '".$historyDate."', '".$appearance."', '".$weight."', '".$height."', '".$bmi."', '".$systolic."', '".$diastolic."', '".$pulse."', '".$va_aidedr."', '".$va_aidedl."', '".$va_unaidedr."', '".$va_unaidedl."', '".$colour_r."', '".$colour_l."',
                         '".$fundoscopy_r."', '".$fundoscopy_l."', '".$nose."', '".$throat."', '".$neck."', '".$skin."', '".$excanal_r."', '".$excanal_l."', '".$eardrum_r."', '".$eardrum_l."', '".$discharged_r."', '".$discharged_l."', '".$sound."', '".$murmur."',
                         '".$airentry."', '".$chestexp."', '".$breathsound."', '".$liver."', '".$spleen."', '".$kidney."', '".$mentalfunct."', '".$coordination."', '".$gait."', '".$genitalia."', '".$rectal."', '".$lpow_r."', '".$lpow_l."', '".$lref_r."', '".$lref_l."', 
                         '".$lsen_r."', '".$lsen_l."', '".$upow_r."', '".$upow_l."', '".$uref_r."', '".$uref_l."', '".$usen_r."',  '".$usen_l."', NULL, NULL, NULL, NULL, '".$cxr."', '".$ecg."', NULL, NULL, 

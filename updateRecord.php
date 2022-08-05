@@ -112,7 +112,6 @@
         $bmi = number_format((float)$temp, 2, '.', '');
         ?>
         <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
-        <span class="nav-item" style="padding-left: 10px;color: white;"><?php echo $_SESSION["name"];?></span>
             <div class="container-sm">
                 <ul class="navbar-nav">
                     <li class="nav-item">

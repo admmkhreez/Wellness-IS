@@ -33,7 +33,6 @@
             $data = $conn->query($display);
         ?>
             <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
-            <span class="nav-item" style="padding-left: 10px;color: white;"><?php echo $_SESSION["name"];?></span>
                 <div class="container-sm">
                     <ul class="navbar-nav">
                         <li class="nav-item">
@@ -82,7 +81,7 @@
                         <button formaction="selectRecord.php" class="btn btn-primary">View Record</button>
                         <button formaction="activeDetails.php" class="btn btn-primary">Latest Details</button>
                         <button formaction="editProfile.php" class="btn btn-primary active">Edit Profile</button>
-                        <button formaction="historyUpdateForm.php" class="btn btn-primary">Edit Medical History</button>  
+                        <button formaction="checkHistoryForm.php" class="btn btn-primary">Check Medical History</button>  
                         <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
                         <div class="btn-group" role="group">
                             <button id="btnGroupDrop" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
