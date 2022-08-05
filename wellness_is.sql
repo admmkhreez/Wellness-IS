@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 28, 2022 at 01:14 PM
+-- Generation Time: Aug 05, 2022 at 02:25 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -55,13 +55,13 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `skin_disease` varchar(10) DEFAULT NULL,
   `kidneyp` varchar(10) DEFAULT NULL,
   `fits_psychiatric` varchar(10) DEFAULT NULL,
-  `father_history` varchar(30) DEFAULT NULL,
-  `mother_history` varchar(30) DEFAULT NULL,
-  `siblings_history` varchar(30) DEFAULT NULL,
-  `habits` varchar(30) DEFAULT NULL,
-  `allergy` varchar(30) DEFAULT NULL,
-  `others` varchar(30) DEFAULT NULL,
-  `medication` varchar(50) DEFAULT NULL,
+  `father_history` varchar(50) DEFAULT NULL,
+  `mother_history` varchar(50) DEFAULT NULL,
+  `siblings_history` varchar(50) DEFAULT NULL,
+  `habits` varchar(50) DEFAULT NULL,
+  `allergy` varchar(50) DEFAULT NULL,
+  `others` varchar(60) DEFAULT NULL,
+  `medication` varchar(100) DEFAULT NULL,
   `package` varchar(20) DEFAULT NULL,
   `lastUpdateMH` datetime DEFAULT NULL,
   `registeredOn` datetime DEFAULT NULL,
@@ -97,6 +97,25 @@ DROP TABLE IF EXISTS `record`;
 CREATE TABLE IF NOT EXISTS `record` (
   `recordID` int(11) NOT NULL AUTO_INCREMENT,
   `mrn` varchar(10) NOT NULL,
+  `smokerUsed` varchar(10) DEFAULT NULL,
+  `asthmaUsed` varchar(10) DEFAULT NULL,
+  `diabetesUsed` varchar(10) DEFAULT NULL,
+  `heart_diseaseUsed` varchar(10) DEFAULT NULL,
+  `hypertensionUsed` varchar(10) DEFAULT NULL,
+  `strokeUsed` varchar(10) DEFAULT NULL,
+  `cancerUsed` varchar(10) DEFAULT NULL,
+  `tuberculosisUsed` varchar(10) DEFAULT NULL,
+  `skin_diseaseUsed` varchar(10) DEFAULT NULL,
+  `kidneypUsed` varchar(10) DEFAULT NULL,
+  `fits_psychiatricUsed` varchar(10) DEFAULT NULL,
+  `fatherUsed` varchar(50) DEFAULT NULL,
+  `motherUsed` varchar(50) DEFAULT NULL,
+  `siblingsUsed` varchar(50) DEFAULT NULL,
+  `habitsUsed` varchar(50) DEFAULT NULL,
+  `allergyUsed` varchar(50) DEFAULT NULL,
+  `othersUsed` varchar(60) DEFAULT NULL,
+  `medicationUsed` varchar(100) NOT NULL,
+  `historyDate` datetime DEFAULT NULL,
   `appearanceUsed` varchar(20) DEFAULT NULL,
   `weightUsed` float DEFAULT NULL,
   `heightUsed` float DEFAULT NULL,
