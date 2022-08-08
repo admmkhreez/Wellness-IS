@@ -120,7 +120,7 @@
             </div>
             <br>
             <h3 style="text-align: center; margin-top: -5px; color: white;">Records History</h3>
-            <table style="width: 100%;" class="table table-bordered">
+            <table style="width: 100%;" class="table table-striped">
                 <thead class="table-dark" style="text-align:center;">
                     <tr>
                         <th rowspan="2">
@@ -152,7 +152,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody style="background-color: #e3f0ff;">
+                <tbody style="background-color: white;">
                 <?php
                     $per_page_record = 10;  // Number of entries to show in a page.   
                     // Look for a GET variable page if not found default is 1.        
@@ -197,17 +197,17 @@
                         </td>
                         <td style="text-align: right;">
                             <form method="post">
-                            <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
-                            <input type="hidden" name="visits" value="<?php echo $row["visits"];?>">
-                            <button formaction="viewDetails.php" class="btn btn-primary">View</button>
-                        <?php
-                            if ($_SESSION["type"] == "admin"){
-                        ?>
-                                <button formaction="deleteRecord.php" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?');">Delete</button>
-                        <?php
-                            }
-                        ?>
-                        </form>
+                                <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
+                                <input type="hidden" name="visits" value="<?php echo $row["visits"];?>">
+                                <button formaction="viewDetails.php" class="btn btn-primary">View</button>
+                                <?php
+                                    if ($_SESSION["type"] == "admin"){
+                                ?>
+                                        <button formaction="deleteRecord.php" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?');">Delete</button>
+                                <?php
+                                    }
+                                ?>
+                            </form>
                         </td>
                     </tr>
                 <?php

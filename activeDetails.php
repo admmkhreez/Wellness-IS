@@ -14,11 +14,6 @@
             th{
                 font-weight: 700;
             }
-            table{
-                border: none; 
-                width: 80%; 
-                table-layout: fixed;
-            }
             span{
                 margin-left: 5px;
             }
@@ -254,7 +249,7 @@
                                                 <dd class="col-sm-9"><?php echo $row['systolic'];?>/<?php echo $row['diastolic'];?></dd>
                                             </dl>
                                             <h3>Eyes</h3>
-                                            <table style="table-layout: fixed; width:100%;" class="table table-bordered">
+                                            <table style="table-layout: fixed; width:100%;" class="table table-striped">
                                                 <thead class="table-dark" style="text-align:center;">
                                                     <tr>
                                                         <th></th>

@@ -62,7 +62,7 @@
             $data = $conn->query($display);
         ?>
         <form method="post">
-            <table style="" class="table table-bordered">
+            <table style="" class="table table-striped">
                 <thead class="table-dark" style="text-align:center;">
                     <tr>
                         <th rowspan="2">
@@ -82,13 +82,13 @@
                         </th>
                     </tr>
                 </thead>
-            <?php
-            if ($data->num_rows > 0)
-            {
-                while($row = $data->fetch_assoc())
-                {
-            ?> 
-                <tbody style="background-color:#e3f0ff;">
+                <tbody style="background-color: white;">
+                <?php
+                    if ($data->num_rows > 0)
+                    {
+                        while($row = $data->fetch_assoc())
+                        {
+                ?> 
                     <tr>
                         <td><?php echo $row['username'];?></td>
                         <td><?php echo $row['name'];?></td>
@@ -100,7 +100,7 @@
                         </td>
                         <input type="hidden" name="id" value="<?php echo $row["ID"];?>">
                     </tr>
-                </tbody>
+               
             <?php
                 }
             }
@@ -108,7 +108,8 @@
             {
                 echo "<tr><td colspan = '5'>No User Found</td></tr>";
             }
-            ?>
+            ?> 
+                </tbody>
             </table>
         </form>
         <a class="btn btn-primary" href="addUser.php" style="width: 100px;">Add User</a>

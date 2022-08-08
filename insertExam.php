@@ -92,7 +92,7 @@
             </dl>
         
             <h3>Eyes</h3>
-            <table style="table-layout: fixed; width:100%;" class="table table-bordered">
+            <table style="table-layout: fixed; width:100%;" class="table table-striped">
                 <thead class="table-dark" style="text-align:center;">
                     <tr>
                         <th></th>
@@ -100,7 +100,7 @@
                         <th>Right</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="background-color: white;">
                 <tr>
                     <th>Visual Acuity(Aided)</th>
                     <td><?php echo $va_aidedl;?></td>

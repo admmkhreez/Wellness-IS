@@ -408,7 +408,6 @@ fieldset {
 }
 
 legend {
-  float: left;
   width: 300px;
   padding: 0;
   margin-bottom: 0.7rem;

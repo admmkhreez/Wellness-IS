@@ -66,7 +66,7 @@
         </nav>
         <br>
         <h1 style="color: white;">KPJ Klang Wellness Information System</h1>
-        <h2  style="text-align:center; color: white;">Register Patient</h2>
+        <h2 style="text-align:center; color: white;">Register Patient</h2>
         <br>
         <div class="container">
             <form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="post" style="margin-left: 40px;">
@@ -120,7 +120,7 @@
                 <label class="inline" for="telephone">Telephone: </label>
                 <input type="tel" id="telephone" name="telephone" placeholder="Telephone" maxlength="15"><br>
                 <fieldset>
-                <legend>Sex:</legend><br>
+                <legend>Sex:</legend>
                     <input type="radio" class="form-check-input" id="male" name="sex" value="Male" required>
                     <label class="inline-radio" for="male">Male</label>
                     <input type="radio" class="form-check-input" id="female" name="sex" value="Female" required>

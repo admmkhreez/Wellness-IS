@@ -66,7 +66,7 @@
                 Click <a href="viewPatient.php">here</a> if you want to view patients list.
             </div>
         <br>
-            <table style="width: 100%;" height="100%" class="table table-bordered">
+            <table style="width: 100%;" height="100%" class="table table-striped">
                 <thead class="table-dark" style="text-align:center;">
                     <tr>
                         <th rowspan="2">
@@ -102,24 +102,25 @@
                         <th colspan="2">Report Form</th>
                     </tr>
                 </thead>
-            <?php
-            $per_page_record = 10;  // Number of entries to show in a page.   
-            // Look for a GET variable page if not found default is 1.        
-            if (isset($_GET["page"])) {    
-                $page  = $_GET["page"];    
-            }    
-            else {    
-              $page=1;    
-            }    
-        
-            $start_from = ($page-1) * $per_page_record;     
-        
-            $query = "SELECT a.mrn, name, ic_passport, addonsUsed, lastUpdateMH, lastUpdate, phyExam, packageUsed, visits  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
-            $rs_result = mysqli_query ($conn, $query);     
+                <tbody style="background-color: white;">
+                <?php
+                    $per_page_record = 10;  // Number of entries to show in a page.   
+                    // Look for a GET variable page if not found default is 1.        
+                    if (isset($_GET["page"])) {    
+                        $page  = $_GET["page"];    
+                    }    
+                    else {    
+                    $page=1;    
+                    }    
+                
+                    $start_from = ($page-1) * $per_page_record;     
+                
+                    $query = "SELECT a.mrn, name, ic_passport, addonsUsed, lastUpdateMH, lastUpdate, phyExam, packageUsed, visits  FROM patient a, record b WHERE a.mrn = b.mrn ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+                    $rs_result = mysqli_query ($conn, $query);     
 
-            while ($row = mysqli_fetch_array($rs_result)) {  
-            ?> 
-                <tbody style="background-color: #e3f0ff; text-align: left;">
+                    while ($row = mysqli_fetch_array($rs_result)) {  
+                ?> 
+                
                     <tr>
                         <td><?php echo $row['mrn'];?></td>
                         <td><?php echo $row['name'];?></td>
@@ -145,10 +146,11 @@
                             </form>
                         </td>
                     </tr>
-                </tbody>
+                
             <?php
             }  
             ?>
+                </tbody>
             </table>
                 <?php
                 

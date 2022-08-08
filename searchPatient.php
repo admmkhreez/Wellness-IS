@@ -66,7 +66,7 @@
                 Click <a href="viewRecords.php">here</a> if you want to search for patient's record.
             </div>
             <br>
-                <table style="width: 100%;" height="100%" class="table table-bordered">
+                <table style="width: 100%;" height="100%" class="table table-striped">
                     <thead class="table-dark" style="text-align:center;">
                         <tr>
                             <th rowspan="2">
@@ -99,24 +99,24 @@
                             </th>
                         </tr>
                     </thead>
+                    <tbody style="background-color: white;">
+                    <?php
+                        $per_page_record = 10;  // Number of entries to show in a page.   
+                        // Look for a GET variable page if not found default is 1.        
+                        if (isset($_GET["page"])) {    
+                            $page  = $_GET["page"];    
+                        }    
+                        else {    
+                        $page=1;    
+                        }    
                     
-                <?php
-                $per_page_record = 10;  // Number of entries to show in a page.   
-                // Look for a GET variable page if not found default is 1.        
-                if (isset($_GET["page"])) {    
-                    $page  = $_GET["page"];    
-                }    
-                else {    
-                $page=1;    
-                }    
-            
-                $start_from = ($page-1) * $per_page_record;
-                $query = "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package FROM patient WHERE mrn LIKE '%$kw%' OR name LIKE '%$kw%' OR ic_passport LIKE '%$kw%' OR email LIKE '%$kw%' OR telephone LIKE '%$kw%' ORDER BY registeredOn DESC LIMIT ". $start_from. ", " .$per_page_record;
-                $rs_result = mysqli_query ($conn, $query);     
+                        $start_from = ($page-1) * $per_page_record;
+                        $query = "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package FROM patient WHERE mrn LIKE '%$kw%' OR name LIKE '%$kw%' OR ic_passport LIKE '%$kw%' OR email LIKE '%$kw%' OR telephone LIKE '%$kw%' ORDER BY registeredOn DESC LIMIT ". $start_from. ", " .$per_page_record;
+                        $rs_result = mysqli_query ($conn, $query);     
 
-                while ($row = mysqli_fetch_array($rs_result)) { 
-                ?> 
-                    <tbody style="background-color: #e3f0ff;">
+                        while ($row = mysqli_fetch_array($rs_result)) { 
+                    ?> 
+                    
                         <tr>
                             <td><?php echo $row['mrn'];?></td>
                             <td><?php echo $row['name'];?></td>

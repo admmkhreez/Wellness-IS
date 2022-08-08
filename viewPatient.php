@@ -65,7 +65,7 @@
                 Click <a href="viewRecords.php">here</a> if you want to search for patient's record.
             </div>
             <br>
-            <table style="width: 100%;" height="100%" class="table table-bordered">
+            <table height="100%" width="100%" class="table table-striped">
                 <thead class="table-dark" style="text-align:center;">
                     <tr>
                         <th rowspan="2">
@@ -97,24 +97,24 @@
                         </th>
                     </tr>
                 </thead>
-            <?php
-            $per_page_record = 10;  // Number of entries to show in a page.   
-            // Look for a GET variable page if not found default is 1.        
-            if (isset($_GET["page"])) {    
-                $page  = $_GET["page"];    
-            }    
-            else {    
-              $page=1;    
-            }    
-        
-            $start_from = ($page-1) * $per_page_record;     
-        
-            $query = "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package FROM patient ORDER BY lastUpdateMH DESC LIMIT ". $start_from. ", " .$per_page_record;
-            $rs_result = mysqli_query ($conn, $query);     
+                <tbody style="background-color: white;">
+                <?php
+                    $per_page_record = 10;  // Number of entries to show in a page.   
+                    // Look for a GET variable page if not found default is 1.        
+                    if (isset($_GET["page"])) {    
+                        $page  = $_GET["page"];    
+                    }    
+                    else {    
+                    $page=1;    
+                    }    
+                
+                    $start_from = ($page-1) * $per_page_record;     
+                
+                    $query = "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package FROM patient ORDER BY lastUpdateMH DESC LIMIT ". $start_from. ", " .$per_page_record;
+                    $rs_result = mysqli_query ($conn, $query);     
 
-            while ($row = mysqli_fetch_array($rs_result)) {  
-            ?> 
-                <tbody style="background-color: #e3f0ff;">
+                    while ($row = mysqli_fetch_array($rs_result)) {  
+                ?> 
                     <tr>
                         <td><?php echo $row['mrn'];?></td>
                         <td><?php echo $row['name'];?></td>
@@ -126,22 +126,23 @@
                         <td><?php echo $row['package'];?></td>
                         <td>
                             <form method="post" class="text-center">
-                            <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
-                            <button formaction="selectRecord.php" class="btn btn-primary">View</button>
-                            <?php
-                                if ($_SESSION["type"] == "admin"){
-                            ?>
-                            <button formaction="deletePatient.php" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
-                            <?php
-                                }
-                            ?>
+                                <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
+                                <button formaction="selectRecord.php" class="btn btn-primary">View</button>
+                                <?php
+                                    if ($_SESSION["type"] == "admin"){
+                                ?>
+                                <button formaction="deletePatient.php" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
+                                <?php
+                                    }
+                                ?>
                             </form>
                         </td>
                     </tr>
-                </tbody>
+                
             <?php
             }  
             ?>
+                </tbody>
             </table>
                 <?php
                 

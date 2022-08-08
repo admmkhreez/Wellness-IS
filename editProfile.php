@@ -154,7 +154,7 @@
                     </div>
                     <div>
                         <fieldset>
-                            <legend>Sex: </legend><br>
+                            <legend>Sex: </legend>
                                 <input type="radio" class="form-check-input" id="male" name="sex" value="Male" <?php if ($row['sex'] == "Male") echo "checked"?> required>
                                 <label class="inline" for="male">Male</label>
                                 <input type="radio" class="form-check-input" id="female" name="sex" value="Female" <?php if ($row['sex'] == "Female") echo "checked"?> required>

@@ -252,7 +252,7 @@
                                             </dl>
                                         
                                             <h3>Eyes</h3>
-                                            <table style="table-layout: fixed; width:100%;" class="table table-bordered">
+                                            <table style="table-layout: fixed; width:100%;" class="table table-striped">
                                                 <thead class="table-dark" style="text-align:center;">
                                                     <tr>
                                                         <th></th>
@@ -260,27 +260,27 @@
                                                         <th>Right</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <th>Visual Acuity(Aided)</th>
-                                                    <td><?php echo $row['va_aidedlUsed'];?></td>
-                                                    <td><?php echo $row['va_aidedrUsed'];?></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Visual Acuity(Unaided)</th>
-                                                    <td><?php echo $row['va_unaidedlUsed'];?></td>
-                                                    <td><?php echo $row['va_unaidedrUsed'];?></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Colour</th>
-                                                    <td><?php echo $row['colour_lUsed'];?></td>
-                                                    <td><?php echo $row['colour_rUsed'];?></td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Fundoscopy</th>
-                                                    <td><?php echo $row['fundoscopy_lUsed'];?></td>
-                                                    <td><?php echo $row['fundoscopy_rUsed'];?></td>
-                                                </tr>
+                                                <tbody style="background-color: white;">
+                                                    <tr>
+                                                        <th>Visual Acuity(Aided)</th>
+                                                        <td><?php echo $row['va_aidedlUsed'];?></td>
+                                                        <td><?php echo $row['va_aidedrUsed'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Visual Acuity(Unaided)</th>
+                                                        <td><?php echo $row['va_unaidedlUsed'];?></td>
+                                                        <td><?php echo $row['va_unaidedrUsed'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Colour</th>
+                                                        <td><?php echo $row['colour_lUsed'];?></td>
+                                                        <td><?php echo $row['colour_rUsed'];?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Fundoscopy</th>
+                                                        <td><?php echo $row['fundoscopy_lUsed'];?></td>
+                                                        <td><?php echo $row['fundoscopy_rUsed'];?></td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -356,7 +356,7 @@
                                                 </dl>
                                             </div>
                                             <h3>Musculoskeletal System</h3>
-                                            <table style="table-layout: fixed; width:100%;" class="table table-bordered">
+                                            <table style="table-layout: fixed; width:100%;" class="table table-striped">
                                                 <thead class="table-dark" style="text-align:center;">
                                                 <tr>
                                                     <th>Lower Limb</th>
@@ -364,7 +364,7 @@
                                                     <th>Right</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody style="background-color: white;">
                                                 <tr>
                                                     <th>Power</th>
                                                     <td><?php echo $row['lpow_l'];?></td>
@@ -382,7 +382,7 @@
                                                 </tr>
                                             </tbody>
                                             </table><br>
-                                            <table style="table-layout: fixed; width:100%;" class="table table-bordered">
+                                            <table style="table-layout: fixed; width:100%;" class="table table-striped">
                                                 <thead class="table-dark" style="text-align:center;">
                                                     <tr>
                                                         <th>Upper Limb</th>
@@ -390,7 +390,7 @@
                                                         <th>Right</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody style="background-color: white;">
                                                     <tr>
                                                         <th>Power</th>
                                                         <td><?php echo $row['upow_l'];?></td>
