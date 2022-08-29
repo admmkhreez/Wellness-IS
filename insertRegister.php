@@ -131,6 +131,7 @@
                 <button class='btn btn-primary' onclick="window.location.href='homepage.php'">Back to Home Page</button><br><br>
                 <form method="post">
                     <input type="hidden" value="<?php echo $mrn;?>" name="mrn">
+                    <button formaction="historyForm.php" class="btn btn-primary">Fill Medical History</button>
                     <button formaction="activeDetails.php" class="btn btn-primary">View</button>
                 </form>
             <?php

@@ -34,6 +34,15 @@
                 return confirm("Are you sure you want to reset all input?");
             }
         </script>
+        <style>
+            .unstyled-button {
+                border: none;
+                padding: 0;
+                background: none;
+                text-decoration: underline;
+                color: blue;
+            }
+        </style>
     </head>
     <body>
         <nav class="navbar sticky-top navbar-expand-sm bg-dark navbar-dark">
@@ -128,7 +137,10 @@
         {
             while($row=$data->fetch_assoc()){
                 if ($row['smoker'] == NULL){
-                    echo "<div style='text-align: center; margin-top: 25px;'>Not Medical History found. Enter <a href='historyForm.php'>Here</a></div>";
+                    echo    "<div style='text-align: center; margin-top: 25px;'>";
+                    echo    "<form method='post'>";
+                    echo    "Not Medical History found. Enter <button formaction='historyForm.php' class='unstyled-button'>Here</a>";
+                    echo    "<input type='hidden' name='mrn' value='$mrn'></form></div>";
                 }
                 else{
         ?> 
