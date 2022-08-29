@@ -1,0 +1,3 @@
+System Rules:
+1. If patient is deleted, record can't be viewed anymore
+2. Patient and nurse must fill in medical history and physical exam before doctor wants to enter report

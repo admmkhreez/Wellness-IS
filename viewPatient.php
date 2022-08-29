@@ -9,6 +9,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="wellness.css">
             <link rel="stylesheet" href="bootstrap.css">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         </head>
         <?php
             $servername = "localhost";
@@ -37,11 +38,27 @@
                         <li class="nav-item">
                             <a class="nav-link" href="viewRecords.php">Records</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="analysis" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Analysis
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="analysis">
+                                <li><a class="dropdown-item" href="patientAnalysis.php">Patient's Analysis</a></li>
+                                <li><a class="dropdown-item" href="recordAnalysis.php">Record's Analysis</a></li>
+                            </ul>
+                        </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
                         ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="viewUser.php">View User</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="adminTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Administrator
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="adminTools">
+                                <li><a class="dropdown-item" href="viewUser.php">View User</a></li>
+                                <li><a class="dropdown-item" href="managePatient.php">Manage Patients</a></li>
+                                <li><a class="dropdown-item" href="manageRecords.php">Manage Records</a></li>
+                            </ul>
                         </li>
                         <?php
                             }
@@ -65,6 +82,44 @@
                 Click <a href="viewRecords.php">here</a> if you want to search for patient's record.
             </div>
             <br>
+            <div style="text-align: right;" id="filtering">
+                <form method="post">
+                    <span style="color: white;">Filter:</span>
+                    <select id="disease" name="filterDisease" class="btn filter">
+                        <option value="" selected hidden>By Disease</option>
+                        <option value="">Any</option>
+                        <option value="smoker">Smoker</option>
+                        <option value="asthma">Asthma</option>
+                        <option value="diabetes">Diabetes</option>
+                        <option value="heart_disease">Heart Disease</option>
+                        <option value="hypertension">Hypertension</option>
+                        <option value="stroke">Stroke</option>
+                        <option value="cancer">Cancer</option>
+                        <option value="tuberculosis">Tuberculosis</option>
+                        <option value="skin_disease">Skin Disease</option>
+                        <option value="kidneyp">Kidney Problem</option>
+                        <option value="fits_psychiatric">Fits & Psychiatric</option>
+                    </select>        
+                    <select id="sex" name="filterSex" class="btn filter">
+                        <option value="" selected hidden>By Sex</option>
+                        <option value="">Any</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <select id="package" name="filterPackage" class="btn filter">
+                        <option value="" selected hidden>By Package</option>
+                        <option value="">Any</option>
+                        <option value="Essential">Essential</option>
+                        <option value="Comprehensive">Comprehensive</option>
+                        <option value="Premium">Premium</option>
+                        <option value="Custom">Custom</option>
+                    </select>
+                    <button formaction="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" style="border: none;">
+                        <img src="filter.svg" style="height: 30px; width:15px; float:center; text-align: center">
+                    </button>
+                    <input type="hidden" name="filter" value="">
+                </form>
+            </div>
             <table height="100%" width="100%" class="table table-striped">
                 <thead class="table-dark" style="text-align:center;">
                     <tr>
@@ -107,12 +162,76 @@
                     else {    
                     $page=1;    
                     }    
-                
-                    $start_from = ($page-1) * $per_page_record;     
-                
-                    $query = "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package FROM patient ORDER BY lastUpdateMH DESC LIMIT ". $start_from. ", " .$per_page_record;
-                    $rs_result = mysqli_query ($conn, $query);     
+                    $start_from = ($page-1) * $per_page_record;
 
+                    if (isset($_POST["filter"])){
+                        $filterDisease = $_POST["filterDisease"];
+                        $filterSex = $_POST["filterSex"];
+                        $filterPackage = $_POST["filterPackage"];
+                        if (!empty($filterDisease) AND !empty($filterSex) AND !empty($filterPackage)){
+                            $query =    "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package
+                                        FROM patient 
+                                        WHERE $filterDisease = 'Yes' AND sex = '".$filterSex."' AND package = '".$filterPackage."'
+                                        ORDER BY registeredOn 
+                                        DESC LIMIT ". $start_from. ", " .$per_page_record;
+                        }
+                        elseif (!empty($filterDisease) AND !empty($filterSex) AND empty($filterPackage)){
+                            $query =    "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package
+                                        FROM patient 
+                                        WHERE $filterDisease = 'Yes' AND sex = '".$filterSex."'
+                                        ORDER BY registeredOn 
+                                        DESC LIMIT ". $start_from. ", " .$per_page_record;
+                        }
+                        elseif (!empty($filterDisease) AND empty($filterSex) AND empty($filterPackage)){
+                            $query =    "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package
+                                        FROM patient 
+                                        WHERE $filterDisease = 'Yes'
+                                        ORDER BY registeredOn 
+                                        DESC LIMIT ". $start_from. ", " .$per_page_record;
+                        }
+                        elseif (empty($filterDisease) AND !empty($filterSex) AND !empty($filterPackage)){
+                            $query =    "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package
+                                        FROM patient 
+                                        WHERE sex = '".$filterSex."' AND package = '".$filterPackage."'
+                                        ORDER BY registeredOn 
+                                        DESC LIMIT ". $start_from. ", " .$per_page_record;
+                        }
+                        elseif (empty($filterDisease) AND empty($filterSex) AND !empty($filterPackage)){
+                            $query =    "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package
+                                        FROM patient 
+                                        WHERE package = '".$filterPackage."'
+                                        ORDER BY registeredOn 
+                                        DESC LIMIT ". $start_from. ", " .$per_page_record;
+                        }
+                        elseif (!empty($filterDisease) AND empty($filterSex) AND !empty($filterPackage)){
+                            $query =    "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package
+                                        FROM patient 
+                                        WHERE $filterDisease = 'Yes' AND package = '".$filterPackage."'
+                                        ORDER BY registeredOn 
+                                        DESC LIMIT ". $start_from. ", " .$per_page_record;
+                        }
+                        elseif (empty($filterDisease) AND !empty($filterSex) AND empty($filterPackage)){
+                            $query =    "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package
+                                        FROM patient 
+                                        WHERE sex = '".$filterSex."'
+                                        ORDER BY registeredOn 
+                                        DESC LIMIT ". $start_from. ", " .$per_page_record;
+                        }
+                        else{
+                            $query =    "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package
+                                        FROM patient 
+                                        ORDER BY registeredOn 
+                                        DESC LIMIT ". $start_from. ", " .$per_page_record;
+                        }
+
+                    }
+                    else{     
+                        $query =    "SELECT mrn, name, ic_passport, address, email, telephone, registeredOn, package
+                                    FROM patient 
+                                    ORDER BY registeredOn 
+                                    DESC LIMIT ". $start_from. ", " .$per_page_record;
+                    }
+                    $rs_result = mysqli_query ($conn, $query);     
                     while ($row = mysqli_fetch_array($rs_result)) {  
                 ?> 
                     <tr>
@@ -128,13 +247,6 @@
                             <form method="post" class="text-center">
                                 <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
                                 <button formaction="selectRecord.php" class="btn btn-primary">View</button>
-                                <?php
-                                    if ($_SESSION["type"] == "admin"){
-                                ?>
-                                <button formaction="deletePatient.php" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
-                                <?php
-                                    }
-                                ?>
                             </form>
                         </td>
                     </tr>
@@ -145,8 +257,67 @@
                 </tbody>
             </table>
                 <?php
-                
-                $query = "SELECT COUNT(*) FROM patient";     
+                if (isset($_POST["filter"])){
+                    if (!empty($filterDisease) AND !empty($filterSex) AND !empty($filterPackage)){
+                        $query =    "SELECT COUNT(*)
+                                    FROM patient 
+                                    WHERE $filterDisease = 'Yes' AND sex = '".$filterSex."' AND package = '".$filterPackage."'
+                                    ORDER BY registeredOn 
+                                    DESC LIMIT ". $start_from. ", " .$per_page_record;
+                    }
+                    elseif (!empty($filterDisease) AND !empty($filterSex) AND empty($filterPackage)){
+                        $query =    "SELECT COUNT(*)
+                                    FROM patient 
+                                    WHERE $filterDisease = 'Yes' AND sex = '".$filterSex."'
+                                    ORDER BY registeredOn 
+                                    DESC LIMIT ". $start_from. ", " .$per_page_record;
+                    }
+                    elseif (!empty($filterDisease) AND empty($filterSex) AND empty($filterPackage)){
+                        $query =    "SELECT COUNT(*)
+                                    FROM patient 
+                                    WHERE $filterDisease = 'Yes'
+                                    ORDER BY registeredOn 
+                                    DESC LIMIT ". $start_from. ", " .$per_page_record;
+                    }
+                    elseif (empty($filterDisease) AND !empty($filterSex) AND !empty($filterPackage)){
+                        $query =    "SELECT COUNT(*)
+                                    FROM patient 
+                                    WHERE sex = '".$filterSex."' AND package = '".$filterPackage."'
+                                    ORDER BY registeredOn 
+                                    DESC LIMIT ". $start_from. ", " .$per_page_record;
+                    }
+                    elseif (empty($filterDisease) AND empty($filterSex) AND !empty($filterPackage)){
+                        $query =    "SELECT COUNT(*)
+                                    FROM patient 
+                                    WHERE package = '".$filterPackage."'
+                                    ORDER BY registeredOn 
+                                    DESC LIMIT ". $start_from. ", " .$per_page_record;
+                    }
+                    elseif (!empty($filterDisease) AND empty($filterSex) AND !empty($filterPackage)){
+                        $query =    "SELECT COUNT(*)
+                                    FROM patient 
+                                    WHERE $filterDisease = 'Yes' AND package = '".$filterPackage."'
+                                    ORDER BY registeredOn 
+                                    DESC LIMIT ". $start_from. ", " .$per_page_record;
+                    }
+                    elseif (empty($filterDisease) AND !empty($filterSex) AND empty($filterPackage)){
+                        $query =    "SELECT COUNT(*)
+                                    FROM patient 
+                                    WHERE sex = '".$filterSex."'
+                                    ORDER BY registeredOn 
+                                    DESC LIMIT ". $start_from. ", " .$per_page_record;
+                    }
+                    else{
+                        $query =    "SELECT COUNT(*)
+                                    FROM patient 
+                                    ORDER BY registeredOn 
+                                    DESC LIMIT ". $start_from. ", " .$per_page_record;
+                    }
+                }
+                else{
+                $query =    "SELECT COUNT(*) 
+                            FROM patient";     
+                }
                 $rs_result = mysqli_query($conn, $query);     
                 $row = mysqli_fetch_row($rs_result);     
                 $total_records = $row[0];     

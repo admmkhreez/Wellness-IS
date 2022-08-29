@@ -14,6 +14,7 @@
     <body>
         <?php
             $mrn = $_POST["mrn"];
+            $newmrn = $_POST["newmrn"];
             $servername = "localhost";
             $username = "root";
             $password = "";
@@ -27,19 +28,22 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $delete = "DELETE FROM patient WHERE mrn = '".$mrn."'";
-            $data = $conn->query($delete);
+            $update = "UPDATE patient SET mrn = '".$newmrn."' WHERE mrn = '".$mrn."'";
+            $data = $conn->query($update);
 
             if ($data === TRUE) 
             {
                 echo "<script type='text/javascript'>";
-                echo "alert('Successfully deleted');";
+                echo "alert('Changes Successful');";
                 echo "window.location.href = 'managePatient.php';";
                 echo "</script>";
             }
             else
             {
-                echo "Error : " . $conn->error;
+                echo "<script type='text/javascript'>";
+                echo "alert('Changes Failed. MRN alredy exist');";
+                echo "window.location.href = 'managePatient.php';";
+                echo "</script>";
             }
             }
             else

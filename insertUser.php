@@ -10,6 +10,7 @@
         <title>Register User</title>
         <link rel="stylesheet" href="wellness.css">
         <link rel="stylesheet" href="bootstrap.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
     <?php
@@ -44,11 +45,27 @@
                     <li class="nav-item">
                         <a class="nav-link" href="viewRecords.php">Records</a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="analysis" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Analysis
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="analysis">
+                            <li><a class="dropdown-item" href="patientAnalysis.php">Patient's Analysis</a></li>
+                            <li><a class="dropdown-item" href="recordAnalysis.php">Record's Analysis</a></li>
+                        </ul>
+                    </li>
                     <?php
                         if($_SESSION["type"] == "admin"){
                     ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="viewUser.php">View User</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="adminTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Administrator
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="adminTools">
+                            <li><a class="dropdown-item" href="viewUser.php">View User</a></li>
+                            <li><a class="dropdown-item" href="managePatient.php">Manage Patients</a></li>
+                                <li><a class="dropdown-item" href="manageRecords.php">Manage Records</a></li>
+                        </ul>
                     </li>
                     <?php
                         }
@@ -84,7 +101,7 @@
             {
             ?>
                 <p class='success'>Successfully Inserted New User</p>
-                <a class="btn btn-primary" href="viewUser.php">View</a>
+                <a class="btn btn-primary" href="adminPage.php">View</a>
             <?php
             }
             else

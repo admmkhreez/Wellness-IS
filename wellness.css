@@ -24,6 +24,7 @@ html{
     height: 100%;
 }
 .container{
+    position: relative;
     width: 100%;
     background-color: #e3f0ff;
     margin-left: auto;
@@ -53,7 +54,6 @@ textarea {
     width:80%;
     resize: vertical;
     padding:15px;
-    border-radius:15px;
     border: 1px solid #eee;
     box-shadow:15px 10px 25px 5px rgba(0,0,0,0.1);
     transition: .3s border-color;
@@ -62,7 +62,6 @@ textarea {
 select {
     width: 400px;
     padding:10px;
-    border-radius:10px;
     border: 1px solid #eee;
     transition: .3s border-color;
 }
@@ -74,8 +73,9 @@ nav{
 }
 label.inline {
     display: inline-block;
-    width: 150px;
+    width: 200px;
     font-weight: bold;
+    font-size: large;
 }
 label.inline-radio {
     display: inline-block;
@@ -225,12 +225,14 @@ label.inline-radio {
 }
 
 .info{
-    padding: 10px 10px;
-    border: 2px solid black;
-    width: 600px;
+    margin: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    border: 1px solid black;
+    width: 550px;
     position: absolute;
-    right: 300px;
-    top: 150px;
+    top: 0px;
+    right: 0px;
     border-radius: 10px 20px;
 }
 
@@ -242,4 +244,18 @@ label.inline-radio {
     position: absolute;
     right: 0;
     bottom: 0;
+}
+.radio{
+    padding: 10px;
+    border:solid 2px black;
+    border-radius: 10px;
+    max-width: 500px;
+    margin-top: 10px;
+}
+.select{
+    margin-top: 5px;
+}
+.filter{
+    width: 200px !important;
+    background-color: white !important;
 }

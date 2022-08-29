@@ -9,9 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="wellness.css">
         <link rel="stylesheet" href="bootstrap.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <?php
-        $mrn1 = $_POST["mrn1"];
         $mrn = $_POST["mrn"];
         $name = $_POST["name"];
         $icpp = $_POST["icpp"];
@@ -59,11 +59,27 @@
                     <li class="nav-item">
                         <a class="nav-link" href="viewRecords.php">Records</a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="analysis" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Analysis
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="analysis">
+                            <li><a class="dropdown-item" href="patientAnalysis.php">Patient's Analysis</a></li>
+                            <li><a class="dropdown-item" href="recordAnalysis.php">Record's Analysis</a></li>
+                        </ul>
+                    </li>
                     <?php
                         if($_SESSION["type"] == "admin"){
                     ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="viewUser.php">View User</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="adminTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Administrator
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="adminTools">
+                            <li><a class="dropdown-item" href="viewUser.php">View User</a></li>
+                            <li><a class="dropdown-item" href="managePatient.php">Manage Patients</a></li>
+                                <li><a class="dropdown-item" href="manageRecords.php">Manage Records</a></li>
+                        </ul>
                     </li>
                     <?php
                         }
@@ -90,7 +106,7 @@
                     <dt class="col-sm-3">Date of Birth: </dt>
                     <dd class="col-sm-9"><?php echo $dob;?></dd>
                     <dt class="col-sm-3">Home Address: </dt>
-                    <dd class="col-sm-9"><?php echo $address;?></dd>
+                    <dd class="col-sm-9"><?php echo nl2br($address);?></dd>
                     <dt class="col-sm-3">Email: </dt>
                     <dd class="col-sm-9"><?php echo $email;?></dd>
                     <dt class="col-sm-3">Telephone: </dt>
@@ -126,12 +142,12 @@
         if($package == "Custom"){
             $insert = "UPDATE patient SET mrn = '".$mrn."', name = '".$name."', ic_passport = '".$icpp."', date_of_birth = '".$dob."', address = '".$address."', email = '".$email."', telephone = '".$tel."',
             sex = '".$sex."', occupation = '".$occupation."', race = '".$race."', religion = '".$religion."', marital_status = '".$mstatus."', next_of_kin = '".$nok."', relationship = '".$rs."',
-            telephone_nok = '".$tel_nok."', package = '".$package."', lastUpdateOn = '".$date."', addons = '".$addons."', pic = '".$pic."' WHERE mrn = '".$mrn1."'";
+            telephone_nok = '".$tel_nok."', package = '".$package."', lastUpdateOn = '".$date."', addons = '".$addons."', pic = '".$pic."' WHERE mrn = '".$mrn."'";
         }
         else{
             $insert = "UPDATE patient SET mrn = '".$mrn."', name = '".$name."', ic_passport = '".$icpp."', date_of_birth = '".$dob."', address = '".$address."', email = '".$email."', telephone = '".$tel."',
             sex = '".$sex."', occupation = '".$occupation."', race = '".$race."', religion = '".$religion."', marital_status = '".$mstatus."', next_of_kin = '".$nok."', relationship = '".$rs."',
-            telephone_nok = '".$tel_nok."', package = '".$package."', lastUpdateOn = '".$date."', addons = NULL, pic = '".$pic."' WHERE mrn = '".$mrn1."'";
+            telephone_nok = '".$tel_nok."', package = '".$package."', lastUpdateOn = '".$date."', addons = NULL, pic = '".$pic."' WHERE mrn = '".$mrn."'";
         }
         
 

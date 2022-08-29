@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="wellness.css">
         <link rel="stylesheet" href="bootstrap.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
         <?php
             $startDate = $_POST["startDate"];
@@ -39,11 +40,27 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="viewRecords.php">Records</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="analysis" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Analysis
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="analysis">
+                                <li><a class="dropdown-item" href="patientAnalysis.php">Patient's Analysis</a></li>
+                                <li><a class="dropdown-item" href="recordAnalysis.php">Record's Analysis</a></li>
+                            </ul>
+                        </li>
                         <?php
                         if($_SESSION["type"] == "admin"){
                         ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="viewUser.php">View User</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="adminTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Administrator
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="adminTools">
+                                <li><a class="dropdown-item" href="viewUser.php">View User</a></li>
+                                <li><a class="dropdown-item" href="managePatient.php">Manage Patients</a></li>
+                                <li><a class="dropdown-item" href="manageRecords.php">Manage Records</a></li>
+                            </ul>
                         </li>
                         <?php
                             }
@@ -67,6 +84,24 @@
                 Click <a href="viewPatient.php">here</a> if you want to view patients list.
             </div>
                 <br>
+                <div style="text-align: right;" id="filtering">
+                    <form method="post">
+                        <select id="package" name="filterPackage" class="btn filter">
+                            <option value="" selected hidden>By Package</option>
+                            <option value="">Any</option>
+                            <option value="Essential">Essential</option>
+                            <option value="Comprehensive">Comprehensive</option>
+                            <option value="Premium">Premium</option>
+                            <option value="Custom">Custom</option>
+                        </select>
+                        <button formaction="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" style="border: none;">
+                            <img src="filter.svg" style="height: 30px; width:15px; float:center; text-align: center">
+                        </button>
+                        <input type="hidden" name="filter" value="">
+                        <input type="hidden" name="startDate" value="<?php echo $startDate;?>">
+                        <input type="hidden" name="endDate" value="<?php echo $endDate;?>">
+                    </form>
+                </div>
                 <table style="width: 100%;" height="100%" class="table table-striped">
                     <thead class="table-dark" style="text-align:center;">
                         <tr>
@@ -82,11 +117,8 @@
                             <th rowspan="2">
                                 Additional Test
                             </th>
-                            <th colspan="4">
+                            <th colspan="6">
                                 Last Updated On
-                            </th>
-                            <th rowspan="2">
-                                Physical Exam On
                             </th>
                             <th rowspan="2">
                                 Package
@@ -99,8 +131,15 @@
                             </th>
                         </tr>
                         <tr>
-                            <th colspan="2">Medical History</th>
-                            <th colspan="2">Report Form</th>
+                            <th colspan="2">
+                                Medical History
+                            </th>
+                            <th colspan="2">
+                                Report Form
+                            </th>
+                            <th colspan="2">
+                                Physical Exam On
+                            </th>
                         </tr>
                     </thead>
                     <tbody style="background-color: white;">
@@ -115,9 +154,27 @@
                         }    
                     
                         $start_from = ($page-1) * $per_page_record;     
-                    
-                        $query = "SELECT a.mrn, name, ic_passport, addonsUsed, lastUpdateMH, lastUpdate, phyExam, packageUsed, visits FROM patient a INNER JOIN record b
-                        ON a.mrn = b.mrn WHERE b.lastUpdate BETWEEN '".$startDate."' AND '".$endDate."' ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+                        
+                        if (isset($_POST["filter"])){
+                            $filterPackage = $_POST["filterPackage"];
+                            if (!empty($filterPackage)){
+                                $query =    "SELECT a.mrn, name, ic_passport, addonsUsed, lastUpdateMH, lastUpdate, phyExam, packageUsed, visits 
+                                            FROM patient a, record b 
+                                            WHERE a.mrn = b.mrn AND packageUsed = '".$filterPackage."' AND (lastUpdate BETWEEN '".$startDate."' AND '".$endDate."')
+                                            ORDER BY lastUpdate 
+                                            DESC LIMIT ". $start_from. ", " .$per_page_record;
+                            }else{
+                                $query =    "SELECT a.mrn, name, ic_passport, addonsUsed, lastUpdateMH, lastUpdate, phyExam, packageUsed, visits 
+                                            FROM patient a, record b   
+                                            WHERE a.mrn = b.mrn AND (lastUpdate BETWEEN '".$startDate."' AND '".$endDate."')
+                                            ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+                            }
+                        }else{
+                            $query =    "SELECT a.mrn, name, ic_passport, addonsUsed, lastUpdateMH, lastUpdate, phyExam, packageUsed, visits 
+                                        FROM patient a, record b   
+                                        WHERE a.mrn = b.mrn AND (lastUpdate BETWEEN '".$startDate."' AND '".$endDate."')
+                                        ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+                        }
                         $rs_result = mysqli_query ($conn, $query);     
 
                         while ($row = mysqli_fetch_array($rs_result)) {  
@@ -129,7 +186,7 @@
                             <td><?php echo nl2br($row['addonsUsed']);?></td>
                             <td colspan="2"><?php echo $row['lastUpdateMH'];?></td>
                             <td colspan="2"><?php echo $row['lastUpdate'];?></td>
-                            <td><?php echo $row['phyExam'];?></td>
+                            <td colspan="2"><?php echo $row['phyExam'];?></td>
                             <td><?php echo $row['packageUsed'];?></td>
                             <td><?php echo $row['visits'];?></td>
                             <td style="text-align: right;">
@@ -137,22 +194,35 @@
                                 <input type="hidden" name="mrn" value="<?php echo $row['mrn'];?>">
                                 <input type="hidden" name="visits" value="<?php echo $row["visits"];?>">
                                 <button formaction="viewDetails.php" class="btn btn-primary">View</button>
-                <?php
-                        if ($_SESSION["type"] == "admin"){
-                ?>
-                                <button formaction="deleteRecord.php" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
-                <?php
+                    <?php
                         }
-                    }
-                ?>
+                    ?>
                                 </form>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             <?php
-            $query = "SELECT COUNT(*) FROM patient a INNER JOIN record b
-            ON a.mrn = b.mrn WHERE b.lastUpdate BETWEEN '".$startDate."' AND '".$endDate."'";     
+            if (isset($_POST["filter"])){
+                $filterPackage = $_POST["filterPackage"];
+                if (!empty($filterPackage)){
+                    $query =    "SELECT COUNT(*)
+                                FROM patient a, record b 
+                                WHERE a.mrn = b.mrn AND packageUsed = '".$filterPackage."' AND (lastUpdate BETWEEN '".$startDate."' AND '".$endDate."')
+                                ORDER BY registeredOn 
+                                DESC LIMIT ". $start_from. ", " .$per_page_record;
+                }else{
+                    $query =    "SELECT COUNT(*)
+                                FROM patient a, record b   
+                                WHERE a.mrn = b.mrn AND (lastUpdate BETWEEN '".$startDate."' AND '".$endDate."')
+                                ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+                }
+            }else{
+                $query =    "SELECT COUNT(*)
+                            FROM patient a, record b   
+                            WHERE a.mrn = b.mrn AND (lastUpdate BETWEEN '".$startDate."' AND '".$endDate."')
+                            ORDER BY lastUpdate DESC LIMIT ". $start_from. ", " .$per_page_record;
+            }   
             $rs_result = mysqli_query($conn, $query);     
             $row = mysqli_fetch_row($rs_result);     
             $total_records = $row[0];     

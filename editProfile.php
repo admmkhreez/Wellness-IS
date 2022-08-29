@@ -14,7 +14,6 @@
     </head>
     <body>
         <?php
-            $mrn1 = $_POST["mrn"];
             $mrn = $_POST["mrn"];
             $servername = "localhost";
             $username = "root";
@@ -44,11 +43,27 @@
                         <li class="nav-item">
                             <a class="nav-link" href="viewRecords.php">Records</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="analysis" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Analysis
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="analysis">
+                                <li><a class="dropdown-item" href="patientAnalysis.php">Patient's Analysis</a></li>
+                                <li><a class="dropdown-item" href="recordAnalysis.php">Record's Analysis</a></li>
+                            </ul>
+                        </li>
                         <?php
                             if($_SESSION["type"] == "admin"){
                         ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="viewUser.php">View User</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="adminTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Administrator
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="adminTools">
+                                <li><a class="dropdown-item" href="viewUser.php">View User</a></li>
+                                <li><a class="dropdown-item" href="managePatient.php">Manage Patients</a></li>
+                                <li><a class="dropdown-item" href="manageRecords.php">Manage Records</a></li>
+                            </ul>
                         </li>
                         <?php
                             }
@@ -113,20 +128,7 @@
                     <h5>Patient's Information</h5>
                     <div>
                         <label class="inline" for="mrn">MRN: </label>
-                <?php 
-                        if($_SESSION["type"] == "admin")
-                        {
-                ?>
-                        <input type="text" id="mrn" maxlength="10" name="mrn" value="<?php echo $row["mrn"]?>" required>
-                <?php
-                        }
-                        else{
-                ?>
                         <input type="text" id="mrn" maxlength="10" name="mrn" value="<?php echo $row["mrn"]?>" required disabled>
-                <?php
-                        }
-                ?>
-
                     </div>
                     <div>
                         <label class="inline" for="name">Name: </label>
@@ -134,7 +136,7 @@
                     </div>
                     <div>
                         <label class="inline" for="icpp">I/C No / Passport: </label>
-                        <input type="text" id="icpp"maxlength="12" name="icpp" value="<?php echo $row["ic_passport"]?>" required>
+                        <input type="text" id="icpp"maxlength="14" name="icpp" value="<?php echo $row["ic_passport"]?>" required><span style="color: #7575a0; font-size: 14px; margin: 0px;"> *IC Format: 00000-00-0000. Include hyphen</span>
                     </div>
                     <div>
                         <label class="inline" for="dob">Date of Birth: </label>
@@ -150,30 +152,41 @@
                     </div>
                     <div>
                         <label class="inline" for="telephone">Telephone: </label>
-                        <input type="tel" id="telephone" maxlength="15" name="tel" value="<?php echo $row["telephone"]?>">
+                        <input type="tel" id="telephone" maxlength="15" name="tel" value="<?php echo $row["telephone"]?>"><span style="color: #7575a0; font-size: 14px; margin: 0px;"> *Format: 601XXXXXXXXX.</span>
                     </div>
-                    <div>
-                        <fieldset>
-                            <legend>Sex: </legend>
-                                <input type="radio" class="form-check-input" id="male" name="sex" value="Male" <?php if ($row['sex'] == "Male") echo "checked"?> required>
-                                <label class="inline" for="male">Male</label>
-                                <input type="radio" class="form-check-input" id="female" name="sex" value="Female" <?php if ($row['sex'] == "Female") echo "checked"?> required>
-                                <label class="inline" for="female">Female</label>
-                        </fieldset>
+                    <div class="select">
+                        <label class="inline" for="sex">Sex: </label>
+                        <select id="sex" name="sex">
+                            <option value="Male" <?php if ($row['sex'] == "Male") echo "selected"?> required>Male</option>
+                            <option value="Female" <?php if ($row['sex'] == "Female") echo "selected"?> required>Female</option>
+                        </select>
                     </div>
                     <div>
                         <label class="inline" for="occupation">Occupation: </label>
                         <input type="text" id="occupation" name="occupation" maxlength="30" value="<?php echo $row["occupation"]?>">
                     </div>
-                    <div>
+                    <div class="select">
                         <label class="inline" for="race">Race: </label>
-                        <input type="text" id="race" name="race" maxlength="20" value="<?php echo $row["race"]?>">
+                        <select id="race" name="race" required>
+                            <option value="" selected disabled hidden>--Please Select--</option>
+                            <option value="Malay" <?php if ($row['race'] == "Malay") echo "selected"?>>Malay</option>
+                            <option value="Chinese" <?php if ($row['race'] == "Chinese") echo "selected"?>>Chinese</option>
+                            <option value="Indian" <?php if ($row['race'] == "Indian") echo "selected"?>>Indian</option>
+                            <option value="Other" <?php if ($row['race'] == "Other") echo "selected"?>>Other</option>
+                        </select>
                     </div>
-                    <div>
-                    <label class="inline" for="religion">Religion: </label>
-                    <input type="text" id="religion" name="religion" maxlength="20" value="<?php echo $row["religion"]?>">
+                    <div class="select">
+                        <label class="inline" for="religion">Religion: </label>
+                        <select id="religion" name="religion" required>
+                            <option value="" selected disabled hidden>--Please Select--</option>
+                            <option value="Muslim" <?php if ($row['religion'] == "Muslim") echo "selected"?>>Muslim</option>
+                            <option value="Buddhist" <?php if ($row['religion'] == "Buddhist") echo "selected"?>>Buddhist</option>
+                            <option value="Hindu" <?php if ($row['religion'] == "Hindu") echo "selected"?>>Hindu</option>
+                            <option value="Christian" <?php if ($row['religion'] == "Christian") echo "selected"?>>Christian</option>
+                            <option value="Other" <?php if ($row['religion'] == "Other") echo "selected"?>>Other</option>
+                        </select>
                     </div>
-                    <div>
+                    <div class="select">
                         <label class="inline" for="marital_status">Marital Status: </label>
                         <select id="marital_status" name="marital_status">
                             <option value="" selected disabled hidden>--Please Select--</option>
@@ -184,9 +197,9 @@
                             <option value="Single" <?php if ($row['marital_status'] == "Single") echo "selected"?>>Single</option>
                         </select>
                     </div>
-                    
-                    
+                    <hr>
                     <h5>Next Of Kin</h5>
+                    <hr>
                     <div>       
                         <label class="inline" for="next_of_kin">Name: </label>
                         <input type="text" id="next_of_kin" maxlength="70" name="next_of_kin" value="<?php echo $row["next_of_kin"]?>" required>
@@ -197,7 +210,7 @@
                     </div>
                     <div>
                         <label class="inline" for="telephone_nok">Telephone: </label>
-                        <input type="tel" id="telephone_nok" name="telephone_nok" maxlength="15" value="<?php echo $row["telephone_nok"]?>">
+                        <input type="tel" id="telephone_nok" name="telephone_nok" maxlength="15" value="<?php echo $row["telephone_nok"]?>"><span style="color: #7575a0; font-size: 14px; margin: 0px;"> *Format: 601XXXXXXXXX.</span>
                     </div>
                     <div>
                     <label class="inline" for="package">Package</label>
@@ -212,14 +225,13 @@
                     <br>
                     <div class="textfield">
                         <label class="inline" for="addons">Additional Test: </label>
-                        <textarea type="text" id="addons" maxlength="100" placeholder="*MENTION THE PACKAGE CHOSEN IF CUSTOM" name="addons" rows="4" cols="50"><?php echo $row["addons"]?></textarea>
+                        <textarea type="text" id="addons" maxlength="100" placeholder="*IF CUSTOM, MENTION THE PACKAGE CHOSEN" name="addons" rows="4" cols="50"><?php echo $row["addons"]?></textarea>
                     </div>
                     <br><br>
                     <div style="text-align: center;">
                         <input type="reset" class="btn btn-danger" value="Reset">
-                        <input type="submit" class="btn btn-primary" value="Submit">
-                        <input type="hidden" name="mrn" value="<?php echo $mrn;?>">
-                        <input type="hidden" name="mrn1" value="<?php echo $mrn1;?>"> 
+                        <input type="submit" class="btn btn-primary" value="Submit"> 
+                        <input type="hidden" name="mrn" value="<?php echo $mrn;?>">                                                   
                     </div>
                     <br>
             </form>

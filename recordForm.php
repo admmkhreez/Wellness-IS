@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="wellness.css">
         <link rel="stylesheet" href="bootstrap.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <style>
             .unstyled-button {
                 border: none;
@@ -33,11 +34,27 @@
                     <li class="nav-item">
                         <a class="nav-link" href="viewRecords.php">Records</a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="analysis" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Analysis
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="analysis">
+                            <li><a class="dropdown-item" href="patientAnalysis.php">Patient's Analysis</a></li>
+                            <li><a class="dropdown-item" href="recordAnalysis.php">Record's Analysis</a></li>
+                        </ul>
+                    </li>
                     <?php
                         if($_SESSION["type"] == "admin"){
                     ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="viewUser.php">View User</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="adminTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Administrator
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="adminTools">
+                            <li><a class="dropdown-item" href="viewUser.php">View User</a></li>
+                            <li><a class="dropdown-item" href="managePatient.php">Manage Patients</a></li>
+                                <li><a class="dropdown-item" href="manageRecords.php">Manage Records</a></li>
+                        </ul>
                     </li>
                     <?php
                         }
@@ -124,90 +141,90 @@
                 <label class="inline" for="murmur">Murmur: </label>
                 <input type="text" id="murmur" name="murmur" required><br>
                 <h3>Respiratory System</h3>
-                <fieldset>
-                    <legend>Air Entry</legend>
-                    <input type="radio" class="form-check-input" id="normal" name="airentry" value="Normal" required>
-                    <label class="inline-radio" for="normal">Normal</label>
-                    <input type="radio" class="form-check-input" id="abnormal" name="airentry" value="Abnormal">
-                    <label class="inline-radio" for="abnormal">Abnormal</label>
-                </fieldset>
-                <fieldset>
-                    <legend>Chest Expansion</legend>
-                    <input type="radio" class="form-check-input" id="normal" name="chestexp" value="Normal" required>
-                    <label class="inline-radio" for="normal">Normal</label>
-                    <input type="radio" class="form-check-input" id="abnormal" name="chestexp" value="Abnormal">
-                    <label class="inline-radio" for="abnormal">Abnormal</label>
-                </fieldset>
-                <fieldset>
-                    <legend>Breath Sound</legend>
-                    <input type="radio" class="form-check-input" id="normal" name="breathsound" value="Normal" required>
-                    <label class="inline-radio" for="normal">Normal</label>
-                    <input type="radio" class="form-check-input" id="abnormal" name="breathsound" value="Abnormal">
-                    <label class="inline-radio" for="abnormal">Abnormal</label>
-                </fieldset>
+                    <label class="inline">Air Entry</label>
+                    <div class="radio">
+                        <input type="radio" class="form-check-input" id="normal" name="airentry" value="Normal" required>
+                        <label class="inline-radio" for="normal">Normal</label>
+                        <input type="radio" class="form-check-input" id="abnormal" name="airentry" value="Abnormal">
+                        <label class="inline-radio" for="abnormal">Abnormal</label>
+                    </div>
+                    <label class="inline">Chest Expansion</label>
+                    <div class="radio">
+                        <input type="radio" class="form-check-input" id="normal" name="chestexp" value="Normal" required>
+                        <label class="inline-radio" for="normal">Normal</label>
+                        <input type="radio" class="form-check-input" id="abnormal" name="chestexp" value="Abnormal">
+                        <label class="inline-radio" for="abnormal">Abnormal</label>
+                    </div>
+                    <label class="inline">Breath Sound</label>
+                    <div class="radio">
+                        <input type="radio" class="form-check-input" id="normal" name="breathsound" value="Normal" required>
+                        <label class="inline-radio" for="normal">Normal</label>
+                        <input type="radio" class="form-check-input" id="abnormal" name="breathsound" value="Abnormal">
+                        <label class="inline-radio" for="abnormal">Abnormal</label>
+                    </div>
                 <h3>Gastrointestinal System</h3>
-                <fieldset>
-                    <legend>Liver</legend>
-                    <input type="radio" class="form-check-input" id="palpable" name="liver" value="Palpable" required>
-                    <label class="inline-radio" for="palpable">Palpable</label>
-                    <input type="radio" class="form-check-input" id="notpalpable" name="liver" value="Not Palpable">
-                    <label class="inline-radio" for="notpalpable">Not Palpable</label>
-                </fieldset>
-                <fieldset>
-                    <legend>Spleen</legend>
-                    <input type="radio" class="form-check-input" id="palpable" name="spleen" value="Palpable" required>
-                    <label class="inline-radio" for="palpable">Palpable</label>
-                    <input type="radio" class="form-check-input" id="notpalpable" name="spleen" value="Not Palpable">
-                    <label class="inline-radio" for="notpalpable">Not Palpable</label>
-                </fieldset>    
-                <fieldset>
-                    <legend>Kidney</legend>
-                    <input type="radio" class="form-check-input" id="palpable" name="kidney" value="Palpable" required>
-                    <label class="inline-radio" for="palpable">Palpable</label>
-                    <input type="radio" class="form-check-input" id="notpalpable" name="kidney" value="Not Palpable">
-                    <label class="inline-radio" for="notpalpable">Not Palpable</label>
-                </fieldset>
+                    <label class="inline">Liver</label>
+                    <div class="radio">
+                        <input type="radio" class="form-check-input" id="palpable" name="liver" value="Palpable" required>
+                        <label class="inline-radio" for="palpable">Palpable</label>
+                        <input type="radio" class="form-check-input" id="notpalpable" name="liver" value="Not Palpable">
+                        <label class="inline-radio" for="notpalpable">Not Palpable</label>
+                    </div>
+                    <label class="inline">Spleen</label>
+                    <div class="radio">
+                        <input type="radio" class="form-check-input" id="palpable" name="spleen" value="Palpable" required>
+                        <label class="inline-radio" for="palpable">Palpable</label>
+                        <input type="radio" class="form-check-input" id="notpalpable" name="spleen" value="Not Palpable">
+                        <label class="inline-radio" for="notpalpable">Not Palpable</label>
+                    </div>
+                    <label class="inline">Kidney</label>
+                    <div class="radio">
+                        <input type="radio" class="form-check-input" id="palpable" name="kidney" value="Palpable" required>
+                        <label class="inline-radio" for="palpable">Palpable</label>
+                        <input type="radio" class="form-check-input" id="notpalpable" name="kidney" value="Not Palpable">
+                        <label class="inline-radio" for="notpalpable">Not Palpable</label>
+                    </div>
                 <h3>Central Nervous System</h3>
-                <fieldset>
-                    <legend>Mental Function</legend>
+                    <label class="inline">Mental Function</label>
+                <div class="radio">
                     <input type="radio" class="form-check-input" id="normal" name="mentalfunct" value="Normal" required>
                     <label class="inline-radio" for="normal">Normal</label>
                     <input type="radio" class="form-check-input" id="abnormal" name="mentalfunct" value="Abnormal">
                     <label class="inline-radio" for="abnormal">Abnormal</label>
-                </fieldset>
-                <fieldset>
-                    <legend>Coordination</legend>
+                </div>
+                    <label class="inline">Coordination</label>
+                <div class="radio">
                     <input type="radio" class="form-check-input" id="normal" name="coordination" value="Normal" required>
                     <label class="inline-radio" for="normal">Normal</label>
                     <input type="radio" class="form-check-input" id="abnormal" name="coordination" value="Abnormal">
                     <label class="inline-radio" for="abnormal">Abnormal</label>
-                </fieldset>
-                <fieldset>
-                    <legend>Gait</legend>
+                </div>
+                    <label class="inline">Gait</label>
+                <div class="radio">
                     <input type="radio" class="form-check-input" id="normal" name="gait" value="Normal" required>
                     <label class="inline-radio" for="normal">Normal</label>
                     <input type="radio" class="form-check-input" id="abnormal" name="gait" value="Abnormal">
                     <label class="inline-radio" for="abnormal">Abnormal</label>
-                </fieldset>
+                </div>
                 <h3>Genitourinary System</h3>
-                <fieldset>
-                    <legend>Genitalia</legend>
+                    <label class="inline">Genitalia</label>
+                <div class="radio">
                     <input type="radio" class="form-check-input" id="normal" name="genitalia" value="Normal" required>
                     <label class="inline-radio" for="normal">Normal</label>
                     <input type="radio" class="form-check-input" id="abnormal" name="genitalia" value="Abnormal">
                     <label class="inline-radio" for="abnormal">Abnormal</label>
                     <input type="radio" class="form-check-input" id="unknown" name="genitalia" value="Unknown">
                     <label class="inline-radio" for="unknown">Unknown</label>
-                </fieldset>    
-                <fieldset>
-                    <legend>Rectal Examinantion</legend>
+                </div>
+                    <label class="inline">Rectal Examinantion</label>
+                <div class="radio">
                     <input type="radio" class="form-check-input" id="normal" name="rectal" value="Normal" required>
                     <label class="inline-radio" for="normal">Normal</label>
                     <input type="radio" class="form-check-input" id="abnormal" name="rectal" value="Abnormal">
                     <label class="inline-radio" for="abnormal">Abnormal</label>
                     <input type="radio" class="form-check-input" id="unknown" name="rectal" value="Unknown">
                     <label class="inline-radio" for="unknown">Unknown</label>
-                </fieldset>
+                </div>
             <div class="lrcol">
                 <h3>Musculoskeletal System</h3>
                 <h4>Lower Limb</h4>

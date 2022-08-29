@@ -33,8 +33,8 @@
             if ($data === TRUE)
             {
                 echo "<script type='text/javascript'>";
-                echo "alert('User successfully deleted, redirecting to Home page.');";
-                echo "window.location.href = 'homepage.php';";
+                echo "alert('User successfully deleted;";
+                echo "window.location.href = 'viewUser.php';";
                 echo "</script>";
             }
             else

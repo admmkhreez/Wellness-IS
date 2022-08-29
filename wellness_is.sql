@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 05, 2022 at 02:25 AM
+-- Generation Time: Aug 29, 2022 at 04:23 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -31,7 +31,7 @@ DROP TABLE IF EXISTS `patient`;
 CREATE TABLE IF NOT EXISTS `patient` (
   `mrn` varchar(10) NOT NULL,
   `name` varchar(70) NOT NULL,
-  `ic_passport` varchar(12) NOT NULL,
+  `ic_passport` varchar(14) NOT NULL,
   `date_of_birth` date NOT NULL,
   `address` varchar(100) NOT NULL,
   `email` varchar(320) DEFAULT NULL,
@@ -183,9 +183,7 @@ CREATE TABLE IF NOT EXISTS `record` (
   `impression` varchar(600) DEFAULT NULL,
   `recommendation` varchar(600) DEFAULT NULL,
   `lastUpdate` datetime DEFAULT NULL,
-  `lastUpdatePE` datetime DEFAULT NULL,
   `doneBy` varchar(40) DEFAULT NULL,
-  `position` varchar(200) DEFAULT NULL,
   `visits` int(11) NOT NULL DEFAULT '0',
   `packageUsed` varchar(20) DEFAULT NULL,
   `addonsUsed` varchar(500) DEFAULT NULL,
@@ -203,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(15) NOT NULL,
   `password` varchar(30) NOT NULL,
-  `name` varchar(40) NOT NULL,
+  `name` varchar(60) NOT NULL,
   `type` varchar(10) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `username` (`username`)
