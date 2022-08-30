@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 29, 2022 at 04:23 AM
+-- Generation Time: Aug 30, 2022 at 08:39 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `fundoscopy_l` varchar(10) DEFAULT NULL,
   `phyExam` datetime DEFAULT NULL,
   PRIMARY KEY (`mrn`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -205,7 +205,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `type` varchar(10) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`ID`, `username`, `password`, `name`, `type`) VALUES
+(1, 'admin', '@dm1n', 'admin', 'admin');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
