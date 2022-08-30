@@ -30,7 +30,7 @@ $resultCheck = $conn->query($queryCheck);
 ?>
         <script type="text/javascript">
             alert("Incorrect Username");
-            window.location.href = "log-in.html";
+            window.location.href = "index.html";
         </script>
 <?php
 	}
@@ -52,7 +52,7 @@ $resultCheck = $conn->query($queryCheck);
 ?>
                 <script type="text/javascript">
                     alert("Incorrect Password");
-                    window.location.href = "log-in.html";
+                    window.location.href = "index.html";
                 </script>
 <?php
             }

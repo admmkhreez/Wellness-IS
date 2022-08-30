@@ -47,7 +47,7 @@
             {
                 echo "<script type='text/javascript'>";
                 echo "alert('Session does not exist. Please login again');";
-                echo "window.location.href = 'log-in.html';";
+                echo "window.location.href = 'index.html';";
                 echo "</script>";
             }   
             ?>
